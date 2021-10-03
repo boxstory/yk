@@ -1,0 +1,7 @@
+.bgimg {
+  background-repeat: scroll;
+  background-attachment: fixed;
+  height: 100vmax;
+  background-position: center;
+  background-size: cover;
+}

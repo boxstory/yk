@@ -1,0 +1,96 @@
+{% load static %}
+<!-- ...navbar... -->
+
+
+<div class="container-fluid ">
+    <nav class="navbar navbar-expand-md navbar-light bg-white ">
+        <div class="container-fluid ">
+            <script src="https://cdn.lordicon.com//libs/frhvbuzj/lord-icon-2.0.2.js"></script>
+            <div class="d-none d-md-block d-lg-block">
+                <lord-icon
+                    src="https://cdn.lordicon.com//nkmsrxys.json"
+                    trigger="loop"
+                    colors="primary:#107c91,secondary:#e83a30"
+                    style="width:3em;height:3em"
+                >
+                </lord-icon>
+            </div>
+
+            <a
+                class="navbar-brand m-0"
+                href="{% url '#' %}"
+            >
+                <img
+                    src="{{ MEDIA_URL }}brand/bxlogow.jpg"
+                    alt=""
+                    width="220"
+                    height="50"
+                >
+            </a>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+                class="collapse navbar-collapse "
+                id="navbarNav"
+            >
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a
+                            class="nav-link active"
+                            aria-current="page"
+                            href="{% url '#' %}"
+                        >Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            class="nav-link active"
+                            aria-current="page"
+                            href="{% url '#' %}"
+                        >Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            class="nav-link active"
+                            aria-current="page"
+                            href="{% url '#' %}"
+                        >Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            class="nav-link active"
+                            aria-current="page"
+                            href="{% url '#' %}"
+                        >About</a>
+                    </li>
+                    <li><a
+                            class="nav-link active"
+                            aria-current="page"
+                            href="{% url '#' %}"
+                        >
+
+                            <lord-icon
+                                src="https://cdn.lordicon.com//dxjqoygy.json"
+                                trigger="loop"
+                                colors="primary:#0a2e5c,secondary:#107c91"
+                                style="width:2em;height:2em"
+                            >
+                            </lord-icon>
+                        </a></li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</div>
+{% block extra_js %}
+<script src="https://cdn.lordicon.com//libs/frhvbuzj/lord-icon-2.0.2.js"></script>{% endblock %}
