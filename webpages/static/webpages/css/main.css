@@ -1,7 +1,9 @@
+{% load static %}
+
 .bgimg {
-  background-repeat: scroll;
+  background-repeat: fixed;
   background-attachment: fixed;
-  height: 100vmax;
+  background-image: "{{ MEDIA_URL }}media/webpages/img/247.jpg";
   background-position: center;
   background-size: cover;
 }

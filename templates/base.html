@@ -46,7 +46,10 @@
     <title>{% block title %}Boxstory.in{% endblock title %}</title>
 </head>
 
-<body>
+<body class="">
+
+    {% include "includes/navbar.html" %}
+
 
     {% block fullbody %}
     <!-- body content goes here -->
@@ -62,7 +65,7 @@
         {% endblock content %}
     </div>
 
-    <!-- {% include "includes/footer.html" %} -->
+    {% include "includes/footer.html" %}
 
 
 
