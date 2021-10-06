@@ -5,5 +5,5 @@ from . import views
 from django.http import HttpResponse
 
 
-def index(request):
+def propertyindex(request):
     return render(request, 'property/index.html')

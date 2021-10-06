@@ -53,27 +53,3 @@ def about(request):
 def profile(request):
     return render(request, 'webpages/profile.html')
 
-
-# def get_mob_no(request):
-#     # if this is a POST request we need to process the form data
-#     if request.method == 'POST':
-#         # create a form instance and populate it with data from the request:
-#         form = MobSubscriberForm(request.POST)
-#         # check whether it's valid:
-#         if form.is_valid():
-#             # process the data in form.cleaned_data as required
-#             name = form.cleaned_data['name']
-#             print(name)
-#             mobile_no = form.cleaned_data['mobile_no']
-#             print(mobile_no)
-#             MobSubscriber = MobSubscriberForm(name=name, mobile_no=mobile_no,
-#                                               date_subscribed=datetime.now(), messages_received=0)
-#             MobSubscriber.save()
-
-#             # redirect to a new URL:
-#             return HttpResponseRedirect('/thanks/')
-#     # if a GET (or any other method) we'll create a blank form
-#     else:
-#         form = MobSubscriberForm()
-
-#     return render(request, 'home', {'form': form})
