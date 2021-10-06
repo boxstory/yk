@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,12 +22,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-96re!-5b5#afjml3@lb9#w%@6+!m-2azwn9#(qtmx1c@9gi=wq'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = ['195.110.58.186', '127.0.0.1']
+
+ALLOWED_HOSTS = ['yk.qa', 'www.yk.qa', '195.110.58.186', '127.0.0.1']
 
 
 # Application definition
@@ -45,9 +47,13 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     # 'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
-
+    'crispy_forms',
+    'crispy_bootstrap5',
     'property',
     'webpages',
+
+
+
 ]
 
 MIDDLEWARE = [
@@ -82,14 +88,6 @@ TEMPLATES = [
 ]
 
 
-AUTHENTICATION_BACKENDS = [
-    # Needed to login by username in Django admin, regardless of `allauth`
-    'django.contrib.auth.backends.ModelBackend',
-    # `allauth` specific authentication methods, such as login by e-mail
-    'allauth.account.auth_backends.AuthenticationBackend',
-]
-
-
 WSGI_APPLICATION = 'yk.wsgi.application'
 
 
@@ -98,12 +96,12 @@ WSGI_APPLICATION = 'yk.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'yk_db',
-        'USER': 'ykadmin',
-        'PASSWORD': 'mskp1111',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': config('DB_HOST', default='django.db.backends.postgresql'),
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST', default='localhost'),
+        'PORT': config('PORT', '5432', cast=int),
     }
 }
 
@@ -156,6 +154,25 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+# crispy form settings
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+
+# social authentication settings
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+
 SITE_ID = 2
 
 SOCIALACCOUNT_QUERY_EMAIL = True
+
+LOGIN_REDIRECT_URL = 'home'

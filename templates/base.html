@@ -1,7 +1,10 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html
+    lang="en"
+    class="h-100"
+>
 
 <head>
     <meta
@@ -46,10 +49,21 @@
     <title>{% block title %}Boxstory.in{% endblock title %}</title>
 </head>
 
-<body class="">
+<body class="d-flex flex-column h-100">
 
     {% include "includes/navbar.html" %}
+    <section class="py-3 bg-warning">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg- mx-auto text-center">
 
+                    <p class="h5">
+                        We are working on something amazing, We will be lunch soon.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     {% block fullbody %}
     <!-- body content goes here -->

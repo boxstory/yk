@@ -46,27 +46,27 @@
                         <a
                             class="nav-link active"
                             aria-current="page"
-                            href="{% url 'home' %}"
+                            href="{% url 'services' %}"
                         >Services</a>
                     </li>
                     <li class="nav-item">
                         <a
                             class="nav-link active"
                             aria-current="page"
-                            href="{% url 'home' %}"
+                            href="{% url 'contact' %}"
                         >Contact</a>
                     </li>
                     <li class="nav-item">
                         <a
                             class="nav-link active"
                             aria-current="page"
-                            href="{% url 'home' %}"
+                            href="{% url 'about' %}"
                         >About</a>
                     </li>
                     <li><a
                             class="nav-link active"
                             aria-current="page"
-                            href="{% url 'home' %}"
+                            href="{% url 'profile' %}"
                         >
 
                             <lord-icon
@@ -74,6 +74,7 @@
                                 trigger="loop"
                                 colors="primary:#0a2e5c,secondary:#107c91"
                                 style="width:2em;height:2em"
+                                title="{{ user.username }}"
                             >
                             </lord-icon>
                         </a></li>
