@@ -44,7 +44,13 @@ def contact(request):
 def services(request):
     return render(request, 'webpages/services.html')
 
+# add_property
+def add_property(request):
+	return render(request, 'webpages/add_property.html')
 
+# join_marketing
+def join_marketing(request):
+	return render(request, 'webpages/join_marketing.html')
 def about(request):
     return render(request, 'webpages/about.html')
 
