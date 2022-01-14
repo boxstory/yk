@@ -46,7 +46,7 @@
     <!-- extra css -->
     {% endblock extra_css %}
 
-    <title>{% block title %}Boxstory.in{% endblock title %}</title>
+    <title>{% block title %}YellowKey.Qa{% endblock title %}</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -76,7 +76,17 @@
     <div class="container mt-3 mb-3">
         {% block content %}
         <!-- body content goes here -->
+
+
         {% endblock content %}
+    </div>
+
+    <div class="container bg-light mb-md-5 mb-0">
+        <div class="col-11 col-md-8 col-lg-6 mx-auto py-3">
+            {% block account_content %}
+            <!-- body content goes here -->
+            {% endblock account_content %}
+        </div>
     </div>
 
     {% include "includes/footer.html" %}

@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %} yk.qa | Produts {% endblock %}
+
+
+{% block extra_css %}
+<!-- extra css -->
+{% endblock extra_css %}
+
+
+{% block content %}
+<!-- content -->
+<div class="container">
+    <div class="row justify-content-center  py-3">
+        <div class="col-md-8 text-center py-4">
+            <h3 class="fw-bold text-uppercase bg-white">
+                update property
+            </h3>
+            <span>
+                Add your property for share with our Markeing team
+            </span><br>
+            <span>ONE TIME add whole property then just CLICK to LISTING for maketing</span>
+        </div>
+
+        <form action="">
+            {% csrf_token %}
+
+            <div class="col-md-12">
+
+                <p>
+                    <input
+                        type="text"
+                        value="
+                    {{own_properties }}
+                    "
+                    >
+                </p>
+                <p>
+                    {{own_properties.count }}
+                </p>
+                <p>
+                    <input
+                        type="text"
+                        value="
+                    {{property_status.property_type   }}
+                    "
+                    >
+                    {{property_status }}
+                </p>
+                <p><input
+                        type="text"
+                        class="color-dark"
+                        value=" {{property_status.status}} "
+                    >
+                </p>
+
+
+
+                <div class="d-grid gap-2 col-6 mx-auto mb-3 mt-5">
+                    <a
+                        href="{% url 'property:property_create' pk=user.id %}"
+                        class="btn btn-primary"
+                    >
+                        <button
+                            class="btn btn-primary"
+                            type="submit"
+                        >UPDATE PROPERTY</button>
+                    </a>
+                </div>
+        </form>
+
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <a
+                href="{% url 'property:property_create' pk=user.id %}"
+                class="btn btn-primary"
+            >
+                <button
+                    class="btn btn-primary"
+                    type="submit"
+                >ADD PROPERTY</button>
+            </a>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock content %}
+
+<!-- extra js -->
+{% block extra_js %}
+
+{% endblock extra_js %}

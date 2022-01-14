@@ -1,45 +1,20 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% load static %}
-{% block title %} yk.qa | Properties {% endblock %}
+{% block title %} yk.qa | Own Properties {% endblock %}
 
 
 {% block extra_css %}
 <!-- extra css -->
+
+
 {% endblock extra_css %}
+
 
 {% block content %}
 <!-- content -->
-
-<p>This is the property page.</p>
-
-<div class="row pb-2 mb-5">
-
-
-    <div class="col-3 btn">
-        <a
-            href="{% url 'property:own_properties' pk=user.pk %}"
-            class="btn btn-primary"
-        >MY PROPERTIES</a>
-    </div>
-    <div class="col-3 btn">
-        <a
-            href="{% url 'property:property_create' %}"
-            class="btn btn-primary"
-        >ADD PROPERTIES</a>
-    </div>
-    <div class="col-4 btn btn-sm">
-        <a
-            href="{% url 'property:property_update' pk=user.pk %}"
-            class="btn btn-primary"
-        >UPDATE VACANT STATUS</a>
-    </div>
-</div>
-{% if properties %}
-There is -{{properties.count}}- property to display.
-
 <div class="row mb-2">
-    {% for property in properties %}
+    {% for property in own_properties %}
 
 
     <div class="col-md-6">
@@ -49,17 +24,12 @@ There is -{{properties.count}}- property to display.
                 <h3 class="mb-0">{{property.title}}</h3>
                 <div class="mb-1 text-muted">{{property.price}}</div>
                 <p class="mb-auto">{{property.description}}</p>
-
                 <a
                     href="{{property.single_property}}"
                     class="stretched-link"
                 >Continue reading</a>
-                <a
-                    href="#"
-                    class="btn btn-primary-fill text-wrap btn-sm"
-                >ADD TO WISHLIST</a>
             </div>
-            <div class="col-auto ">
+            <div class="col-auto d-none d-lg-block">
                 <svg
                     class="bd-placeholder-img"
                     width="200"
@@ -91,25 +61,12 @@ There is -{{properties.count}}- property to display.
     {% endfor %}
 </div>
 
-<div class="card col-6 col-md-4 m-3">
-    <div class="card-body">
-
-        <h5 class="card-title">{{properties.title}}</h5>
-        <p class="card-text">{{properties.landmark}}</p>
-        <a
-            href="{{property.count}}"
-            class="btn btn-primary btn-sm"
-        >ADD TO WISHLIST</a>
-    </div>
+<div class="btn">
+    <a
+        href="{% url 'property:property_create'  %}"
+        class="btn btn-primary"
+    >ADD PROPERTIES</a>
 </div>
-{% else %}
-<h4>
-    There is no property to display.
-</h4>
-{% endif %}
-
-
-
 {% endblock content %}
 
 <!-- extra js -->

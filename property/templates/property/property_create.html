@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %} yk.qa | Produts {% endblock %}
+
+
+{% block extra_css %}
+<!-- extra css -->
+<link
+    type="text/css"
+    rel="stylesheet"
+    href="{% static '/webpages/css/main.css' %}"
+>
+
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    integrity="sha384-tKLJeE1ALTUwtXlaGjJYM3sejfssWdAaWR2s97axw4xkiAdMzQjtOjgcyw0Y50KU"
+    crossorigin="anonymous"
+>
+
+{% endblock extra_css %}
+
+
+{% block content %}
+<!-- content -->
+<div class="container">
+    <div class="row justify-content-center  py-3">
+        <div class="col-md-8 text-center py-4">
+            <h3 class="fw-bold text-uppercase bg-white">
+
+                add property
+            </h3>
+            <span>
+                Add your property for share with our Markeing team
+            </span><br>
+            <span>ONE TIME add whole property then just CLICK for update VACANT STATUS for maketing</span>
+        </div>
+        <div class="btn btn-secondary col-6 mb-5">
+            <a
+                href="#"
+                class="text-white fs-6 fw-bold text-decoration-none"
+            >
+
+                ADD BULK
+            </a>
+        </div>
+        <div class="col-md-8">
+            <h3 class="fw-bold text-decoration-underline">Or add single portion</h3>
+            <form method="post">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button
+                        class="btn btn-primary"
+                        type="submit"
+                    >ADD PROPERTY</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+<!-- extra js -->
+{% block extra_js %}
+
+{% endblock extra_js %}

@@ -3,4 +3,7 @@ from .models import *
 
 # Register your models here.
 
-admin.site.register(property)
+
+admin.site.register(Property)
+admin.site.register(Property_info)
+admin.site.register(Zone_names)

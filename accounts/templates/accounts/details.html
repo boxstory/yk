@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
 {% load static %}
 {% block title %} yk.qa | Produts {% endblock %}
 
@@ -23,8 +25,21 @@
 
 {% block content %}
 <!-- content -->
-join marketing
+<div class="container">
+    <div class="row justify-content-center  py-3">
+        <div class="col-md-8 text-center py-4">
+            <h3 class="fw-bold text-uppercase bg-white">
+                Join our marketing team
+            </h3>
+            <p>
 
+                {{agent.name}}
+
+            </p>
+        </div>
+
+    </div>
+</div>
 {% endblock content %}
 
 <!-- extra js -->

@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     # 'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
+    'accounts',
     'crispy_forms',
     'crispy_bootstrap5',
     'property',
@@ -144,6 +145,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+# STATICFILES_DIRS = [
+#     BASE_DIR / "static",
+#     '/var/www/static/',
+# ]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
@@ -174,5 +179,6 @@ AUTHENTICATION_BACKENDS = [
 SITE_ID = 2
 
 SOCIALACCOUNT_QUERY_EMAIL = True
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = '/'

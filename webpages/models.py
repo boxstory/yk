@@ -7,7 +7,7 @@ from datetime import datetime
 class MobSubscriber(models.Model):
     name = models.CharField(max_length=100)
     mobile_no = models.CharField(max_length=12)
-    date_subscribed = models.DateTimeField(default=datetime.now())
+    date_subscribed = models.DateTimeField(default=datetime.now)
     messages_received = models.IntegerField(default=0)
 
     def __str__(self):
