@@ -11,4 +11,4 @@ class MobSubscriber(models.Model):
     messages_received = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.name, self.mobile_no
+        return self.name
