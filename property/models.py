@@ -38,17 +38,17 @@ class Property(models.Model):
     photo_3 = models.ImageField(
         upload_to=property_image_location, blank=True)
 
-    # slug = AutoSlugField(populate_from='title')
+    #slug = AutoSlugField(populate_from='title')
 
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
-
-    # def save(self, *args, **kwargs):
-    #     self.slug = slugify(self.property_title)
-    #     super(Property, self).save(*args, **kwargs)
+    meta = {
+        'indexes': ['-date_created', '-date_updated'],
+        'ordering': ['-date_created', '-date_updated']
+    }
 
 
 class Property_info(models.Model):
@@ -76,3 +76,7 @@ class Zone_names(models.Model):
 
     def __str__(self):
         return self.zone_name
+    meta = {
+        'indexes': ['-zone_no'],
+        'ordering': ['-zone_no']
+    }
