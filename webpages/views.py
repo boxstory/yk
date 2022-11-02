@@ -1,7 +1,7 @@
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from datetime import datetime
+from datetime import date
 from webpages.form import MobSubscriberForm, SubscribeForm
 from webpages.models import MobSubscriber
 
@@ -11,9 +11,7 @@ from webpages.models import MobSubscriber
 def home(request):
     if request.user.is_authenticated:
         pk = request.user.id
-        print(pk)
         template = f'webpages/services.html'
-        print(template)
         return render(request, template, {'pk': pk})
     else:
         # if this is a POST request we need to process the form data
@@ -27,7 +25,7 @@ def home(request):
                 name1 = form.cleaned_data['name']
                 mobile_no1 = form.cleaned_data['mobile_no']
                 p = MobSubscriber(name=name1, mobile_no=mobile_no1,
-                                  date_subscribed=datetime.now, messages_received=0)
+                                  date_subscribed=date.today(), messages_received=0)
                 p.save()
                 # redirect to a new URL:
                 return HttpResponseRedirect('/profile/')
