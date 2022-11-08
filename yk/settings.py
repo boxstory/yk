@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.staticfiles',
     'django.contrib.admin',
-
     'django.contrib.auth',
     'django.contrib.messages',
     'django.contrib.sites',
@@ -47,9 +46,14 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     # 'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
-    'accounts',
+
+    # 3rd party
     'crispy_forms',
     'crispy_bootstrap5',
+    'fontawesomefree',
+
+    # startapps
+    'accounts',
     'property',
     'webpages',
 

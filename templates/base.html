@@ -27,6 +27,21 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
         crossorigin="anonymous"
     >
+    <link
+        href="{% static 'fontawesomefree/css/fontawesome.css' %}"
+        rel="stylesheet"
+        type="text/css"
+    >
+    <link
+        href="{% static 'fontawesomefree/css/brands.css' %}"
+        rel="stylesheet"
+        type="text/css"
+    >
+    <link
+        href="{% static 'fontawesomefree/css/solid.css' %}"
+        rel="stylesheet"
+        type="text/css"
+    >
 
 
 
@@ -46,7 +61,7 @@
     <!-- extra css -->
     {% endblock extra_css %}
 
-    <title>{% block title %}YellowKey.Qa{% endblock title %}</title>
+    <title>{% block head_title %}YellowKey.Qa{% endblock head_title %}</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -58,7 +73,7 @@
                 <div class="col-12 col-lg- mx-auto text-center">
 
                     <p class="h5">
-                        We are working on something amazing, We will be lunch soon.
+                        We are working on something amazing, Upgrading soon.
                     </p>
                 </div>
             </div>
@@ -80,7 +95,7 @@
 
         {% endblock content %}
     </div>
-
+    {% if account_content %}
     <div class="container bg-light mb-md-5 mb-0">
         <div class="col-11 col-md-8 col-lg-6 mx-auto py-3">
             {% block account_content %}
@@ -88,7 +103,7 @@
             {% endblock account_content %}
         </div>
     </div>
-
+    {% endif %}
     {% include "includes/footer.html" %}
 
 
@@ -100,6 +115,8 @@
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
         crossorigin="anonymous"
     ></script>
+    <i class="fa-solid fa-user-chef"></i> <!-- uses solid style -->
+    <i class="fa-brands fa-github-square"></i> <!-- uses brand style -->
 
     <script
         type="text/javascript"

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% load static %}
-{% block title %} yk.qa | Properties {% endblock %}
+{% block head_title %} yk.qa | Properties {% endblock %}
 
 
 {% block extra_css %}
@@ -11,27 +11,26 @@
 {% block content %}
 <!-- content -->
 
-<p>This is the property page.</p>
 
-<div class="row pb-2 mb-5">
+<div class="d-flex flex-wrap">
 
 
-    <div class="col-3 btn">
+    <div class="col-6 col-md-4 text-center  pb-3">
         <a
             href="{% url 'property:own_properties' pk=user.pk %}"
-            class="btn btn-primary"
+            class="btn btn-dark fw-bold px-5 px-md-3"
         >MY PROPERTIES</a>
     </div>
-    <div class="col-3 btn">
+    <div class="col-6 col-md-4 text-center  pb-3">
         <a
             href="{% url 'property:property_create' %}"
-            class="btn btn-primary"
+            class="btn btn-dark fw-bold px-5 px-md-3"
         >ADD PROPERTIES</a>
     </div>
-    <div class="col-4 btn btn-sm">
+    <div class="col-12 col-md-4 text-center  pb-3">
         <a
             href="{% url 'property:property_update' pk=user.pk %}"
-            class="btn btn-primary"
+            class="btn btn-dark  fw-bold px-5 px-md-3"
         >UPDATE VACANT STATUS</a>
     </div>
 </div>
@@ -56,7 +55,7 @@ There is -{{properties.count}}- property to display.
                 >Continue reading</a>
                 <a
                     href="#"
-                    class="btn btn-primary-fill text-wrap btn-sm"
+                    class="btn btn-dark-fill text-wrap btn-sm"
                 >ADD TO WISHLIST</a>
             </div>
             <div class="col-auto ">
@@ -98,7 +97,7 @@ There is -{{properties.count}}- property to display.
         <p class="card-text">{{properties.landmark}}</p>
         <a
             href="{{property.count}}"
-            class="btn btn-primary btn-sm"
+            class="btn btn-dark btn-sm"
         >ADD TO WISHLIST</a>
     </div>
 </div>

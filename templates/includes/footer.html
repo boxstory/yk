@@ -1,3 +1,4 @@
+{% load static %}
 <footer
   id="sticky-footer"
   class="footer mt-auto py-3 bg-light "
@@ -10,7 +11,7 @@
             class="navbar-brand h4 text-decoration-none"
             href="#"
           ><img
-              src="https://static.shuffle.dev/uploads/files/d2/d2d5f0000eebb59747c55c3efb29d2b790864bb3/yklogo-2021-w.jpg"
+              src="{{MEDIA_URL}}\webpages\brand\yk-sq-wh.png"
               alt="YK.qa"
               width="150"
             ></a>
@@ -29,7 +30,7 @@
               >Register Property</a></li>
             <li class="mb-2 mb-md-0"><a
                 class="text-decoration-none link-dark fw-bold"
-                href="#"
+                href="/about/"
               >About</a></li>
             <li class="mb-2 mb-md-0 d-none d-md-block"><a
                 class="text-decoration-none link-dark fw-bold"

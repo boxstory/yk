@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% load static %}
-{% block title %} yk.qa | Own Properties {% endblock %}
+{% block head_title %} yk.qa | Own Properties {% endblock %}
 
 
 {% block extra_css %}
@@ -64,7 +64,7 @@
 <div class="btn">
     <a
         href="{% url 'property:property_create'  %}"
-        class="btn btn-primary"
+        class="btn btn-dark"
     >ADD PROPERTIES</a>
 </div>
 {% endblock content %}
