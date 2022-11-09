@@ -1,21 +1,26 @@
-from django.forms import ModelForm
 from django import forms
 from .models import *
-
-
-class MobSubscriberForm(forms.Form):
-    name = forms.CharField(label='Your Name', max_length=100)
-    mobile_no = forms.CharField(
-        label='Mob Number', max_length=12, min_length=1)
-
-    def clean_mobile_no(self):
-        mobile_no = self.cleaned_data['mobile_no']
-        if len(mobile_no) != 1:
-            raise forms.ValidationError("Mobile Number should be 10 digits")
-        return mobile_no
+from crispy_forms.layout import Layout
+from crispy_forms.bootstrap import InlineCheckboxes, StrictButton
 
 
 class SubscribeForm(forms.ModelForm):
     class Meta:
         model = MobSubscriber
-        fields = ['name', 'mobile_no']
+        fields = ['name', 'mobile_no', 'is_agent', 'is_owner']
+
+        widgets = {
+            'btn-check': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px;'}),
+        }
+        labels = {
+            'mobile_no': 'Mobile No: (Only Qatar Mob No, without 974)',
+            'is_agent': 'Agents :: Marketing',
+            'is_owner': 'I Own Property :: Re-renting',
+        }
+
+
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = '__all__'

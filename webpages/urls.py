@@ -12,4 +12,11 @@ urlpatterns = [
     path('services/', views.services, name='services'),
     path('profile/', views.profile, name='profile'),
 
+
+    path('group_memebership/', views.group_memebership.as_view(),
+         name='group_memebership'),
+
+    path('whatsapp_group/', views.whatsapp_group,
+         name='whatsapp_group'),
+
 ]

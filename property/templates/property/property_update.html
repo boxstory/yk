@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% load static %}
-{% block title %} yk.qa | Produts {% endblock %}
+{% block head_title %} yk.qa | Update {% endblock %}
 
 
 {% block extra_css %}
@@ -60,10 +60,10 @@
                 <div class="d-grid gap-2 col-6 mx-auto mb-3 mt-5">
                     <a
                         href="{% url 'property:property_create' pk=user.id %}"
-                        class="btn btn-primary"
+                        class="btn btn-dark"
                     >
                         <button
-                            class="btn btn-primary"
+                            class="btn btn-dark"
                             type="submit"
                         >UPDATE PROPERTY</button>
                     </a>
@@ -73,10 +73,10 @@
         <div class="d-grid gap-2 col-6 mx-auto">
             <a
                 href="{% url 'property:property_create' pk=user.id %}"
-                class="btn btn-primary"
+                class="btn btn-dark"
             >
                 <button
-                    class="btn btn-primary"
+                    class="btn btn-dark"
                     type="submit"
                 >ADD PROPERTY</button>
             </a>

@@ -4,3 +4,9 @@ from .models import *
 
 
 admin.site.register(MobSubscriber)
+
+
+admin.site.register(GroupList)
+
+
+admin.site.register(Contact)
