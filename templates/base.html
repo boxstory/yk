@@ -93,12 +93,10 @@
 
         {% endblock content %}
     </div>
-    <div class="container mb-md-5 mb-0">
-        <div class="col-11 col-md-8 col-lg-6 mx-auto py-3">
-            {% block account_content %}
-            <!-- body content goes here -->
-            {% endblock account_content %}
-        </div>
+    <div class="col-11 col-md-8 col-lg-6 mx-auto ">
+        {% block account_content %}
+        <!-- body content goes here -->
+        {% endblock account_content %}
     </div>
     {% include "includes/footer.html" %}
 
