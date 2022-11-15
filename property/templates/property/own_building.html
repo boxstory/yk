@@ -7,6 +7,8 @@
 {% endblock extra_css %}
 {% block content %}
 <!-- content -->
+<div class="p-3 fw-bold bg-light text-center mb-2">
+    There is {{own_building.count}} Buildings to display.</div>
 <div class="row mb-2">
     {% for property in own_building %}
 
