@@ -46,7 +46,7 @@
                         <a
                             class="nav-link active"
                             aria-current="page"
-                            href="{% url 'property:propertyindex' %}"
+                            href="{% url 'property:property_all' %}"
                         >Properties</a>
                     </li>
                     <li class="nav-item">
@@ -77,7 +77,7 @@
                         <a
                             class="nav-link active p-0"
                             aria-current="page"
-                            href="{% url 'property:own_properties' pk=user.pk %} "
+                            href="{% url 'property:own_building' pk=user.pk %} "
                         >
                             <lord-icon
                                 src="https://cdn.lordicon.com//dxjqoygy.json"

@@ -1,0 +1,54 @@
+<div class="col-md-12">
+    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col-5 col-md-4 ">
+            <img
+                class="img-fluid img-thumbnail rounded h-100"
+                src="{{MEDIA_URL}}{{portion.photo_main}}"
+                role="img"
+                aria-label="Placeholder: Thumbnail"
+                preserveAspectRatio="xMidYMid slice"
+                focusable="false"
+            >
+        </div>
+        <div class="col-7 col-md-8 px-4 d-flex flex-column position-static">
+            <div class="my-1 pt-md-3 d-flex text-muted justify-content-between ">
+                <div class=" align-self-center">
+                    <strong class="d-inline-block mb-2 text-success">{{portion.price}}</strong>
+                </div>
+                <div class="align-self-center ">
+                    <a
+                        href="#"
+                        class="btn btn-light mb-2 text-wrap btn-sm  ms-1 ms-md-3"
+                    ><i class="fa-solid fa-heart"></i></a>
+                </div>
+            </div>portion.building_info.id
+            {{portion.building_info.id}}
+            <strong class="mb-1 text-muted">{{portion.unit_no}}</strong>
+            <strong class="d-inline-block mb-2 text-success">{{portion.furnished_type}}</strong>
+            <div class="mb-1 text-muted">{{portion.furnished_extra_info}}</div>
+            <p>{{portion.description|truncatechars:50}}</p>
+
+            <div class="d-flex pt-md-3">
+                <div class="col">
+                    <a
+                        href="{% url 'property:portion_single' user.id portion.building_info.id portion.id %}"
+                        class="btn btn-dark mb-2 text-wrap btn-sm ms-1  ms-md-3"
+                    >View Portion Details</a>
+                </div>{% if request.user.id == portion.building_info.user.id %}
+                <div class="col">
+                    <a
+                        href="{% url 'property:portion_update' user.id portion.building_info.id portion.id %}"
+                        class="btn btn-dark mb-2 text-wrap btn-sm ms-1  ms-md-3"
+                    >Update Portion</a>
+                </div>
+                <div class="col">
+                    <a
+                        href="{% url 'property:portion_all' user.id building_id %}"
+                        class="btn btn-dark mb-2 text-wrap btn-sm ms-1  ms-md-3"
+                    >Update Vacant</a>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

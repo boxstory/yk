@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block head_title %} yk.qa | Portion Details {% endblock %}
+
+
+{% block extra_css %}
+<!-- extra css -->
+{% endblock extra_css %}
+
+
+
+{% block content %}
+<!-- content -->
+<div class="container my-2">
+    <div class="row m-0">
+        <div class="col-lg-7 pb-5 pe-lg-5">
+            <div class="col-8 p-5">
+                <img
+                    class="img-fluid img-thumbnail rounded h-100"
+                    src="{{MEDIA_URL}}{{portion.photo_main}}"
+                    alt=""
+                >
+            </div>
+        </div>
+        <div class="col-lg-5 p-0 ps-lg-4">
+            <div class="col-12 px-4">
+                <div class="d-flex align-items-end mt-4 mb-2">
+                    <p class="h4 m-0"><span class="pe-1">{{portion.building_info.client_code}}</span> </p>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                    <p class="textmuted">Vacant Status</p>
+                    <p class="fs-14 fw-bold">{{portion.portions_status.status}}</p>
+                </div>
+                <!-- @todo make following dynamic-->
+                <div class="d-flex justify-content-between mb-2">
+                    <p class="textmuted">Commission</p>
+                    <p class="fs-14 fw-bold">Negotiable</p>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                    <p class="textmuted">E & W</p>
+                    <p class="fs-14 fw-bold">Included</p>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                    <p class="textmuted">Start Date</p>
+                    <p class="fs-14 fw-bold">Nov 1</p>
+                </div>
+
+                <div class="d-flex justify-content-between mb-3">
+                    <p class="textmuted fw-bold">Price</p>
+                    <div class="d-flex align-text-top ">
+                        <span class="fas fa-dollar-sign mt-1 pe-1 fs-14 "></span><span
+                            class="h4">{{portion.price}}</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="row m-0 bg-light">
+            <div class="col-md-4 col-6 ps-30 pe-0 my-4">
+                <i class="fa-solid fa-sliders me-2 pb-3"></i>
+                <span class="text-muted">Portion Type</span>
+
+                <p class="h5">{{portion.bathrooms}}<span class="ps-1">Bhk</span></p>
+            </div>
+            <div class="col-md-4 col-6  ps-30 my-4">
+                <i class="fa-solid fa-bed me-2 pb-3"></i>
+                <span> Bedroom</span>
+                <p class="h5 m-0">{{portion.bedrooms}}</p>
+            </div>
+            <div class="col-md-4 col-6 ps-30 my-4">
+                <i class="fa-solid fa-shower me-2 pb-3"></i>
+                <span class="text-muted ">Bathroom : </span>
+                <p class="h5 m-0">{{portion.bathrooms}}</p>
+            </div>
+            <div class="col-md-4 col-6 ps-30 my-4">
+                <i class="fa-solid fa-location-dot me-2 pb-3"></i>
+                <span class="text-muted">Locality</span>
+                <p class="h5 m-0">{{portion.building_info.landmark}}</p>
+            </div>
+            <div class="col-md-4 col-6 ps-30 my-4">
+                <i class="fa-solid fa-house-circle-check me-2 pb-3"></i>
+                <span class="text-muted">Furnish</span>
+                <p class="h5 m-0">{{portion.furnished_type}}</p>
+            </div>
+            <div class="col-md-4 col-6 ps-30 my-4">
+                <i class="fa-solid fa-location-dot me-2 pb-3"></i>
+                <span class="text-muted">Zone No</span>
+                <p class="h5 m-0">{{portion.building_info.zone_no}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="row m-0 bg-lights">
+            <div class="col-12 ps-30 mb-4">
+                <h4 class="text-muted fw-bold ">Furnished Details :</h4>
+                <p class="h5 m-0">{{portion.furnished_extra_info}}</p>
+            </div>
+            <div class="col-12 ps-30 my-4">
+                <h4 class="text-muted fw-bold">Description :</h4>
+                <p class="h5 m-0">{{portion.description}}</p>
+            </div>
+        </div>
+    </div>
+
+    {% endblock content %}
+
+
+    <!-- extra js -->
+    {% block extra_js %}
+
+    {% endblock extra_js %}

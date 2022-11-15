@@ -61,10 +61,6 @@ def services(request):
 # add_property
 
 
-def add_property(request):
-    return render(request, 'webpages/add_property.html')
-
-
 def about(request):
     return render(request, 'webpages/about.html')
 
