@@ -1,0 +1,67 @@
+<div class="col-md-6">
+    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col-8 px-2 d-flex flex-column position-static">
+            <div class="pt-md-2 d-flex text-muted justify-content-between ">
+                <div class=" align-self-center">
+                    <span class="d-inline-block  fw-lighter fst-italic font-monospace">{{property.user.first_name}}
+                        {{property.user.last_name}}</span>
+                </div>
+                <div class="align-self-center d-none">
+                    <a
+                        href="#"
+                        helptext='add to wishlist'
+                        class="btn   text-wrap btn-sm  ms-1 ms-md-3"
+                    ><i class="fa-solid fa-heart fa-xl"></i></a>
+                </div>
+
+            </div>
+            <strong class="d-inline-block mb-2 text-success">{{property.landmark}}</strong>
+            <strong class="d-inline-block mb-2 text-success">{{property.client_code}}</strong>
+            <h3 class="mb-0">{{property.title|truncatechars:30}}</h3>
+            <div class="mb-1 text-muted">{{property.zone_no}}</div>
+            <h5 class="card-title">number_of_portions{{property.number_of_portions}}</h5>
+
+
+
+        </div>
+        <div class="col-4 ">
+
+
+            <img
+                class="img-fluid img-thumbnail rounded h-100"
+                src="{{MEDIA_URL}}{{property.photo_main}}"
+                role="img"
+                aria-label="Placeholder: Thumbnail"
+                preserveAspectRatio="xMidYMid slice"
+                focusable="false"
+            >
+
+
+
+
+
+
+        </div>
+
+
+
+
+        <div class="d-flex my-2">
+            <div class="col-6">
+                <a
+                    href="{% url 'property:portion_all' user.id property.id %}"
+                    class="btn btn-dark  text-wrap btn-sm px-4 ms-3"
+                >PORTIONS</a>
+            </div>
+            {% if request.user.id == property.user.id %}
+            <div class="col-6"><a
+                    href="{% url 'property:building_update' user.id property.id %}"
+                    class="btn btn-dark text-wrap btn-sm px-5"
+                >UPDATE</a>
+            </div>
+            {% endif %}
+        </div>
+
+
+    </div>
+</div>

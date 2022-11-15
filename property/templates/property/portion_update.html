@@ -26,15 +26,30 @@
 <!-- content -->
 <div class="container">
     <div class="row justify-content-center  py-3">
-        <div class="col-md-8 text-center py-4">
+
+        <div class="col-md-8">
+            <h3 class="fw-bold text-decoration-underline">Update Portion</h3>
+            <form
+                method="post"
+                enctype="multipart/form-data"
+            >
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button
+                        class="btn btn-dark"
+                        type="submit"
+                    >Update Portion</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-8 text-center pt-4">
             <h3 class="fw-bold text-uppercase bg-white">
 
-                add property
+                add Bulk
             </h3>
-            <span>
-                Add your property for share with our Markeing team
-            </span><br>
-            <span>ONE TIME add whole property then just CLICK for update VACANT STATUS for maketing</span>
+
         </div>
         <div class="btn btn-secondary col-6 mb-5">
             <a
@@ -42,21 +57,8 @@
                 class="text-white fs-6 fw-bold text-decoration-none"
             >
 
-                ADD BULK
+                ADD as table
             </a>
-        </div>
-        <div class="col-md-8">
-            <h3 class="fw-bold text-decoration-underline">Or add single portion</h3>
-            <form method="post">
-                {% csrf_token %}
-                {{ form | crispy }}
-                <div class="d-grid gap-2 col-6 mx-auto">
-                    <button
-                        class="btn btn-dark"
-                        type="submit"
-                    >ADD PROPERTY</button>
-                </div>
-            </form>
         </div>
     </div>
 </div>
