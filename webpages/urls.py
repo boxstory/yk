@@ -1,22 +1,21 @@
 from django.urls import path
-from webpages import views
+from webpages import views as webpages_views
 from accounts import views as accounts_views
 
 app_name = 'webpages'
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('join_marketing', accounts_views.join_marketing, name='join_agent'),
-    path('about/', views.about, name='about'),
-    path('contact/', views.contact, name='contact'),
-    path('services/', views.services, name='services'),
-    path('profile/', views.profile, name='profile'),
+    path('', webpages_views.home, name='home'),
+    path('join_marketing/', accounts_views.join_marketing, name='join_agent'),
+    path('about/', webpages_views.about, name='about'),
+    path('contact/', webpages_views.contact, name='contact'),
+    path('services/', webpages_views.services, name='services'),
+    path('profile/', webpages_views.profile, name='profile'),
 
 
-    path('group_memebership/', views.group_memebership.as_view(),
+    path('group_memebership/', webpages_views.group_memebership.as_view(),
          name='group_memebership'),
-
-    path('whatsapp_group/', views.whatsapp_group,
+    path('whatsapp_group/', webpages_views.whatsapp_group,
          name='whatsapp_group'),
 
 ]
