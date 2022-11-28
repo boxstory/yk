@@ -1,0 +1,46 @@
+<div class="col-md-6">
+    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col-8 px-2 d-flex flex-column position-static">
+            <div class="pt-md-2 d-flex text-muted justify-content-between ">
+                <div class=" align-self-center">
+                    <span class="d-inline-block  fw-lighter fst-italic font-monospace">{{inquire.user.first_name}}
+                        {{inquire.user.last_name}}</span>
+                </div>
+
+
+            </div>
+            <strong class="d-inline-block mb-2 text-success">{{inquire.name}}</strong>
+            <strong class="d-inline-block mb-2 text-success">{{inquire.mobile_no}}</strong>
+            <h3 class="mb-0">{{inquire.locations|truncatechars:30}}</h3>
+            <div class="mb-1 text-muted">{{inquire.price_from}}-{{inquire.price_to}}</div>
+
+
+
+        </div>
+        <div class="col-4 ">
+
+
+            <img
+                class="img-fluid img-thumbnail rounded h-100"
+                src="{{MEDIA_URL}}webpages/brand/yk-sq.png"
+                role="img"
+                aria-label="Placeholder: Thumbnail"
+                preserveAspectRatio="xMidYMid slice"
+                focusable="false"
+            >
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+    </div>
+</div>

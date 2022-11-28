@@ -12,3 +12,9 @@ class PortionsForm(forms.ModelForm):
     class Meta:
         model = Portions
         exclude = ['building_info', 'date_created', 'date_updated']
+
+
+class InquireForm(forms.ModelForm):
+    class Meta:
+        model = Inquire
+        exclude = ['date_created', 'date_updated']
