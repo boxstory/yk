@@ -145,3 +145,29 @@ def portion_update(request, pk, building_id, portion_id):
 
     }
     return render(request, 'property/building_update.html', context)
+
+
+# inquire ...........................................................
+
+def inquire_create(request):
+    form = InquireForm()
+    if request.method == 'POST':
+        form = InquireForm(request.POST)
+        if form.is_valid():
+            form = form.save(commit=False)
+            print(form)
+            form.save()
+            return redirect('property:property_all')
+    context = {'form': form}
+    return render(request, 'property/inquire_create.html', context)
+
+
+@login_required(login_url='account_login')
+def inquire_lists(request):
+    pk = request.user.id
+    inquires = Inquire.objects.all()
+    print(Inquire)
+    data = {
+        'inquires': inquires,
+    }
+    return render(request,  'property/inquire_lists.html', data)

@@ -27,6 +27,9 @@ class MobSubscriber(models.Model):
     def __str__(self):
         return self.mobile_no
 
+    class Meta:
+        verbose_name = "Mobile Subscriber"
+        verbose_name_plural = "Mobile Subscribers"
 
 class Contact(models.Model):
     email = models.EmailField()
@@ -35,3 +38,7 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.email
+
+    class Meta:
+        verbose_name = "Contact Us"
+        verbose_name_plural = "Contact Us"

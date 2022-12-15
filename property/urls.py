@@ -7,6 +7,8 @@ app_name = 'property'
 
 urlpatterns = [
     path('', views.property_all, name='property_all'),
+    path('inquire/add/', views.inquire_create, name='inquire_create'),
+    path('inquire/lists/', views.inquire_lists, name='inquire_lists'),
 
     # buildings
     path('<int:pk>/', views.own_building, name='own_building'),
