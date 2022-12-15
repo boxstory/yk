@@ -83,6 +83,10 @@ class Portions(models.Model):
         'ordering': ['-date_created', '-date_updated']
     }
 
+    class Meta:
+        verbose_name = "Portion"
+        verbose_name_plural = "Portions"
+
 
 class Portions_status(models.Model):
     CHOICES = (
@@ -116,6 +120,10 @@ class Zone_names(models.Model):
         'indexes': ['-zone_no'],
         'ordering': ['-zone_no']
     }
+
+    class Meta:
+        verbose_name = "Zone Name"
+        verbose_name_plural = "Zone Names"
 
 
 class Inquire(models.Model):
