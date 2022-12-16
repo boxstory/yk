@@ -12,6 +12,10 @@ class Roles(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = "Role"
+        verbose_name_plural = "Roles"
+
 
 def profile_image_location(instance, filename):
     print(instance)
@@ -25,6 +29,10 @@ class Spoken_Languages(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = "Spoken Language"
+        verbose_name_plural = "Spoken Languages"
 
 
 class Agent(models.Model):
