@@ -32,6 +32,7 @@
     Dear {% user_display user %}
     <p>welcome to YK Family</p>
     <p>{{ user.name }}</p>
+    <p>{{ agent }}</p>
 </div>
 <div class="row mb-4">
     <div class="col-12 align-self-center bg-light text-center">
@@ -39,8 +40,8 @@
 
             <button class="btn  btn-dark"><a
                     class="text-decoration-none text-light"
-                    href="{% url 'account_email' %}"
-                >Change E-mail</a></button>
+                    href="/join_marketing/"
+                >Join As Agent</a></button>
             <button class="btn  btn-dark"><a
                     class="text-decoration-none text-light"
                     href="{% url 'webpages:services' %}"

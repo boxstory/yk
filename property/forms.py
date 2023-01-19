@@ -14,6 +14,20 @@ class PortionsForm(forms.ModelForm):
         exclude = ['building_info', 'date_created', 'date_updated']
 
 
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+class PortionsStatusForm(forms.ModelForm):
+    class Meta:
+        model = Portions_status
+        exclude = ['portions']
+
+        widgets = {
+            'vacant_date': DateInput(),
+        }
+
+
 class InquireForm(forms.ModelForm):
     class Meta:
         model = Inquire

@@ -41,7 +41,7 @@ class Agent(models.Model):
         ('F', 'Female'),
     )
     user = models.OneToOneField(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='agent')
     name = models.CharField(max_length=100)
     roles = models.ForeignKey(
         Roles, on_delete=models.SET_NULL, null=True, default="1")
@@ -55,7 +55,10 @@ class Agent(models.Model):
         upload_to=profile_image_location, blank=True, null=True)
     NO = 'NO'
     YES = 'YES'
-    APPROVAL = ((NO, 'no'), (YES, 'yes'))
+    APPROVAL = (
+        ('NO', 'no'),
+        ('YES', 'yes'),
+    )
     active = models.CharField(choices=APPROVAL, default=NO, max_length=3)
     verified = models.CharField(choices=APPROVAL, default=NO, max_length=3)
 

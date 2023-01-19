@@ -7,6 +7,7 @@ app_name = 'property'
 
 urlpatterns = [
     path('', views.property_all, name='property_all'),
+    # inquire
     path('inquire/add/', views.inquire_create, name='inquire_create'),
     path('inquire/lists/', views.inquire_lists, name='inquire_lists'),
 
@@ -25,5 +26,7 @@ urlpatterns = [
          views.portion_single, name='portion_single'),
     path('<int:pk>/<int:building_id>/<int:portion_id>/update',
          views.portion_update, name='portion_update'),
+    path('<int:pk>/<int:building_id>/<int:portion_id>/vacant_status',
+         views.vacant_status, name='vacant_status'),
 
 ]

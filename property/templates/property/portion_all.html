@@ -13,8 +13,7 @@
 {% block content %}
 <!-- content -->
 {% if portions %}
-This Property includes <b>{{portions.count|stringformat:"00i"}}</b> Portions.
-
+This Property({{building_id}}) includes <b>{{portions.count|stringformat:"00i"}}</b> Portions.
 
 <div class="row my-2">
     {% for portion in portions %}
@@ -26,26 +25,26 @@ This Property includes <b>{{portions.count|stringformat:"00i"}}</b> Portions.
     {% endfor %}
     {% else %}
     <h4 class="p-3">
-        There is no portions to Added.
+        This Property({{building_id}})'s portions not Added.
     </h4>
     {% endif %}
     <div class="d-grid gap-2 d-md-flex justify-content-md-end pt-4">
 
-        {% if request.user.id == pk %}
+        {% if user_id == pk %}
         <a
             href="{% url 'property:portion_add' user.id building_id  %}"
-            class="btn btn-dark fw-bold px-5 px-md-5 order-md-2"
+            class="btn btn-dark  px-5 px-md-5 order-md-2"
         >Add Portions</a>
         {% else %}
         <a
             href="{% url 'property:building_create' pk=user.pk  %}"
-            class="btn btn-dark fw-bold px-5 px-md-3"
+            class="btn btn-dark  px-5 px-md-3"
         >Add Properties</a>
         {% endif %}
         <a
             href="{% url 'property:own_building' user.id  %}"
-            class="btn btn-dark fw-bold px-3 px-md-5 order-md-1"
-        >All Properties</a>
+            class="btn btn-dark  px-3 px-md-5 order-md-1"
+        >Own Properties</a>
     </div>
 </div>
 
