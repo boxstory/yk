@@ -63,13 +63,7 @@
                             href="{% url 'webpages:services' %}"
                         >Services</a>
                     </li>
-                    <li class="nav-item">
-                        <a
-                            class="nav-link active"
-                            aria-current="page"
-                            href="{% url 'webpages:contact' %}"
-                        >Contact</a>
-                    </li>
+
                     <li class="nav-item">
                         <a
                             class="nav-link active"
@@ -86,7 +80,7 @@
                             <a
                                 class="nav-link"
                                 aria-current="page"
-                                href="{% url 'account_logout' %}"
+                                href="{% url 'webpages:profile' %}"
                             >
 
                                 <i class="fa-solid fa-user"></i>

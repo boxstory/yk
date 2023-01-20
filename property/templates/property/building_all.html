@@ -16,24 +16,24 @@
 <div class="d-flex flex-wrap">
 
 
-    <div class="col-6 col-md-6 text-center  pb-3">
-        <a
-            href="{% url 'property:own_building' pk=user.pk %}"
-            class="btn btn-dark fw-bold px-5 px-md-3"
-        >MY PROPERTIES</a>
-    </div>
-    <div class="col-6 col-md-6 text-center  pb-3">
-        <a
-            href="{% url 'property:building_create' pk=user.pk  %}"
-            class="btn btn-dark fw-bold px-5 px-md-3"
-        >ADD PROPERTIES</a>
-    </div>
+
+    <a
+        href="{% url 'property:own_building' pk=user.pk %}"
+        class="col flex-fill  align-text-center  m-1 p-2 btn btn-dark me-md-2 "
+    >MY PROPERTIES</a>
+
+    <a
+        href="{% url 'property:building_create' pk=user.pk  %}"
+        class="col flex-fill  align-text-center  m-1 p-2 btn btn-dark ms-md-2"
+    >ADD PROPERTIES</a>
 
 </div>
+</div>
+
 {% if properties %}
 
 
-<div class="row mb-2">
+<div class="row m-2">
     {% for property in properties %}
 
     {% include "property/building_card.html" %}

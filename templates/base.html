@@ -80,9 +80,7 @@
         </div>
     </section>
 
-    {% block fullbody %}
-    <!-- body content goes here -->
-    {% endblock fullbody%}
+
 
 
 
@@ -92,6 +90,7 @@
 
 
         {% endblock content %}
+
     </div>
     <div class="col-11 col-md-8 col-lg-6 mx-auto ">
         {% block account_content %}
@@ -109,15 +108,11 @@
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
         crossorigin="anonymous"
     ></script>
-    <i class="fa-solid fa-user-chef"></i> <!-- uses solid style -->
-    <i class="fa-brands fa-github-square"></i> <!-- uses brand style -->
 
     <script
         type="text/javascript"
         src="{% static './webpages/js/bundle.js' %}"
     ></script>
-
-
 
     {% block extra_js %}
     <!-- extra js -->

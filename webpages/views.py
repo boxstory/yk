@@ -62,7 +62,17 @@ def services(request):
 
 
 def about(request):
-    return render(request, 'webpages/about.html')
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request, 'Form submission successful')
+
+        return HttpResponseRedirect(request.path_info)
+    form = ContactForm()
+    context = {'form': form}
+    return render(request, 'webpages/about.html', context)
 
 
 @ login_required(login_url='/accounts/login/')

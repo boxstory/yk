@@ -7,6 +7,7 @@ app_name = 'webpages'
 urlpatterns = [
     path('', webpages_views.home, name='home'),
     path('join_marketing/', accounts_views.join_marketing, name='join_agent'),
+    path('agent/', accounts_views.agent_profile, name='agent_profile'),
     path('about/', webpages_views.about, name='about'),
     path('contact/', webpages_views.contact, name='contact'),
     path('services/', webpages_views.services, name='services'),

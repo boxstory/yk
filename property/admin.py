@@ -53,3 +53,11 @@ class Zone_namesAdmin(admin.ModelAdmin):
         model = Zone_names
         verbose_name = 'Zone name'
         verbose_name_plural = 'Zone names'
+
+
+@admin.register(Portions_status)
+class Portions_statusAdmin(admin.ModelAdmin):
+    list_display = ('portions', 'vacant_date', 'status')
+
+    class Meta:
+        model = Portions_status

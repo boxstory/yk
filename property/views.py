@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.db.models import Count
+from django.db.models import Count, Q
 from property.forms import *
 from property.models import *
 from PIL import Image
@@ -27,13 +27,10 @@ def property_all(request):
 
 @ login_required(login_url='account_login')
 def own_building(request, pk):
-
-    pk = request.user.id
     own_building = Building_info.objects.filter(user_id=pk)
 
     context = {
         'own_building': own_building,
-
         'pk': pk
     }
     return render(request, 'property/own_building.html', context)
@@ -81,13 +78,15 @@ def building_update(request, pk, building_id):
 @ login_required(login_url='account_login')
 def portion_all(request, pk, building_id):
     pk = pk
-    portion_all = Portions.objects.filter(building_info_id=building_id)
-    print(portion_all)
+    user_id = request.user.id
+    portion_all = Portions.objects.filter(
+        Q(building_info_id=building_id) & Q(user_id=pk))
 
     context = {
         'portions': portion_all,
         'building_id': building_id,
-        'pk': pk
+        'pk': pk,
+        'user_id': user_id
     }
     template = 'property/portion_all.html'
     return render(request, template, context)
@@ -119,6 +118,7 @@ def portion_add(request, pk, building_id):
             form.building_info_id = building_id
             print(form)
             form.save()
+
             return redirect('property:portion_all', pk, building_id)
     context = {'form': form}
     return render(request, 'property/portion_add.html', context)
@@ -145,6 +145,35 @@ def portion_update(request, pk, building_id, portion_id):
 
     }
     return render(request, 'property/building_update.html', context)
+
+
+@login_required(login_url='account_login')
+def vacant_status(request, pk, building_id, portion_id):
+
+    print(pk)
+    print(building_id)
+    print(portion_id)
+    portion_all = Portions.objects.filter(
+        Q(building_info_id=building_id) & Q(user_id=pk)).first()
+    print(portion_all)
+    form = PortionsStatusForm()
+    if request.method == 'POST':
+        form = PortionsStatusForm(request.POST,
+                                  instance=portion_all)
+        print('form post')
+        if form.is_valid():
+            print('form VALID')
+            form = form.save(commit=False)
+            form.portions_id = portion_id
+            print(form.portions_id)
+            form.save()
+            print(form)
+            return redirect('property:portion_all', pk, building_id)
+    context = {
+        'form': form,
+
+    }
+    return render(request, 'property/portion_vacant_update.html', context)
 
 
 # inquire ...........................................................

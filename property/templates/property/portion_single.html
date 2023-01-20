@@ -14,8 +14,8 @@
 <!-- content -->
 <div class="container my-2">
     <div class="row m-0">
-        <div class="col-lg-7 pb-5 pe-lg-5">
-            <div class="col-8 p-5">
+        <div class="col-lg-7 pb-md-5 pe-lg-5">
+            <div class="col text-center mt-3">
                 <img
                     class="img-fluid img-thumbnail rounded h-100"
                     src="{{MEDIA_URL}}{{portion.photo_main}}"
@@ -45,7 +45,6 @@
                     <p class="textmuted">Start Date</p>
                     <p class="fs-14 fw-bold">Nov 1</p>
                 </div>
-
                 <div class="d-flex justify-content-between mb-3">
                     <p class="textmuted fw-bold">Price</p>
                     <div class="d-flex align-text-top ">
@@ -104,11 +103,19 @@
             </div>
         </div>
     </div>
+</div>
+<a
+    href="{% url 'property:property_all' %}"
+    class="btn btn-dark fw-bold px-3 px-md-5 order-md-1"
+>All Properties</a>
+<a
+    href="{% url 'property:own_building' user.id  %}"
+    class="btn btn-dark fw-bold px-3 px-md-5 order-md-1"
+>Own Properties</a>
+{% endblock content %}
 
-    {% endblock content %}
 
+<!-- extra js -->
+{% block extra_js %}
 
-    <!-- extra js -->
-    {% block extra_js %}
-
-    {% endblock extra_js %}
+{% endblock extra_js %}

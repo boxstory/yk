@@ -51,6 +51,8 @@ class Portions(models.Model):
     )
     building_info = models.ForeignKey(
         Building_info, on_delete=models.CASCADE, related_query_name='portions')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE)
     unit_no = models.IntegerField(default=0, blank=True)
     description = models.TextField(blank=True)
     price = models.IntegerField()
@@ -102,7 +104,7 @@ class Portions_status(models.Model):
         max_length=100, choices=CHOICES, default='Ocuppied')
 
     def __str__(self):
-        return self.property_type
+        return self.status
 
     meta = {
         'indexes': ['-status'],
@@ -145,8 +147,9 @@ class Inquire(models.Model):
 
     name = models.CharField(max_length=100)
     mobile_no = models.IntegerField(default=0)
+    whatsapp_no = models.IntegerField(default=0)
     locations = models.CharField(max_length=100, blank=True)
-
+    date_from = models.DateTimeField()
     price_from = models.IntegerField()
     price_to = models.IntegerField()
     furnished_type = models.CharField(
@@ -155,6 +158,7 @@ class Inquire(models.Model):
         max_length=100, choices=PORTIONS_CHOICES, blank=True, help_text='Choose option from lists',)
     property_type_other = models.CharField(
         max_length=100, blank=True, help_text='Enter Other Lists',)
+
     notes = models.TextField(
         max_length=255)
     date_created = models.DateTimeField(auto_now_add=True)
@@ -163,6 +167,6 @@ class Inquire(models.Model):
     def __str__(self):
         return str(self.mobile_no)
     meta = {
-        'indexes': ['-mobile_no'],
-        'ordering': ['-mobile_no', 'property_type', 'date_created']
+        'indexes': ['-mobile_no', 'date_from'],
+        'ordering': ['-mobile_no', 'property_type', 'date_from']
     }

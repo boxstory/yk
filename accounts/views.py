@@ -7,10 +7,14 @@ from accounts.models import Agent
 
 
 @login_required(login_url='account_login')
-def agent_profile(request, pk):
-    agent = Agent.objects.get(user_id=pk)
+def agent_profile(request):
+    agent = Agent.objects.filter(user_id=request.user.id)
+    if agent:
+        agent_all = Agent.objects.filter(user_id=request.user.id)
+        return render(request, 'accounts/agent_features.html', {'agent': agent_all})
+    else:
+        agent = "No Agent Profiles"
     return render(request, 'accounts/agent_features.html', {'agent': agent})
-
 
 
 # join_marketing
