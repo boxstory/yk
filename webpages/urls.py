@@ -11,6 +11,7 @@ urlpatterns = [
     path('about/', webpages_views.about, name='about'),
     path('contact/', webpages_views.contact, name='contact'),
     path('services/', webpages_views.services, name='services'),
+    path('careers/', webpages_views.careers, name='careers'),
     path('profile/', webpages_views.profile, name='profile'),
 
 

@@ -42,3 +42,18 @@ class Contact(models.Model):
     class Meta:
         verbose_name = "Contact Us"
         verbose_name_plural = "Contact Us"
+
+
+class CareersApplication(models.Model):
+    full_name = models.CharField(max_length=255)
+    contact_no = models.CharField(max_length=255)
+    email = models.EmailField()
+    postion = models.CharField(max_length=255)
+    self_intro = models.TextField()
+
+    def __str__(self):
+        return self.email
+
+    class Meta:
+        verbose_name = "Careers Application"
+        verbose_name_plural = "Careers Applications"

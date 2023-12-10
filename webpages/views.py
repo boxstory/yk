@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.views.generic import ListView
 from datetime import date
-from webpages.form import ContactForm, SubscribeForm
+from webpages.form import ContactForm, SubscribeForm, CareersApplicationForm
 from webpages.models import MobSubscriber
 # Create your views here.
 
@@ -73,6 +73,21 @@ def about(request):
     form = ContactForm()
     context = {'form': form}
     return render(request, 'webpages/about.html', context)
+
+
+def careers(request):
+    if request.method == 'POST':
+        form = CareersApplicationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request, 'Form submission successful')
+
+        return HttpResponseRedirect(request.path_info)
+    form = CareersApplicationForm()
+    context = {'form': form}
+    return render(request, 'webpages/careers.html', context)
+
 
 
 @ login_required(login_url='/accounts/login/')
