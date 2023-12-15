@@ -24,3 +24,10 @@ class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
         fields = '__all__'
+
+
+
+class CareersApplicationForm(forms.ModelForm):
+    class Meta:
+        model = CareersApplication
+        fields = '__all__'

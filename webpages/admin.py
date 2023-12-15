@@ -13,5 +13,17 @@ class MobSubscriberAdmin(admin.ModelAdmin):
 
 admin.site.register(GroupList)
 
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'subject')
 
-admin.site.register(Contact)
+    class Meta:
+        model = Contact
+
+
+@admin.register(CareersApplication)
+class CareersApplicationAdmin(admin.ModelAdmin):
+    list_display = ('full_name', 'postion', 'contact_no')
+
+    class Meta:
+        model = CareersApplication
