@@ -35,7 +35,7 @@ def home(request):
         form = SubscribeForm()
 
     # context = {'form': form}
-    return render(request, 'webpages/home.html', {'form': form})
+    return render(request, 'webpages/home.html', {'form': form}) 
     # return render(request, 'webpages/home.html')
 
 
