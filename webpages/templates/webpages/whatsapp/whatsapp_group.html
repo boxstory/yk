@@ -1,74 +1,55 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block head_title %} yk.qa | Whatsapp {% endblock %}
-
-
+{% block head_title %}yk.qa | Whatsapp{% endblock %}
 {% block extra_css %}
-<!-- extra css -->
+    <!-- extra css -->
 {% endblock extra_css %}
-
-
 {% block content %}
-<!-- content -->
-
-Whatsapp group link rejoin
-<div class="d-flex flex-wrap">
-
-
-    <div class="col-md-6 pe-2 ">
-        <div class="card bg-light  mt-3 p-3 g-2">
-            <div class="d-flex align-items-center">
-                <small class="first">{{date.now}}</small>
+    <!-- content -->
+    <div class="fw-bolder fs-4">Most active Whatsapp groups related to Qatar</div>
+    <div class="col-12">
+        <div class="col-md-6  ">
+            <div class="card bg-light  mt-3 p-3 g-2">
+                <div class="d-flex align-items-center">
+                    <small class="first">{{ date.now }}</small>
+                </div>
+                <div class="mt-3">
+                    <h3>Property Rental Group</h3>
+                    <h3 class=" fw-bold">23</h3>
+                </div>
+                Join in Property related post group
+                <div class="mt-3  px-2">
+                    <a href="https://link.yk.qa/whatsapp/" class="flex=-fill">
+                        <button class="btn btn-success btn-submit py-3 px-5">
+                            <i class="fa-brands fa-whatsapp pe-2"></i>Join
+                        </button>
+                    </a>
+                </div>
             </div>
-            <div class="mt-3">
-                <h3>Property Group </h3>
-
-                <h3 class=" fw-bold">23</h3>
-            </div>
-            Join in community for property related Queries
-            <div class="detail mt-5">
-
-
-
-            </div>
-            ******
-            <div class="mt-3 d-flex justify-content-end px-2">
-                <a href="https://link.yk.qa/whatsapp/">
-                    <button class="btn btn-dark btn-submit px-4"><i
-                            class="fa-brands fa-whatsapp pe-2"></i>Join</button></a>
+        </div>
+        <div class="col-md-6  ">
+            <div class="card bg-light  mt-3 p-3 g-2">
+                <div class="d-flex align-items-center">
+                    <small class="first">{{ date.now }}</small>
+                </div>
+                <div class="mt-3">
+                    <h3>Jobs Group</h3>
+                    <h3 class=" fw-bold">24</h3>
+                </div>
+                Sales and Job related Queries
+                <div class="detail mt-5"></div>
+                ******
+                <div class="mt-3 d-flex justify-content-end px-2">
+                    <a href="https://link.yk.qa/whatsapp-job-group">
+                        <button class="btn btn-dark btn-submit px-4">
+                            <i class="fa-brands fa-whatsapp pe-2"></i>Join
+                        </button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-
-    <div class="col-md-6 pe-2 ">
-        <div class="card bg-light  mt-3 p-3 g-2">
-            <div class="d-flex align-items-center">
-                <small class="first">{{date.now}}</small>
-            </div>
-            <div class="mt-3">
-                <h3>Jobs Group </h3>
-
-                <h3 class=" fw-bold">24</h3>
-            </div>
-            Sales and Job related Queries
-            <div class="detail mt-5">
-
-
-
-            </div>
-            ******
-            <div class="mt-3 d-flex justify-content-end px-2">
-                <a href="https://link.yk.qa/whatsapp-job-group">
-                    <button class="btn btn-dark btn-submit px-4"><i
-                            class="fa-brands fa-whatsapp pe-2"></i>Join</button></a>
-            </div>
-        </div>
-    </div>
-</div>
-
 {% endblock content %}
-
 <!-- extra js -->
 {% block extra_js %}
-
 {% endblock extra_js %}
