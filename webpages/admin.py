@@ -21,6 +21,13 @@ class ContactAdmin(admin.ModelAdmin):
         model = Contact
 
 
+@admin.register(JobList)
+class JobListAdmin(admin.ModelAdmin):
+    list_display = ('job_title', 'job_type', 'job_post_date')
+
+    class Meta:
+        model = JobList
+
 @admin.register(CareersApplication)
 class CareersApplicationAdmin(admin.ModelAdmin):
     list_display = ('full_name', 'postion', 'contact_no')

@@ -5,48 +5,30 @@
     <!-- extra css -->
 {% endblock extra_css %}
 {% block content %}
-    <!-- content -->
-    <div class="fw-bolder fs-4">Most active Whatsapp groups related to Qatar</div>
-    <div class="col-12">
-        <div class="col-md-6  ">
-            <div class="card bg-light  mt-3 p-3 g-2">
-                <div class="d-flex align-items-center">
-                    <small class="first">{{ date.now }}</small>
+    <div class="container p-4">
+        <!-- content -->
+        <div class="fw-bolder fs-4 text-center">Most active Whatsapp groups related to Qatar</div>
+        <br>
+        <div class="col d-md-flex">
+            {% for group in groups %}
+                <div class=" col-12 col-md-6  bg-light  ">
+                    <div class=" mt-3 p-3 g-2">
+                        <div class=" d-flex justify-content-between">
+                            <h3>{{ group.group_name }}</h3>
+                            <h3 class=" fw-bold">No : {{ group.group_no }}</h3>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="ps-3">{{ group.discription }}</div>
+                        <a href="{{ group.group_link }}">
+                            <div class="btn btn-success  py-3 px-5 border-3  d-flex">
+                                <i class="fa-brands fa-whatsapp fa-xl p-3"></i>
+                                <h3>Join</h3>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-                <div class="mt-3">
-                    <h3>Property Rental Group</h3>
-                    <h3 class=" fw-bold">23</h3>
-                </div>
-                Join in Property related post group
-                <div class="mt-3  px-2">
-                    <a href="https://link.yk.qa/whatsapp/" class="flex=-fill">
-                        <button class="btn btn-success btn-submit py-3 px-5">
-                            <i class="fa-brands fa-whatsapp pe-2"></i>Join
-                        </button>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6  ">
-            <div class="card bg-light  mt-3 p-3 g-2">
-                <div class="d-flex align-items-center">
-                    <small class="first">{{ date.now }}</small>
-                </div>
-                <div class="mt-3">
-                    <h3>Jobs Group</h3>
-                    <h3 class=" fw-bold">24</h3>
-                </div>
-                Sales and Job related Queries
-                <div class="detail mt-5"></div>
-                ******
-                <div class="mt-3 d-flex justify-content-end px-2">
-                    <a href="https://link.yk.qa/whatsapp-job-group">
-                        <button class="btn btn-dark btn-submit px-4">
-                            <i class="fa-brands fa-whatsapp pe-2"></i>Join
-                        </button>
-                    </a>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock content %}

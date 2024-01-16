@@ -1,19 +1,33 @@
 from django.db import models
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # Create your models here.
 
 
 class GroupList(models.Model):
-    group_name = models.CharField(default="none", max_length=20)
+    group_name = models.CharField(default="none", max_length=100)
     group_no = models.CharField(default=0, max_length=3)
     group_link = models.CharField(blank=True, null=True, max_length=100)
-    group_platform = models.CharField(default='whatsapp', max_length=10)
+    group_platform = models.CharField(default='whatsapp', max_length=100)
     member_count = models.CharField(default=0, max_length=4)
+    discription = models.CharField(default=0, max_length=100)
 
     def __str__(self):
         return self.group_name
 
+def get_deadline():
+    return datetime.today() + timedelta(days=20)
+
+class JobList(models.Model):
+    job_title = models.CharField(default="none", max_length=100)
+    job_no = models.CharField(default=0, max_length=3)
+    job_type = models.CharField(default='Full Time', max_length=100)
+    job_discription = models.CharField(default=0, max_length=200)
+    job_post_date = models.DateTimeField(default=datetime.now)
+    job_deadline = models.DateField(default=get_deadline)
+
+    def __str__(self):
+        return self.job_title
 
 class MobSubscriber(models.Model):
     name = models.CharField(max_length=100)
