@@ -20,14 +20,20 @@ def get_deadline():
 
 class JobList(models.Model):
     job_title = models.CharField(default="none", max_length=100)
-    job_no = models.CharField(default=0, max_length=3)
-    job_type = models.CharField(default='Full Time', max_length=100)
+    company = models.CharField(default="none", max_length=100)
+    job_nature = models.CharField(default='Full Time', max_length=100)
+    job_no = models.CharField(default=0, max_length=4)
+    job_location = models.CharField(default='Doha', max_length=4)
+    payment_range = models.CharField(default=0, max_length=100)
     job_discription = models.CharField(default=0, max_length=200)
+    job_tags = models.CharField(default='qatar', max_length=200)
     job_post_date = models.DateTimeField(default=datetime.now)
     job_deadline = models.DateField(default=get_deadline)
 
     def __str__(self):
         return self.job_title
+    def get_tags_list(self):
+        return self.job_tags.split(",") if self.job_tags else []
 
 class MobSubscriber(models.Model):
     name = models.CharField(max_length=100)
@@ -62,9 +68,11 @@ class Contact(models.Model):
 class CareersApplication(models.Model):
     full_name = models.CharField(max_length=255)
     contact_no = models.CharField(max_length=255)
+    visa_status = models.CharField(max_length=100)
+    job_id = models.CharField(max_length=255)
     email = models.EmailField()
     postion = models.CharField(max_length=255)
-    self_intro = models.TextField()
+    self_intro = models.TextField(max_length=255)
 
     def __str__(self):
         return self.email

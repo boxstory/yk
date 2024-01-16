@@ -76,12 +76,23 @@ def about(request):
     return render(request, 'webpages/about.html', context)
 
 
-def careers(request):
+def careers_list(request):
     jobs = webpage_models.JobList.objects.all()
+   
+    context = {
+               'jobs': jobs
+               }
+    return render(request, 'webpages/careers_list.html', context)
+
+def careers_submit(request ,  job_id):
+    
     if request.method == 'POST':
         form = CareersApplicationForm(request.POST)
         if form.is_valid():
+            form = form.save(commit=False)
+            form.job_id = job_id
             form.save()
+
             messages.success(
                 request, 'Form submission successful')
             return redirect('webpages:services')
@@ -89,9 +100,9 @@ def careers(request):
         return HttpResponseRedirect(request.path_info)
     form = CareersApplicationForm()
     context = {'form': form,
-               'jobs': jobs
+              
                }
-    return render(request, 'webpages/careers.html', context)
+    return render(request, 'webpages/careers_submit.html', context)
 
 
 
