@@ -3,6 +3,7 @@
   src: local("Poppins-Medium"),
     url("../fonts/Poppins-Medium.ttf") format("truetype");
 }
+
 @font-face {
   font-family: "Poppins-Light";
   src: local("Poppins-Light"),
@@ -11,6 +12,15 @@
 
 body {
   font-family: "Poppins-Light";
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  list-style-type: none;
+  marker: none;
 }
 
 .btn-primary-fill {
@@ -23,6 +33,7 @@ body {
   padding: 0.6em 0.6em;
   width: 9em;
 }
+
 .btn-primary-fill:hover {
   background: #6cecf5;
   color: #231e39;
@@ -40,6 +51,7 @@ body {
   background-color: #231e39;
   color: #02899c;
 }
+
 .btn-primary-blank:hover {
   background: #312b49;
   transition: background 0.3s;
@@ -71,6 +83,7 @@ body {
   -o-transition-timing-function: ease;
   transition-timing-function: ease;
 }
+
 .follow:hover {
   background-color: #167abd;
   cursor: pointer;

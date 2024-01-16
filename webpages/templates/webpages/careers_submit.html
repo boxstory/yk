@@ -14,35 +14,13 @@
 {% endblock extra_css %}
 {% block content %}
     <!-- content -->
-    <div class="container">
-        <br>
-        <div class="col d-md-flex">
-            {% for job in jobs %}
-                <div class=" col-12 col-md-6  bg-light  ">
-                    <div class=" mt-3 p-3 g-2">
-                        <div class=" d-flex justify-content-between">
-                            <h4>{{ job.job_title }}</h4>
-                            <p class=" ">Type : {{ job.job_type }}</p>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <div class="ps-3">{{ job.job_discription }}</div>
-                        <a href="#">
-                            <div class="btn btn-dark   px-5 border-3  p-3 d-flex">
-                                <i class="fa-solid fa-paper-plane  pe-2"></i>
-                                <p class="m-0">Apply</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-        <br>
+    <div class="container pt-3">
+        
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">
-                        <h3>Careers Application Form</h3>
+                        <h3 class="fw-bolder">Careers Application Form</h3>
                     </div>
                     {% if messages %}
                         {% for message in messages %}
@@ -57,7 +35,9 @@
                         <form action="" method="post">
                             {% csrf_token %}
                             {{ form | crispy }}
-                            <input type="submit" value="Submit">
+                            <input type="submit"
+                                   value="Submit"
+                                   class="btn btn-dark   px-5 float-end  p-3 ">
                         </form>
                     </div>
                 </div>
