@@ -1,5 +1,5 @@
 from django.http.response import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.views.generic import ListView
@@ -46,6 +46,7 @@ def contact(request):
             form.save()
             messages.success(
                 request, 'Form submission successful')
+            return redirect('webpages:services')
 
         return HttpResponseRedirect(request.path_info)
     form = ContactForm()
@@ -83,6 +84,7 @@ def careers(request):
             form.save()
             messages.success(
                 request, 'Form submission successful')
+            return redirect('webpages:services')
 
         return HttpResponseRedirect(request.path_info)
     form = CareersApplicationForm()
