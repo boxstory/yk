@@ -1,5 +1,5 @@
 anyascii==0.3.1
-asgiref==3.4.1
+asgiref
 attrs==23.1.0
 autopep8==1.6.0
 beautifulsoup4==4.11.1

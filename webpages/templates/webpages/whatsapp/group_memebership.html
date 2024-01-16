@@ -1,97 +1,69 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block head_title %} yk.qa | Whatsapp {% endblock %}
-
-
-{% block extra_css %}
+{% extends 'base.html' %} {% load static %} {% block head_title %} yk.qa |
+Whatsapp {% endblock %} {% block extra_css %}
 <!-- extra css -->
-{% endblock extra_css %}
-
-
-{% block content %}
+{% endblock extra_css %} {% block content %}
 <!-- content -->
 
-<br>************<br>
-{{members}}
-<br>************<br>
-{{groups}}
-<br>******<br>
-Whatsapp group links
 <table class="table table-hover">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Mobile</th>
-            <th scope="col">Agent</th>
-            <th scope="col">Owner</th>
-            <th scope="col">Group_No</th>
-            <th scope="col">Link</th>
-            <th scope="col">Actions</th>
-            <th scope="col">Unsubscribe</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for member in members %}
-        <tr>
-            <th scope="row">{{ forloop.counter }} </th>
-            <td>{{member.name}}</td>
-            <td>{{member.mobile_no}}</td>
-            <td>{{member.is_agent}}</td>
-            <td>{{member.is_owner}}</td>
-            <td>{{member.grouplist.group_no}}</td>
-            <td>{{member.is_agent}}</td>
-            <td>{{member.is_agent}}</td>
-            <td>
-                <button
-                    class="btn btn-danger btn-sm px-4"
-                    type="button"
-                >Cancel your subscription</button>
-            </td>
-
-        </tr>{% endfor %}
-    </tbody>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Mobile</th>
+      <th scope="col">Agent</th>
+      <th scope="col">Owner</th>
+      <th scope="col">Group_No</th>
+      <th scope="col">Group Link</th>
+      <th scope="col">Actions</th>
+      <th scope="col">Unsubscribe</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for member in members %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{member.name}}</td>
+      <td>{{member.mobile_no}}</td>
+      <td>{{member.is_agent}}</td>
+      <td>{{member.is_owner}}</td>
+      <td>{{member.grouplist.group_no}}</td>
+      <td>{{member.is_agent}}</td>
+      <td>{{member.is_agent}}</td>
+      <td>
+        <button class="btn btn-danger btn-sm px-4" type="button">
+          Unsubscribe
+        </button>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
 </table>
 <div class="d-flex flex-wrap">
+  {% for member in members %}
+  <div class="col-md-4 pe-2">
+    <div class="card bg-light mt-3 p-3 g-2">
+      <div class="d-flex align-items-center">
+        <small class="first">Joined : {{member.date_subscribed}}</small>
+      </div>
+      <div class="mt-3">
+        <h3>{{member.name}}</h3>
 
-    {% for member in members %}
-    <div class="col-md-6 pe-2 ">
-        <div class="card bg-light  mt-3 p-3 g-2">
-            <div class="d-flex align-items-center">
-                <small class="first">Joined : {{member.date_subscribed}}</small>
-            </div>
-            <div class="mt-3">
-                <h3>{{member.name}} </h3>
-
-                <h3 class=" fw-bold">{{member.mobile_no}}</h3>
-            </div>
-            groups joined
-            <div class="detail mt-5">
-                <small>{% for group in groups %}{{ group }}{% endfor %}</small>
-
-
-            </div>
-            ******
-            <div class="mt-3 d-flex justify-content-end px-2">
-                <button class="btn-submit">Cancel</button>
-            </div>
-        </div>
+        <h3 class="fw-bold">{{member.mobile_no}}</h3>
+      </div>
+      groups joined
+      <div class="detail mt-5">
+        <small>{% for group in groups %}{{ group }}{% endfor %}</small>
+      </div>
+      ******
+      <div class="mt-3 d-flex justify-content-end px-2">
+        <button class="btn-submit">Cancel</button>
+      </div>
     </div>
-    {% endfor %}
+  </div>
+  {% endfor %}
 </div>
-
-
-
-
-
-
-
-
-
 
 {% endblock content %}
 
 <!-- extra js -->
-{% block extra_js %}
-
-{% endblock extra_js %}
+{% block extra_js %} {% endblock extra_js %}

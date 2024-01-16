@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.views.generic import ListView
 from datetime import date
 from webpages.form import ContactForm, SubscribeForm, CareersApplicationForm
-from webpages.models import MobSubscriber
+from webpages import models as webpage_models
 # Create your views here.
 
 
@@ -21,7 +21,7 @@ def home(request):
             # process the data in form.cleaned_data as required
             name1 = form.cleaned_data['name']
             mobile_no1 = form.cleaned_data['mobile_no']
-            p = MobSubscriber(name=name1, mobile_no=mobile_no1,
+            p = webpage_models.MobSubscriber(name=name1, mobile_no=mobile_no1,
                               date_subscribed=date.today())
             p.save()
             # redirect to a new URL:
@@ -57,7 +57,7 @@ def contact(request):
 def services(request):
     return render(request, 'webpages/services.html')
 
-
+#@todo
 # add_property
 
 
@@ -76,6 +76,7 @@ def about(request):
 
 
 def careers(request):
+    jobs = webpage_models.JobList.objects.all()
     if request.method == 'POST':
         form = CareersApplicationForm(request.POST)
         if form.is_valid():
@@ -85,7 +86,9 @@ def careers(request):
 
         return HttpResponseRedirect(request.path_info)
     form = CareersApplicationForm()
-    context = {'form': form}
+    context = {'form': form,
+               'jobs': jobs
+               }
     return render(request, 'webpages/careers.html', context)
 
 
@@ -99,17 +102,23 @@ def profile(request):
 
 # @ login_required(login_url='/accounts/login/')
 class group_memebership(ListView):
-    model = MobSubscriber
+    model = webpage_models.MobSubscriber
     template_name = 'webpages/whatsapp/group_memebership.html'
     context_object_name = 'members'
 
     def get_context_date(self, **kwargs):
         context = super(ListView, self).get_context_data(**kwargs)
-        context['groups'] = MobSubscriber.grouplist.all()
+        context['groups'] = webpage_models.MobSubscriber.grouplist.all()
 
         return context
 
 
 def whatsapp_group(request):
 
-    return render(request, 'webpages/whatsapp/whatsapp_group.html')
+    groups = webpage_models.GroupList.objects.all()
+
+    data = {
+        'groups': groups
+    }
+
+    return render(request, 'webpages/whatsapp/whatsapp_group.html', data)

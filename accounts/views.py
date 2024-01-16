@@ -17,6 +17,7 @@ def agent_profile(request):
     return render(request, 'accounts/agent_features.html', {'agent': agent})
 
 
+
 # join_marketing
 
 @login_required(login_url='account_login')
