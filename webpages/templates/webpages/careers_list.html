@@ -41,16 +41,16 @@
                             </div>
                         </div>
                     </div>
-                    <p>{{ job.job_discription }}</p>
-                    <h5>Job Nature: {{ job.job_nature }}</h5>
-                    <p class="address">
-                        <span class="lnr lnr-map"></span> {{ job.job_location }}
-                    </p>
+                    <span>{{ job.job_discription }}</span>
                     <p class="address">
                         <span class="lnr lnr-database"></span> {{ job.payment_range }}
                     </p>
+                    <p class="address d-flex justify-content-between  pe-3">
+                        <span>Job Nature: {{ job.job_nature }}</span>
+                        <span class="lnr lnr-map"></span> {{ job.job_location }}
+                    </p>
                     <div class="d-flex justify-content-between pe-3">
-                        <span class="lnr lnr-database">{{ job.job_post_date }}</span><span class="lnr lnr-database">{{ job.job_deadline }}</span>
+                        <span class="lnr lnr-database">Posted On : {{ job.job_post_date }}</span><span class="lnr lnr-database">Deadline : {{ job.job_deadline }}</span>
                     </div>
                 </div>
             </div>
