@@ -2,15 +2,35 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from accounts.forms import AgentForm
-from accounts.models import Agent
+from accounts import models as accounts_models
 # Create your views here.
 
 
 @login_required(login_url='account_login')
+def user_profile(request):
+    profile = accounts_models.Profile.objects.get_or_create( user_id=request.user.id )
+    
+    data = {
+        'profile' : profile
+    }
+    return render(request, 'accounts/user_profile.html', data)
+
+
+@login_required(login_url='account_login')
+def update_user_profile(request):
+    profile = accounts_models.Agent.objects.filter(user_id=request.user.id)
+    
+    data = {
+        'profile' : profile
+    }
+    return render(request, 'accounts/update_user_profile.html', data)
+
+
+@login_required(login_url='account_login')
 def agent_profile(request):
-    agent = Agent.objects.filter(user_id=request.user.id)
+    agent = accounts_models.Agent.objects.filter(user_id=request.user.id)
     if agent:
-        agent_all = Agent.objects.filter(user_id=request.user.id)
+        agent_all = accounts_models.Agent.objects.filter(user_id=request.user.id)
         return render(request, 'accounts/agent_features.html', {'agent': agent_all})
     else:
         agent = "No Agent Profiles"

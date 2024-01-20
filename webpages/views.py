@@ -106,11 +106,7 @@ def careers_submit(request ,  job_id):
 
 
 
-@ login_required(login_url='/accounts/login/')
-def profile(request):
-    pk = request.user.id
-    print(pk)
-    return render(request, 'webpages/profile.html')
+
 
 
 # @ login_required(login_url='/accounts/login/')
@@ -127,11 +123,9 @@ class group_memebership(ListView):
 
 
 def whatsapp_group(request):
-
     groups = webpage_models.GroupList.objects.all()
 
     data = {
         'groups': groups
     }
-
     return render(request, 'webpages/whatsapp/whatsapp_group.html', data)

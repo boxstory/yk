@@ -18,10 +18,20 @@ class GroupList(models.Model):
 def get_deadline():
     return datetime.today() + timedelta(days=20)
 
+
+Category_choices = (
+    ('management', 'Management Jobs'),
+    ('accounting', 'Accounting Jobs'),
+    ('medical', 'Medical Jobs'),
+    ('services', 'Services Jobs'),
+    ('technology', 'Technology Jobs'),
+    ('maintenance', 'Maintenance Jobs'),
+)
 class JobList(models.Model):
     job_title = models.CharField(default="none", max_length=100)
     company = models.CharField(default="none", max_length=100)
     job_nature = models.CharField(default='Full Time', max_length=100)
+    category = models.CharField(choices=Category_choices , max_length=100)
     job_no = models.CharField(default=0, max_length=4)
     job_location = models.CharField(default='Doha', max_length=4)
     payment_range = models.CharField(default=0, max_length=100)
@@ -69,6 +79,7 @@ class CareersApplication(models.Model):
     full_name = models.CharField(max_length=255)
     contact_no = models.CharField(max_length=255)
     visa_status = models.CharField(max_length=100)
+    category = models.CharField(choices=Category_choices , max_length=100)
     job_id = models.CharField(max_length=255)
     email = models.EmailField()
     postion = models.CharField(max_length=255)

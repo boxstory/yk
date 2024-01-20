@@ -48,7 +48,7 @@ def building_create(request, pk):
             form.save()
             return redirect('property:own_building', pk=request.user.id)
     context = {'form': form}
-    return render(request, 'property/building_create.html', context)
+    return render(request, 'property/building_add.html', context)
 
 
 @ login_required(login_url='account_login')
@@ -188,7 +188,7 @@ def inquire_create(request):
             form.save()
             return redirect('property:property_all')
     context = {'form': form}
-    return render(request, 'property/inquire_create.html', context)
+    return render(request, 'property/inquire_add.html', context)
 
 
 @login_required(login_url='account_login')

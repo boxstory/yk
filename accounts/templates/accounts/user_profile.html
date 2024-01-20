@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_title %}yk.qa | Profile{% endblock %}
+{% block extra_css %}
+    <!-- extra css -->
+    <link type="text/css"
+          rel="stylesheet"
+          href="{% static '/webpages/css/main.css' %}">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+          integrity="sha384-tKLJeE1ALTUwtXlaGjJYM3sejfssWdAaWR2s97axw4xkiAdMzQjtOjgcyw0Y50KU"
+          crossorigin="anonymous">
+{% endblock extra_css %}
+{% block content %}
+    <!-- content -->
+    {% if user.is_authenticated %}
+        {% load account %}
+        <section class="my-3">
+            <div class="container">
+                <div class="bg-white shadow rounded-lg d-block d-sm-flex">
+                    <div class="col-2 border-right">
+                        <div class="p-4">
+                            <div class="img-circle text-center mb-3 w-25">
+                                <img src="{{ MEDIA_URL }}{{ user.agent.profisle_image }}"
+                                     alt="Image"
+                                     class="img">
+                            </div>
+                            <h5 class="text-center">{{ user.first_name }} - {{ user.last_name }}</h5>
+                            <p class="text-center fw-lighter">{{ user.username }}</p>
+                        </div>
+                        <div class="nav flex-column nav-pills"
+                             id="v-pills-tab"
+                             role="tablist"
+                             aria-orientation="vertical">
+                            <a class="nav-link active bg-dark fw-bold"
+                               id="account-tab"
+                               data-toggle="pill"
+                               href="#account"
+                               role="tab"
+                               aria-controls="account"
+                               aria-selected="true">
+                                <i class="fa fa-home text-center pe-2"></i>
+                                Account
+                            </a>
+                            <a class="nav-link text-dark py-3"
+                               id="application-tab"
+                               data-toggle="pill"
+                               href="#application"
+                               role="tab"
+                               aria-controls="application"
+                               aria-selected="false">
+                                <i class="fa fa-user text-center pe-2"></i>
+                                Role Update
+                            </a>
+                            <a class="nav-link text-dark"
+                               id="notification-tab"
+                               data-toggle="pill"
+                               href="{% url 'account_logout' %}"
+                               role="tab"
+                               aria-controls="notification"
+                               aria-selected="false">
+                                <i class="fa-regular fa-arrow-right-from-bracket pe-2"></i>
+                                SignOut
+                            </a>
+                        </div>
+                    </div>
+                    <div class="tab-content col-md-10 p-4 p-md-5" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active"
+                             id="account"
+                             role="tabpanel"
+                             aria-labelledby="account-tab">
+                            <h3 class="mb-4">Account Settings</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>First Name</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               value="{{ user.first_name }}"
+                                               disabled
+                                               readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Last Name</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               value="{{ user.last_name }}"
+                                               disabled
+                                               readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 pt-3">
+                                    <div class="form-group ">
+                                        <label>Email</label>
+                                        <input type="text"
+                                               class="form-control "
+                                               value="{{ user.email }}"
+                                               disabled
+                                               readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 pt-3">
+                                    <div class="form-group">
+                                        <label>Phone number</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               value="{{ user.agent.phone }}"
+                                               disabled
+                                               readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 pt-3">
+                                    <div class="form-group">
+                                        <label>Company</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               value="Kiran Workspace"
+                                               disabled
+                                               readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 pt-3">
+                                    <div class="form-group">
+                                        <label>Designation</label>
+                                        {{ user.profile.is_business }}
+                                        <input type="text" class="form-control"  disabled readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 pt-3">
+                                    <div class="form-group">
+                                        <label>Bio</label>
+                                        <textarea class="form-control" disabled readonly rows="4">{{ user.profile. }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pt-2">
+                                <button class="btn btn-outline-dark pt-2">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+{% endblock content %}
+<!-- extra js -->
+{% block extra_js %}
+{% endblock extra_js %}
