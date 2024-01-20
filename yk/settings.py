@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', cast=bool)
 
 
-ALLOWED_HOSTS = ['yk.qa', 'www.yk.qa', '195.110.58.186', '127.0.0.1']
+ALLOWED_HOSTS = ['yellowkey.qa', 'www.yellowkey.qa','yk.qa', 'www.yk.qa', '195.110.58.186', '127.0.0.1']
 
 
 # Application definition
