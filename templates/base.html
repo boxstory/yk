@@ -26,12 +26,10 @@
             {% block content %}
             {% endblock content %}
             <!-- account_content goes here -->
-            {% if account_content %}
-                <div class="col-11 col-md-8 col-lg-6 mx-auto ">
-                    {% block account_content %}
-                    {% endblock account_content %}
-                </div>
-            {% endif %}
+            
+                {% block account_content %}
+                {% endblock account_content %}
+           
         </main>
         {% include "includes/footer.html" %}
         {% include "includes/scripts.html" %}

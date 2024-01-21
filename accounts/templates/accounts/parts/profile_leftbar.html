@@ -1,0 +1,76 @@
+<div class="d-none d-md-block col-3 border-right">
+    <div class="p-4 text-center">
+        <div class="img-circle text-center mb-3 ">
+            <img src="{{ user.profile_picture.profile_picture.url }}"
+                 alt="Image"
+                 class="img-fluid">
+        </div>
+        <!-- Button trigger modal -->
+        {% if profile.user_id == request.user.id %}
+        <button type="button "
+                class="btn btn-dark mt-2 "
+                data-bs-toggle="modal"
+                data-bs-target="#ProfielPictureModal">
+            Update
+            Photo
+        </button>
+        <!-- Modal -->
+        <div class="modal fade"
+             id="ProfielPictureModal"
+             tabindex="-1"
+             role="dialog"
+             aria-labelledby="ProfielPictureModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ProfielPictureModalLabel">Profile Picture Update</h5>
+                        <button type="button"
+                                class="close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">{% include "accounts/parts/profile_picture_update.html" %}</div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <div class="nav flex-column nav-pills"
+         id="v-pills-tab"
+         role="tablist"
+         aria-orientation="vertical">
+        <a class="nav-link active bg-dark fw-bold"
+           id="account-tab"
+           data-toggle="pill"
+           href="{% url 'accounts:profile' %}"
+           role="tab"
+           aria-controls="account"
+           aria-selected="true">
+            <i class="fa fa-home text-center pe-2"></i>
+            Account
+        </a>
+        <a class="nav-link text-dark py-3"
+           id="application-tab"
+           data-toggle="pill"
+           href="#application"
+           role="tab"
+           aria-controls="application"
+           aria-selected="false">
+            <i class="fa fa-user text-center pe-2"></i>
+            Role Update
+        </a>
+        <a class="nav-link text-dark"
+           id="notification-tab"
+           data-toggle="pill"
+           href="{% url 'account_logout' %}"
+           role="tab"
+           aria-controls="notification"
+           aria-selected="false">
+            <i class="fa-regular fa-arrow-right-from-bracket pe-2"></i>
+            SignOut
+        </a>
+    </div>
+</div>

@@ -3,10 +3,12 @@ from django.urls import path
 from accounts import views as accounts_views
 
 app_name = 'accounts'
+
 urlpatterns = [
     # accounts urls ----------------------------------------------------------------
-    path('profile/', accounts_views.user_profile, name='user_profile'),
-    path('profile/<int:pk>/update/', accounts_views.update_user_profile, name='update_user_profile'),
+    path('profile/', accounts_views.profile, name='profile'),
+    path('profile/update/', accounts_views.profile_update, name='profile_update'),
+    path('profile/picture/update/', accounts_views.profile_picture_update, name='profile_picture_update'),
 
 
 
