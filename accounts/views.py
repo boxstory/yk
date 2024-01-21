@@ -22,9 +22,13 @@ def profile(request):
     if accounts_models.Profile.objects.filter(user=request.user).exists():
         profile = accounts_models.Profile.objects.filter( user_id=request.user.id)[0]
     else:
-        profile = accounts_models.Profile.objects.get_or_create( user_id=request.user.id, first_name=request.user.first_name, last_name=request.user.last_name, username=request.user.username)
+        profile = accounts_models.Profile.objects.create( user_id=request.user.id, first_name=request.user.first_name, last_name=request.user.last_name, username=request.user.username)
+
+    if accounts_models.ProfilePicture.objects.filter(user=request.user).exists():
+        profile_picture = accounts_models.ProfilePicture.objects.filter( user_id=request.user.id)[0]
+    else: 
+        profile_picture = accounts_models.ProfilePicture.objects.create( user_id=request.user.id, profile_id=request.user.profile.id)
     
-    profile_picture = accounts_models.ProfilePicture.objects.get_or_create( user_id=request.user.id, profile_id=request.user.profile.id)
     data = {
         'profile' : profile,
         'profile_picture' : profile_picture,
