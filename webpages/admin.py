@@ -23,14 +23,14 @@ class ContactAdmin(admin.ModelAdmin):
 
 @admin.register(JobList)
 class JobListAdmin(admin.ModelAdmin):
-    list_display = ('job_title', 'job_nature', 'job_post_date')
+    list_display = ('job_title', 'job_nature', 'category', 'job_post_date')
 
     class Meta:
         model = JobList
 
 @admin.register(CareersApplication)
 class CareersApplicationAdmin(admin.ModelAdmin):
-    list_display = ('full_name', 'postion', 'contact_no')
+    list_display = ('full_name', 'postion', 'category', 'contact_no')
 
     class Meta:
         model = CareersApplication

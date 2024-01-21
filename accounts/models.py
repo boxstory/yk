@@ -1,9 +1,60 @@
 from django.db import models
 from django.conf import settings
+from django.forms import ValidationError
 
-# Create your models here.
+
+GENDER_CHOICES = (
+        ('M', 'Male'),
+        ('F', 'Female'),
+    )
+
+# Profile models here.
+
+class Profile(models.Model):
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='profile')
+    username = models.CharField(max_length=255, blank=True, null=True, unique=True)
+    first_name = models.CharField(max_length=255, blank=True, null=True)
+    last_name = models.CharField(max_length=255, blank=True, null=True)
+    gender = models.CharField(max_length=255, choices=GENDER_CHOICES, blank=True, null=True)
+    date_of_birth = models.DateField(blank=True, null=True)
+    email = models.EmailField(max_length=255, blank=True, null=True)
+    phone = models.IntegerField(blank=True, null=True)
+    whatsapp = models.IntegerField(blank=True, null=True)
+    instagram = models.CharField(max_length=255, blank=True, null=True)
+    nationlity = models.CharField(max_length=255, blank=True, null=True)
+    address = models.CharField(max_length=255, blank=True, null=True)
+    is_business = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
+    is_agent = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return f"{self.username}"
+
+    
+    
+    class Meta:
+        verbose_name_plural = "Profiles"
+        
+def user_directory_path(instance, filename):
+   return '%s/%s' % (instance.username, filename)
 
 
+class ProfilePicture(models.Model):
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='profile_picture')
+    profile = models.ForeignKey(Profile,  on_delete=models.CASCADE, related_name='profile_picture')
+    profile_picture = models.ImageField(
+        upload_to=user_directory_path , default='accounts/defaults/avatar.png', blank=True, null=True)
+    
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return str(self.id)
+    
 class Roles(models.Model):
     name = models.CharField(max_length=100, blank=False, null=False)
     role = models.IntegerField(default=0)
@@ -17,7 +68,7 @@ class Roles(models.Model):
         verbose_name_plural = "Roles"
 
 
-def profile_image_location(instance, filename):
+def agent_image_location(instance, filename):
     print(instance)
     print(filename)
     print(instance.user.username)
@@ -36,10 +87,7 @@ class Spoken_Languages(models.Model):
 
 
 class Agent(models.Model):
-    GENDER_CHOICES = (
-        ('M', 'Male'),
-        ('F', 'Female'),
-    )
+    
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='agent')
     name = models.CharField(max_length=100)
@@ -52,7 +100,7 @@ class Agent(models.Model):
         Spoken_Languages, verbose_name="Languages", help_text="Select languages spoken")
 
     profile_image = models.ImageField(
-        upload_to=profile_image_location, blank=True, null=True)
+        upload_to=agent_image_location, blank=True, null=True)
     NO = 'NO'
     YES = 'YES'
     APPROVAL = (
