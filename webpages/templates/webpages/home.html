@@ -14,14 +14,15 @@
 {% endblock extra_css %}
 {% block content %}
     <!-- Hero Section -->
-    <div class="container-fluid p-0">
+    <section class="container">
         <div class="row d-flex align-items-center">
             <!-- Right Content (Headline and Description) -->
-            <div class="col-md-12 p-2 p-md-4 ps-md-5">
+            <div class="col-md-12 p-2 p-md-4 ps-md-5 mx-auto ">
                 <h1 class=" text-center py-3 ">Your Expert Partner in Full-Service Management Excellence!</h1>
+                <!-- clients -->
                 <div class=" d-md-flex align-items-center service-section pb-md-5">
                     <div class="property-management col-12 col-md-6 p-2  me-2 rounded-5  ps-md-5">
-                        <h4 class="p-2">Services for Owners</h4>
+                        <h4 class="p-2">We Do for Property Holders</h4>
                         <ul class="">
                             <li>
                                 <i class="pe-3 fa-lg mb-4 fas fa-home"></i>Property Management
@@ -49,9 +50,10 @@
                         </div>
                     </div>
                 </div>
+                <!-- realtor -->
                 <div class=" d-md-flex align-items-center service-section  pb-md-5">
                     <div class="brokerage-services col-12 col-md-6 p-2 me-2 rounded-5 order-2 ps-md-5">
-                        <h4 class="p-2 pb-4">Working with Agents :</h4>
+                        <h4 class="p-2 pb-4">Works with Realtor :</h4>
                         <ul>
                             <li>
                                 <i class="pe-3 fa-lg mb-4 fas fa-bars"></i> Vacant Property Listings
@@ -79,21 +81,66 @@
                         </div>
                     </div>
                 </div>
+                <!-- workman -->
+                <div class=" d-md-flex align-items-center service-section pb-md-5">
+                    <div class="property-management col-12 col-md-6 p-2  me-2 rounded-5  ps-md-5">
+                        <h4 class="p-2">For Services Providers</h4>
+                        <ul class="">
+                            <li>
+                                <i class="pe-3 fa-lg mb-4 fas fa-wrench"></i>Service job Listing
+                            </li>
+                            <li>
+                                <i class="pe-3 fa-lg mb-4 fas fa-key"></i>Tenant Requests
+                            </li>
+                            <li>
+                                <i class="pe-3 fa-lg mb-4 fas fa-file-invoice-dollar"></i> Payment Collections
+                            </li>
+                            <li>
+                                <i class="pe-3 fa-lg mb-4 fas fa-location"></i>Location Based Listings
+                            </li>
+                            <li>
+                                <i class="pe-3 fa-lg mb-4 fas fa-user-group"></i>Teams building
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="property-management col-12 col-md-6 p-2  me-2 rounded-5 ">
+                        <div class="">
+                            <img src="{% static '/webpages/img/hero3.jpg' %}"
+                                 class="img-fluid"
+                                 alt="property-management Photo">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- body content goes here -->
-    <div class="container col-md-10  pb-3 px-auto text-center">
-        <div class="row">
-            <h2 class="fw-bold mt-8  ">Unlock Seamless Success with Yellowkey Realestate</h2>
-            <h5 class="fw-bold   pb-3">Your Expert Partner in Full-Service Management Excellence!</h5>
+        </>
+        <!-- body content goes here -->
+        <div class="container col-md-10  pb-3 px-auto text-center">
             <div class="row">
-                <p>
-                    Yellowkey Property Holding provides a comprehensive suite of services tailored for property owners and seamless collaboration with agents. For property owners, our dedicated team handles all aspects of property management, from tenant relations and rent collection to expert property photography and ongoing maintenance. Our specialized 'Property Management Photo' service further enhances your property's appeal. Working in tandem with agents, Yellowkey ensures maximum exposure for your listings with services like Vacant Property Listings, Vacant Soon Lists, and streamlined management of multiple properties. Our commitment to fostering a shared community of trusted agents creates a collaborative environment, ensuring unparalleled support throughout your property journey. Trust Yellowkey for holistic property solutions that prioritize owner satisfaction and successful agent partnerships.
-                </p>
+                <h2 class="fw-bold mt-8  ">Unlock Seamless Success with Yellowkey Realestate</h2>
+                <h5 class="fw-bold   pb-3">Your Expert Partner in Full-Service Management Excellence!</h5>
+                <div class="row">
+                    <p>
+                        Yellowkey Property Holding provides a comprehensive suite of services tailored for property owners and seamless collaboration with agents. For property owners, our dedicated team handles all aspects of property management, from tenant relations and rent collection to expert property photography and ongoing maintenance. Our specialized 'Property Management Photo' service further enhances your property's appeal. Working in tandem with agents, Yellowkey ensures maximum exposure for your listings with services like Vacant Property Listings, Vacant Soon Lists, and streamlined management of multiple properties. Our commitment to fostering a shared community of trusted agents creates a collaborative environment, ensuring unparalleled support throughout your property journey. Trust Yellowkey for holistic property solutions that prioritize owner satisfaction and successful agent partnerships.
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
+        <!-- join now form -->
+        <div class="container col-md-10 bg-light py-3 px-auto ">
+            <div class="row">
+                <div class="text-center">
+                    <h2 class="fw-bold mt-8  ">Join Now with Yellowkey Holdings Qatar</h2>
+                    <h5 class="fw-bold   pb-3">get connected</h5>
+                </div>
+                <div class="container col-md-10">{{ form | crispy }}</div>
+                <button type="submit"
+                        value="submit"
+                        methode="POST"
+                        class="btn btn-dark  w-md-50 px-5">Join Now</button>
+            </div>
+        </div>
+    </section>
 {% endblock content %}
 <!-- extra js -->
 {% block extra_js %}

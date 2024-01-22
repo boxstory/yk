@@ -48,8 +48,9 @@ class JobList(models.Model):
 class MobSubscriber(models.Model):
     name = models.CharField(max_length=100)
     mobile_no = models.CharField(max_length=8)
-    is_owner = models.BooleanField(default=False)
-    is_agent = models.BooleanField(default=False)
+    is_clients = models.BooleanField(default=False)
+    is_realator = models.BooleanField(default=False)
+    is_workman = models.BooleanField(default=False)
     date_subscribed = models.DateTimeField(default=datetime.now)
     whatsapp_group_id = models.ManyToManyField(
         GroupList, blank=True)

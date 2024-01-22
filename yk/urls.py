@@ -10,6 +10,9 @@ urlpatterns = [
     path('', include('accounts.urls'), name='accounts'),
     path('', include(('webpages.urls', 'webpages'), namespace="webpages")),
     path('property/', include('property.urls'), name='property'),
+    path('realtor/', include('realtor.urls'), name='realtor'),
+    path('clients/', include('clients.urls'), name='clients'),
+    path('workman/', include('workman.urls'), name='workman'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

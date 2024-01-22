@@ -52,9 +52,14 @@
                                 <a class="nav-link"
                                    aria-current="page"
                                    href="{% url 'accounts:profile' %}">
-                                    <i class="fa-solid fa-user"></i>
+                                    <span class=" align-self-center ms-2">DashBoard</span>
                                 </a>
-                                <span class="d-md-none align-self-center ms-2">{{ user.username }}</span>
+                                <a class="nav-link p-2"
+                                   aria-current="page"
+                                   href="{% url 'accounts:profile' %}">
+                                    <i class="fa-solid fa-user fa-lg px-1"></i>
+                                    <span class="d-md-none align-self-center ms-2">{{ user.username }}</span>
+                                </a>
                             </div>
                         </li>
                     {% else %}
