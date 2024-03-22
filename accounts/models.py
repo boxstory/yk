@@ -26,17 +26,17 @@ class Profile(models.Model):
     address = models.CharField(max_length=255, blank=True, null=True)
     is_business = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
-    is_agent = models.BooleanField(default=False)
+    is_realtor = models.BooleanField(default=False)
+    is_workman = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
     def __str__(self):
         return f"{self.username}"
 
-    
-    
     class Meta:
         verbose_name_plural = "Profiles"
+        
         
 def user_directory_path(instance, filename):
    return '%s/%s' % (instance.username, filename)

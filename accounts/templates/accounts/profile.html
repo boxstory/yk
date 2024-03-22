@@ -17,14 +17,17 @@
                              id="account"
                              role="tabpanel"
                              aria-labelledby="account-tab">
-                            <h3 class="mb-4">Account Info</h3>
+                            <div class="d-flex">
+                                <h3 class="mb-4">Account Info</h3>
+                                <span class="align-self-baseline m-2 ">( {{ user.profile.username }} )</span>
+                            </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>First Name</label>
                                         <input type="text"
                                                class="form-control"
-                                               value="{{ user.first_name }}"
+                                               value="{{ user.profile.first_name }}"
                                                disabled
                                                readonly>
                                     </div>
@@ -34,7 +37,7 @@
                                         <label>Last Name</label>
                                         <input type="text"
                                                class="form-control"
-                                               value="{{ user.last_name }}"
+                                               value="{{ user.profile.last_name }}"
                                                disabled
                                                readonly>
                                     </div>
@@ -52,19 +55,15 @@
                                 <div class="col-md-6 pt-3">
                                     <div class="form-group">
                                         <label>Phone number</label>
-                                        <input type="text"
-                                               class="form-control"
-                                               value="{{ user.agent.phone }}"
-                                               disabled
-                                               readonly>
+                                        <input type="text" class="form-control" value="Contact us" disabled readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-6 pt-3">
                                     <div class="form-group">
-                                        <label>Company</label>
+                                        <label>Nationality</label>
                                         <input type="text"
                                                class="form-control"
-                                               value="Kiran Workspace"
+                                               value="{{ user.profile.nationlity }}"
                                                disabled
                                                readonly>
                                     </div>
@@ -76,16 +75,43 @@
                                         <input type="text" class="form-control"  disabled readonly>
                                     </div>
                                 </div>
+                                <p class="pt-0 m-0 mt-3">Roles</p>
+                                <div class="d-md-flex col-12">
+                                    <div class="col-md-4  me-md-2 mb-2">
+                                        <div class="form-group ">
+                                            <input type="text"
+                                                   {% if user.profile.is_business %} class="form-control " value="Property Holder "{% else %}class="d-none" {% endif %}
+                                                   disabled
+                                                   readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3  mb-2  me-md-2">
+                                        <div class="form-group">
+                                            <input type="text"
+                                                   {% if user.profile.is_realtor %} class="form-control " value="Realtor "{% else %}class="d-none" {% endif %}
+                                                   disabled
+                                                   readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3   me-md-2">
+                                        <div class="form-group">
+                                            <input type="text"
+                                                   {% if user.profile.is_workman %} class="form-control " value="Service Holder "{% else %}class="d-none" {% endif %}
+                                                   disabled
+                                                   readonly>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-md-12 pt-3">
                                     <div class="form-group">
                                         <label>Bio</label>
-                                        <textarea class="form-control" disabled readonly rows="4">{{ user.profile. }}</textarea>
+                                        <textarea class="form-control" disabled readonly rows="4">{{ user.profile.is_workman }}</textarea>
                                     </div>
                                 </div>
                             </div>
-                            <div class="pt-2">
+                            <div class="pt-2 text-center text-md-end">
                                 <a href="{% url 'accounts:profile_update' %}">
-                                    <button class="btn btn-outline-dark pt-2">Update</button>
+                                    <button class="btn btn-dark pt-2 px-5">Update</button>
                                 </a>
                             </div>
                         </div>

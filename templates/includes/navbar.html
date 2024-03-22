@@ -22,60 +22,71 @@
             <div class="collapse navbar-collapse " id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active"
-                           aria-current="page"
-                           href="{% url 'webpages:home' %}">Home</a>
+                        <a class=" btn" aria-current="page" href="{% url 'webpages:home' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active"
+                        <a class=" btn"
                            aria-current="page"
                            href="{% url 'property:property_all' %}">Properties</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active"
+                        <a class=" btn"
                            aria-current="page"
                            href="{% url 'property:inquire_create' %}">Inquire</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active"
-                           aria-current="page"
-                           href="{% url 'webpages:services' %}">Services</a>
+                        <a class=" btn" aria-current="page" href="{% url 'webpages:services' %}">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active"
-                           aria-current="page"
-                           href="{% url 'webpages:about' %}">About</a>
+                        <a class=" btn" aria-current="page" href="{% url 'webpages:about' %}">About</a>
                     </li>
                     {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <div class="d-flex">
-                                <a class="nav-link"
-                                   aria-current="page"
-                                   href="{% url 'accounts:profile' %}">
-                                    <span class=" align-self-center ms-2">DashBoard</span>
-                                </a>
-                                <a class="nav-link p-2"
-                                   aria-current="page"
-                                   href="{% url 'accounts:profile' %}">
-                                    <i class="fa-solid fa-user fa-lg px-1"></i>
-                                    <span class="d-md-none align-self-center ms-2">{{ user.username }}</span>
-                                </a>
-                            </div>
+                            <a type="button "
+                               class=" btn  "
+                               data-bs-toggle="modal"
+                               data-bs-target="#DashboardZoneModal">Dashboard</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-2"
+                               aria-current="page"
+                               href="{% url 'accounts:profile' %}">
+                                <i class="fa-solid fa-user fa-lg px-1"></i>
+                                <span class="d-md-none align-self-center ms-2">{{ user.username }}</span>
+                            </a>
+                        </li>
+                        <!-- Modal -->
+                        <div class="modal fade"
+                             id="DashboardZoneModal"
+                             tabindex="-1"
+                             role="dialog"
+                             aria-labelledby="DashboardZoneModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="DashboardZoneModalLabel">Choose Dashboard Zone</h5>
+                                        <button type="button"
+                                                class="close"
+                                                data-bs-dismiss="modal"
+                                                aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">{% include "webpages/choose_dashboard.html" %}</div>
+                                </div>
+                            </div>
+                        </div>
                     {% else %}
                         <li class="nav-item  ">
-                            <a class="nav-link active"
-                               aria-current="page"
-                               href="{% url 'account_login' %}">Log In</a>
-                            <li class="nav-item">
-                                <a class="nav-link active"
-                                   aria-current="page"
-                                   href="{% url 'account_signup' %}">Sign Up</a>
-                            </li>
-                        {% endif %}
-                    </ul>
-                </div>
+                            <a class=" btn" aria-current="page" href="{% url 'account_login' %}">Log In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class=" btn" aria-current="page" href="{% url 'account_signup' %}">Sign Up</a>
+                        </li>
+                    {% endif %}
+                </ul>
             </div>
-        </nav>
-    </div>
-    {% block extra_js %}<script src="https://cdn.lordicon.com//libs/frhvbuzj/lord-icon-2.0.2.js"></script>{% endblock %}
+        </div>
+    </nav>
+</div>

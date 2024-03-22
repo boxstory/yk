@@ -6,6 +6,6 @@ app_name = 'clients'
 # main path('property/', include('property.urls'), name='property'),
 
 urlpatterns = [
-    path('', clients_views.dashboard, name='dashboard'),
+    path('dashboard/', clients_views.dashboard, name='dashboard'),
     
 ]

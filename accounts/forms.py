@@ -30,15 +30,23 @@ class ProfileForm(forms.ModelForm):
         fields = '__all__'
         exclude = ['user', 'username', 'created_at', 'updated_at', 'is_staff']
         labels = {
-            'is_business': ' Are you own or manage Properties',
-            'is_agent': ' Are you Properties agents',
+            'is_business': 'Do you own or manage Properties',
+            'is_realtor': 'Are you Realtor / Properties Agents',
+            'is_workman': 'Service Provider to Home or Office',
         }
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.original_email = self.instance.email if self.instance else None
 
     def clean_email(self):
-        email = self.cleaned_data['email']
-        r = accounts_models.Profile.objects.filter(email = email)
-        if r.count():
-            raise forms.ValidationError('Email id is already exists')
+        email = self.cleaned_data['email'].lower()
+
+        # Check if the email is already in use by a different profile
+        existing_profile = accounts_models.Profile.objects.exclude(email=self.original_email).filter(email=email).first()
+
+        if existing_profile:
+            raise forms.ValidationError('This email address is already in use by another profile. Please use a different one.')
+
         return email
     
     

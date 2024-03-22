@@ -51,6 +51,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # Add the account middleware:
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'yk.urls'
@@ -168,3 +171,4 @@ SOCIALACCOUNT_QUERY_EMAIL = True
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 LOGIN_REDIRECT_URL = '/'
+

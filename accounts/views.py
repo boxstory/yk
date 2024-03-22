@@ -22,7 +22,7 @@ def profile(request):
     if accounts_models.Profile.objects.filter(user=request.user).exists():
         profile = accounts_models.Profile.objects.filter( user_id=request.user.id)[0]
     else:
-        profile = accounts_models.Profile.objects.create( user_id=request.user.id, first_name=request.user.first_name, last_name=request.user.last_name, username=request.user.username)
+        profile = accounts_models.Profile.objects.create( user_id=request.user.id, first_name=request.user.first_name, last_name=request.user.last_name, username=request.user.username, email=request.user.email)
 
     if accounts_models.ProfilePicture.objects.filter(user=request.user).exists():
         profile_picture = accounts_models.ProfilePicture.objects.filter( user_id=request.user.id)[0]
@@ -41,9 +41,9 @@ def profile_update(request):
     profile = accounts_models.Profile.objects.get(user_id=request.user.id)
     form = accounts_forms.ProfileForm(instance=profile)
     if request.method == 'POST':
-            print('businessRegisterForm')
+            print('ProgfileUpdateForm')
             form = accounts_forms.ProfileForm(
-                request.POST, request.FILES, instance=profile)
+                request.POST, instance=profile)
             if form.is_valid():
                 f = form.save(commit=False)
                 print('f.user')
@@ -53,9 +53,8 @@ def profile_update(request):
                 form.save()
                 print('ok')
                 messages.success(request, "Successful Submission")
-                return redirect("business:business_dashboard")
+                return redirect("accounts:profile")
             else:
-                print('driver_directory_add not valid')
                 messages.error(request, "Error")
     
     data = {

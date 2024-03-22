@@ -2,10 +2,12 @@ from django.http.response import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.urls import reverse
 from django.views.generic import ListView
 from datetime import date
 from webpages.form import ContactForm, SubscribeForm, CareersApplicationForm
 from webpages import models as webpage_models
+from accounts import models as accounts_models
 # Create your views here.
 
 
@@ -33,7 +35,9 @@ def home(request):
     else:
         print("SubscribeForm")
         form = SubscribeForm()
-
+    
+    
+    
     # context = {'form': form}
     return render(request, 'webpages/home.html', {'form': form}) 
     # return render(request, 'webpages/home.html')
@@ -105,7 +109,12 @@ def careers_submit(request ,  job_id):
     return render(request, 'webpages/careers_submit.html', context)
 
 
+def handler404(request, exception):
+    return render(request, 'webpages/page_not_found.html', status=404)
 
+
+def handler500(request):
+    return render(request, 'webpages/server_error.html', status=500)
 
 
 
@@ -129,3 +138,28 @@ def whatsapp_group(request):
         'groups': groups
     }
     return render(request, 'webpages/whatsapp/whatsapp_group.html', data)
+
+
+def choose_dashboard(request):
+    profile = accounts_models.Profile.objects.filter(user = request.user)
+    role_list = []
+    
+    profile = accounts_models.Profile.objects.get(user=request.user)
+    print("Profile", profile)
+    if profile.is_business == True:
+        role_list.append("is_business")
+    if profile.is_realtor == True:
+        role_list.append("is_realtor")
+    if profile.is_workman == True:
+        role_list.append("is_workman")
+    print('role_list', role_list)
+    print(len(role_list))
+    if len(role_list) == 0:
+        print('role_list is 0')
+        return redirect('accounts:profile')
+
+    
+    data = {
+        'role_list' : role_list
+    }
+    return render(request, 'webpages/choose_dashboard.html', data)

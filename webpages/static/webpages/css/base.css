@@ -88,3 +88,9 @@ li {
   background-color: #167abd;
   cursor: pointer;
 }
+
+
+.nav-item a:hover {
+  background-color: #b38300;
+  color: rgb(255, 255, 255);
+}
