@@ -1,40 +1,43 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        {% include "includes/header.html" %}
-        <!-- extra css -->
-        {% block extra_css %}
-        {% endblock extra_css %}
-        <title>
-            {% block head_title %}
-                Home | Yellowkey
-            {% endblock head_title %}
-        </title>
-    </head>
-    <body class="min-vh-100">
-        {% include "includes/navbar.html" %}
-        <main class="col-12 min-vh-100">
-            <section class="py-1 bg-warning">
-                <div class="container">
-                    <div class="col-12  text-center">
-                        <p class="p p-0 m-0">We are working on something amazing, Upgrading soon.</p>
-                    </div>
+
+<head>
+    {% include "includes/head.html" %}
+    <!-- extra css -->
+    {% block extra_css %}
+    {% endblock extra_css %}
+    <title>
+        {% block head_title %}
+        Home | Yellowkey
+        {% endblock head_title %}
+    </title>
+</head>
+
+<body class="min-vh-100">
+    {% include "includes/navbar.html" %}
+    <main class="col-12 min-vh-100">
+        <section class="py-1 bg-warning">
+            <div class="container">
+                <div class="col-12  text-center">
+                    <p class="p p-0 m-0">We are working on something amazing, Upgrading soon.</p>
                 </div>
-            </section>
-            <!-- body content goes here -->
-            {% block content %}
-            {% endblock content %}
-            <!-- account_content goes here -->
-            <div class="col-11 col-md-8 col-lg-6 mx-auto ">
-                {% block account_content %}
-                {% endblock account_content %}
             </div>
-        </main>
-        {% include "includes/footer.html" %}
-        {% include "includes/scripts.html" %}
-        {% block extra_js %}
-            <!-- extra js -->
-        {% endblock extra_js %}
-    </body>
+        </section>
+        <!-- body content goes here -->
+        {% block content %}
+        {% endblock content %}
+        <!-- account_content goes here -->
+        <div class="col-11 col-md-8 col-lg-6 mx-auto ">
+            {% block account_content %}
+            {% endblock account_content %}
+        </div>
+    </main>
+    {% include "includes/footer.html" %}
+    {% include "includes/scripts.html" %}
+    {% block extra_js %}
+    <!-- extra js -->
+    {% endblock extra_js %}
+</body>
+
 </html>

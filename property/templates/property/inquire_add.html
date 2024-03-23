@@ -6,37 +6,20 @@
 
 {% block extra_css %}
 <!-- extra css -->
-<link
-    type="text/css"
-    rel="stylesheet"
-    href="{% static '/webpages/css/main.css' %}"
->
+<link type="text/css" rel="stylesheet" href="{% static '/webpages/css/main.css' %}">
 
-<link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-    integrity="sha384-tKLJeE1ALTUwtXlaGjJYM3sejfssWdAaWR2s97axw4xkiAdMzQjtOjgcyw0Y50KU"
-    crossorigin="anonymous"
->
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    integrity="sha384-tKLJeE1ALTUwtXlaGjJYM3sejfssWdAaWR2s97axw4xkiAdMzQjtOjgcyw0Y50KU" crossorigin="anonymous">
 {% endblock extra_css %}
-
-
 {% block content %}
 <!-- content -->
 <div class="container">
     <div class="row justify-content-center  py-3">
         <div class="col-md-8 text-center py-4">
             <div class="d-grid gap-2 col-6 mx-auto">
-                <a
-                    href="{% url 'property:inquire_lists'  %}"
-                    class="btn  btn-dark"
-                >
+                <a href="{% url 'property:inquire_lists'  %}" class="btn  btn-dark">
 
-                    <button
-                        class="m-0 btn-dark"
-                        type="submit"
-                    >Enquiries Lists</button>
+                    <button class="m-0 btn-dark" type="submit">Enquiries Lists</button>
                 </a>
             </div>
         </div>
@@ -51,17 +34,11 @@
             </h3>
         </div>
         <div class="col-md-8">
-            <form
-                method="post"
-                enctype="multipart/form-data"
-            >
+            <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form | crispy }}
                 <div class="d-grid gap-2 col-6 mx-auto">
-                    <button
-                        class="btn btn-dark"
-                        type="submit"
-                    >SUBMIT</button>
+                    <button class="btn btn-dark" type="submit">SUBMIT</button>
                 </div>
             </form>
         </div>
@@ -71,5 +48,6 @@
 
 <!-- extra js -->
 {% block extra_js %}
+
 
 {% endblock extra_js %}
