@@ -1,109 +1,76 @@
-anyascii==0.3.1
-asgiref==3.7.2
-attrs==23.1.0
-autopep8==1.6.0
-beautifulsoup4==4.11.1
-certifi==2021.10.8
-cffi==1.16.0
-charset-normalizer==2.0.9
-click==8.1.6
-colorama==0.4.6
-crispy-bootstrap5==0.6
-cryptography==36.0.0
-cssbeautifier==1.14.11
-decorator==5.1.1
-defusedxml==0.7.1
-diff-match-patch==20230430
-distlib==0.3.7
-Django==3.2.9
-django-admin-volt==1.0.10
-django-allauth==0.61.1
-django-cors-headers==4.3.1
-django-crispy-forms==1.13.0
-django-debug-toolbar==4.2.0
-django-decouple==2.1
-django-extensions==3.1.3
-django-filter==22.1
-django-import-export==3.2.0
-django-js-asset==2.0.0
-django-leaflet==0.29.0
-django-modelcluster==6.0
-django-mptt==0.13.4
-django-permissionedforms==0.1
-django-rest-framework==0.1.0
-django-taggit==3.0.0
-django-treebeard==4.5.1
-djangorestframework==3.13.1
-djlint==1.34.1
-draftjs-exporter==2.1.7
-EditorConfig==0.12.3
-et-xmlfile==1.1.0
-exceptiongroup==1.1.2
-ez-setup==0.9
-filelock==3.12.4
-fontawesomefree==6.2.0
-future==0.18.3
-geocoder==1.38.1
-geographiclib==2.0
-geopy==2.4.1
-h11==0.14.0
-html-tag-names==0.1.2
-html-void-elements==0.1.0
-html5lib==1.1
-idna==3.3
-jsbeautifier==1.14.11
-json5==0.9.14
-l18n==2021.3
-lxml==4.9.3
-MarkupPy==1.14
-numpy==1.26.0
-oauthlib==3.1.1
-odfpy==1.4.1
-openpyxl==3.0.10
-outcome==1.2.0
-packaging==23.1
-pandas==2.0.3
-pathspec==0.12.1
-Pillow==9.5.0
-pipenv==2023.7.23
-platformdirs==3.11.0
-psycopg2==2.9.2
-psycopg2-binary==2.9.9
-pycodestyle==2.8.0
-pycparser==2.21
-PyJWT==2.3.0
-PySocks==1.7.1
-python-dateutil==2.8.2
-python-decouple==3.5
-python-dotenv==1.0.0
-python3-openid==3.2.0
-pytz==2021.3
-PyYAML==6.0
-ratelim==0.1.6
-regex==2023.12.25
-requests==2.26.0
-requests-oauthlib==1.3.0
-selenium==4.13.0
-six==1.16.0
-sniffio==1.3.0
-sortedcontainers==2.4.0
-soupsieve==2.3.2.post1
-sqlparse==0.4.2
-tablib==3.4.0
-telepath==0.3
-toml==0.10.2
-tqdm==4.65.0
-trio==0.22.1
-trio-websocket==0.10.3
-tzdata==2023.3
-urllib3==1.26.7
-virtualenv==20.24.5
-virtualenv-clone==0.5.7
-wagtail==4.0.4
-webdriver-manager==3.8.6
-webencodings==0.5.1
-Willow==1.4.1
-wsproto==1.2.0
-xlrd==2.0.1
-XlsxWriter==3.0.3
-xlwt==1.3.0
+
+Usage:   
+  pip <command> [options]
+
+Commands:
+  install                     Install packages.
+  download                    Download packages.
+  uninstall                   Uninstall packages.
+  freeze                      Output installed packages in requirements format.
+  inspect                     Inspect the python environment.
+  list                        List installed packages.
+  show                        Show information about installed packages.
+  check                       Verify installed packages have compatible dependencies.
+  config                      Manage local and global configuration.
+  search                      Search PyPI for packages.
+  cache                       Inspect and manage pip's wheel cache.
+  index                       Inspect information available from package indexes.
+  wheel                       Build wheels from your requirements.
+  hash                        Compute hashes of package archives.
+  completion                  A helper command used for command completion.
+  debug                       Show information useful for debugging.
+  help                        Show help for commands.
+
+General Options:
+  -h, --help                  Show help.
+  --debug                     Let unhandled exceptions propagate outside the
+                              main subroutine, instead of logging them to
+                              stderr.
+  --isolated                  Run pip in an isolated mode, ignoring
+                              environment variables and user configuration.
+  --require-virtualenv        Allow pip to only run in a virtual environment;
+                              exit with an error otherwise.
+  --python <python>           Run pip with the specified Python interpreter.
+  -v, --verbose               Give more output. Option is additive, and can be
+                              used up to 3 times.
+  -V, --version               Show version and exit.
+  -q, --quiet                 Give less output. Option is additive, and can be
+                              used up to 3 times (corresponding to WARNING,
+                              ERROR, and CRITICAL logging levels).
+  --log <path>                Path to a verbose appending log.
+  --no-input                  Disable prompting for input.
+  --keyring-provider <keyring_provider>
+                              Enable the credential lookup via the keyring
+                              library if user input is allowed. Specify which
+                              mechanism to use [disabled, import, subprocess].
+                              (default: disabled)
+  --proxy <proxy>             Specify a proxy in the form
+                              scheme://[user:passwd@]proxy.server:port.
+  --retries <retries>         Maximum number of retries each connection should
+                              attempt (default 5 times).
+  --timeout <sec>             Set the socket timeout (default 15 seconds).
+  --exists-action <action>    Default action when a path already exists:
+                              (s)witch, (i)gnore, (w)ipe, (b)ackup, (a)bort.
+  --trusted-host <hostname>   Mark this host or host:port pair as trusted,
+                              even though it does not have valid or any HTTPS.
+  --cert <path>               Path to PEM-encoded CA certificate bundle. If
+                              provided, overrides the default. See 'SSL
+                              Certificate Verification' in pip documentation
+                              for more information.
+  --client-cert <path>        Path to SSL client certificate, a single file
+                              containing the private key and the certificate
+                              in PEM format.
+  --cache-dir <dir>           Store the cache data in <dir>.
+  --no-cache-dir              Disable the cache.
+  --disable-pip-version-check
+                              Don't periodically check PyPI to determine
+                              whether a new version of pip is available for
+                              download. Implied with --no-index.
+  --no-color                  Suppress colored output.
+  --no-python-version-warning
+                              Silence deprecation warnings for upcoming
+                              unsupported Pythons.
+  --use-feature <feature>     Enable new functionality, that may be backward
+                              incompatible.
+  --use-deprecated <feature>  Enable deprecated functionality, that will be
+                              removed in the future.
