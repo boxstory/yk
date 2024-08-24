@@ -10,10 +10,8 @@
 
   <h1>{% trans "Sign Up" %}</h1>
 
-  <p class="fw-bold">{% blocktrans %}Already have an account? Then please <a
-      class="text-decoration-none p-3 text-light"
-      href="{{ login_url }}"
-    >
+  <p class="fw-bold">{% blocktrans %}Already have an account? Then please <a class="text-decoration-none p-3 text-light"
+      href="{{ login_url }}">
       <button class=" p-0 btn btn-dark text-uppercase text-dark ">
         Sign in
     </a>
@@ -21,26 +19,14 @@
     .{% endblocktrans %}</p>
 </div>
 
-<form
-  class="signup"
-  id="signup_form"
-  method="post"
-  action="{% url 'account_signup' %}"
->
+<form class="signup px-5" id="signup_form" method="post" action="{% url 'account_signup' %}">
   {% csrf_token %}
   {{ form | crispy }}
   {% if redirect_field_value %}
-  <input
-    type="hidden"
-    name="{{ redirect_field_name }}"
-    value="{{ redirect_field_value }}"
-  />
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
   <div class=" text-center ">
-    <button
-      class=" primaryAction  btn btn-dark text-uppercase mb-4"
-      type="submit"
-    >
+    <button class=" primaryAction  btn btn-dark text-uppercase mb-4" type="submit">
       {% trans "Sign Up" %} &raquo;</button>
   </div>
 </form>
