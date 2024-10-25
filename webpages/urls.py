@@ -15,6 +15,7 @@ urlpatterns = [
      path('about/', webpages_views.about, name='about'),
      path('contact/', webpages_views.contact, name='contact'),
      path('services/', webpages_views.services, name='services'),
+     path('careers/add/', webpages_views.careers_add, name='careers_add'),
      path('careers/', webpages_views.careers_list, name='careers_list'),
      path('careers_submit/<int:job_id>/', webpages_views.careers_submit, name='careers_submit'),
      

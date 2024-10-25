@@ -6,6 +6,51 @@
 
 {% block extra_css %}
 <!-- extra css -->
+
+<style>
+    .card-title {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .price {
+        color: red;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .star-rating {
+        color: orange;
+    }
+
+    .featured-badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: #080808;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    .location,
+    .date {
+        font-size: 14px;
+    }
+
+    .profile {
+        display: flex;
+        align-items: center;
+    }
+
+    .profile img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+</style>
 {% endblock extra_css %}
 
 
@@ -15,8 +60,43 @@
 {% if portions %}
 This Property({{building_id}}) includes <b>{{portions.count|stringformat:"00i"}}</b> Portions.
 
+<div class="container mt-5">
+    <div class="card" style="width: 18rem; position: relative;">
+        <!-- Featured Badge -->
+        <div class="featured-badge">Featured</div>
+        <!-- Image -->
+        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Villa Image">
+        <!-- Card Body -->
+        <div class="card-body">
+            <!-- User Profile Picture -->
+            <div class="profile mb-2">
+                <img src="https://via.placeholder.com/40" alt="User Profile Picture">
+                <span>User Name</span>
+            </div>
+            <!-- Villa Title -->
+            <h5 class="card-title">Villa 457 sq.m. In Benidorm Fully</h5>
+            <!-- Location and Date -->
+            <div class="d-flex justify-content-between">
+                <span class="location text-muted"><i class="bi bi-geo-alt-fill"></i> New York, USA</span>
+                <span class="date text-muted"><i class="bi bi-calendar"></i> 21 Mar, 2023</span>
+            </div>
+            <!-- Price -->
+            <div class="mt-3 price">300$</div>
+            <!-- Rating -->
+            <div class="mt-2">
+                <span class="star-rating">★ ★ ★ ★</span>
+                <span>(1)</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="row my-2">
     {% for portion in portions %}
+
+
+
 
     {% include "property/portion_card.html" %}
 
@@ -31,20 +111,13 @@ This Property({{building_id}}) includes <b>{{portions.count|stringformat:"00i"}}
     <div class="d-grid gap-2 d-md-flex justify-content-md-end pt-4">
 
         {% if user_id == pk %}
-        <a
-            href="{% url 'property:portion_add' user.id building_id  %}"
-            class="btn btn-dark  px-5 px-md-5 order-md-2"
-        >Add Portions</a>
+        <a href="{% url 'property:portion_add' user.id building_id  %}"
+            class="btn btn-dark  px-5 px-md-5 order-md-2">Add Portions</a>
         {% else %}
-        <a
-            href="{% url 'property:building_create' pk=user.pk  %}"
-            class="btn btn-dark  px-5 px-md-3"
-        >Add Properties</a>
+        <a href="{% url 'property:building_create' pk=user.pk  %}" class="btn btn-dark  px-5 px-md-3">Add Properties</a>
         {% endif %}
-        <a
-            href="{% url 'property:own_building' user.id  %}"
-            class="btn btn-dark  px-3 px-md-5 order-md-1"
-        >Own Properties</a>
+        <a href="{% url 'property:own_building' user.id  %}" class="btn btn-dark  px-3 px-md-5 order-md-1">Own
+            Properties</a>
     </div>
 </div>
 

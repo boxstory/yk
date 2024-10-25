@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.urls import reverse
 from django.views.generic import ListView
 from datetime import date
-from webpages.form import ContactForm, SubscribeForm, CareersApplicationForm
+from webpages.form import ContactForm, SubscribeForm, CareersApplicationForm , CareersAddForm
 from webpages import models as webpage_models
 from accounts import models as accounts_models
 # Create your views here.
@@ -107,6 +107,27 @@ def careers_submit(request ,  job_id):
               
                }
     return render(request, 'webpages/careers_submit.html', context)
+
+
+def careers_add(request):
+    
+    if request.method == 'POST':
+        form = CareersAddForm(request.POST)
+        if form.is_valid():
+            form = form.save(commit=False)
+            
+            form.save()
+
+            messages.success(
+                request, 'Career create successful')
+            return redirect('webpages:services')
+
+        return HttpResponseRedirect(request.path_info)
+    form = CareersAddForm()
+    context = {'form': form,
+              
+               }
+    return render(request, 'webpages/careers_add.html', context)
 
 
 def handler404(request, exception):

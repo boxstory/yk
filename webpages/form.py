@@ -26,6 +26,11 @@ class ContactForm(forms.ModelForm):
         model = Contact
         fields = '__all__'
 
+class CareersAddForm(forms.ModelForm):
+    class Meta:
+        model = JobList
+        fields = '__all__'
+
 
 
 class CareersApplicationForm(forms.ModelForm):
