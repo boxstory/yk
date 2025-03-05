@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% load static %}
-{% block head_title %} yk.qa | Properties {% endblock %}
+{% block head_title %}Properties {% endblock %}
 
 
 {% block extra_css %}
@@ -34,9 +34,10 @@
 
 
 <div class="row m-2">
+    <p> Building Infos </p>
     {% for property in properties %}
 
-    {% include "property/building_card.html" %}
+    {% include "property/parts/building_card.html" %}
 
 
 

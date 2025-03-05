@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% load static %}
-{% block head_title %} yk.qa | Property {% endblock %}
+{% block head_title %}Inquires {% endblock %}
 
 
 {% block extra_css %}
@@ -13,21 +13,10 @@
 {% endblock extra_css %}
 {% block content %}
 <!-- content -->
-<div class="container">
-    <div class="row justify-content-center  py-3">
-        <div class="col-md-8 text-center py-4">
-            <div class="d-grid gap-2 col-6 mx-auto">
-                <a href="{% url 'property:inquire_lists'  %}" class="btn  btn-dark">
 
-                    <button class="m-0 btn-dark" type="submit">Enquiries Lists</button>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="container">
     <div class="row justify-content-center  py-3">
-        <div class="col-md-8 text-center py-4">
+        <div class="col-md-8 text-center ">
             <h3 class="fw-bold text-uppercase bg-white">
 
                 Add Inquire Details
@@ -41,6 +30,14 @@
                     <button class="btn btn-dark" type="submit">SUBMIT</button>
                 </div>
             </form>
+        </div>
+    </div>
+</div><div class="container">
+    <div class="row justify-content-center  py-3">
+        <div class="col-md-8 text-center ">
+            <a href="{% url 'property:inquire_lists'  %}" class="btn  btn-dark">
+                 Enquiries Lists 
+            </a>
         </div>
     </div>
 </div>

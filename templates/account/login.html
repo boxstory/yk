@@ -7,7 +7,7 @@
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
 {% block account_content %}
-<div class="row justify-content-center">
+<div class="row py-4 justify-content-center">
   <div class="col-10 col-md-8">
     <form
       class="login"
@@ -26,12 +26,7 @@
         {% endif %}
       </div>
 
-      <div class="pb-4 text-center">
-        <a
-          class="button secondaryAction"
-          href="{% url 'account_reset_password' %}"
-        >{% trans "Forgot Password?" %}</a>
-      </div>
+       
 
       <div class=" text-center ">
         <button
@@ -72,9 +67,13 @@
 {% include "socialaccount/snippets/login_extra.html" %}
 
 {% else %}
+<div class="row justify-content-center">
+  <div class="col-10 col-md-8">
 <p>{% blocktrans %}If you have not created an account yet, then please
-  <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
+  <a class="btn btn-outline-dark" href="{{ signup_url }}">sign up</a> here.{% endblocktrans %}
 </p>
+</div>
+</div> 
 {% endif %}
 
 

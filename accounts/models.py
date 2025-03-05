@@ -19,8 +19,8 @@ class Profile(models.Model):
     gender = models.CharField(max_length=255, choices=GENDER_CHOICES, blank=True, null=True)
     date_of_birth = models.DateField(blank=True, null=True)
     email = models.EmailField(max_length=255, blank=True, null=True)
-    phone = models.IntegerField(blank=True, null=True)
-    whatsapp = models.IntegerField(blank=True, null=True)
+    phone = models.CharField(max_length=15, blank=True, null=True)
+    whatsapp = models.CharField(max_length=15, blank=True, null=True)
     instagram = models.CharField(max_length=255, blank=True, null=True)
     nationlity = models.CharField(max_length=255, blank=True, null=True)
     address = models.CharField(max_length=255, blank=True, null=True)
@@ -90,7 +90,8 @@ class Agent(models.Model):
     
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='agent')
-    name = models.CharField(max_length=100)
+    agent_name = models.CharField(max_length=255, blank=True, null=True)
+    marketing_name = models.CharField(max_length=255, blank=True, null=True)
     roles = models.ForeignKey(
         Roles, on_delete=models.SET_NULL, null=True, default="1")
     email = models.EmailField(max_length=100)

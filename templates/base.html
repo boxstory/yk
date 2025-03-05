@@ -9,21 +9,15 @@
     {% endblock extra_css %}
     <title>
         {% block head_title %}
-        Home | Yellowkey
-        {% endblock head_title %}
+        Home 
+        {% endblock head_title %} | Yellowkey
     </title>
 </head>
 
 <body class="min-vh-100">
     {% include "includes/navbar.html" %}
     <main class="col-12 min-vh-100">
-        <section class="py-1 bg-warning">
-            <div class="container">
-                <div class="col-12  text-center">
-                    <p class="p p-0 m-0">We are working on something amazing, Upgrading soon.</p>
-                </div>
-            </div>
-        </section>
+        
         <!-- body content goes here -->
         {% block content %}
         {% endblock content %}
@@ -31,7 +25,13 @@
 
         {% block account_content %}
         {% endblock account_content %}
-
+<section class="py-1 bg-warning">
+            <div class="container">
+                <div class="col-12  text-center">
+                    <p class="p p-0 m-0">We are diligently working on something amazing. Please stay tuned for updates.</p>
+                </div>
+            </div>
+        </section>
     </main>
     {% include "includes/footer.html" %}
     {% include "includes/scripts.html" %}

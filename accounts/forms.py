@@ -11,7 +11,7 @@ class AgentForm(forms.ModelForm):
 
     class Meta:
         model = accounts_models.Agent
-        fields = ['name', 'email', 'phone',
+        fields = ['agent_name', 'marketing_name',  'email', 'phone',
                   'whatsapp', 'languages', 'profile_image']
         exclude = ['user', 'roles', 'active', 'verified']
         labels = {
@@ -37,6 +37,23 @@ class ProfileForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.original_email = self.instance.email if self.instance else None
+        self.fields['date_of_birth'].widget = forms.DateInput(attrs={'type': 'date'})
+        self.fields['whatsapp'].widget.attrs.update({'placeholder': 'Enter mobile number without 974'})
+
+    def clean_whatsapp(self):
+        whatsapp = str(self.cleaned_data.get('whatsapp', ''))
+        phone = str(self.cleaned_data.get('phone', ''))
+        
+        if not whatsapp and phone:
+            whatsapp = phone
+        
+        if whatsapp and not whatsapp.startswith('974'):
+            whatsapp = '974' + whatsapp
+        
+        
+        return whatsapp
+    
+    print(type(clean_whatsapp))
 
     def clean_email(self):
         email = self.cleaned_data['email'].lower()

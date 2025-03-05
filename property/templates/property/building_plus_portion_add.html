@@ -26,40 +26,30 @@
 <!-- content -->
 <div class="container">
     <div class="row justify-content-center  py-3">
+        <div class="col-md-8 text-center py-4">
+            <h3 class="fw-bold text-uppercase bg-white">
 
+                Add Building and Portion Details
+            </h3>
+        </div>
         <div class="col-md-8">
-            <h3 class="fw-bold text-decoration-underline">Add Single portion</h3>
             <form
                 method="post"
                 enctype="multipart/form-data"
             >
                 {% csrf_token %}
-                {{ form | crispy }}
+                {{ building_form | crispy }}
+                {{ portion_form | crispy }}
+                -------------------------
+                
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <button
                         class="btn btn-dark"
                         type="submit"
-                    >Add Portion</button>
+                    >ADD PROPERTY</button>
                 </div>
             </form>
         </div>
-
-        <!-- <div class="col-md-8 text-center pt-4">
-            <h3 class="fw-bold text-uppercase bg-white">
-
-                add Bulk
-            </h3>
-
-        </div>
-        <div class="btn btn-secondary col-6 mb-5">
-            <a
-                href="#"
-                class="text-white fs-6 fw-bold text-decoration-none"
-            >
-
-                ADD as table
-            </a>
-        </div> -->
     </div>
 </div>
 {% endblock content %}

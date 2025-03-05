@@ -14,6 +14,7 @@ urlpatterns = [
     # buildings
     path('<int:pk>/', views.own_building, name='own_building'),
     path('<int:pk>/add/', views.building_create, name='building_create'),
+    path('<int:pk>/single_add/', views.building_plus_portion_create, name='building_plus_portion_create'),
     path('<int:pk>/<int:building_id>/update/',
          views.building_update, name='building_update'),
 

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% load static %}
-{% block head_title %}yk.qa | Home{% endblock %}
+{% block head_title %}Home{% endblock %}
 {% block extra_css %}
     <!-- extra css -->
     
@@ -10,11 +10,22 @@
     <!-- Hero Section -->
     <section class="container">
         <div class="row d-flex align-items-center">
+            {% if messages %}
+                <div class="col-12 bg-danger text-white">
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
             <!-- Right Content (Headline and Description) -->
             <div class="col-md-12 p-2 p-md-4 ps-md-5 mx-auto ">
                 <h1 class=" text-center py-3 ">Your Expert Partner in Full-Service Management Excellence!</h1>
                 <!-- clients -->
-                <div class=" d-md-flex align-items-center service-section pb-md-5">
+                 
+                <div class=" d-md-flex ali</div>gn-items-center service-section pb-md-5">
                     <div class="property-management col-12 col-md-6 p-2  me-2 rounded-5  ps-md-5">
                         <h4 class="p-2">We Do for Property Holders</h4>
                         <ul class="">
@@ -34,6 +45,11 @@
                                 <i class="pe-3 fa-lg mb-4 fas fa-wrench"></i>Property Maintenance
                             </li>
                         </ul>
+                        <div class="col-8 justify-content-end d-flex">
+                            <a href="{% url 'clients:dashboard' %}" class="btn btn-light border rounded-pill text-decoration-none">
+                                <p class="m-0  text-dark">Property Dashboard</p>
+                            </a>
+                        </div>
                     </div>
                     <div class="property-management col-12 col-md-6 p-2  me-2 rounded-5 ">
                         <!-- property-management Photo -->
@@ -65,6 +81,11 @@
                                 <i class="pe-3  mb-4 fas fa-user-group"></i>Trusted Agents community
                             </li>
                         </ul>
+                        <div class="col-8 justify-content-end d-flex">
+                            <a href="{% url 'realtor:dashboard' %}" class="btn btn-light border rounded-pill text-decoration-none">
+                                <p class="m-0  text-dark">Realator Dashboard</p>
+                            </a>
+                        </div>
                     </div>
                     <div class="brokerage-services col-12 col-md-6 p-2  me-2 rounded-5 order-1  fluid-end">
                         <!-- brokerage-services Photo -->
@@ -96,6 +117,11 @@
                                 <i class="pe-3 fa-lg mb-4 fas fa-user-group"></i>Teams building
                             </li>
                         </ul>
+                        <div class="col-8 justify-content-end d-flex">
+                            <a href="{% url 'workman:dashboard' %}" class="btn btn-light border rounded-pill text-decoration-none">
+                                <p class="m-0  text-dark">Workman Dashboard</p>
+                            </a>
+                        </div>
                     </div>
                     <div class="property-management col-12 col-md-6 p-2  me-2 rounded-5 ">
                         <div class="">
@@ -111,11 +137,11 @@
         <!-- body content goes here -->
         <div class="container col-md-10  pb-3 px-auto text-center">
             <div class="row">
-                <h2 class="fw-bold mt-8  ">Unlock Seamless Success with Yellowkey Realestate</h2>
-                <h5 class="fw-bold   pb-3">Your Expert Partner in Full-Service Management Excellence!</h5>
+                <h2 class="fw-bold mt-8  ">Unlock Seamless Success with Yellowkey Holdings</h2>
+                <h5 class="fw-bold   pb-3">Your Expert Partner in Full-Service Property Management Excellence!</h5>
                 <div class="row">
                     <p>
-                        Yellowkey Property Holding provides a comprehensive suite of services tailored for property owners and seamless collaboration with agents. For property owners, our dedicated team handles all aspects of property management, from tenant relations and rent collection to expert property photography and ongoing maintenance. Our specialized 'Property Management Photo' service further enhances your property's appeal. Working in tandem with agents, Yellowkey ensures maximum exposure for your listings with services like Vacant Property Listings, Vacant Soon Lists, and streamlined management of multiple properties. Our commitment to fostering a shared community of trusted agents creates a collaborative environment, ensuring unparalleled support throughout your property journey. Trust Yellowkey for holistic property solutions that prioritize owner satisfaction and successful agent partnerships.
+                        Yellowkey Holdings provides a comprehensive suite of services tailored for property owners and seamless collaboration with agents. For property owners, our dedicated team handles all aspects of property management, from tenant relations and rent collection to expert property photography and ongoing maintenance. Our specialized 'Property Management Photo' service further enhances your property's appeal. Working in tandem with agents, Yellowkey ensures maximum exposure for your listings with services like Vacant Property Listings, Vacant Soon Lists, and streamlined management of multiple properties. Our commitment to fostering a shared community of trusted agents creates a collaborative environment, ensuring unparalleled support throughout your property journey. Trust Yellowkey for holistic property solutions that prioritize owner satisfaction and successful agent partnerships.
                     </p>
                 </div>
             </div>

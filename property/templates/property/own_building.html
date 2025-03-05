@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% load static %}
-{% block head_title %} yk.qa | Own Properties {% endblock %}
+{% block head_title %}Own Properties {% endblock %}
 {% block extra_css %}
 <!-- extra css -->
 {% endblock extra_css %}
@@ -9,16 +9,16 @@
 <!-- content -->
 <div class="p-3 fw-bold bg-light text-center mb-2">
     There is {{own_building.count}} Buildings to display.</div>
-<div class="row mb-2">
+<div class="container d-flex flex-wrap my-4">
     {% for property in own_building %}
 
 
-    {% include "property/building_card.html" %}
+    {% include "property/parts/building_card.html" %}
 
 
     {% endfor %}
-</div>
 
+</div>
 <div class="btn">
     <a
         href="{% url 'property:building_create'  pk=user.pk %}"

@@ -4,7 +4,7 @@ from .models import *
 # Register your models here.
 
 
-@admin.register(Building_info)
+@admin.register(Building_data)
 class BuildingInfoAdmin(admin.ModelAdmin):
     list_display = ('title', 'landmark', 'zone_no', 'street_no',
                     'building_no', 'date_created', 'date_updated')
@@ -15,7 +15,7 @@ class BuildingInfoAdmin(admin.ModelAdmin):
     list_per_page = 10
 
     class Meta:
-        model = Building_info
+        model = Building_data
         verbose_name = 'building'
         verbose_name_plural = 'buildings'
 

@@ -5,15 +5,30 @@ from django.db.models import Count, Q
 from property.forms import *
 from property.models import *
 from PIL import Image
+from django.contrib import messages
 # Create your views here.
+
+
+@login_required(login_url='account_login')
+def dashboard(request):
+    if request.user.profile.is_realtor == False:
+        return redirect('account_login')
+    profile = request.user.profile
+
+
+    data = {
+        'profile': profile
+    }
+
+    return render(request, 'workman/dashboard.html', data)
 
 
 @login_required(login_url='account_login')
 def property_all(request):
     if User:
         pk = request.user.id
-        properties = Building_info.objects.all()
-        portions_count = Building_info.objects.annotate(
+        properties = Building_data.objects.all()
+        portions_count = Building_data.objects.annotate(
             number_of_portions=Count('portions'))
         data = {
             'properties': properties,
@@ -22,12 +37,11 @@ def property_all(request):
         return render(request,  'property/building_all.html', data)
     return render(request, "property/")
 
+
 # buildingss *********************************************************************
-
-
 @ login_required(login_url='account_login')
 def own_building(request, pk):
-    own_building = Building_info.objects.filter(user_id=pk)
+    own_building = Building_data.objects.filter(user_id=pk)
 
     context = {
         'own_building': own_building,
@@ -52,13 +66,40 @@ def building_create(request, pk):
 
 
 @ login_required(login_url='account_login')
+def building_plus_portion_create(request, pk):
+    building_form = BuildingForm()
+    portion_form = PortionsForm()
+    single_form = Singelform()
+    if request.method == 'POST':
+        building_form = BuildingForm(request.POST, request.FILES)
+        portion_form = PortionsForm(request.POST, request.FILES)
+        if building_form.is_valid() and portion_form.is_valid():
+            building = building_form.save(commit=False)
+            building.user = request.user
+            building.save()
+            
+            portion = portion_form.save(commit=False)
+            portion.building_data = building
+            portion.user = request.user
+            portion.save()
+            
+            return redirect('property:own_building', pk=request.user.id)
+    context = {
+        'building_form': building_form,
+        'portion_form': portion_form,
+        'single_form': single_form,
+    }
+    return render(request, 'property/building_plus_portion_add.html', context)
+
+
+@ login_required(login_url='account_login')
 def building_update(request, pk, building_id):
     print('building_update', building_id)
-    building_info = Building_info.objects.get(id=building_id)
-    form = BuildingForm(instance=building_info)
+    building_data = Building_data.objects.get(id=building_id)
+    form = BuildingForm(instance=building_data)
     if request.method == 'POST':
         form = BuildingForm(request.POST, request.FILES,
-                            instance=building_info)
+                            instance=building_data)
         if form.is_valid():
             form = form.save(commit=False)
             form.user = request.user
@@ -66,21 +107,20 @@ def building_update(request, pk, building_id):
             return redirect('property:property_all')
 
     context = {
-        'building_info': building_info,
+        'building_data': building_data,
         'form': form,
 
     }
     return render(request, 'property/building_update.html', context)
 
+
 # portions  *********************************************************************
-
-
 @ login_required(login_url='account_login')
 def portion_all(request, pk, building_id):
     pk = pk
     user_id = request.user.id
     portion_all = Portions.objects.filter(
-        Q(building_info_id=building_id) & Q(user_id=pk))
+        Q(building_data_id=building_id) & Q(user_id=pk))
 
     context = {
         'portions': portion_all,
@@ -111,11 +151,17 @@ def portion_single(request, pk, building_id, portion_id):
 @ login_required(login_url='account_login')
 def portion_add(request, pk, building_id):
     form = PortionsForm()
+    print('portion_add')
     if request.method == 'POST':
         form = PortionsForm(request.POST, request.FILES)
+        print(form)
         if form.is_valid():
             form = form.save(commit=False)
-            form.building_info_id = building_id
+            print('form valid')
+            print(form)
+            form.building_data_id = building_id
+            form.user_id = pk
+
             print(form)
             form.save()
 
@@ -123,9 +169,8 @@ def portion_add(request, pk, building_id):
     context = {'form': form}
     return render(request, 'property/portion_add.html', context)
 
-# @toto portions listing
 
-
+# @todo portions listing
 @login_required(login_url='account_login')
 def portion_update(request, pk, building_id, portion_id):
     all_portions = get_object_or_404(
@@ -154,7 +199,7 @@ def vacant_status(request, pk, building_id, portion_id):
     print(building_id)
     print(portion_id)
     portion_all = Portions.objects.filter(
-        Q(building_info_id=building_id) & Q(user_id=pk)).first()
+        Q(building_data_id=building_id) & Q(user_id=pk)).first()
     print(portion_all)
     form = PortionsStatusForm()
     if request.method == 'POST':
@@ -177,7 +222,7 @@ def vacant_status(request, pk, building_id, portion_id):
 
 
 # inquire ...........................................................
-
+ 
 def inquire_create(request):
     form = InquireForm()
     if request.method == 'POST':
@@ -195,8 +240,14 @@ def inquire_create(request):
 def inquire_lists(request):
     pk = request.user.id
     inquires = Inquire.objects.all()
+    if not request.user.profile.is_realtor:
+        print('not realtor')
+        messages.info(request, 'Access to the inquiries list is restricted to realtors only.')
+        return redirect('webpages:home')
     print(Inquire)
     data = {
         'inquires': inquires,
     }
     return render(request,  'property/inquire_lists.html', data)
+
+

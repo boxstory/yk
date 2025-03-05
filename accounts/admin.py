@@ -19,7 +19,7 @@ class ProfilesPictureAdmin(admin.ModelAdmin):
 
 @admin.register(Agent)
 class AgentAdmin(admin.ModelAdmin):
-    list_display = ('name', 'roles', 'active')
+    list_display = ('agent_name','marketing_name', 'roles', 'active')
 
     class Meta:
         model = Agent

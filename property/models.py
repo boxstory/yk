@@ -6,11 +6,11 @@ from django.utils.text import slugify
 
 def portion_image_location(instance, filename):
     print('portion_image_location')
-    print(instance.building_info.user.id,)
-    print(instance.building_info.client_code)
+    print(instance.building_data.user.id,)
+    print(instance.building_data.client_code)
     print(instance.unit_no)
     print(filename)
-    return 'property/{0}/{1}/{2}/portion-{3}'.format(instance.building_info.user.id, instance.building_info.client_code, instance.unit_no, filename)
+    return 'property/{0}/{1}/{2}/portion-{3}'.format(instance.building_data.user.id, instance.building_data.client_code, instance.unit_no, filename)
 
 
 def property_image_location(instance, filename):
@@ -24,7 +24,7 @@ def property_image_location(instance, filename):
     return url
 
 
-class Building_info(models.Model):
+class Building_data(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
@@ -49,8 +49,8 @@ class Portions(models.Model):
         ('Semi-Furnished', 'Semi-Furnished'),
         ('UnFurnished', 'UnFurnished'),
     )
-    building_info = models.ForeignKey(
-        Building_info, on_delete=models.CASCADE, related_query_name='portions')
+    building_data = models.ForeignKey(
+        Building_data, on_delete=models.CASCADE, related_query_name='portions')
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE)
     unit_no = models.IntegerField(default=0, blank=True)
