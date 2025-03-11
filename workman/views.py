@@ -8,7 +8,7 @@ from django.contrib import messages
 @login_required(login_url='account_login')
 def dashboard(request):
     if request.user.profile.is_workman == False:
-        messages.error(request, 'You are not authorized to access Wrokman Dashboard.')
+        messages.error(request, 'You are not authorized to access Wrokman Dashboard.', extra_tags='danger')
         return redirect('account_login')
     profile = request.user.profile
 

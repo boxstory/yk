@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'fontawesomefree',
+    'django_filters',
 
     # apps
     'accounts',

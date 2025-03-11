@@ -8,6 +8,7 @@ urlpatterns = [
     # accounts urls ----------------------------------------------------------------
     path('profile/', accounts_views.profile, name='profile'),
     path('profile/update/', accounts_views.profile_update, name='profile_update'),
+    path('profile/role_update/', accounts_views.profile_role_update, name='profile_role_update'),
     path('profile/picture/update/', accounts_views.profile_picture_update, name='profile_picture_update'),
 
 

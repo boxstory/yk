@@ -6,26 +6,26 @@
     <!-- extra css -->
 {% endblock extra_css %}
 {% block content %}
-    <!-- content --><div class="container">
-    <div class="d-flex flex-wrap pb-2">
-        <div class="col-5 flex-fill  text-center m-1 pb-3  btn btn-dark">
-            <a href="{% url 'property:own_building' pk=user.pk %}"
-               class="btn btn-dark fw-bold px-md-3">MY PROPERTIES</a>
+    <!-- content -->
+    <div class="container">
+        <div class="d-flex flex-wrap pb-2">
+            <div class="col-5 flex-fill  text-center m-1 pb-3  btn btn-dark">
+                <a href="{% url 'property:building_own' pk=user.pk %}"
+                   class="btn btn-dark fw-bold px-md-3">MY PROPERTIES</a>
+            </div>
+            <div class="col-5 flex-fill  text-center m-1 pb-3 btn btn-dark">
+                <a href="{% url 'property:building_create' pk=user.pk %}"
+                   class="btn btn-dark fw-bold mx-1 px-md-3">ADD PROPERTIES</a>
+            </div>
+            <div class="col-5 flex-fill  text-center  m-1 pb-3 btn btn-dark">
+                <a href="{% url 'property:inquire_lists' %}"
+                   class="btn btn-dark fw-bold  px-md-3">ENQUIRIES LIST</a>
+            </div>
+            <div class="col-5 flex-fill text-center  m-1 pb-3 btn btn-dark">
+                <a href="{% url 'property:inquire_create' %}"
+                   class=" btn btn-dark fw-bold  px-md-3">ADD ENQUIRIES</a>
+            </div>
         </div>
-        <div class="col-5 flex-fill  text-center m-1 pb-3 btn btn-dark">
-            <a href="{% url 'property:building_create' pk=user.pk %}"
-               class="btn btn-dark fw-bold mx-1 px-md-3">ADD PROPERTIES</a>
-        </div>
-        <div class="col-5 flex-fill  text-center  m-1 pb-3 btn btn-dark">
-            <a href="{% url 'property:inquire_lists' %}"
-               class="btn btn-dark fw-bold  px-md-3">ENQUIRIES LIST</a>
-        </div>
-        <div class="col-5 flex-fill text-center  m-1 pb-3 btn btn-dark">
-            <a href="{% url 'property:inquire_create' %}"
-               class=" btn btn-dark fw-bold  px-md-3">ADD ENQUIRIES</a>
-        </div>
-    </div>
-    
         {% if inquires %}
             <div class="row mb-2">
                 {% for inquire in inquires %}

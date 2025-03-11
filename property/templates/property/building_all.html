@@ -1,61 +1,34 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% load static %}
-{% block head_title %}Properties {% endblock %}
-
-
+{% block head_title %}Properties{% endblock %}
 {% block extra_css %}
-<!-- extra css -->
+    <!-- extra css -->
 {% endblock extra_css %}
-
 {% block content %}
-<!-- content -->
-
-
-
-<div class="d-flex flex-wrap">
-
-
-
-    <a
-        href="{% url 'property:own_building' pk=user.pk %}"
-        class="col flex-fill  align-text-center  m-1 p-2 btn btn-dark me-md-2 "
-    >MY PROPERTIES</a>
-
-    <a
-        href="{% url 'property:building_create' pk=user.pk  %}"
-        class="col flex-fill  align-text-center  m-1 p-2 btn btn-dark ms-md-2"
-    >ADD PROPERTIES</a>
-
-</div>
-</div>
-
-{% if properties %}
-
-
-<div class="row m-2">
-    <p> Building Infos </p>
-    {% for property in properties %}
-
-    {% include "property/parts/building_card.html" %}
-
-
-
-    {% endfor %}
-</div>
-
-
-{% else %}
-<h4>
-    There is no property to display.
-</h4>
-{% endif %}
-
-
-
+    <!-- content -->
+    <div class="d-flex flex-wrap">
+        Views By:
+        <a href="{% url 'property:building_all' %}"
+           class="col flex-fill  align-text-center  m-1 p-2 btn btn-dark me-md-2 ">PROPERTIES</a>
+        <a href="{% url 'property:portion_all_building' pk=user.pk %}"
+           class="col flex-fill  align-text-center  m-1 p-2 btn btn-dark ms-md-2">PORTIONS</a>
+        <a href="{% url 'property:building_own' pk=user.pk %}"
+           class="col flex-fill  align-text-center  m-1 p-2 btn btn-dark me-md-2 ">OWN PROPERTIES</a>
+        <a href="{% url 'property:building_create' pk=user.pk %}"
+           class="col flex-fill  align-text-center  m-1 p-2 btn btn-dark ms-md-2">ADD PROPERTIES</a>
+    </div>
+    {% if properties %}
+        <div class="row m-2">
+            <p>Building Infos</p>
+            {% for property in properties %}
+                {% include "property/parts/building_card.html" %}
+            {% endfor %}
+        </div>
+    {% else %}
+        <h4>There is no property to display.</h4>
+    {% endif %}
 {% endblock content %}
-
 <!-- extra js -->
 {% block extra_js %}
-
 {% endblock extra_js %}

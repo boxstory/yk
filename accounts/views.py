@@ -111,6 +111,34 @@ def profile_picture_update(request):
     }
     return render(request, 'accounts/parts/profile_picture_update.html', context)
 
+
+def profile_role_update(request):
+    profile = accounts_models.Profile.objects.get(user_id=request.user.id)
+    form = accounts_forms.ProfileRoleUpdateForm(instance=profile)
+    if request.method == 'POST':
+            print('ProfileRoleUpdateForm')
+            form = accounts_forms.ProfileRoleUpdateForm(
+                request.POST, instance=profile)
+            if form.is_valid():
+                f = form.save(commit=False)
+                print('f.user')
+
+                print(f.user)
+
+                form.save()
+                print('ok')
+                messages.success(request, "Successful Submission")
+                return redirect("accounts:profile")
+            else:
+                messages.error(request, "Error")
+    
+    data = {
+        'profile' : profile,
+        'form' : form,
+    }
+    return render(request, 'accounts/profile_update.html', data)
+
+
 @login_required(login_url='account_login')
 def agent_profile(request):
     agent = accounts_models.Agent.objects.filter(user_id=request.user.id)
@@ -127,7 +155,7 @@ def agent_profile(request):
 
 @login_required(login_url='account_login')
 def join_marketing(request):
-    form = AgentForm(request.POST, request.FILES)
+    form = accounts_forms.AgentForm(request.POST, request.FILES)
     if request.method == 'POST':
         if form.is_valid():
             form = form.save(commit=False)

@@ -66,7 +66,16 @@ class ProfileForm(forms.ModelForm):
 
         return email
     
-    
+class ProfileRoleUpdateForm(forms.ModelForm):
+    class Meta:
+        model = accounts_models.Profile
+        fields = ['is_business', 'is_realtor', 'is_workman']
+        labels = {
+            'is_business': 'Do you own or manage Properties',
+            'is_realtor': 'Are you Realtor / Properties Agents',
+            'is_workman': 'Service Provider to Home or Office',
+        }
+
 
     
 class ProfilePictureForm(forms.ModelForm):

@@ -36,8 +36,9 @@ class Building_data(models.Model):
     building_no = models.IntegerField(default=0, blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
-    photo_main = models.ImageField(upload_to=property_image_location,
+    photo_main = models.ImageField(upload_to=property_image_location, default='property/building_default.png',
                                    help_text='Upload a Featured outside photo', blank=True)
+    portion_count = models.IntegerField(default=0) 
 
     def __str__(self):
         return f'{self.zone_no}, {self.building_no}'
@@ -49,15 +50,36 @@ class Portions(models.Model):
         ('Semi-Furnished', 'Semi-Furnished'),
         ('UnFurnished', 'UnFurnished'),
     )
+    PORTION_CHOICES = (
+        ('BACHLOR_BEDSPACE', 'BACHLOR_BEDSPACE'),
+        ('SINGLE_ROOM', 'SINGLE_ROOM'),
+        ('STUDIO', 'STUDIO'),   
+        ('1BHK', '1BHK'),
+        ('2BHK', '2BHK'),
+        ('3BHK', '3BHK'),
+        ('4BHK', '4BHK'),
+        ('5BHK', '5BHK'),
+        ('5+BHK', '5+BHK'),
+        ('VILLA', 'VILLA'),
+        ('APARTMENT', 'APARTMENT'),
+        ('CAMPSITE', 'CAMPSITE'),
+        ('OFFICE', 'OFFICE'),
+        ('SHOP', 'SHOP'),
+        ('STORAGE', 'STORAGE'),
+        ('OTHER', 'OTHER'),
+    )
     building_data = models.ForeignKey(
         Building_data, on_delete=models.CASCADE, related_query_name='portions')
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE)
     unit_no = models.IntegerField(default=0, blank=True)
+    floor_no = models.IntegerField(default=0, blank=True)
     description = models.TextField(blank=True)
     price = models.IntegerField()
     bedrooms = models.IntegerField(default=1)
     bathrooms = models.IntegerField(default=1)
+    portion_type = models.CharField(
+        max_length=100, choices=PORTION_CHOICES, default='STUDIO')
     furnished_type = models.CharField(
         max_length=100, choices=CHOICES, default='No')
     furnished_extra_info = models.CharField(

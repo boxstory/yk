@@ -21,7 +21,7 @@ This Property({{building_id}}) includes <b>{{portions.count|stringformat:"00i"}}
 
 
 
-    <div class="container my-4">
+    <div class="container my-4 d-flex flex-wrap">
         {% for portion in portions %}
 
 
@@ -45,7 +45,7 @@ This Property({{building_id}}) includes <b>{{portions.count|stringformat:"00i"}}
         {% else %}
         <a href="{% url 'property:building_create' pk=user.pk  %}" class="btn btn-dark  px-5 px-md-3">Add Properties</a>
         {% endif %}
-        <a href="{% url 'property:own_building' user.id  %}" class="btn btn-dark  px-3 px-md-5 order-md-1">Own
+        <a href="{% url 'property:building_own' user.id  %}" class="btn btn-dark  px-3 px-md-5 order-md-1">Own
             Properties</a>
     </div>
 
