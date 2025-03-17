@@ -20,12 +20,12 @@ urlpatterns = [
          views.building_update, name='building_update'),
 
     # portions display
-    path('<int:pk>/',
+    path('<int:pk>/portion_all_building/',
          views.portion_all_building, name='portion_all_building'),
     path('<int:pk>/<int:building_id>/<int:portion_id>/',
          views.portion_single, name='portion_single'),
     path('<int:pk>/<int:building_id>/',
-         views.portion_all, name='portion_all'),
+         views.portion_single_building, name='portion_single_building'),
 
      # portion add update delete
     path('<int:pk>/<int:building_id>/add/',

@@ -69,7 +69,7 @@ class Portions(models.Model):
         ('OTHER', 'OTHER'),
     )
     building_data = models.ForeignKey(
-        Building_data, on_delete=models.CASCADE, related_query_name='portions')
+        Building_data, on_delete=models.CASCADE, related_name='portions')
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE)
     unit_no = models.IntegerField(default=0, blank=True)
@@ -114,7 +114,7 @@ class Portions(models.Model):
 
 class Portions_status(models.Model):
     CHOICES = (
-        ('OCCUPIED', 'Ocuppied'),
+        ('OCCUPIED', 'Occupied'),
         ('VACANT', 'Vacant'),
         ('BOOKED', 'Booked'),
         ('VACANT_SOON', 'Vacant soon'),
@@ -123,7 +123,7 @@ class Portions_status(models.Model):
         Portions, on_delete=models.CASCADE, related_name='portions_status')
     vacant_date = models.DateField(help_text='Enter date upcoming vacant')
     status = models.CharField(
-        max_length=100, choices=CHOICES, default='Ocuppied')
+        max_length=100, choices=CHOICES, default='Occupied')
 
     def __str__(self):
         return self.status

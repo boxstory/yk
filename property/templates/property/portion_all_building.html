@@ -12,7 +12,7 @@
     <!-- content -->
     {% if portions %}
         This Property({{ building_id }}) includes <b>{{ portions.count|stringformat:"00i" }}</b> Portions.
-        <div class="container my-4">
+        <div class="container my-4 d-flex flex-wrap">
             {% for portion in portions %}
                 {% include "property/parts/portion_card.html" %}
             {% endfor %}

@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block head_title %}Property{% endblock %}
+{% block extra_css %}
+    <!-- extra css -->
+    <link rel="stylesheet"
+          href="{% static 'property/css/property.css' %}"
+          type="text/css" />
+{% endblock extra_css %}
+{% block content %}
+    <!-- content -->
+    {% if portions %}
+        This Property({{ building_id }}) includes <b>{{ portions.count|stringformat:"00i" }}</b> Portions.
+        <div class="container my-4 d-flex flex-wrap">
+            {% for portion in portions %}
+                <div class="col-12  p-1 d-flex border border-dark   border-2">
+                    <div class="col-8 col-md-9  p-2">
+                        <p class="card-title">Building No: {{ building_id }}</p>
+                        <p class="card-title">Portion Code: {{ portion.unit_no }}</p>
+                        <p class="card-title">Floor: {{ portion.floor_no }}</p>
+                        <p class="card-title">
+                            <i class="fa-solid fa-bed"></i>
+                            Note : {{ portion.description }}
+                        </p>
+                    </div>
+                    <div class="col-4 col-md-3  text-end p-2">
+                        {% if portion.portions_status.first.status == 'BOOKED' %}
+                            <span class="d-block bg-danger py-1 fw-bold bg-gradient text-white text-center">Booked</span>
+                        {% elif portion.portions_status.first.status == 'VACANT' %}
+                            <span class="d-block bg-danger py-1 fw-bold bg-gradient text-white text-center">VACANT</span>
+                            {% if portion.portions_status.first.vacant_date %}
+                                <span class="d-block text-center">Vacant On: {{ portion.portions_status.first.vacant_date }}</span>
+                            {% endif %}
+                        {% elif portion.portions_status.first.status == 'VACANT_SOON' %}
+                            <span class="d-block bg-warning py-1 fw-bold bg-gradient text-dark text-center">Soon</span>
+                            {% if portion.portions_status.first.vacant_date %}
+                                <span class="d-block text-center">Date: {{ portion.portions_status.first.vacant_date }}</span>
+                            {% endif %}
+                        {% elif portion.portions_status.first.status == 'OCCUPIED' %}
+                            <span class="d-block  bg-success py-1 fw-bold bg-gradient text-white text-center">Occupied</span>
+                        {% else %}
+                            <span class="d-block bg-danger py-1 fw-bold bg-gradient text-white text-center">Not Set</span>
+                        {% endif %}
+                        <a class="mt-2 text-decoration-none" href="#">
+                            <span class="btn btn-outline-dark d-block  py-1 fw-bold text-center">Update <span class="d-none d-md-inline">Staus</span></span> </a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <h4 class="p-3">This Property({{ building_id }})'s portions not Added.</h4>
+        {% endif %}
+    </div>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end pt-4">
+        {% if user_id == pk %}
+            <a href="{% url 'property:portion_add' user.id building_id %}"
+               class="btn btn-dark  px-5 px-md-5 order-md-2">Add Portions</a>
+        {% else %}
+            <a href="{% url 'property:building_create' pk=user.pk %}"
+               class="btn btn-dark  px-5 px-md-3">Add Properties</a>
+        {% endif %}
+        <a href="{% url 'property:building_own' user.id %}"
+           class="btn btn-dark  px-3 px-md-5 order-md-1">Own
+        Properties</a>
+    </div>
+{% endblock content %}
+<!-- extra js -->
+{% block extra_js %}
+{% endblock extra_js %}

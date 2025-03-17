@@ -27,11 +27,11 @@ def building_all(request):
 
 
         
-        data = {
+        context = {
             'properties': properties,
             'portions_count': portions_count,
         }
-        return render(request,  'property/building_all.html', data)
+        return render(request,  'property/building_all.html', context)
     return render(request, "property/")
 
 
@@ -113,36 +113,31 @@ def building_update(request, pk, building_id):
 
 # portions  *********************************************************************
 @ login_required(login_url='account_login')
-def portion_all(request, pk, building_id):
+def portion_single_building(request, pk, building_id):
     pk = pk
     user_id = request.user.id
-    portion_all = property_models.Portions.objects.filter(
+    portion_single_building = property_models.Portions.objects.filter(
         Q(building_data_id=building_id) & Q(user_id=pk))
 
     context = {
-        'portions': portion_all,
+        'portions': portion_single_building,
         'building_id': building_id,
         'pk': pk,
         'user_id': user_id
     }
-    template = 'property/portion_all.html'
-    return render(request, template, context)
+    return render(request, 'property/portion_single_building.html', context)
 
 
 @ login_required(login_url='account_login')
-def portion_all_building(request, pk, building_id):
-    pk = pk
+def portion_all_building(request, pk):
     user_id = request.user.id
     portion_all = property_models.Portions.objects.all()
 
     context = {
         'portions': portion_all,
-        'building_id': building_id,
-        'pk': pk,
         'user_id': user_id
     }
-    template = 'property/portion_all_building.html'
-    return render(request, template, context)
+    return render(request, 'property/portion_all_building.html', context)
 
 
 @ login_required(login_url='account_login')
@@ -157,8 +152,7 @@ def portion_single(request, pk, building_id, portion_id):
     context = {
         'portion': portion
     }
-    template = 'property/portion_single.html'
-    return render(request, template, context)
+    return render(request, 'property/portion_single.html', context)
 
 
 @ login_required(login_url='account_login')
@@ -175,8 +169,10 @@ def portion_add(request, pk, building_id):
 
             form.save()
 
-            return redirect('property:portion_all', pk, building_id)
+            return redirect('property:portion_single_building', pk, building_id)
     context = {'form': form}
+
+
     return render(request, 'property/portion_add.html', context)
 
 
@@ -184,7 +180,7 @@ def portion_add(request, pk, building_id):
 @login_required(login_url='account_login')
 def portion_update(request, pk, building_id, portion_id):
     all_portions = get_object_or_404(
-        property_models.Portions, id=portion_id)
+        property_models.Portions, id=portion_id, building_id=building_id)
     print(all_portions)
     form = property_forms.PortionsForm(instance=all_portions)
     if request.method == 'POST':
@@ -194,7 +190,7 @@ def portion_update(request, pk, building_id, portion_id):
             form = form.save(commit=False)
             form.user = request.user
             form.save()
-            return redirect('property:portion_all', pk, building_id)
+            return redirect('property:portion_single_building', pk, building_id)
     context = {
         'form': form,
 
@@ -243,7 +239,7 @@ def vacant_status(request, pk, building_id, portion_id):
             print(form.portions_id)
             form.save()
             print(form)
-            return redirect('property:portion_all', pk, building_id)
+            return redirect('property:portion_single_building', pk, building_id)
     context = {
         'form': form,
 

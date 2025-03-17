@@ -19,14 +19,15 @@
            class="col flex-fill  align-text-center  m-1 p-2 btn btn-dark ms-md-2">ADD PROPERTIES</a>
     </div>
     {% if properties %}
-        <div class="row m-2">
-            <p>Building Infos</p>
+        <div class="container d-flex flex-wrap">
             {% for property in properties %}
                 {% include "property/parts/building_card.html" %}
             {% endfor %}
         </div>
     {% else %}
-        <h4>There is no property to display.</h4>
+        <div class="container ">
+            <h4>There is no property to display.</h4>
+        </div>
     {% endif %}
 {% endblock content %}
 <!-- extra js -->
