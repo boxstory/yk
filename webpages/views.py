@@ -80,6 +80,12 @@ def about(request):
     return render(request, 'webpages/about.html', context)
 
 
+def robots(request):
+    context = {}
+    return render(request, 'webpages/robots.html', context )
+
+
+
 def careers_list(request):
     jobs = webpage_models.JobList.objects.all()
    

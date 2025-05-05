@@ -4,11 +4,7 @@
             <h3 class="mb-0">{{ property.name }}</h3>
             <strong class="d-inline-block mb-2 text-success">Zone: {{ property.zone_no }}-{{ property.landmark }}</strong>
             <strong class="d-inline-block mb-2 text-success">Code: {{ property.client_code }}</strong>
-            <strong class="d-inline-block mb-2 text-success">Portions:
-                {% for portion in portions_count %}
-                    {% if portion.id == property.id %}{{ portion.number_of_portions }}{% endif %}
-                {% endfor %}
-            </strong>
+            <strong class="d-inline-block mb-2 text-success">Portions: {{ property.portions.count }}</strong>
         </div>
         <div class="col-4 text-end">
             <img class="img-fluid img-thumbnail rounded border-0 "

@@ -92,3 +92,5 @@ class CareersApplication(models.Model):
     class Meta:
         verbose_name = "Careers Application"
         verbose_name_plural = "Careers Applications"
+
+
