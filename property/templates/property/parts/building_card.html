@@ -1,4 +1,4 @@
-<div class=" col-md-12 p-0 p-md-2 col-12">
+<div class=" col-md-12 p-0 p-md-2 col-12 pb-2">
     <div class="row g-0 border rounded overflow-hidden flex-md-row p-2 shadow-sm h-md-250 position-relative">
         <div class="col-8 px-2 d-flex flex-column pt-2">
             <h3 class="mb-0">{{ property.name }}</h3>
@@ -7,7 +7,7 @@
             <strong class="d-inline-block mb-2 text-success">Portions: {{ property.portions.count }}</strong>
         </div>
         <div class="col-4 text-end">
-            <img class="img-fluid img-thumbnail rounded border-0 "
+            <img class="img-fluid img-thumbnail rounded border-0 property-img"
                  src="{{ MEDIA_URL }}{{ property.photo_main }}"
                  style="height:150px"
                  role="img"
@@ -53,14 +53,14 @@
             <div>
                 <div class="d-flex pt-md-1 justify-content-end flex-wrap">
                     <a href="{% url 'property:portion_vacant_status_list_update' property.user.id property.id %}"
-                       class="px-3 d-block mb-2 rounded-3  bg-dark py-1 fw-bold text-light text-center p text-decoration-none me-1"><i class="fa-solid fa-pen-to-square"></i> Status</a>
+                       class="    mb-2 rounded-3    py-1 btn btn-dark    text-decoration-none me-1 responsive-btn"><i class="fa-solid fa-pen-to-square"></i> Status</a>
                     <a href="{% url 'property:portion_add' property.user.id property.id %}"
-                       class="px-3 d-block mb-2 rounded-3 bg-dark py-1 fw-bold text-light text-center text-decoration-none me-1"><i class="fa-solid fa-pen-to-square"></i> Portion</a>
+                       class="mb-2 rounded-3    py-1 btn btn-dark    text-decoration-none me-1 responsive-btn"><i class="fa-solid fa-pen-to-square"></i> Portion</a>
                     <a href="{% url 'property:portion_single_building' property.user.id property.id %}"
-                       class="px-3 d-block mb-2 rounded-3  bg-dark py-1 fw-bold text-light text-center text-decoration-none me-1"><i class="fa-solid fa-add"></i> Portions</a>
+                       class="mb-2 rounded-3    py-1 btn btn-dark    text-decoration-none me-1 responsive-btn"><i class="fa-solid fa-add"></i> Portions</a>
                     {% if request.user.id == property.user.id %}
                         <a href="{% url 'property:building_update' property.user.id property.id %}"
-                           class="px-3 d-block mb-2 rounded-3  bg-dark py-1 fw-bold text-light text-center text-decoration-none me-1"><i class="fa-solid fa-pen-to-square"></i> Property</a>
+                           class="mb-2 rounded-3    py-1 btn btn-dark    text-decoration-none me-1 responsive-btn"><i class="fa-solid fa-pen-to-square"></i> Property</a>
                     {% endif %}
                 </div>
             </div>

@@ -7,13 +7,18 @@
   --fa-style-family-brands: 'Font Awesome 6 Brands';
   --fa-font-brands: normal 400 1em/1 'Font Awesome 6 Brands'; }
 
-@font-face {
-  font-family: 'Font Awesome 6 Brands';
-  font-style: normal;
-  font-weight: 400;
-  font-display: block;
-  src: url("../webfonts/fa-brands-400.woff2") format("woff2"), url("../webfonts/fa-brands-400.ttf") format("truetype"); }
-
+  @font-face {
+    font-family: "Poppins-Medium";
+    src: local("Poppins-Medium"),
+      url("../fonts/Poppins-Medium.ttf") format("truetype");
+  }
+  
+  @font-face {
+    font-family: "Poppins-Light";
+    src: local("Poppins-Light"),
+      url("../fonts/Poppins-Light.ttf") format("truetype");
+  }
+  
 .fab,
 .fa-brands {
   font-weight: 400; }

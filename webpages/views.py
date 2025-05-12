@@ -85,6 +85,36 @@ def robots(request):
     return render(request, 'webpages/robots.html', context )
 
 
+def workman_services(request):
+    context = {}
+    return render(request, 'webpages/workman_services.html', context )
+
+
+def workman_join(request):
+    context = {}
+    return render(request, 'webpages/workman_services.html', context )
+
+
+def realtor_services(request):
+    context = {}
+    return render(request, 'webpages/realtor_services.html', context )
+
+
+def realtor_join(request):
+    context = {}
+    return render(request, 'webpages/realtor_services.html', context )
+
+
+def property_services(request):
+    context = {}
+    return render(request, 'webpages/property_services.html', context )
+
+
+def property_join(request):
+    context = {}
+    return render(request, 'webpages/property_services.html', context )
+
+
 
 def careers_list(request):
     jobs = webpage_models.JobList.objects.all()
