@@ -59,6 +59,23 @@ def contact(request):
     return render(request, 'webpages/contact.html', context)
 
 
+def join_leads(request):
+    print("join_leads")
+    if request.method == 'POST':
+        form = SubscribeForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request, 'Form submission successful')
+            return redirect('accounts:signup')
+
+        return HttpResponseRedirect(request.path_info)
+    form = SubscribeForm()
+    context = {'form': form}
+
+    return render(request, 'webpages/join_leads.html', context)
+
+
 def services(request):
     return render(request, 'webpages/services.html')
 

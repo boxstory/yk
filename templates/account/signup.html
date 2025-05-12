@@ -19,7 +19,7 @@
     .{% endblocktrans %}</p>
 </div>
 
-<form class="signup px-5" id="signup_form" method="post" action="{% url 'account_signup' %}">
+<form class="signup px-5 col-8 mx-auto" id="signup_form" method="post" action="{% url 'account_signup' %}">
   {% csrf_token %}
   {{ form | crispy }}
   {% if redirect_field_value %}
@@ -27,7 +27,7 @@
   {% endif %}
   <div class=" text-center ">
     <button class=" primaryAction  btn btn-dark text-uppercase mb-4" type="submit">
-      {% trans "Sign Up" %} &raquo;</button>
+      {% trans "Sign Up" %}  </button>
   </div>
 </form>
 

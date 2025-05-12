@@ -4,7 +4,6 @@
 {% block head_title %}Home{% endblock %}
 {% block extra_css %}
     <!-- extra css -->
-    
 {% endblock extra_css %}
 {% block content %}
     <!-- Hero Section -->
@@ -13,9 +12,13 @@
             {% if messages %}
                 <div class="col-12">
                     {% for message in messages %}
-                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show"
+                             role="alert">
                             {{ message }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <button type="button"
+                                    class="btn-close"
+                                    data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
                         </div>
                     {% endfor %}
                 </div>
@@ -24,7 +27,6 @@
             <div class="col-md-12 p-2 p-md-4 ps-md-5 mx-auto ">
                 <h1 class=" text-center py-3 ">Your Expert Partner in Full-Service Management Excellence!</h1>
                 <!-- clients -->
-                 
                 <div class=" d-md-flex ali</div>gn-items-center service-section pb-md-5">
                     <div class="property-management col-12 col-md-6 p-2  me-2 rounded-5  ps-md-5">
                         <h4 class="p-2">We Do for Property Holders</h4>
@@ -46,10 +48,12 @@
                             </li>
                         </ul>
                         <div class="col-10 justify-content-end d-flex">
-                            <a href="{% url 'webpages:property_services' %}" class="btn btn-light border rounded-pill text-decoration-none me-2">
+                            <a href="{% url 'webpages:property_services' %}"
+                               class="btn btn-light border rounded-pill text-decoration-none me-2">
                                 <p class="m-0  text-dark">Know More</p>
                             </a>
-                            <a href="{% url 'clients:dashboard' %}" class="btn btn-light border rounded-pill text-decoration-none">
+                            <a href="{% url 'clients:dashboard' %}"
+                               class="btn btn-light border rounded-pill text-decoration-none">
                                 <p class="m-0  text-dark">Property Dashboard</p>
                             </a>
                         </div>
@@ -85,10 +89,12 @@
                             </li>
                         </ul>
                         <div class="col-10 justify-content-end d-flex">
-                            <a href="{% url 'webpages:realtor_services' %}" class="btn btn-light border rounded-pill text-decoration-none me-2">
+                            <a href="{% url 'webpages:realtor_services' %}"
+                               class="btn btn-light border rounded-pill text-decoration-none me-2">
                                 <p class="m-0  text-dark">Know More</p>
                             </a>
-                            <a href="{% url 'realtor:dashboard' %}" class="btn btn-light border rounded-pill text-decoration-none">
+                            <a href="{% url 'realtor:dashboard' %}"
+                               class="btn btn-light border rounded-pill text-decoration-none">
                                 <p class="m-0  text-dark">Realator Dashboard</p>
                             </a>
                         </div>
@@ -124,10 +130,12 @@
                             </li>
                         </ul>
                         <div class="col-10 justify-content-end d-flex">
-                            <a href="{% url 'webpages:workman_services' %}" class="btn btn-light border rounded-pill text-decoration-none me-2">
+                            <a href="{% url 'webpages:workman_services' %}"
+                               class="btn btn-light border rounded-pill text-decoration-none me-2">
                                 <p class="m-0  text-dark">Know More</p>
                             </a>
-                            <a href="{% url 'workman:dashboard' %}" class="btn btn-light border rounded-pill text-decoration-none">
+                            <a href="{% url 'workman:dashboard' %}"
+                               class="btn btn-light border rounded-pill text-decoration-none">
                                 <p class="m-0  text-dark">Workman Dashboard</p>
                             </a>
                         </div>
@@ -150,7 +158,20 @@
                 <h5 class="fw-bold   pb-3">Your Expert Partner in Full-Service Property Management Excellence!</h5>
                 <div class="row">
                     <p>
-                        Yellowkey Holdings provides a comprehensive suite of services tailored for property owners and seamless collaboration with agents. For property owners, our dedicated team handles all aspects of property management, from tenant relations and rent collection to expert property photography and ongoing maintenance. Our specialized 'Property Management Photo' service further enhances your property's appeal. Working in tandem with agents, Yellowkey ensures maximum exposure for your listings with services like Vacant Property Listings, Vacant Soon Lists, and streamlined management of multiple properties. Our commitment to fostering a shared community of trusted agents creates a collaborative environment, ensuring unparalleled support throughout your property journey. Trust Yellowkey for holistic property solutions that prioritize owner satisfaction and successful agent partnerships.
+                        For Tenants
+                        With YellowKey, renting is easy and stress-free. You can quickly report issues, request services, and stay updated through our smooth communication tools. We help ensure your home stays comfortable and well-maintained — always.
+                    </p>
+                    <p>
+                        For Property Holders
+                        YellowKey takes care of everything for property holders — from handling tenants and collecting rent to regular maintenance and professional photography. Our unique Property Management Photo service helps your property stand out and attract better tenants.
+                    </p>
+                    <p>
+                        For Real Estate Agents
+                        We work closely with agents to maximize listing exposure. Use our tools like Vacant Property Listings, Vacant Soon Alerts, and easy multi-property management to stay ahead. Our platform is built to simplify your work and improve your results.
+                    </p>
+                    <p>
+                        For Service Providers
+                        YellowKey connects skilled professionals like you to verified job opportunities across Qatar. From plumbing to cleaning, accept tasks in your area, get paid on time, and grow your business — all through one smart dashboard.
                     </p>
                 </div>
             </div>
@@ -159,8 +180,8 @@
         <div class="container col-md-10 bg-light py-3 px-auto ">
             <div class="row">
                 <div class="text-center">
-                    <h2 class="fw-bold mt-8  ">Join Now with Yellowkey Holdings Qatar</h2>
-                    <h5 class="fw-bold   pb-3">get connected</h5>
+                    <h2 class="fw-bold mt-8  ">Join Now with Yellowkey Qatar</h2>
+                    <p class="fw-bold   pb-3">Effortless Property Marketing for Smart Agents & Property holders</p>
                 </div>
                 <div class="container col-md-10">{{ form | crispy }}</div>
                 <button type="submit"

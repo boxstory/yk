@@ -8,16 +8,16 @@
 {% endblock extra_css %}
 {% block content %}
     <!-- content -->
-    <div class="d-flex flex-wrap">
+    <div class="container d-flex justify-content-end  ">
        
         <a href="{% url 'property:building_all' %}"
-           class="col flex-fill  align-text-center  m-1 p-2 btn btn-dark ms-md-2   responsive-btn">PROPERTIES</a>
+           class="    align-text-center  m-1 px-2 btn btn-dark ms-md-2   responsive-btn">PROPERTIES</a>
         <a href="{% url 'property:portion_all_building' pk=user.pk %}"
-           class="col flex-fill  align-text-center  m-1 p-2 btn btn-dark ms-md-2 responsive-btn">PORTIONS</a>
+           class="   align-text-center  m-1 px-2 btn btn-dark ms-md-2 responsive-btn">PORTIONS</a>
         <a href="{% url 'property:building_own' pk=user.pk %}"
-           class="col flex-fill  align-text-center  m-1 p-2 btn btn-dark me-md-2 responsive-btn">OWN PROPERTIES</a>
+           class="    align-text-center  m-1 px-2 btn btn-dark me-md-2 responsive-btn">OWN PROPERTIES</a>
         <a href="{% url 'property:building_create' pk=user.pk %}"
-           class="col d-none d-md-block flex-fill  align-text-center  m-1 p-2 btn btn-dark ms-md-2 responsive-btn">ADD PROPERTIES</a>
+           class=" d-none d-md-block    align-text-center  m-1 px-2 btn btn-dark ms-md-2 responsive-btn">ADD PROPERTIES</a>
     </div>
     {% if properties %}
         <div class="container d-flex flex-wrap">

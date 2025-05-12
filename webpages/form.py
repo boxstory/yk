@@ -14,9 +14,9 @@ class SubscribeForm(forms.ModelForm):
         }
         labels = {
             'mobile_no': 'Mobile No: (Only Qatar Mob No, without 974)',
-            'is_realator': 'Realator :: Property Marketer',
-            'is_clients': 'Property Holders :: Re-renting Properties',
-            'is_workman': 'Mainanace service Provider for Homes and Offices',
+            'is_clients': 'PROPERTIES :: Holding Properties for rental or sale',
+            'is_realator': 'REALTOR :: Property Marketer',
+            'is_workman': 'WORKMAN :: Mainanace service Provider for Homes and Offices',
         }
 
 

@@ -15,6 +15,7 @@ urlpatterns = [
      # webpage urls ----------------------------------------------------------------
      path('about/', webpages_views.about, name='about'),
      path('contact/', webpages_views.contact, name='contact'),
+     path('join_leads/', webpages_views.join_leads, name='join_leads'),
      path('services/', webpages_views.services, name='services'),
      path('property_services/', webpages_views.property_services, name='property_services'),
      path('property_services/join/', webpages_views.property_join, name='property_join'),
