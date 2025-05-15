@@ -1,3 +1,11 @@
 <div class="bg-white shadow rounded-lg d-block d-sm-flex mb-3">
-    <div class="col-12 p-4">home / user / role / dashboard</div>
+    <div class="col-12 p-4">
+        {% if request.resolver_match.url_name == 'profile' %}
+            Home /  <span class="text-danger">User</span> 
+        {% elif  request.resolver_match.url_name == 'profile_update' %}
+            Home / User / <span class="text-danger">Update</span>
+        {% elif  request.resolver_match.url_name == 'profile_role_update' %}
+            Home / User / <span class="text-danger">Role / Update</span>
+        {% endif %}
+    </div>
 </div>

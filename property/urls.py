@@ -36,7 +36,7 @@ urlpatterns = [
      # vacant status display update
     path('<int:pk>/<int:building_id>/<int:portion_id>/vacant_status',
          views.vacant_status, name='vacant_status'),
-    path('<int:pk>/<int:building_id>/portion_vacant_status_list_update',
-         views.portion_vacant_status_list_update, name='portion_vacant_status_list_update'),
+    path('<int:pk>/<int:building_id>/portion_vacant_status_list',
+         views.portion_vacant_status_list, name='portion_vacant_status_list'),
 
 ]

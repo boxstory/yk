@@ -80,7 +80,9 @@ def services(request):
     return render(request, 'webpages/services.html')
 
 #@todo
-# add_property
+
+
+
 
 
 def about(request):

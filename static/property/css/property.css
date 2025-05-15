@@ -1,1 +1,113 @@
 
+/* property portion card css */
+
+.property-wrapper {
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .property-card {
+      background-color: #fff;
+      color: #727982;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25), 0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.03);
+      width: 100%;
+      max-width: 100vh;
+      margin: 0 auto;
+  }
+  .section-container {
+    padding: 1.3rem 1rem 1.3rem 1rem;
+  }
+  .property-img {
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+  } 
+  .property-img .heart {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
+  .property-img img {
+    
+    width: 100%;
+  }
+  .title {
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+  .price {
+    color: #232c3d;
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+  .aminities {
+    display: flex;
+    flex-wrap: wrap;
+    border-top: 2px solid #f2f4f7;
+  }
+  .aminities .room_count {
+    color: #232c3d;
+    font-weight: 700;
+    padding: 0.8rem 0;
+  }
+  .room {
+    display: flex;
+    align-items: center;
+  }
+  .icon {
+    margin-right: .5rem;
+    margin-top: -0.3rem;
+  }
+  .room:first-child {
+    margin-right: 1rem;
+  }
+  .contact {
+    display: flex;
+    background-color: #f2f4f7;
+    align-items: center;
+  }
+  .contact img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  .contact_info {
+    flex-grow: 1;
+    padding-left: 1rem;
+  }
+  .contact_name {
+    color: #232c3d;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  .property_code {
+    font-size: 1rem;
+    margin-bottom: 0px;
+  }
+  .schedule {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    color: #000000;
+    width: 100%;
+    background-color: #ebcb1b;
+    transition: all 0.3s;
+  }
+  .schedule:hover {
+    background-color: #e4ac14;
+  }
+  
+  
+/* property main card css */
+  

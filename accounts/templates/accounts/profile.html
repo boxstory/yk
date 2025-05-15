@@ -76,27 +76,29 @@
                                     </div>
                                 </div>
                                 <p class="pt-0 m-0 mt-3">Roles</p>
-                                <div class="d-md-flex col-12">
-                                    <div class="col-md-4  me-md-2 mb-2">
+                                <div class="d-md-flex ">{% if user.profile.is_business %}
+                                    <div class="col-md-5  pe-md-2  mb-2">
                                         <div class="form-group ">
                                             <input type="text"
-                                                   {% if user.profile.is_business %} class="form-control " value="Property Holder "{% else %}class="d-none" {% endif %}
+                                                    class="form-control " value="Property Holder" 
+                                                   disabled
+                                                   readonly>
+                                        </div>
+                                    </div>{% endif %}
+                                    {% if user.profile.is_realtor %}
+                                    <div class="col-md-4  mb-2  pe-md-2">
+                                        <div class="form-group">
+                                            <input type="text"
+                                                    class="form-control " value="Realtor"
                                                    disabled
                                                    readonly>
                                         </div>
                                     </div>
-                                    <div class="col-md-3  mb-2  me-md-2">
+                                    {% endif %}
+                                    <div class="col-md-3  ">
                                         <div class="form-group">
                                             <input type="text"
-                                                   {% if user.profile.is_realtor %} class="form-control " value="Realtor "{% else %}class="d-none" {% endif %}
-                                                   disabled
-                                                   readonly>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3   me-md-2">
-                                        <div class="form-group">
-                                            <input type="text"
-                                                   {% if user.profile.is_workman %} class="form-control " value="Service Holder "{% else %}class="d-none" {% endif %}
+                                                   {% if user.profile.is_workman %} class="form-control " value="Workman"{% else %}class="d-none" {% endif %}
                                                    disabled
                                                    readonly>
                                         </div>

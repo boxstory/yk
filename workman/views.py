@@ -18,3 +18,15 @@ def dashboard(request):
     }
 
     return render(request, 'workman/dashboard.html', data)
+
+
+def workman_profile(request):
+    if request.user.profile.is_workman == False:
+        messages.error(request, 'You are not authorized to access Wrokman Dashboard.', extra_tags='danger')
+        return redirect('account_login')
+    profile = request.user.profile
+    data = {
+        'profile': profile
+    }
+
+    return render(request, 'workman/profile.html', data)

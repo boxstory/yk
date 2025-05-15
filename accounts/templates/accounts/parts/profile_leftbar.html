@@ -42,7 +42,7 @@
          id="v-pills-tab"
          role="tablist"
          aria-orientation="vertical">
-        <a class="nav-link active bg-dark fw-bold"
+        <a class="nav-link   text-dark {% if request.resolver_match.url_name == 'profile' %} active  text-white  bg-dark {% elif  request.resolver_match.url_name == 'update_profile' %} active  text-white  bg-dark {% endif %}"
            id="account-tab"
            data-toggle="pill"
            href="{% url 'accounts:profile' %}"
@@ -52,7 +52,7 @@
             <i class="fa fa-home text-center pe-2"></i>
             Account
         </a>
-        <a class="nav-link text-dark py-3"
+        <a class="nav-link    text-dark {% if request.resolver_match.url_name == 'profile_role_update' %} active  text-white  bg-dark  {% endif %}"
            id="application-tab"
            data-toggle="pill"
            href="{% url 'accounts:profile_role_update' %}"
@@ -60,7 +60,7 @@
            aria-controls="application"
            aria-selected="false">
             <i class="fa fa-user text-center pe-2"></i>
-            Role Update
+            Role Update 
         </a>
         <a class="nav-link text-dark"
            id="notification-tab"

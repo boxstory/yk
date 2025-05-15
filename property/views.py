@@ -199,7 +199,7 @@ def portion_update(request, pk, building_id, portion_id):
 
 
 @login_required(login_url='account_login')
-def portion_vacant_status_list_update(request, pk, building_id):
+def portion_vacant_status_list(request, pk, building_id):
 
     building = property_models.Building_data.objects.get(id=building_id)
 
@@ -216,7 +216,7 @@ def portion_vacant_status_list_update(request, pk, building_id):
         'building_id': building_id,
     }
      
-    return render(request, 'property/portion_vacant_status_list_update.html', context )
+    return render(request, 'property/portion_vacant_status_list.html', context )
 
 @login_required(login_url='account_login')
 def vacant_status(request, pk, building_id, portion_id):
