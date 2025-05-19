@@ -21,8 +21,16 @@ def unique_id(num):
 def profile(request):
     if accounts_models.Profile.objects.filter(user=request.user).exists():
         profile = accounts_models.Profile.objects.filter( user_id=request.user.id)[0]
+        print('profile.first_name')
+        print(profile.first_name)
+        if profile.first_name == '':
+            return redirect('accounts:profile_update')
+        if profile.is_business == False and profile.is_realtor == False and profile.is_workman == False:
+            return redirect('accounts:profile_role_update')
     else:
         profile = accounts_models.Profile.objects.create( user_id=request.user.id, first_name=request.user.first_name, last_name=request.user.last_name, username=request.user.username, email=request.user.email)
+        redirect('accounts:profile_update')
+
 
     if accounts_models.ProfilePicture.objects.filter(user=request.user).exists():
         profile_picture = accounts_models.ProfilePicture.objects.filter( user_id=request.user.id)[0]
@@ -136,7 +144,7 @@ def profile_role_update(request):
         'profile' : profile,
         'form' : form,
     }
-    return render(request, 'accounts/profile_update.html', data)
+    return render(request, 'accounts/profile_role_update.html', data)
 
 
 @login_required(login_url='account_login')

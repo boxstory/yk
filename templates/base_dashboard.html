@@ -1,44 +1,51 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    {% include "includes/head.html" %}
-    {% include "includes/css/style.html" %}
-    <!-- extra css -->
-    {% block extra_css %}
-    {% endblock extra_css %}
-    <title>
-        {% block head_title %}
-        Home | Yellowkey
-        {% endblock head_title %}
-    </title>
-</head>
-
-<body class="min-vh-100">
-    {% include "includes/navbar.html" %}
-    <main class="col-12 min-vh-100">
-        <section class="py-1 bg-warning">
-            <div class="container">
-                <div class="col-12  text-center">
-                    <p class="p p-0 m-0">We are diligently working on something amazing. Sign up now for early access.</p>
+    <head>
+        {% include "includes/head.html" %}
+        <!-- extra css -->
+        <!-- extra css -->
+        <link type="text/css"
+              rel="stylesheet"
+              href="{% static '/webpages/css/base.css' %}">
+        {% include "includes/css/dashboard_style.html" %}
+        {% block extra_css %}
+        {% endblock extra_css %}
+        <title>
+            {% block head_title %}
+                Dashboard
+            {% endblock head_title %}
+            | Yellowkey
+        </title>
+    </head>
+    <body class="min-vh-100">
+        {% include "includes/navbar.html" %}
+        <main class="col-12 min-vh-100">
+            <section class="py-1 bg-warning">
+                <div class="container">
+                    <div class="col-12  text-center">
+                        <p class="p p-0 m-0">We are diligently working on something amazing. Sign up now for early access.</p>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <!-- body content goes here -->
-        {% block content %}
-        {% endblock content %}
-        <!-- account_content goes here -->
-        <div class="col-11 col-md-8 col-lg-6 mx-auto ">
-            {% block account_content %}
-            {% endblock account_content %}
+            </section>
+            <div class="d-flex">
+            {% block sidebar %}
+                <!-- sidebar -->
+            {% endblock sidebar %}
+            <!-- body content goes here -->
+            {% block content %}
+            {% endblock content %}
         </div>
-    </main>
-    {% include "includes/footer.html" %}
-    {% include "includes/scripts.html" %}
-    {% block extra_js %}
-    <!-- extra js -->
-    {% endblock extra_js %}
-</body>
-
+            <!-- account_content goes here -->
+            <div class="col-11 col-md-8 col-lg-6 mx-auto ">
+                {% block account_content %}
+                {% endblock account_content %}
+            </div>
+        </main>
+        {% include "includes/footer.html" %}
+        {% include "includes/scripts.html" %}
+        {% block extra_js %}
+            <!-- extra js -->
+        {% endblock extra_js %}
+    </body>
 </html>

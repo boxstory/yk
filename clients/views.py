@@ -4,14 +4,21 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
 from property import models as property_models
+from django.core.exceptions import ObjectDoesNotExist
+
 
 # Create your views here.
 
 @login_required(login_url='account_login')
 def dashboard(request):
+    try:
+        profile = request.user.profile
+    except ObjectDoesNotExist:
+        print("profile is none")
+        return redirect('accounts:profile')
     if request.user.profile.is_business == False:
         messages.error(request, 'You are not authorized to access Property Dashboard.', extra_tags='danger')
-        return redirect('account_login')
+        return redirect('accounts:profile')
     profile = request.user.profile
     properties = property_models.Building_data.objects.filter(user=request.user)
     print('properties')

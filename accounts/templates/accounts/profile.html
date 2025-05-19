@@ -9,6 +9,20 @@
         {% load account %}
         <section class="my-3">
             <div class="container">
+                {% if messages %}
+                    <div class="col-12">
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show"
+                                 role="alert">
+                                {{ message }}
+                                <button type="button"
+                                        class="btn-close"
+                                        data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
                 {% include "accounts/parts/filepath.html" %}
                 <div class="bg-white shadow rounded-lg d-block d-sm-flex">
                     {% include "accounts/parts/profile_leftbar.html" %}
@@ -76,24 +90,24 @@
                                     </div>
                                 </div>
                                 <p class="pt-0 m-0 mt-3">Roles</p>
-                                <div class="d-md-flex ">{% if user.profile.is_business %}
-                                    <div class="col-md-5  pe-md-2  mb-2">
-                                        <div class="form-group ">
-                                            <input type="text"
-                                                    class="form-control " value="Property Holder" 
-                                                   disabled
-                                                   readonly>
+                                <div class="d-md-flex ">
+                                    {% if user.profile.is_business %}
+                                        <div class="col-md-5  pe-md-2  mb-2">
+                                            <div class="form-group ">
+                                                <input type="text"
+                                                       class="form-control "
+                                                       value="Property Holder"
+                                                       disabled
+                                                       readonly>
+                                            </div>
                                         </div>
-                                    </div>{% endif %}
+                                    {% endif %}
                                     {% if user.profile.is_realtor %}
-                                    <div class="col-md-4  mb-2  pe-md-2">
-                                        <div class="form-group">
-                                            <input type="text"
-                                                    class="form-control " value="Realtor"
-                                                   disabled
-                                                   readonly>
+                                        <div class="col-md-4  mb-2  pe-md-2">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control " value="Realtor" disabled readonly>
+                                            </div>
                                         </div>
-                                    </div>
                                     {% endif %}
                                     <div class="col-md-3  ">
                                         <div class="form-group">

@@ -1,15 +1,21 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.core.exceptions import ObjectDoesNotExist
 
 
 
 # Create your views here.
 @login_required(login_url='account_login')
 def dashboard(request):
+    try:
+        profile = request.user.profile
+    except ObjectDoesNotExist:
+        print("profile is none")
+        return redirect('accounts:profile')
     if request.user.profile.is_realtor == False:
         messages.error(request, 'You are not authorized to access Realtor Dashboard.', extra_tags='danger')
-        return redirect('account_login')
+        return redirect('accounts:profile')
     profile = request.user.profile
 
 

@@ -2,20 +2,31 @@
 {% load static %}
 <!-- tags -->
 {% load crispy_forms_tags %}
-<!-- extra css -->
-{% block extra_css %}
-<link rel="stylesheet"
-href="{% static 'property/css/property.css' %}"
-type="text/css" />
-{% endblock extra_css %}
+ 
 <!-- title -->
 {% block title %}
     REALATOR DASHBOARD
 {% endblock title %}
+<!-- extra css -->
+{% block extra_css %}
+<link rel="stylesheet"
+          href="{% static 'realtor/css/realtor_dashboard.css' %}"
+          type="text/css" />
+<link rel="stylesheet"
+          href="{% static 'realtor/css/realtor.css' %}"
+          type="text/css" />
+{% endblock extra_css %}
+<!-- title -->
+
 <!-- Main BUSINESS DASHBOARD content area -->
+<!-- left side content here  -->
+ {% block sidebar %}
+    <!-- sidebar -->
+    {% include "realtor/parts/realtor_dashboard_sidebar.html" %}
+  {% endblock sidebar %}
 {% block content %}
     <!-- right side content here -->
-    <div class="flex-fill pb-2">
+    <div class="col flex-fill pb-2">
         <section class="m-0 p-0">
             <div class="p-3 p-md-3 text-dark d-none d-md-block">
                 <div class="text-center">

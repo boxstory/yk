@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block head_title %}Update{% endblock %}
+{% block extra_css %}
+    <!-- extra css -->
+{% endblock extra_css %}
+{% block content %}
+    <!-- content -->
+    <div class="container">
+        <div class="row justify-content-center  py-3">
+            <div class="col text-center py-4">
+                <h3 class="fw-bold text-uppercase bg-white">Own Proerties Portions status</h3>
+                Building Details: {{ property.portions_count }}
+            </div>
+            <div class="col-12 px-2">
+                <div class="  pt-md-1">
+                    <div class="d-flex justify-content-evenly">
+                        <div>
+                            <div class="p fw-bold">Building No: {{ building.id }}</div>
+                            <div class="p fw-bold">Code: {{ building.client_code }}</div>
+                        </div>
+                        <div>
+                            <div class="p fw-bold">Zone: {{ building.zone_no }}</div>
+                            <div class="p fw-bold">Locality: {{ building.unit_no }}</div>
+                        </div>
+                    </div>
+                    <div class="p fw-bold text-center">Portions: {{ property.portion_count }}</div>
+                    <div class="d-flex flex-wrap">
+                        {% for portion in portion_all %}
+                            <div class="col-12 col-md-6 rounded-3">
+                                <div class="  d-flex rounded-3   m-1">
+                                    <div class="col-8 p-2  bg-light">
+                                        <p class="">portion {{ portion.id }}</p>
+                                        <ul class=" p-2">
+                                            <li>
+                                                <span class="">Code: {{ portion.unit_no }}</span>
+                                            </li>
+                                            <li>
+                                                <span class="">Floor: {{ portion.floor_no }}</span>
+                                            </li>
+                                            <li>
+                                                <span class="">Type: {{ portion.portion_type }}</span>
+                                            </li>
+                                            <li>
+                                                <span class="">Status: {{ portion.portions_status.first.status }}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-4  me-2 p-2  bg-light">
+                                        {% if portion.portions_status.first.status == 'NOT_SET' %}
+                                            <span class="d-block bg-danger py-1 fw-bold bg-gradient text-white text-center rounded-3">Not Set</span>
+                                        {% elif portion.portions_status.first.status == 'VACANT' %}
+                                            <span class="d-block bg-danger py-1 fw-bold bg-gradient text-white text-center rounded-3">Vacant</span>
+                                        {% elif portion.portions_status.first.status == 'VACANT_SOON' %}
+                                            <span class="d-block bg-warning py-1 fw-bold bg-gradient text-dark text-center rounded-3">Soon</span>
+                                        {% elif portion.portions_status.first.status == 'BOOKED' %}
+                                            <span class="d-block  bg-warning py-1 fw-bold bg-gradient text-white text-center rounded-3">Booked</span>
+                                        {% elif portion.portions_status.first.status == 'OCCUPIED' %}
+                                            <span class="d-block  bg-success py-1 fw-bold bg-gradient text-white text-center rounded-3">Occupied</span>
+                                        {% elif portion.portions_status.first.status == 'CLOSED' %}
+                                            <span class="d-block  bg-success py-1 fw-bold bg-gradient text-white text-center rounded-3">CLOSED</span>
+                                        {% endif %}
+                                        {% if pk == portion.user.id %}
+                                            <a href="{% url 'property:vacant_status_update'  portion.id %}"
+                                               class="btn btn-dark p-1 d-block order-md-1 mt-2">Edit Status</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-12  d-flex justify-content-around p-1 pt-4">
+                    <a href="{% url 'property:portions_own_buildings' pk=user.id %}"
+                       class=" mb-2 rounded-3 bg-dark py-1 px-4 fw-bold text-light text-center text-decoration-none">All Portions</a>
+                    <a href="#"
+                       class="  mb-2 rounded-3  bg-dark py-1 px-4 fw-bold text-light text-center text-decoration-none">Edit Portions</a>
+                    <a href="#"
+                       class="  mb-2 rounded-3  bg-dark py-1 px-4 fw-bold text-light text-center text-decoration-none">Edit Status</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock content %}
+<!-- extra js -->
+{% block extra_js %}
+{% endblock extra_js %}

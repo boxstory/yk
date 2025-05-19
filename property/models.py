@@ -26,10 +26,12 @@ def property_image_location(instance, filename):
 
 class Building_data(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
-                             on_delete=models.CASCADE)
+                             on_delete=models.CASCADE, related_name='building_data')
     title = models.CharField(max_length=100)
     client_code = models.CharField(
         max_length=100, help_text='Enter client side building code')
+    building_code = models.CharField(
+        max_length=100 )
     landmark = models.CharField(max_length=100)
     zone_no = models.IntegerField(default=0)
     street_no = models.IntegerField(default=0, blank=True)
@@ -71,7 +73,9 @@ class Portions(models.Model):
     building_data = models.ForeignKey(
         Building_data, on_delete=models.CASCADE, related_name='portions')
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
-                             on_delete=models.CASCADE)
+                             on_delete=models.CASCADE, related_name='portions')
+    portion_code = models.CharField(
+        max_length=100, default='10001')
     unit_no = models.IntegerField(default=0, blank=True)
     floor_no = models.IntegerField(default=0, blank=True)
     description = models.TextField(blank=True)
@@ -100,7 +104,7 @@ class Portions(models.Model):
     date_updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f'Unit No: {self.unit_no}'
+        return f'Unit No: {self.unit_no}, Code: {self.portion_code}'
 
     meta = {
         'indexes': ['-date_created', '-date_updated'],
@@ -118,6 +122,8 @@ class Portions_status(models.Model):
         ('VACANT', 'Vacant'),
         ('BOOKED', 'Booked'),
         ('VACANT_SOON', 'Vacant soon'),
+        ('CLOSED', 'Closed'),
+        ('NOT_SET', 'Not Set'),
     )
     portions = models.ForeignKey(
         Portions, on_delete=models.CASCADE, related_name='portions_status')
@@ -126,7 +132,7 @@ class Portions_status(models.Model):
         max_length=100, choices=CHOICES, default='Occupied')
 
     def __str__(self):
-        return self.status
+        return f'Portion id: {self.portions_id}, Status: {self.status}'
 
     meta = {
         'indexes': ['-status'],
@@ -172,6 +178,7 @@ class Inquire(models.Model):
     whatsapp_no = models.IntegerField(default=0)
     locations = models.CharField(max_length=100, blank=True)
     date_from = models.DateTimeField()
+    duration = models.IntegerField()
     price_from = models.IntegerField()
     price_to = models.IntegerField()
     furnished_type = models.CharField(

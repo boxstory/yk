@@ -1,0 +1,19 @@
+{% load static %}
+<!-- extra css -->
+{% load crispy_forms_tags %}
+<div class="p-3 ">
+    <div class="container align-content-center">
+        <div class="row">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="col-md-12">
+                    {{ form | crispy }}
+                    <div class="d-flex justify-content-center gap-2 col mx-auto">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button class="btn btn-dark" type="submit">UPDATE STATUS</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

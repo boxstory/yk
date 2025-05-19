@@ -1,3 +1,4 @@
+import datetime
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -6,6 +7,7 @@ from property import forms as property_forms
 from property import models as property_models
 from PIL import Image
 from django.contrib import messages
+from dateutil.relativedelta import relativedelta
 # Create your views here.
 
 
@@ -113,35 +115,51 @@ def building_update(request, pk, building_id):
 
 # portions  *********************************************************************
 @ login_required(login_url='account_login')
-def portion_single_building(request, pk, building_id):
+def portions_list_all(request, pk):
     pk = pk
     user_id = request.user.id
-    portion_single_building = property_models.Portions.objects.filter(
+    portions_list_all = property_models.Portions.objects.all()
+
+    context = {
+        'portions': portions_list_all,
+        'pk': pk,
+        'user_id': user_id
+    }
+    return render(request, 'property/portions_list_all.html', context)
+
+
+@ login_required(login_url='account_login')
+def portions_of_building(request, pk, building_id):
+    pk = pk
+    user_id = request.user.id
+    portions_of_building = property_models.Portions.objects.filter(
         Q(building_data_id=building_id) & Q(user_id=pk))
 
     context = {
-        'portions': portion_single_building,
+        'portions': portions_of_building,
         'building_id': building_id,
         'pk': pk,
         'user_id': user_id
     }
-    return render(request, 'property/portion_single_building.html', context)
+    return render(request, 'property/portions_of_building.html', context)
 
 
 @ login_required(login_url='account_login')
-def portion_all_building(request, pk):
+def portions_own_buildings(request, pk):
     user_id = request.user.id
-    portion_all = property_models.Portions.objects.all()
+    portion_all = property_models.Portions.objects.all().filter(user_id=pk)
+    print(portion_all)
+
 
     context = {
         'portions': portion_all,
         'user_id': user_id
     }
-    return render(request, 'property/portion_all_building.html', context)
+    return render(request, 'property/portions_own_buildings.html', context)
 
 
 @ login_required(login_url='account_login')
-def portion_single(request, pk, building_id, portion_id):
+def portion_single_details(request, pk, building_id, portion_id):
     pk = request.user.id
     print(pk)
 
@@ -152,13 +170,13 @@ def portion_single(request, pk, building_id, portion_id):
     context = {
         'portion': portion
     }
-    return render(request, 'property/portion_single.html', context)
+    return render(request, 'property/portion_single_details.html', context)
 
 
 @ login_required(login_url='account_login')
-def portion_add(request, pk, building_id):
+def portion_single_add(request, pk, building_id):
     form = property_forms.PortionsForm()
-    print('portion_add')
+    print('portion_single_add')
     if request.method == 'POST':
         form = property_forms.PortionsForm(request.POST, request.FILES)
         if form.is_valid():
@@ -169,18 +187,18 @@ def portion_add(request, pk, building_id):
 
             form.save()
 
-            return redirect('property:portion_single_building', pk, building_id)
+            return redirect('property:portions_of_building', pk, building_id)
     context = {'form': form}
 
 
-    return render(request, 'property/portion_add.html', context)
+    return render(request, 'property/portion_single_add.html', context)
 
 
 # @todo portions listing
 @login_required(login_url='account_login')
-def portion_update(request, pk, building_id, portion_id):
+def portion_single_update(request, pk, building_id, portion_id):
     all_portions = get_object_or_404(
-        property_models.Portions, id=portion_id, building_id=building_id)
+        property_models.Portions, id=portion_id, building_data_id=building_id)
     print(all_portions)
     form = property_forms.PortionsForm(instance=all_portions)
     if request.method == 'POST':
@@ -190,16 +208,16 @@ def portion_update(request, pk, building_id, portion_id):
             form = form.save(commit=False)
             form.user = request.user
             form.save()
-            return redirect('property:portion_single_building', pk, building_id)
+            return redirect('property:portions_of_building', pk, building_id)
     context = {
         'form': form,
 
     }
-    return render(request, 'property/building_update.html', context)
+    return render(request, 'property/portion_single_update.html', context)
 
 
 @login_required(login_url='account_login')
-def portion_vacant_status_list(request, pk, building_id):
+def portion_status_list(request, pk, building_id):
 
     building = property_models.Building_data.objects.get(id=building_id)
 
@@ -216,43 +234,56 @@ def portion_vacant_status_list(request, pk, building_id):
         'building_id': building_id,
     }
      
-    return render(request, 'property/portion_vacant_status_list.html', context )
+    return render(request, 'property/portion_status_list.html', context )
 
 @login_required(login_url='account_login')
-def vacant_status(request, pk, building_id, portion_id):
+def vacant_status_update(request, portion_id):
+    pk = request.user.id
+    # Get the parent Portions instance to link and to get building_id
+    actual_portion_object = get_object_or_404(property_models.Portions, id=portion_id)
+    building_id = actual_portion_object.building_data_id
 
-    print(pk)
-    print(building_id)
-    print(portion_id)
-    portion_all = property_models.Portions.objects.filter(
-        Q(building_data_id=building_id) & Q(user_id=pk)).first()
-    print(portion_all)
-    form = property_models.PortionsStatusForm()
+    # Calculate the first day of the next month
+    today = datetime.date.today()
+    first_day_next_month = (today + relativedelta(months=1)).replace(day=1)
+
+    # Get or create the Portions_status instance
+    # This ensures status_instance is always a saved instance, either existing or newly created.
+    status_instance, created = property_models.Portions_status.objects.get_or_create(
+        portions=actual_portion_object,  # Link using the Portions object itself
+        defaults={'status': 'NOT_SET', 'vacant_date': first_day_next_month}
+    )
+
     if request.method == 'POST':
-        form = property_models.PortionsStatusForm(request.POST,
-                                  instance=portion_all)
-        print('form post')
+        # For POST requests, bind the form to the submitted data and the instance
+        form = property_forms.PortionsStatusForm(request.POST, instance=status_instance)
         if form.is_valid():
-            print('form VALID')
-            form = form.save(commit=False)
-            form.portions_id = portion_id
-            print(form.portions_id)
+            # The 'portions' field is excluded from the form,
+            # so form.save() will update status_instance without needing to set portions_id manually,
+            # as status_instance is already correctly linked.
             form.save()
-            print(form)
-            return redirect('property:portion_single_building', pk, building_id)
+            messages.success(request, "Status updated successfully.")
+            return redirect('property:portion_status_list', pk=pk, building_id=building_id)
+        else:
+            messages.error(request, "Please correct the errors below.")
+    else:  # GET request
+        # For GET requests, initialize the form with the instance data
+        form = property_forms.PortionsStatusForm(instance=status_instance)
+
     context = {
         'form': form,
-
+        'portion_id': portion_id, # Pass for template use if needed (e.g., in URLs)
+        'actual_portion_object': actual_portion_object, # Pass for context if needed in template
     }
-    return render(request, 'property/portion_vacant_update.html', context)
+    return render(request, 'property/portion_status_update.html', context)
 
 
 # inquire ...........................................................
  
 def inquire_create(request):
-    form = property_models.InquireForm()
+    form = property_forms.InquireForm()
     if request.method == 'POST':
-        form = property_models.InquireForm(request.POST)
+        form = property_forms.InquireForm(request.POST)
         if form.is_valid():
             form = form.save(commit=False)
             print(form)
@@ -274,5 +305,3 @@ def inquire_lists(request):
         'inquires': inquires,
     }
     return render(request,  'property/inquire_lists.html', data)
-
-

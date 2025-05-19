@@ -56,7 +56,12 @@ class ProfileForm(forms.ModelForm):
     print(type(clean_whatsapp))
 
     def clean_email(self):
-        email = self.cleaned_data['email'].lower()
+        try :
+            email = self.cleaned_data['email'].lower()
+        except AttributeError:
+            email = ''
+            return email
+        
 
         # Check if the email is already in use by a different profile
         existing_profile = accounts_models.Profile.objects.exclude(email=self.original_email).filter(email=email).first()

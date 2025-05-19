@@ -1,44 +1,39 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    {% include "includes/head.html" %}
-    <!-- extra css -->
-    {% include "includes/css/style.html" %}
-    {% block extra_css %}
-    {% endblock extra_css %}
-    <title>
-        {% block head_title %}
-        Home 
-        {% endblock head_title %} | Yellowkey
-    </title>
-</head>
-
-<body class="min-vh-100">
-    {% include "includes/navbar.html" %}
-    <main class="col-12 min-vh-100">
-        
-        <!-- body content goes here -->
-        {% block content %}
-        {% endblock content %}
-        <!-- account_content goes here -->
-
-        {% block account_content %}
-        {% endblock account_content %}
-</main>
-<section class="py-1 bg-warning">
-    <div class="container">
-        <div class="col-12 text-center">
-            <p class="m-0">We are diligently working on something amazing. Sign up now for early access.</p>
-        </div>
-    </div>
-</section>
-{% include "includes/footer.html" %}
-{% include "includes/scripts.html" %}
-{% block extra_js %}
-<!-- extra js -->
-{% endblock extra_js %}
-</body>
-
+    <head>
+        {% include "includes/head.html" %}
+        <!-- extra css -->
+        {% include "includes/css/style.html" %}
+        {% block extra_css %}
+        {% endblock extra_css %}
+        <title>
+            {% block head_title %}
+                Home
+            {% endblock head_title %}
+        | Yellowkey</title>
+    </head>
+    <body class="min-vh-100">
+        {% include "includes/navbar.html" %}
+        <main class="col-12 min-vh-100">
+            <!-- body content goes here -->
+            {% block content %}
+            {% endblock content %}
+            <!-- account_content goes here -->
+            {% block account_content %}
+            {% endblock account_content %}
+        </main>
+        <section class="py-1 bg-warning">
+            <div class="container">
+                <div class="col-12 text-center">
+                    <p class="m-0">We are diligently working on something amazing. Sign up now for early access.</p>
+                </div>
+            </div>
+        </section>
+        {% include "includes/footer.html" %}
+        {% include "includes/scripts.html" %}
+        {% block extra_js %}
+            <!-- extra js -->
+        {% endblock extra_js %}
+    </body>
 </html>

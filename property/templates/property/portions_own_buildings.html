@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block head_title %}Property{% endblock %}
+{% block extra_css %}
+    <!-- extra css -->
+    <link rel="stylesheet"
+          href="{% static 'property/css/property.css' %}"
+          type="text/css" />
+{% endblock extra_css %}
+{% block content %}
+    <!-- content -->
+    <section class="">
+        {% if portions %}
+            <div class="col text-center py-4">
+                <h3 class="fw-bold text-uppercase bg-white">Own Proerties Portions status</h3>
+                Total Details :  <b>{{ portions.count|stringformat:"00i" }}</b> Portions.
+            </div>
+            <div class="container my-4 d-flex flex-wrap">
+                {% for portion in portions %}
+                    {% include "property/parts/portion_card.html" %}
+                {% endfor %}
+            {% else %}
+                <h4 class="p-3">This Property({{ building_id }})'s portions not Added.</h4>
+            {% endif %}
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end pt-4 me-3">
+            <a href="{% url 'property:portions_own_buildings' pk=user.id %}"
+               class="btn btn-dark  px-3 px-md-5 order-md-1">View In list</a>
+            <a href="{% url 'property:building_own' user.id %}"
+               class="btn btn-dark  px-3 px-md-5 order-md-1">Own
+            Properties</a>
+        </div>
+    </section>
+{% endblock content %}
+<!-- extra js -->
+{% block extra_js %}
+{% endblock extra_js %}

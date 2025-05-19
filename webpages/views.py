@@ -67,7 +67,7 @@ def join_leads(request):
             form.save()
             messages.success(
                 request, 'Form submission successful')
-            return redirect('accounts:signup')
+            return redirect('accounts:profile')
 
         return HttpResponseRedirect(request.path_info)
     form = SubscribeForm()

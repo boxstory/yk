@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block head_title %}Update{% endblock %}
+{% block extra_css %}
+    <!-- extra css -->
+{% endblock extra_css %}
+{% block content %}
+    <!-- content -->
+    <div class="container col-8">
+        <div class="row justify-content-center  py-3">
+            <div class="col-md-8 text-center py-4">
+                <h3 class="fw-bold text-uppercase bg-white">update portion vacant status</h3>
+            </div>
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="col-md-12">
+                    {{ form | crispy }}
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button class="btn btn-dark" type="submit">UPDATE STATUS</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+<!-- extra js -->
+{% block extra_js %}
+{% endblock extra_js %}

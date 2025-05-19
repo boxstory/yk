@@ -1,48 +1,85 @@
-
 <div class="col-md-6 col-lg-4 mb-3">
-<div class="property-wrapper pe-2">
+  <div class="property-wrapper pe-2">
     <div class="property-card">
       <div class="property-img">
-        <img src="https://picsum.photos/id/947/400/300" alt="house" />
+        <img src="{{ MEDIA_URL }}{{ portion.building_data.photo_main }}"
+             alt="house" />
         <div class="heart">
-            <i class="fa-solid fa-heart fa-2xl" style="color: #FFD43B;"></i>
-        </div> 
+          <i class="fa-solid fa-heart fa-2xl" style="color: #FFD43B;"></i>
+        </div>
       </div>
       <div class="property-info section-container px-3 m-0 pb-0">
-        <h4 class="title">{{ portion.portion_type}}-{{ portion.unit_no}} • {{ portion.sqft}} sqf</h4>
-        <h3 class="price">QAR {{ portion.price}}</h3>
-        <p class="address">{{ portion.building_data.landmark}}</p>
+        <h4 class="title">{{ portion.portion_type }}-{{ portion.unit_no }} • {{ portion.sqft }} sqf</h4>
+        <h3 class="price">QAR {{ portion.price }}</h3>
+        <p class="address">{{ portion.building_data.landmark }}</p>
       </div>
       <div class="aminities section-container px-3 pt-0">
         <div class="room ">
-            <i class="fa-solid fa-bed p-2"></i>
-
-            <span class="room_count p-2">{{ portion.bedrooms}}</span> 
-            <i class="fa-solid fa-bath p-2"></i>
-    
-          <span class="room_count p-2">{{ portion.bathrooms}}</span> 
-        
-            <i class="fa-solid fa-couch  p-2"></i>
-
-            <span class="room_count p-2">{{ portion.furnished_type}}</span> 
+          <i class="fa-solid fa-bed p-2"></i>
+          <span class="room_count p-2">{{ portion.bedrooms }}</span>
+          <i class="fa-solid fa-bath p-2"></i>
+          <span class="room_count p-2">{{ portion.bathrooms }}</span>
+          <i class="fa-solid fa-couch  p-2"></i>
+          <span class="room_count p-2">{{ portion.furnished_type }}</span>
         </div>
         <div class="room ">
-            <i class="fa-solid fa-layer-group p-2"></i>
-
-          <span class="room_count p-2">{{ portion.floor_no}}</span> Floor
+          <i class="fa-solid fa-layer-group p-2"></i>
+          <span class="room_count p-2">{{ portion.floor_no }}</span> Floor
         </div>
       </div>
       <div class="contact section-container py-0">
-        <img src="https://i.pravatar.cc/100?img=16" alt="portrait" />
+        <img src="{{ MEDIA_URL }}{{ portion.user.profile_picture.profile_picture }}"
+             alt="portrait" />
         <div class="contact_info py-2">
-          <p class="contact_name">{{ portion.user.profile}}</p>
+          <p class="contact_name">{{ portion.user.profile }}</p>
           <p class="property_code">555</p>
         </div>
       </div>
-      <div class="schedule section-container">
-        {{ portion.portions_status}}
-      </div><div class="schedule section-container">
-        Schedule Showing
+      <div class="schedule section-container border-bottom">
+        {% if portion.portions_status.first.status == null %}
+          <span> NA</></span>
+        {% else %}
+          {{ portion.portions_status.first.status }}
+        {% endif %}
       </div>
+      <!-- @todo schedule showing -->
+      {% if portion.user != request.user %}
+        <div class="d-flex">
+          <a class="schedule section-container border-end text-decoration-none "
+             href="https://wa.me/97433430001?text=required%20the%20details%20about%20%0A{{ portion.building_data.building_code }}:property,%0A{{ portion.portion_code }}:portion%0A%0ABy%20{{ portion.user.profile }}"
+             target="_blank"><i class="fa-brands fa-whatsapp"></i>Share to Whatsapp</a>
+          <div class="schedule section-container">Schedule Showing</div>
+        </div>
+      {% else %}
+        <div class="d-flex">
+          <a class="schedule section-container border-end text-decoration-none "
+             href="{% url 'property:portion_single_update' pk=portion.user.id building_id=portion.building_data.id portion_id=portion.id %}">Edit Portion</a>
+          <a class="schedule section-container  text-decoration-none " data-bs-toggle="modal"
+                               data-bs-target="#StatusUpdateModal" href="{% url 'property:vacant_status_update'   portion_id=portion.id %}">Edit Status</a>
+          <!-- Modal -->
+          <div class="modal fade"
+               id="StatusUpdateModal"
+               tabindex="-1"
+               role="dialog"
+               aria-labelledby="StatusUpdateModalLabel"
+               aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="StatusUpdateModalLabel">Choose Vacant Status</h5>
+                  <button type="button"
+                          class="close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">{% include "property/parts/choose_vacant_status.html" %}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
     </div>
-  </div></div>
+  </div>
+</div>

@@ -5,13 +5,13 @@ from property.models import *
 class BuildingForm(forms.ModelForm):
     class Meta:
         model = Building_data
-        exclude = ['user', 'date_created', 'date_updated']
+        exclude = ['user', 'date_created', 'date_updated', 'building_code']
 
 
 class PortionsForm(forms.ModelForm):
     class Meta:
         model = Portions
-        exclude = ['user', 'building_data', 'date_created', 'date_updated']
+        exclude = ['user', 'building_data', 'date_created', 'date_updated', 'portion_code']
 
 class Singelform(forms.ModelForm):
     class Meta:
@@ -59,6 +59,11 @@ class InquireForm(forms.ModelForm):
         exclude = ['date_created', 'date_updated']
         widgets = {
             'date_from': DateInput(),
+        }
+        labels = { 
+            'date_from': 'Date From',
+            'duration': 'Duration In Months',
+            'locations': 'List preffered Locations'
         }
 
     def clean_whatsapp_no(self):

@@ -4,13 +4,20 @@
 {% load crispy_forms_tags %}
 <!-- extra css -->
 {% block extra_css %}
+<link rel="stylesheet"
+          href="{% static 'clients/css/clients_dashboard.css' %}"
+          type="text/css" />
 {% endblock extra_css %}
 <!-- title -->
-{% block title %}
-  BUSINESS DASHBOARD
-{% endblock title %}
+
 <!-- Main BUSINESS DASHBOARD content area -->
+<!-- left side content here  -->
+ {% block sidebar %}
+    <!-- sidebar -->
+    {% include "clients/parts/clients_dashboard_sidebar.html" %}
+  {% endblock sidebar %}
 {% block content %}
+   
   <!-- right side content here -->
   <div class="flex-fill pb-2">
     <section class="m-0 p-0">
