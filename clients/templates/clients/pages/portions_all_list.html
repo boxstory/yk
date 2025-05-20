@@ -1,0 +1,52 @@
+{% load crispy_forms_tags %}
+{% load static %}
+{% if portions %}
+    <div class="container d-flex flex-wrap">
+        {% for portion in portions %}
+            <div class="col-12 col-md-6 rounded-3">
+                <div class="  d-flex rounded-3   m-1">
+                    <div class="col-8 p-2  bg-light">
+                        <p class="">portion {{ portion.id }}</p>
+                        <ul class=" p-2">
+                            <li>
+                                <span class="">Code: {{ portion.unit_no }}</span>
+                            </li>
+                            <li>
+                                <span class="">Floor: {{ portion.floor_no }}</span>
+                            </li>
+                            <li>
+                                <span class="">Type: {{ portion.portion_type }}</span>
+                            </li>
+                            <li>
+                                <span class="">Status: {{ portion.portions_status.first.status }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-4  me-2 p-2  bg-light">
+                        {% if portion.portions_status.first.status == 'NOT_SET' %}
+                            <span class="d-block bg-danger py-1 fw-bold bg-gradient text-white text-center rounded-3">Not Set</span>
+                        {% elif portion.portions_status.first.status == 'VACANT' %}
+                            <span class="d-block bg-danger py-1 fw-bold bg-gradient text-white text-center rounded-3">Vacant</span>
+                        {% elif portion.portions_status.first.status == 'VACANT_SOON' %}
+                            <span class="d-block bg-warning py-1 fw-bold bg-gradient text-dark text-center rounded-3">Soon</span>
+                        {% elif portion.portions_status.first.status == 'BOOKED' %}
+                            <span class="d-block  bg-warning py-1 fw-bold bg-gradient text-white text-center rounded-3">Booked</span>
+                        {% elif portion.portions_status.first.status == 'OCCUPIED' %}
+                            <span class="d-block  bg-success py-1 fw-bold bg-gradient text-white text-center rounded-3">Occupied</span>
+                        {% elif portion.portions_status.first.status == 'CLOSED' %}
+                            <span class="d-block  bg-success py-1 fw-bold bg-gradient text-white text-center rounded-3">CLOSED</span>
+                        {% endif %}
+                        {% if profile == portion.user.profile %}
+                            <a href="{% url 'property:vacant_status_update'  portion.id %}"
+                               class="btn btn-dark p-1 d-block order-md-1 mt-2">Edit Status</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="container ">
+        <h4>There is no Portions to display.</h4>
+    </div>
+{% endif %}

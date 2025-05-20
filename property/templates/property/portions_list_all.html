@@ -13,14 +13,14 @@
     {% if portions %}
         <div class="container my-4 d-flex flex-wrap">
             <h4>
-                Portions of Building No: {{ building_id }}
+                Portions of Building No: {{ property_id }}
                 : <b>{{ portions.count|stringformat:"00i" }}</b> Portions.
             </h4>
             {% for portion in portions %}
                 <div class="col-12  p-1 d-flex border border-dark  mb-1 border-2">
                     <div class="col-8 col-md-9  p-2">
-                        <p class="card-title">Code: {{ portion.building_data.building_code }}-{{ portion.portion_code }}</p>
-                        <p class="card-title">Building : {{ portion.building_data.building_no }}, Unit No:-{{ portion.unit_no }}</p>
+                        <p class="card-title">Code: {{ portion.property_data.property_code }}-{{ portion.portion_code }}</p>
+                        <p class="card-title">Building : {{ portion.property_data.property_no }}, Unit No:-{{ portion.unit_no }}</p>
                         <p class="card-title">Floor: {{ portion.floor_no }}</p>
                         <p class="card-title">
                             <i class="fa-solid fa-bed"></i>
@@ -49,7 +49,7 @@
                 </div>
             {% endfor %}
         {% else %}
-            <h4 class="p-3">This Property({{ building_id }})'s portions not Added.</h4>
+            <h4 class="p-3">This Property({{ property_id }})'s portions not Added.</h4>
         {% endif %}
     </div>
 {% endblock content %}

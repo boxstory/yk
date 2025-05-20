@@ -1,0 +1,23 @@
+{% load crispy_forms_tags %}
+{% load static %}
+{% block head_title %}Update{% endblock %}
+<!-- content -->
+<div class="container">
+    <div class="row justify-content-center  py-3">
+        <div class="col-md-8 text-center py-4">
+            <h3 class="fw-bold text-uppercase bg-white">update property</h3>
+        </div>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-12">
+                {{ form | crispy }}
+                <div class="d-grid gap-2 col-6 mx-auto mb-3 mt-5">
+                    <button class="btn btn-dark" type="submit">ADD PROPERTY</button>
+                </div>
+            </form>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <a href="#" class="btn btn-dark" type="submit">UPDATE PROPERTY</a>
+            </div>
+        </div>
+    </div>
+</div>

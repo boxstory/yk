@@ -2,38 +2,38 @@ from django import forms
 from property.models import *
 
 
-class BuildingForm(forms.ModelForm):
+class PropertyForm(forms.ModelForm):
     class Meta:
-        model = Building_data
-        exclude = ['user', 'date_created', 'date_updated', 'building_code']
+        model = Property_data
+        exclude = ['user', 'date_created', 'date_updated', 'property_code']
 
 
 class PortionsForm(forms.ModelForm):
     class Meta:
         model = Portions
-        exclude = ['user', 'building_data', 'date_created', 'date_updated', 'portion_code']
+        exclude = ['user', 'property_data', 'date_created', 'date_updated', 'portion_code']
 
 class Singelform(forms.ModelForm):
     class Meta:
         model = Portions
         fields = '__all__'
         widgets = {
-            'building_data': forms.HiddenInput(),
+            'property_data': forms.HiddenInput(),
         }
 
-    building_name = forms.CharField(max_length=255)
-    building_address = forms.CharField(max_length=255)
+    property_name = forms.CharField(max_length=255)
+    property_address = forms.CharField(max_length=255)
 
     def save(self, commit=True):
-        building_data = Building_data(
-            name=self.cleaned_data['building_name'],
-            address=self.cleaned_data['building_address']
+        property_data = Property_data(
+            name=self.cleaned_data['property_name'],
+            address=self.cleaned_data['property_address']
         )
         if commit:
-            building_data.save()
+            property_data.save()
         portion = super().save(commit=False)
-        portion.building_data = building_data
-        portion.building_data_id = building_data.id
+        portion.property_data = property_data
+        portion.property_data_id = property_data.id
         if commit:
             portion.save()
         return portion

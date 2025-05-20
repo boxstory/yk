@@ -8,19 +8,17 @@
 {% block content %}
     <!-- content -->
     <div class="container d-flex justify-content-end  ">
-        <a href="{% url 'property:building_all' %}"
+        <a href="{% url 'property:property_all' %}"
            class="    align-text-center  m-1 px-2 btn btn-dark ms-md-2   responsive-btn">PROPERTIES</a>
-        <a href="{% url 'property:portions_list_all'  pk=user.id  %}"
+        <a href="{% url 'property:portions_list_all'  pk=user.id %}"
            class="   align-text-center  m-1 px-2 btn btn-dark ms-md-2 responsive-btn">PORTIONS</a>
-        <a href="{% url 'property:building_own' pk=user.pk %}"
+        <a href="{% url 'property:property_own' pk=user.pk %}"
            class="    align-text-center  m-1 px-2 btn btn-dark me-md-2 responsive-btn">OWN PROPERTIES</a>
-        <a href="{% url 'property:building_create' pk=user.pk %}"
-           class=" d-none d-md-block    align-text-center  m-1 px-2 btn btn-dark ms-md-2 responsive-btn">ADD PROPERTIES</a>
     </div>
     {% if properties %}
         <div class="container d-flex flex-wrap">
             {% for property in properties %}
-                {% include "property/parts/building_card.html" %}
+                {% include "property/parts/property_card.html" %}
             {% endfor %}
         </div>
     {% else %}

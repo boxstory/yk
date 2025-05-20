@@ -4,35 +4,61 @@
 {% load crispy_forms_tags %}
 <!-- extra css -->
 {% block extra_css %}
-<link rel="stylesheet"
-          href="{% static 'clients/css/clients_dashboard.css' %}"
-          type="text/css" />
+  <link rel="stylesheet"
+        href="{% static 'clients/css/clients_dashboard.css' %}"
+        type="text/css" />
 {% endblock extra_css %}
 <!-- title -->
-
 <!-- Main BUSINESS DASHBOARD content area -->
 <!-- left side content here  -->
- {% block sidebar %}
-    <!-- sidebar -->
-    {% include "clients/parts/clients_dashboard_sidebar.html" %}
-  {% endblock sidebar %}
+{% block sidebar %}
+  <!-- sidebar -->
+  {% include "clients/parts/clients_dashboard_sidebar.html" %}
+{% endblock sidebar %}
 {% block content %}
-   
   <!-- right side content here -->
   <div class="flex-fill pb-2">
+    <div class="p-3 p-md-3" id="dasboard_div">
+      <p class="m-0">dashboard content</p>
+      <p class="m-0">{{ profile }}</p>
+      <p class="m-0">{{ business }}</p>
+      <p class="m-0">{{ properties }}</p>
+      <p class="m-0">{{ portions_count }}</p>
+    </div>
     <section class="m-0 p-0">
       <div class="p-3 p-md-3 text-dark d-none d-md-block">
         <div class="text-center">
           <h3 class="fw-bolder text-uppercase">business.business_business_name  - Dashboard</h3>
         </div>
       </div>
-      <div class="p-3 p-md-3" id="dasboard_div">
-        <p>dashboard content</p>
-        <p>{{ profile }}</p>
-        <p>{{ business }}</p>
-        <p>{{ properties }}</p>
-        <p>{{ portions_count }}</p>
-      </div>
     </section>
+    <!-- end of right side content here -->
+    <!-- end of main BUSINESS DASHBOARD content area  -->
+    <!-- extra content here -->
+    <div class="d-flex">
+      <button hx-get="{% url 'clients:property_all_list' %}"
+              name="property_all_list"
+              hx-trigger="click"
+              hx-target="#dashboard-right-side"
+              hx-swap="innerHTML"
+              class="btn btn-dark me-2">List all Properties!</button>
+      <button hx-get="{% url 'clients:portions_all_list' %}"
+              name="portions_all_list"
+              hx-trigger="click"
+              hx-target="#dashboard-right-side"
+              hx-swap="innerHTML"
+              class="btn btn-dark me-2">List all Portions!</button>
+    </div>
+    <a class="sidebar-link btn "
+       hx-get="{% url 'clients:property_create' %}"
+       name="property_create"
+       hx-trigger="click"
+       hx-target="#dashboard-right-side"
+       hx-swap="innerHTML">
+      <i class="fa-solid fa-add my-2 pt-1 pe-2"></i>
+      <span class="pt-1">Add Property</span></a>
+    <!-- swap content here -->
+    <div class="flex-fill p-2" id="dashboard-right-side">list here</div>
+    <!-- end of extra content here -->
   </div>
 {% endblock content %}

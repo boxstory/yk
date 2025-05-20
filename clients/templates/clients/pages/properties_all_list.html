@@ -1,0 +1,14 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<!-- content -->
+{% if properties %}
+    <div class="container d-flex flex-wrap">
+        {% for property in properties %}
+            {% include "clients/parts/property_card.html" %}
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="container ">
+        <h4>There is no property to display.</h4>
+    </div>
+{% endif %}

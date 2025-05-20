@@ -6,11 +6,11 @@ from django.utils.text import slugify
 
 def portion_image_location(instance, filename):
     print('portion_image_location')
-    print(instance.building_data.user.id,)
-    print(instance.building_data.client_code)
+    print(instance.property_data.user.id,)
+    print(instance.property_data.client_code)
     print(instance.unit_no)
     print(filename)
-    return 'property/{0}/{1}/{2}/portion-{3}'.format(instance.building_data.user.id, instance.building_data.client_code, instance.unit_no, filename)
+    return 'property/{0}/{1}/{2}/portion-{3}'.format(instance.property_data.user.id, instance.property_data.client_code, instance.unit_no, filename)
 
 
 def property_image_location(instance, filename):
@@ -24,26 +24,26 @@ def property_image_location(instance, filename):
     return url
 
 
-class Building_data(models.Model):
+class Property_data(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
-                             on_delete=models.CASCADE, related_name='building_data')
+                             on_delete=models.CASCADE, related_name='property_data')
     title = models.CharField(max_length=100)
     client_code = models.CharField(
         max_length=100, help_text='Enter client side building code')
-    building_code = models.CharField(
+    property_code = models.CharField(
         max_length=100 )
     landmark = models.CharField(max_length=100)
     zone_no = models.IntegerField(default=0)
     street_no = models.IntegerField(default=0, blank=True)
-    building_no = models.IntegerField(default=0, blank=True)
+    property_no = models.IntegerField(default=0, blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
-    photo_main = models.ImageField(upload_to=property_image_location, default='property/building_default.png',
+    photo_main = models.ImageField(upload_to=property_image_location, default='property/property_default.png',
                                    help_text='Upload a Featured outside photo', blank=True)
     portion_count = models.IntegerField(default=0) 
 
     def __str__(self):
-        return f'{self.zone_no}, {self.building_no}'
+        return f'{self.zone_no}, {self.property_no}'
 
 
 class Portions(models.Model):
@@ -70,8 +70,8 @@ class Portions(models.Model):
         ('STORAGE', 'STORAGE'),
         ('OTHER', 'OTHER'),
     )
-    building_data = models.ForeignKey(
-        Building_data, on_delete=models.CASCADE, related_name='portions')
+    property_data = models.ForeignKey(
+        Property_data, on_delete=models.CASCADE, related_name='portions')
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE, related_name='portions')
     portion_code = models.CharField(

@@ -13,13 +13,13 @@ def update_portion_count_on_save(sender, instance, created, **kwargs):
     print(instance)
     print(created)
     if created:
-        instance.building_data.portion_count += 1
-        instance.building_data.save()
+        instance.property_data.portion_count += 1
+        instance.property_data.save()
 
 
 @receiver(post_delete, sender=Portions)
 def update_portion_count_on_delete(sender, instance, **kwargs):
     print('update_portion_count_on_delete   ')
     print(instance)
-    instance.building_data.portion_count -= 1
-    instance.building_data.save()
+    instance.property_data.portion_count -= 1
+    instance.property_data.save()

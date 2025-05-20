@@ -10,13 +10,9 @@
     <div class="container">
         <div class="d-flex flex-wrap pb-2">
             <div class="col-5 flex-fill  text-center m-1 pb-3  btn btn-dark">
-                <a href="{% url 'property:building_own' pk=user.pk %}"
+                <a href="{% url 'property:property_own' pk=user.pk %}"
                    class="btn btn-dark fw-bold px-md-3">MY PROPERTIES</a>
-            </div>
-            <div class="col-5 flex-fill  text-center m-1 pb-3 btn btn-dark">
-                <a href="{% url 'property:building_create' pk=user.pk %}"
-                   class="btn btn-dark fw-bold mx-1 px-md-3">ADD PROPERTIES</a>
-            </div>
+            </div> 
             <div class="col-5 flex-fill  text-center  m-1 pb-3 btn btn-dark">
                 <a href="{% url 'property:inquire_lists' %}"
                    class="btn btn-dark fw-bold  px-md-3">ENQUIRIES LIST</a>

@@ -1,128 +1,146 @@
 {% load static %}
 {% block extra_css %}
 {% endblock extra_css %}
-<div class="min-vh-100 d-none d-md-flex flex-column flex-shrink-0 p-3 bg-light col-md-2 the-sidebar"
+<div class="min-vh-100 d-none d-md-flex flex-column flex-shrink-0 p-2 bg-light col-md-2 the-sidebar"
      id="sidebar">
-    <div class="text-center fw-bold">
-        <a class="nav-link p-3 my-0 btn btn-outline-dark" href="#">WORKMAN Dashboard</a>
-    </div>
-    <hr />
-    <div class="navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto text-center">
-            <li class="nav-item"></li>
-            <li class="nav-item {% if request.resolver_match.url_name == 'orders_list' or request.resolver_match.url_name == 'add_order' %}active{% endif %}">
-                <div class="nav-link btn btn-outline-dark collapsed d-flex justify-content-start align-items-center"
-                     data-bs-toggle="collapse"
-                     data-bs-target="#submenu-orders">
-                    <i class="fa-solid fa-basket-shopping p-2"></i>
-                    <a class="nav-link my-0 flex-fill text-start ps-2" href="#">Orders</a><i class="flex-fill fa-solid fa-caret-down"></i>
-                </div>
-                <div class="multi-level collapse bg-white rounded-3"
-                     role="list"
-                     id="submenu-orders"
-                     aria-expanded="false">
-                    <ul class="flex-column nav text-black">
-                        <li class="nav-item">
-                            <div class="d-flex btn btn-outline-dark nav-link justify-content-start">
-                                <i class="fa-solid fa-bars my-2 pt-1 pe-2"></i>
-                                <a class="nav-link" href="#">All Orders</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <div class="d-flex btn btn-outline-dark nav-link justify-content-start">
-                                <i class="fa-solid fa-add my-2 pt-1 pe-2"></i>
-                                <a class="nav-link" href="#">Add Orders</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <div class="d-flex btn btn-outline-dark nav-link justify-content-start">
-                                <i class="fa-solid fa-check my-2 pt-1 pe-2"></i>
-                                <a class="nav-link" href="#">Success List</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <div class="d-flex btn btn-outline-dark nav-link justify-content-start">
-                                <i class="fa-solid fa-spinner my-2 pt-1 pe-2"></i>
-                                <a class="nav-link" href="#">Pendings</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <div class="d-flex btn btn-outline-dark nav-link justify-content-start">
-                                <i class="fa-solid fa-xmark my-2 pt-1 pe-2"></i>
-                                <a class="nav-link" href="#">Failed Orders</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+  <div class="text-center fw-bold sidebar-item py-2">
+    <a class="sidebar-link " href="#">WORKMAN Dashboard</a>
+  </div>
+  <hr class="m-2" />
+  <div class="sidebar-collapse" id="sidebarNav">
+    <ul class="sidebar-nav p-1 flex-column text-center">
+      <li class="sidebar-head  {% if request.resolver_match.url_name == 'orders_list' or request.resolver_match.url_name == 'add_order' %}active{% endif %}">
+        <div class="sidebar-item py-3 btn-sidebar-blank collapsed d-flex   align-items-center"
+             data-bs-toggle="collapse"
+             data-bs-target="#submenu-001">
+               <i class="fa-solid fa-screwdriver-wrench  ms-2 pe-2"></i>Jobs List<i class="flex-fill fa-solid fa-caret-down ps-2"></i> 
+        <i class="fa-solid fa-"></i>
+          </div>
+        <div class="multi-level collapse bg-white rounded-3"
+             role="list"
+             id="submenu-001"
+             aria-expanded="false">
+          <ul class="flex-column p-0 ms-2 text-black">
+            <li class="sidebar-item d-flex btn-sidebar-blank justify-content-start">
+              <a class="sidebar-link" href="#">
+                <i class="fa-solid fa-magnifying-glass-location my-2 pt-1 pe-2"></i>
+                <span class="pt-1">Nearby jobs</span></a>
             </li>
-            <hr />
-            <li class="nav-item {% if request.resolver_match.url_name == 'product_all_list' or request.resolver_match.url_name == 'product_single_add' or request.resolver_match.url_name == 'product_categories' or request.resolver_match.url_name == 'product_all_list_card' %}active{% endif %}">
-                <div class="nav-link btn btn-outline-dark collapsed d-flex justify-content-start align-items-center"
-                     data-bs-toggle="collapse"
-                     data-bs-target="#submenu-product">
-                    <i class="fa-solid fa-box-open p-2"></i>
-                    <a class="nav-link my-0 flex-fill text-start ps-2" href="#">Products</a><i class="flex-fill fa-solid fa-caret-down"></i>
-                </div>
-                <div class="multi-level collapse bg-white rounded-3"
-                     role="list"
-                     id="submenu-product"
-                     aria-expanded="false">
-                    <ul class="flex-column nav text-black ps-2">
-                        <li class="nav-item">
-                            <div class="d-flex btn btn-outline-dark nav-link justify-content-start">
-                                <i class="fa-solid fa-bars my-2 pt-1 pe-2"></i>
-                                <a class="nav-link ps-1" href="#">All Products</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <div class="d-flex btn btn-outline-dark nav-link justify-content-start">
-                                <i class="fa-solid fa-add my-2 pt-1 pe-2"></i>
-                                <a class="nav-link ps-1" href="#">Add Product</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <div class="d-flex btn btn-outline-dark nav-link justify-content-start">
-                                <i class="fa-solid fa-barcode my-2 pt-1 pe-2"></i>
-                                <a class="nav-link ps-1" href="#">Cards</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+            <li class="sidebar-item d-flex btn-sidebar-blank justify-content-start">
+              <a class="sidebar-link" href="#">
+                <i class="fa-solid fa-bars my-2 pt-1 pe-2"></i>
+                <span class="pt-1">All jobs</span></a>
             </li>
-            <hr />
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <div class="d-flex btn btn-outline-dark nav-link justify-content-start">
-                        <i class="fa-solid fa-chart-bar m-2 pe-2 pb-1"></i>
-                        <span class="pt-1">Inventory Report</span>
-                    </div>
-                </a>
+            <li class="sidebar-item d-flex btn-sidebar-blank justify-content-start">
+              <a class="sidebar-link" href="#">
+                <i class="fa-solid fa-spinner my-2 pt-1 pe-2"></i>
+                <span class="pt-1">Similer Jobs</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <div class="d-flex btn btn-outline-dark nav-link justify-content-start">
-                        <i class="fa-solid fa-address-book m-2 pe-2 pb-1"></i>
-                        <span class="pt-1">Fleet List</span>
-                    </div>
-                </a>
+            <li class="sidebar-item d-flex btn-sidebar-blank justify-content-start">
+              <a class="sidebar-link" href="#">
+                <i class="fa-solid fa-spinner my-2 pt-1 pe-2"></i>
+                <span class="pt-1">FollwoUps</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <div class="d-flex btn btn-outline-dark nav-link justify-content-start">
-                        <i class="fa-solid fa-store m-2 pe-2 pb-1"></i>
-                        <span class="pt-1">Stores</span>
-                    </div>
-                </a>
+            <li class="sidebar-item d-flex btn-sidebar-blank justify-content-start">
+              <a class="sidebar-link" href="#">
+                <i class="fa-solid fa-check my-2 pt-1 pe-2"></i>
+                <span class="pt-1">Completed</span></a>
             </li>
-            <hr />
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <div class="d-flex btn btn-outline-dark nav-link justify-content-start">
-                        <i class="fa-solid fa-store m-2 pe-2 pb-1"></i>
-                        <span class="pt-1">Business Profile</span>
-                    </div>
-                </a>
+            <li class="sidebar-item d-flex btn-sidebar-blank justify-content-start">
+              <a class="sidebar-link" href="#">
+                <i class="fa-solid fa-add my-2 pt-1 pe-2"></i>
+                <span class="pt-1">Commissions</span></a>
             </li>
-        </ul>
-    </div>
+            <li class="sidebar-item d-flex btn-sidebar-blank justify-content-start">
+              <a class="sidebar-link" href="#">
+                <i class="fa-solid fa-xmark my-2 pt-1 pe-2"></i>
+                <span class="pt-1">Unlisted</span></a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <hr class="m-2" />
+      <li class="sidebar-head  {% if request.resolver_match.url_name == 'product_all_list' or request.resolver_match.url_name == 'product_single_add' or request.resolver_match.url_name == 'product_categories' or request.resolver_match.url_name == 'product_all_list_card' %}active{% endif %}">
+        <div class="sidebar-item btn-sidebar-blank collapsed d-flex justify-content-start align-items-center py-3"
+             data-bs-toggle="collapse"
+             data-bs-target="#submenu-002">
+          
+         <i class="fa-solid fa-box-open px-2"></i>Operations<i class="flex-fill fa-solid fa-caret-down ps-2"></i> 
+        </div>
+        <div class="multi-level collapse bg-white rounded-3"
+             role="list"
+             id="submenu-002"
+             aria-expanded="false">
+          <ul class="flex-column p-0 ms-2 text-black">
+            
+              <li class="sidebar-item d-flex btn-sidebar-blank justify-content-start">
+                <a class="sidebar-link" href="#">
+                  <i class="fa-solid fa-spinner my-2 pt-1 pe-2"></i>
+                  <span class="pt-1">Visit Requests</span></a>
+              </li>
+            
+            <li class="sidebar-item d-flex btn-sidebar-blank justify-content-start">
+              <a class="sidebar-link" href="#">
+                <i class="fa-solid fa-spinner my-2 pt-1 pe-2"></i>
+                <span class="pt-1">job Confirmed</span></a>
+            </li>
+            <li class="sidebar-item d-flex btn-sidebar-blank justify-content-start">
+              <a class="sidebar-link" href="#">
+                <i class="fa-solid fa-check my-2 pt-1 pe-2"></i>
+                <span class="pt-1">Tenanat Docs</span></a>
+            </li><li class="sidebar-item d-flex btn-sidebar-blank justify-content-start">
+              <a class="sidebar-link" href="#">
+                <i class="fa-solid fa-bars my-2 pt-1 pe-2"></i>
+                <span class="pt-1">FollwoUps</span></a></li>
+            
+            <li class="sidebar-item d-flex btn-sidebar-blank justify-content-start">
+              <a class="sidebar-link" href="#">
+                <i class="fa-solid fa-bars my-2 pt-1 pe-2"></i>
+                <span class="pt-1">Jobs Status</span></a>
+            </li>
+            
+            <li class="sidebar-item d-flex btn-sidebar-blank justify-content-start">
+              <a class="sidebar-link" href="#">
+                <i class="fa-solid fa-xmark my-2 pt-1 pe-2"></i>
+                <span class="pt-1">Deals</span></a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <hr class="m-2" />
+      <li class="sidebar-head mb-2">
+        <a class="sidebar-link" href="#">
+          <div class="d-flex btn-sidebar-blank sidebar-link justify-content-start">
+            <i class="fa-solid fa-chart-bar m-2 pe-2 pb-1"></i>
+            <span class="pt-1">Reports</span>
+          </div>
+        </a>
+      </li>
+      <li class="sidebar-head mb-2">
+        <a class="sidebar-link" href="#">
+          <div class="d-flex btn-sidebar-blank sidebar-link justify-content-start">
+            <i class="fa-solid fa-address-book m-2 pe-2 pb-1"></i>
+            <span class="pt-1">Contacts</span>
+          </div>
+        </a>
+      </li>
+      <li class="sidebar-head mb-2">
+        <a class="sidebar-link" href="#">
+          <div class="d-flex btn-sidebar-blank sidebar-link justify-content-start">
+            <i class="fa-solid fa-store m-2 pe-2 pb-1"></i>
+            <span class="pt-1">Services List</span>
+          </div>
+        </a>
+      </li>
+      <hr />
+      <li class="sidebar-head mb-2">
+        <a class="sidebar-link" href="{% url 'accounts:profile' %}">
+          <div class="d-flex btn-sidebar-blank sidebar-link justify-content-start">
+            <i class="fa-solid fa-store m-2 pe-2 pb-1"></i>
+            <span class="pt-1">Profile</span>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>

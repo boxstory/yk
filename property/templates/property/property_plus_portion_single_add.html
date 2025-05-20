@@ -16,15 +16,17 @@
     <!-- content -->
     <div class="container">
         <div class="row justify-content-center  py-3">
-            <div class="col-md-10  pt-4">
-                <h3 class="fw-bold text-center text-uppercase text-decoration-underline">Update Portion</h3>
+            <div class="col-md-8 text-center py-4">
+                <h3 class="fw-bold text-uppercase bg-white">Add Building and Portion Details</h3>
+            </div>
+            <div class="col-md-8">
                 <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {{ form | crispy }}
-                    <div class="d-grid gap-2 mx-auto">
-                        <button class="btn btn-dark" type="submit">Update Portion</button>
-                        <a href="{% url 'property:property_own' user.id %}"
-                           class="btn btn-secondary  mb-5 text-white fs-6 fw-bold text-decoration-none">Back</a>
+                    {{ property_form | crispy }}
+                    {{ portion_form | crispy }}
+                    -------------------------
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button class="btn btn-dark" type="submit">ADD PROPERTY</button>
                     </div>
                 </form>
             </div>

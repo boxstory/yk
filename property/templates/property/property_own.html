@@ -8,12 +8,12 @@
 {% block content %}
     <!-- content -->
     <div class="p-3 fw-bold  text-center mb-2">
-       Building Infos : There is {{ building_own.count }} Own Buildings to display.
+        Building Infos : There is {{ property_own.count }} Own Buildings to display.
     </div>
-    {% if building_own %}
+    {% if property_own %}
         <div class="container d-flex flex-wrap">
-            {% for property in building_own %}
-                {% include "property/parts/building_card.html" %}
+            {% for property in property_own %}
+                {% include "property/parts/property_card.html" %}
             {% endfor %}
         </div>
     {% else %}

@@ -21,13 +21,13 @@
                     {% include "property/parts/portion_card.html" %}
                 {% endfor %}
             {% else %}
-                <h4 class="p-3">This Property({{ building_id }})'s portions not Added.</h4>
+                <h4 class="p-3">This Property({{ property_id }})'s portions not Added.</h4>
             {% endif %}
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end pt-4 me-3">
             <a href="{% url 'property:portions_own_buildings' pk=user.id %}"
                class="btn btn-dark  px-3 px-md-5 order-md-1">View In list</a>
-            <a href="{% url 'property:building_own' user.id %}"
+            <a href="{% url 'property:property_own' user.id %}"
                class="btn btn-dark  px-3 px-md-5 order-md-1">Own
             Properties</a>
         </div>
