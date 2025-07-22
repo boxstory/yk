@@ -11,6 +11,7 @@ from dateutil.relativedelta import relativedelta
 # Create your views here.
 
 
+# propertiess for realtor*********************************************************************
 
 
 @login_required(login_url='account_login')
