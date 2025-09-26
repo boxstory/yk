@@ -1,7 +1,7 @@
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 from webpages.models import JobList
-from property.models import Portion
+from property.models import Portions
 
 
 class StaticViewSitemap(Sitemap):
@@ -34,3 +34,16 @@ class JobListSitemap(Sitemap):
     def items(self):
         # Assuming JobList has a field to filter for active jobs
         return JobList.objects.all()
+
+
+class PortionSitemap(Sitemap):
+    """Sitemap for job listings."""
+    changefreq = "daily"
+    priority = 0.7
+
+    def items(self):
+        # Assuming JobList has a field to filter for active jobs
+        return Portions.objects.all()
+    
+
+
