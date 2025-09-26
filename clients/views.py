@@ -71,6 +71,33 @@ def property_all_list(request):
 
 
 
+@ login_required(login_url='account_login')
+def property_own_list(request):
+    try:
+        profile = request.user.profile
+    except ObjectDoesNotExist:
+        print("profile is none")
+        return redirect('accounts:profile')
+    if request.user.profile.is_business == False:
+        messages.error(request, 'You are not authorized to access Property Dashboard.', extra_tags='danger')
+        return redirect('accounts:profile')
+    profile = request.user.profile
+    properties = property_models.Property_data.objects.all()
+    print('properties')
+    print(properties)
+    portions_count = properties.annotate(number_of_portions=Count('portions')).values('id', 'number_of_portions')
+    
+    print('portions_count')
+    print(portions_count)
+    data = {
+        'profile' : profile,
+        'properties': properties,
+        'portions_count': portions_count,
+        }
+    return render(request, "clients/pages/properties_all_list.html", data )
+
+
+
 
 
 
@@ -121,6 +148,7 @@ def property_update(request,  property_id):
 # portions **********************************************************************
 
 
+@login_required(login_url='account_login')
 def portions_all_list(request):
     try:
         profile = request.user.profile
@@ -141,6 +169,28 @@ def portions_all_list(request):
     return render(request, "clients/pages/portions_all_list.html", data )
 
 
+@login_required(login_url='account_login')
+def portions_own_list(request):
+    try:
+        profile = request.user.profile
+    except ObjectDoesNotExist:
+        print("profile is none")
+        return redirect('accounts:profile')
+    if request.user.profile.is_business == False:
+        messages.error(request, 'You are not authorized to access Property Dashboard.', extra_tags='danger')
+        return redirect('accounts:profile')
+    profile = request.user.profile
+    portions = property_models.Portions.objects.filter(user=request.user)
+    print('portions')
+    print(portions)  
+    data = {
+        'profile' : profile,
+        'portions': portions, 
+        }
+    return render(request, "clients/pages/portions_all_list.html", data )
+
+
+@login_required(login_url='account_login')
 def portions_a_building(request, property_id):
     
     property = get_object_or_404(property_models.Property_data, property_id=property_id)

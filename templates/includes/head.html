@@ -3,15 +3,19 @@
 <meta property="fb:pages" content="113704197128320" />
 <meta charset="UTF-8" />
 
-<meta name="description" content="Yellowkey Holdings provides a comprehensive suite of services tailored for property Holders, including Property Management, Tenant Relations, Rent Collection, Property Photography, Property Maintenance, and seamless collaboration with agents." />
-<meta name="keywords" content="business keyword1, business keyword2, business keyword3" />
-<link rel="canonical" href="https://www.yellowkey.qa/your-page-url" />
-<meta property="og:title" content="Yellowkey Realestate Management Services" />
-<meta property="og:description" content="Your Expert Partner in Full-Service Management Excellence! We Do for Property Holders: Property Management, Tenant Relations, Rent Collection, Property Photography, Property Maintenance. Works with Realtor: Vacant Property Listings, Vacant Soon Lists, Multiple Properties, Shared Property enquiries, Trusted Agents community. For Services Providers: Service job Listing, Tenant Requests, Payment Collections, Location Based Listings, Teams building." />
+{% block meta %}
+<meta name="description" content="Yellowkey provides a comprehensive suite of services for property holders, realtors, and workmen in Qatar, including property management, tenant relations, and maintenance." />
+{% endblock meta %}
+<meta name="keywords" content="property management Qatar, realtor services Doha, property maintenance jobs Qatar, rent collection, tenant relations, real estate agent network" />
+<link rel="canonical" href="https://www.yellowkey.qa{{ request.path }}" />
+{% block og_meta %}
+<meta property="og:title" content="All-in-One Real Estate Platform in Qatar | Yellowkey" />
+<meta property="og:description" content="Yellowkey is Qatar's complete real estate platform, connecting property holders with management services, realtors with collaboration tools, and workmen with verified jobs." />
+<meta property="og:image" content="{% static 'webpages/img/icons/yellowkey_logo.png' %}" />
+{% endblock og_meta %}
 <meta property="og:site_name" content="Yellowkey Realestate Management company" />
 <meta property="og:locale" content="en_US" />
-<meta property="og:image" content="{% static 'webpages/img/icons/yellowkey_logo.png' %}" />
-<meta property="og:url" content="https://www.yellowkey.qa/" />
+<meta property="og:url" content="https://www.yellowkey.qa{{ request.path }}" />
 <meta property="og:type" content="website" />
 <meta name="author" content="Yellowkey Holdings" />
 <meta name="robots" content="index, follow" />

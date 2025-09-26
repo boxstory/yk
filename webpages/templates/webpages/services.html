@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block head_title %}Services{% endblock %}
+{% block head_title %}Our Real Estate Services in Qatar | Yellowkey{% endblock %}
+{% block meta %}
+<meta name="description" content="Discover Yellowkey's integrated real estate services for property holders, realtors, and workmen in Qatar. We connect all sides of the property market.">
+{% endblock meta %}
 {% block extra_css %}
   <!-- extra css -->
   <link type="text/css"
@@ -40,10 +43,9 @@
             <p class="mb-3 text-muted">
               Own a property in Qatar? YellowKey helps you manage everything — from tenant coordination and maintenance requests to rent collection and verified service providers. We simplify your role while ensuring your property stays in top shape.
             </p>
-            <a class="d-flex ms-auto align-items-center justify-content-center p-md-4 p-2 bg-light text-decoration-none"
-              href="{% url 'webpages:property_services' %}"> 
-            <p class="mb-3 text-muted">👉 Join YellowKey today
-            </p></a>
+            <p class="mb-3 text-muted">
+              <a href="{% url 'webpages:property_services' %}" class="text-decoration-none">👉 Join YellowKey today</a>
+            </p>
           
           </div>
         </div>
@@ -67,17 +69,16 @@
             <p class="mb-3 text-muted">
               Whether you’re handling multiple listings or managing upcoming vacancies, YellowKey offers tools to streamline property updates, share inquiries, and connect with trusted agents. Our platform makes collaboration easy and efficient.
             </p>
-            <a class="d-flex ms-auto align-items-center justify-content-center p-md-4 p-2 bg-light text-decoration-none"
-              href="{% url 'webpages:realtor_services' %}"> 
-            <p class="mb-3 text-muted">👉 Become part of YellowKey
-            </p></a>
+            <p class="mb-3 text-muted">
+              <a href="{% url 'webpages:realtor_services' %}" class="text-decoration-none">👉 Become part of YellowKey</a>
+            </p>
           </div>
         </div>
       </div>
       <div class=" p-3 g-2 col-12    mb-md-0">
         <div class="p-8 border rounded">
           <div class="row m-3">
-            <div class="d-flex ms-auto align-items-center justify-content-center p-md-4 p-2 bg-light text-decoration-none"
+            <a class="d-flex ms-auto align-items-center justify-content-center p-md-4 p-2 bg-light text-decoration-none"
                  href="{% url 'webpages:workman_services' %}">
               <div class="col-8">
                 <h3 class=" h4 fw-bolder text-dark">WORKMAN ZONE</h3>
@@ -89,14 +90,13 @@
                             height: 72px"
                      alt="">
               </div>
-            </div>
+            </a>
             <p class="mb-3 text-muted">
               From plumbing to cleaning, YellowKey connects you with real jobs from property managers and tenants in your area. With on-time payments and location-based listings, you can grow your service business with peace of mind.
             </p>
-            <a class="d-flex ms-auto align-items-center justify-content-center p-md-4 p-2 bg-light text-decoration-none"
-               href="{% url 'webpages:workman_services' %}">
-              <p class="mb-3 text-muted">👉 Sign up with YellowKey</p>
-            </a>
+            <p class="mb-3 text-muted">
+              <a href="{% url 'webpages:workman_services' %}" class="text-decoration-none">👉 Sign up with YellowKey</a>
+            </p>
           </div>
         </div>
       </div>

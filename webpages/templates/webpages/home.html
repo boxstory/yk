@@ -1,7 +1,15 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% load static %}
-{% block head_title %}Home{% endblock %}
+{% block head_title %}All-in-One Real Estate Platform in Qatar | Yellowkey{% endblock %}
+{% block meta %}
+<meta name="description" content="Yellowkey is Qatar's complete real estate platform, connecting property holders with management services, realtors with collaboration tools, and workmen with verified jobs.">
+{% endblock meta %}
+{% block og_meta %}
+<meta property="og:title" content="All-in-One Real Estate Platform in Qatar | Yellowkey" />
+<meta property="og:description" content="Yellowkey is Qatar's complete real estate platform, connecting property holders with management services, realtors with collaboration tools, and workmen with verified jobs." />
+<meta name="description" content="Yellowkey is Qatar's complete real estate platform, connecting property holders with management services, realtors with collaboration tools, and workmen with verified jobs.">
+{% endblock meta %}
 {% block extra_css %}
     <!-- extra css -->
 {% endblock extra_css %}
@@ -25,11 +33,11 @@
             {% endif %}
             <!-- Right Content (Headline and Description) -->
             <div class="col-md-12 p-2 p-md-4 ps-md-5 mx-auto ">
-                <h1 class=" text-center py-3 ">Your Expert Partner in Full-Service Management Excellence!</h1>
+                <h1 class=" text-center py-3 ">Qatar's Complete Real Estate Platform for Property Holders, Realtors, and Workmen</h1>
                 <!-- clients -->
                 <div class=" d-md-flex ali</div>gn-items-center service-section pb-md-5">
                     <div class="property-management col-12 col-md-6 p-2  me-2 rounded-5  ps-md-5">
-                        <h4 class="p-2">We Do for Property Holders</h4>
+                        <h2 class="p-2 h4">For Property Holders & Landlords</h2>
                         <ul class="">
                             <li>
                                 <i class="pe-3 fa-lg mb-4 fas fa-home"></i>Property Management
@@ -70,7 +78,7 @@
                 <!-- realtor -->
                 <div class=" d-md-flex align-items-center service-section  pb-md-5">
                     <div class="brokerage-services col-12 col-md-6 p-2 me-2 rounded-5 order-2 ps-md-5">
-                        <h4 class="p-2 pb-4">Works with Realtor :</h4>
+                        <h2 class="p-2 pb-4 h4">For Realtors & Agents</h2>
                         <ul>
                             <li>
                                 <i class="pe-3 fa-lg mb-4 fas fa-bars"></i> Vacant Property Listings
@@ -111,7 +119,7 @@
                 <!-- workman -->
                 <div class=" d-md-flex align-items-center service-section pb-md-5">
                     <div class="property-management col-12 col-md-6 p-2  me-2 rounded-5  ps-md-5">
-                        <h4 class="p-2">For Services Providers</h4>
+                        <h2 class="p-2 h4">For Workmen & Service Providers</h2>
                         <ul class="">
                             <li>
                                 <i class="pe-3 fa-lg mb-4 fas fa-wrench"></i>Service job Listing

@@ -1,7 +1,15 @@
-User-agent: Googlebot
-Disallow: /nogooglebot/
-
 User-agent: *
-Allow: /
+# Disallow admin and user-specific dashboard areas
+Disallow: /admin/
+Disallow: /accounts/
+Disallow: /property/
+Disallow: /realtor/
+Disallow: /clients/
+Disallow: /workman/
 
+# Allow crawlers to access static files for rendering
+Allow: /static/
+Allow: /media/
+
+# Point all crawlers to the sitemap
 Sitemap: https://www.yellowkey.qa/sitemap.xml

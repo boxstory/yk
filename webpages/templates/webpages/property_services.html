@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block head_title %}Sharing{% endblock %}
+{% block head_title %}Property Management Services in Qatar | Yellowkey{% endblock %}
+{% block meta %}
+<meta name="description" content="Yellowkey offers complete property management services in Doha, Qatar. From tenant relations and rent collection to maintenance, we provide hassle-free landlord services.">
+{% endblock meta %}
+{% block og_meta %}
+<meta property="og:title" content="Property Management Services in Qatar | Yellowkey" />
+<meta property="og:description" content="Yellowkey offers complete property management services in Doha, Qatar. From tenant relations and rent collection to maintenance, we provide hassle-free landlord services." />
+<meta property="og:image" content="{% static 'webpages/img/property_services_hero_1.jpg' %}" />
+{% endblock og_meta %}
 {% block extra_css %}
   <!-- extra css -->
   <link type="text/css"
@@ -30,9 +38,9 @@
          alt=""
          data-removed="true">
     <div class="container">
-      <div class="max-w-2xl mx-auto mb-20 text-center">
-        <h2 class="mt-8 mb-10">Everything a Property Holders Needs</h2>
-        <p class="lead text-muted">From daily management to boosting property appeal, YellowKey covers every angle.</p>
+      <div class="max-w-2xl mx-auto mb-12 text-center">
+        <h1 class="mt-8 mb-10">Full-Service Property Management for Landlords in Qatar</h1>
+        <p class="lead text-muted">From daily operations to boosting property appeal, YellowKey offers comprehensive landlord services in Doha and across Qatar.</p>
       </div>
       <div class="row mb-3">
         <div class="col-12 col-md-6 mb-4">
@@ -46,7 +54,7 @@
               </div>
             </div>
             <div class="col-12 col-lg-8">
-              <h2 class="mb-3 h3 font-semibold font-heading">Property Management</h2>
+              <h2 class="mb-3 h3 font-semibold font-heading">Hassle-Free Property Management</h2>
               <p class=" text-muted">
                 Round-the-clock management tailored to residential or commercial needs. Handling contracts, paperwork, renewals, and legal compliance.
               </p>
@@ -64,7 +72,7 @@
               </div>
             </div>
             <div class="col-12 col-lg-8">
-              <h2 class="mb-3 h3 font-semibold font-heading">Tenant Relations</h2>
+              <h2 class="mb-3 h3 font-semibold font-heading">Expert Tenant Relations & Screening</h2>
               <p class="  text-muted">
                 Screening and selecting quality tenants. Handling tenant communications, concerns, and conflict resolution. Ensuring smooth move-ins and move-outs.
               </p>
@@ -82,8 +90,8 @@
               </div>
             </div>
             <div class="col-12 col-lg-8">
-              <h2 class="mb-3 h3 font-semibold font-heading">Rent Collection</h2>
-              <p class="  text-muted">
+              <h2 class="mb-3 h3 font-semibold font-heading">Timely Rent Collection Services</h2>
+              <p class="text-muted">
                 On-time collection with digital payment options.
                 Following up on late payments professionally.
                 Providing monthly income statements.

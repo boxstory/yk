@@ -7,7 +7,8 @@ app_name = 'clients'
 
 urlpatterns = [
     path('dashboard/', clients_views.dashboard, name='dashboard'),
-    path('dashboard/property/own/', clients_views.property_all_list, name='property_all_list' ),
+    path('dashboard/property/all/', clients_views.property_all_list, name='property_all_list' ),
+    path('dashboard/property/own/', clients_views.property_own_list, name='property_own_list' ),
     path('dashboard/property/add/', clients_views.property_create, name='property_create'),
     path('dashboard/property/update/', clients_views.property_update, name='property_update'),
     

@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block head_title %}Sharing{% endblock %}
+{% block head_title %}Realtor Collaboration Platform & Tools in Qatar | Yellowkey{% endblock %}
+{% block meta %}
+<meta name="description" content="Join Yellowkey's realtor network in Qatar. Access shared property leads, vacant listings, and powerful collaboration tools designed for real estate agents in Doha.">
+{% endblock meta %}
+{% block og_meta %}
+<meta property="og:title" content="Realtor Collaboration Platform & Tools in Qatar | Yellowkey" />
+<meta property="og:description" content="Join Yellowkey's realtor network in Qatar. Access shared property leads, vacant listings, and powerful collaboration tools designed for real estate agents in Doha." />
+<meta property="og:image" content="{% static 'webpages/img/realtor_services_hero_1.jpg' %}" />
+{% endblock og_meta %}
 {% block extra_css %}
   <!-- extra css -->
   <link type="text/css"
@@ -18,11 +26,11 @@
     <img class="d-inline-block d-flex justify-content-center align-items-center mx-auto mb-4 rounded-2 bg-light text-light w-100"
          src="{% static 'webpages/img/realtor_services_hero_1.jpg' %}"
          alt="">
-    <h2 class="fw-bold pb-2">
-      <span class="d-none d-md-inline h2 fw-bold">Welcome to</span> Realtor Services
-    </h2>
+    <h1 class="fw-bold pb-2">
+      <span class="d-none d-md-inline h2 fw-bold">Yellowkey's</span> Realtor Collaboration Platform
+    </h1>
     <p class="lead text-muted">
-      Join Qatar’s most trusted property management network for realtors. More listings, stronger leads, seamless support.
+      Join Qatar’s trusted real estate agent network. Get more listings, shared leads, and powerful tools for agents in Doha.
     </p>
   </section>
   <!-- ======= services listing Section ======= -->
@@ -37,8 +45,8 @@
          data-removed="true">
     <div class="container">
       <div class="max-w-2xl mx-auto mb-20 text-center">
-        <h2 class="mt-8 mb-10">Why Top Realtors Partner with YellowKey</h2>
-        <p class="lead text-muted">Expand Your list & Reach. Close More Deals. Boost Your Reputation.</p>
+        <h2 class="mt-8 mb-10">Why Top Realtors in Qatar Partner with YellowKey</h2>
+        <p class="lead text-muted">Expand Your Reach, Find Real Estate Leads, and Boost Your Reputation.</p>
       </div>
       <div class="row mb-3">
         <div class="col-12 col-md-6 mb-4">
@@ -110,7 +118,7 @@
             </div>
             <div class="col-12 col-lg-8">
               <h4 class="mb-2 fw-bolder">Shared Property Enquiries</h4>
-              <span class="text-muted italic  fst-italic">Collaborate, don’t compete.</span>
+              <span class="text-muted italic  fst-italic">Get shared real estate leads and collaborate, don’t compete.</span>
               <p class="  text-muted">
                 Through our shared enquiry system, trusted agents can collaborate on tenant or buyer leads, creating win-win deals and faster closures.
               </p>
