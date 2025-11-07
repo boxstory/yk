@@ -1,0 +1,34 @@
+{% extends 'base_dashboard.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Workflow Charts</h1>
+
+    <h2>Service Provider Workflow</h2>
+    <pre>
+    1. View Assigned Tasks
+       -> 2. Accept/Reject Task
+       -> 3. Perform Task
+       -> 4. Update Task Status
+       -> 5. Mark Task as Complete
+    </pre>
+
+    <h2>Agent Workflow</h2>
+    <pre>
+    1. Add New Property
+       -> 2. Manage Property Listings
+       -> 3. View Inquiries
+       -> 4. Communicate with Clients
+       -> 5. Close a Deal
+    </pre>
+
+    <h2>Owner Workflow</h2>
+    <pre>
+    1. Register and Create Profile
+       -> 2. List a Property
+       -> 3. View Property Status
+       -> 4. Manage Inquiries
+       -> 5. Communicate with Agents
+    </pre>
+</div>
+{% endblock %}

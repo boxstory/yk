@@ -11,5 +11,62 @@ Disallow: /workman/
 Allow: /static/
 Allow: /media/
 
+# Allow access to public pages for AI search engines
+Allow: /
+Allow: /services/
+Allow: /property-services/
+Allow: /realtor-services/
+Allow: /workman-services/
+Allow: /about/
+Allow: /contact/
+Allow: /whatsapp_group/
+Allow: /careers/
+
+# Specific rules for AI crawlers - ChatGPT, Perplexity, Claude, etc.
+User-agent: GPTBot
+Allow: /
+Allow: /services/
+Allow: /property-services/
+Allow: /realtor-services/
+Allow: /workman-services/
+
+User-agent: ChatGPT-User
+Allow: /
+Allow: /services/
+Allow: /property-services/
+Allow: /realtor-services/
+Allow: /workman-services/
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /services/
+Allow: /property-services/
+Allow: /realtor-services/
+Allow: /workman-services/
+
+User-agent: Claude-Web
+Allow: /
+Allow: /services/
+Allow: /property-services/
+Allow: /realtor-services/
+Allow: /workman-services/
+
+User-agent: anthropic-ai
+Allow: /
+Allow: /services/
+Allow: /property-services/
+Allow: /realtor-services/
+Allow: /workman-services/
+
+User-agent: Google-Extended
+Allow: /
+Allow: /services/
+Allow: /property-services/
+Allow: /realtor-services/
+Allow: /workman-services/
+
 # Point all crawlers to the sitemap
 Sitemap: https://www.yellowkey.qa/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1

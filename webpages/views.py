@@ -27,7 +27,7 @@ def home(request):
                               date_subscribed=date.today())
             p.save()
             # redirect to a new URL:
-            return HttpResponseRedirect('/whatsapp_group/')
+            return HttpResponseRedirect('/profile/')
         else:
             print("Invalid Form")
 
@@ -105,32 +105,181 @@ def robots(request):
 
 
 def workman_services(request):
-    context = {}
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = SubscribeForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+
+            # process the data in form.cleaned_data as required
+            name1 = form.cleaned_data['name']
+            mobile_no1 = form.cleaned_data['mobile_no']
+            p = webpage_models.MobSubscriber(name=name1, mobile_no=mobile_no1,
+                              date_subscribed=date.today())
+            p.save()
+            # redirect to a new URL:
+            return HttpResponseRedirect('/profile/')
+        else:
+            print("Invalid Form")
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        print("SubscribeForm")
+        form = SubscribeForm()
+    context = {
+        'form': form
+    }
     return render(request, 'webpages/workman_services.html', context )
 
 
 def workman_join(request):
-    context = {}
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = SubscribeForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+
+            # process the data in form.cleaned_data as required
+            name1 = form.cleaned_data['name']
+            mobile_no1 = form.cleaned_data['mobile_no']
+            p = webpage_models.MobSubscriber(name=name1, mobile_no=mobile_no1,
+                              date_subscribed=date.today())
+            p.save()
+            # redirect to a new URL:
+            return HttpResponseRedirect('/profile/')
+        else:
+            print("Invalid Form")
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        print("SubscribeForm")
+        form = SubscribeForm()
+      
+    context = {
+        'form': form
+    }
     return render(request, 'webpages/workman_services.html', context )
 
 
 def realtor_services(request):
-    context = {}
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = SubscribeForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+
+            # process the data in form.cleaned_data as required
+            name1 = form.cleaned_data['name']
+            mobile_no1 = form.cleaned_data['mobile_no']
+            p = webpage_models.MobSubscriber(name=name1, mobile_no=mobile_no1,
+                              date_subscribed=date.today())
+            p.save()
+            # redirect to a new URL:
+            return HttpResponseRedirect('/profile/')
+        else:
+            print("Invalid Form")
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        print("SubscribeForm")
+        form = SubscribeForm()
+      
+
+    context = {
+        'form': form
+    }
     return render(request, 'webpages/realtor_services.html', context )
 
 
 def realtor_join(request):
-    context = {}
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = SubscribeForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+
+            # process the data in form.cleaned_data as required
+            name1 = form.cleaned_data['name']
+            mobile_no1 = form.cleaned_data['mobile_no']
+            p = webpage_models.MobSubscriber(name=name1, mobile_no=mobile_no1,
+                              date_subscribed=date.today())
+            p.save()
+            # redirect to a new URL:
+            return HttpResponseRedirect('/profile/')
+        else:
+            print("Invalid Form")
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        print("SubscribeForm")
+        form = SubscribeForm()
+        
+    context = {
+        'form': form
+    }
     return render(request, 'webpages/realtor_services.html', context )
 
 
 def property_services(request):
-    context = {}
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = SubscribeForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+
+            # process the data in form.cleaned_data as required
+            name1 = form.cleaned_data['name']
+            mobile_no1 = form.cleaned_data['mobile_no']
+            p = webpage_models.MobSubscriber(name=name1, mobile_no=mobile_no1,
+                              date_subscribed=date.today())
+            p.save()
+            # redirect to a new URL:
+            return HttpResponseRedirect('/profile/')
+        else:
+            print("Invalid Form")
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        print("SubscribeForm")
+        form = SubscribeForm()
+    context = { 
+        'form': form
+    }
     return render(request, 'webpages/property_services.html', context )
 
 
 def property_join(request):
-    context = {}
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = SubscribeForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+
+            # process the data in form.cleaned_data as required
+            name1 = form.cleaned_data['name']
+            mobile_no1 = form.cleaned_data['mobile_no']
+            p = webpage_models.MobSubscriber(name=name1, mobile_no=mobile_no1,
+                              date_subscribed=date.today())
+            p.save()
+            # redirect to a new URL:
+            return HttpResponseRedirect('/profile/')
+        else:
+            print("Invalid Form")
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        print("SubscribeForm")
+        form = SubscribeForm()
+      
+    context = {
+        'form': form
+    }
     return render(request, 'webpages/property_services.html', context )
 
 

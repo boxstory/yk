@@ -6,8 +6,11 @@
 {% block meta %}
 <meta name="description" content="Yellowkey provides a comprehensive suite of services for property holders, realtors, and workmen in Qatar, including property management, tenant relations, and maintenance." />
 {% endblock meta %}
-<meta name="keywords" content="property management Qatar, realtor services Doha, property maintenance jobs Qatar, rent collection, tenant relations, real estate agent network" />
+<meta name="keywords" content="property management Qatar, real estate services Qatar, property management Doha, Qatar real estate platform, property holders Qatar, landlord services Qatar, tenant relations Qatar, rent collection Qatar, property maintenance Qatar, property photography Qatar, realtor services Qatar, real estate agents Doha, vacant property listings Qatar, property rental Qatar, brokerage services Qatar, real estate collaboration Qatar, workmen services Qatar, service providers Qatar, maintenance jobs Qatar, plumbing services Qatar, cleaning services Qatar, property repair Qatar, location based job listings Qatar, verified jobs Qatar, Qatar property market, real estate network Qatar, property listing Doha, real estate management Qatar, tenant management Qatar, property investment Qatar, commercial property Qatar, residential property Qatar, villa rental Qatar, apartment rental Qatar, real estate Doha, Qatar landlords, property services Doha, The Pearl Qatar properties, West Bay apartments, Lusail real estate, Al Sadd properties, Al Waab villas, property management The Pearl, real estate West Bay, apartments for rent Doha, villas for rent Qatar, furnished apartments Qatar, luxury properties Qatar, studio apartments Doha, penthouse Qatar, townhouse rental, expats housing Qatar, expatriate properties, property for expats, international tenants Qatar, buy property Qatar, properties for sale Qatar, real estate agents near me Qatar, property finder Qatar, property listings Doha, real estate investment Qatar, property owners Qatar, landlords Doha, property management company Doha, real estate agency Qatar, flat rental Doha, building management Qatar, residential villas Qatar, Qatar real estate agents, Doha property services" />
 <link rel="canonical" href="https://www.yellowkey.qa{{ request.path }}" />
+<link rel="alternate" hreflang="en" href="https://www.yellowkey.qa{{ request.path }}" />
+<link rel="alternate" hreflang="ar" href="https://www.yellowkey.qa{{ request.path }}" />
+<link rel="alternate" hreflang="x-default" href="https://www.yellowkey.qa{{ request.path }}" />
 {% block og_meta %}
 <meta property="og:title" content="All-in-One Real Estate Platform in Qatar | Yellowkey" />
 <meta property="og:description" content="Yellowkey is Qatar's complete real estate platform, connecting property holders with management services, realtors with collaboration tools, and workmen with verified jobs." />
@@ -15,11 +18,25 @@
 {% endblock og_meta %}
 <meta property="og:site_name" content="Yellowkey Realestate Management company" />
 <meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="ar_QA" />
+<meta name="language" content="English, Arabic" />
 <meta property="og:url" content="https://www.yellowkey.qa{{ request.path }}" />
 <meta property="og:type" content="website" />
 <meta name="author" content="Yellowkey Holdings" />
-<meta name="robots" content="index, follow" />
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+<meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 <meta name="theme-color" content="#ffffff" />
+<meta name="publisher" content="Yellowkey Holdings" />
+<meta name="citation_publisher" content="Yellowkey Holdings" />
+<meta name="citation_title" content="Yellowkey Qatar Real Estate Platform" />
+<meta name="citation_author" content="Yellowkey Holdings" />
+<meta property="article:publisher" content="https://www.facebook.com/yellowkey.qa" />
+<meta property="article:author" content="Yellowkey Holdings" />
+<meta name="geo.region" content="QA" />
+<meta name="geo.placename" content="Doha" />
+<meta name="geo.position" content="25.276987;51.520008" />
+<meta name="ICBM" content="25.276987, 51.520008" />
 <link rel="shortcut icon" href="#">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -59,13 +76,15 @@
   "@id": "https://www.yellowkey.qa/",
   "url": "https://www.yellowkey.qa",
   "telephone": "+974-33430001",
+  "priceRange": "$$",
+  "description": "Qatar's complete real estate platform connecting property holders with management services, realtors with collaboration tools, and workmen with verified jobs",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "534 alsadd",
     "addressLocality": "Doha",
     "addressRegion": "Doha",
     "postalCode": "00000",
-    "addressCountry": "Qatar"
+    "addressCountry": "QA"
   },
   "geo": {
     "@type": "GeoCoordinates",
@@ -79,8 +98,7 @@
       "Monday",
       "Tuesday",
       "Wednesday",
-      "Thursday",
-      
+      "Thursday"
     ],
     "opens": "07:00",
     "closes": "17:00"
@@ -89,6 +107,122 @@
     "https://www.facebook.com/yellowkey.qa",
     "https://www.twitter.com/yellowkey.qa",
     "https://www.instagram.com/yellowkey.qa"
+  ],
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Doha"
+    },
+    {
+      "@type": "Place",
+      "name": "The Pearl Qatar"
+    },
+    {
+      "@type": "Place",
+      "name": "West Bay"
+    },
+    {
+      "@type": "Place",
+      "name": "Lusail"
+    },
+    {
+      "@type": "Place",
+      "name": "Al Sadd"
+    },
+    {
+      "@type": "Place",
+      "name": "Al Waab"
+    },
+    {
+      "@type": "Country",
+      "name": "Qatar"
+    }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Real Estate Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Property Management Services Qatar",
+          "description": "Comprehensive property management including tenant relations, rent collection, maintenance, and property photography",
+          "areaServed": "Qatar",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "Yellowkey Holdings"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Real Estate Agent Services Qatar",
+          "description": "Vacant property listings, collaboration tools, and real estate agent network in Qatar",
+          "areaServed": "Qatar",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "Yellowkey Holdings"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Property Maintenance Services Qatar",
+          "description": "Verified workmen and service providers for property maintenance, plumbing, cleaning, and repairs",
+          "areaServed": "Qatar",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "Yellowkey Holdings"
+          }
+        }
+      }
+    ]
+  }
+}
+</script>
+
+<!-- Structured Data for Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Yellowkey Holdings",
+  "url": "https://www.yellowkey.qa",
+  "logo": "http://yellowkey.qa/media/webpages/brand/yk-lg-wh2.png",
+  "description": "Leading real estate platform in Qatar offering property management, realtor services, and workmen connections",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+974-33430001",
+    "contactType": "customer service",
+    "areaServed": "QA",
+    "availableLanguage": ["en", "ar"]
+  },
+  "sameAs": [
+    "https://www.facebook.com/yellowkey.qa",
+    "https://www.twitter.com/yellowkey.qa",
+    "https://www.instagram.com/yellowkey.qa"
   ]
+}
+</script>
+
+<!-- Website Schema for AI Search -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Yellowkey Qatar Real Estate Platform",
+  "url": "https://www.yellowkey.qa",
+  "description": "Qatar's complete real estate platform connecting property holders with management services, realtors with collaboration tools, and workmen with verified jobs in Doha and across Qatar",
+  "inLanguage": ["en", "ar"],
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.yellowkey.qa/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
 }
 </script>

@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block head_title %}Property Maintenance Jobs in Qatar | Yellowkey{% endblock %}
 {% block meta %}
-<meta name="description" content="Find verified property maintenance and handyman jobs in Doha, Qatar. Yellowkey connects skilled workmen with a steady stream of repair and service requests.">
+<meta name="description" content="Find verified property maintenance and handyman jobs in Doha, Qatar. Yellowkey connects skilled workmen, plumbers, electricians, cleaners, and service providers with location-based job listings, tenant requests, and reliable payment collections across Qatar.">
 {% endblock meta %}
 {% block og_meta %}
 <meta property="og:title" content="Property Maintenance Jobs in Qatar | Yellowkey" />
@@ -209,11 +210,24 @@
                   </div>
                 </div>
               </div>
-              <a class="btn btn-dark mt-2" href="{% url 'webpages:join_leads' %}">Request For Call</a>
             </div>
           </div>
         </div>
       </div>
+<!-- join now form -->
+        <div class="container col-md-10 bg-light py-3 px-auto ">
+            <div class="row">
+                <div class="text-center">
+                    <h2 class="fw-bold mt-8  ">Join Now with Yellowkey Qatar</h2>
+                    <p class="fw-bold   pb-3">Effortless Property Marketing for Smart Agents & Property holders</p>
+                </div>
+                <div class="container col-md-10">{{ form | crispy }}</div>
+                <button type="submit"
+                        value="submit"
+                        methode="POST"
+                        class="btn btn-dark  mx-auto w-50  px-5">Join Now</button>
+            </div>
+        </div>
     </section>
   {% endblock content %}
   <!-- extra js -->
