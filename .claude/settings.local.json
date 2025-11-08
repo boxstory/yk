@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(nul)",
+      "Bash(pkill:*)",
+      "Bash(taskkill:*)",
+      "Bash(timeout /t 2 /nobreak)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nStandardize all property and portion forms with modern grid design\n\n- Updated property_update.html with .alert-error and modern-submit-btn\n- Updated portions_add.html with .alert-error and modern-submit-btn\n- Updated portions_update.html with .alert-error and modern-submit-btn\n- All forms now use consistent 2-column grid layout with form-row\n- All error messages styled with modern .alert-error class\n- All submit buttons use gradient yellow .modern-submit-btn class\n- Labels display prominently above fields with required indicators\n- Fields grouped logically: basics, details, photos, etc.\n- Forms maintain consistent styling across dashboard\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
