@@ -152,6 +152,21 @@ li {
     display: inline-block;
 }
 
+#quick-action-list > div{
+    margin-top: 1rem;
+     
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+@media (max-width: 768px) {
+    #quick-action-list > div  {
+        width: 48%; /* Approximately 50% considering some margin/padding */
+        margin-bottom: 1rem; /* Add some space between cards on smaller screens */
+    }
+}
+
+
 .action-card {
     width: 100%;
     padding: 2rem 1rem;

@@ -1,67 +1,103 @@
-<div class=" col-md-12 p-0 p-md-2 col-12 pb-2">
-    <div class="row g-0 border rounded overflow-hidden flex-md-row p-2 shadow-sm h-md-250 position-relative">
-        <div class="col-8 px-2 d-flex flex-column pt-2">
-            <h3 class="mb-0">{{ property.name }}</h3>
-            <strong class="d-inline-block mb-2 text-success">Zone: {{ property.zone_no }}-{{ property.landmark }}</strong>
-            <strong class="d-inline-block mb-2 text-success">Code: {{ property.client_code }}</strong>
-            <strong class="d-inline-block mb-2 text-success">Building No: {{ property.property_no }}</strong>
-            <strong class="d-inline-block mb-2 text-success">Total Portions: {{ property.portion_count }}</strong>
-        </div>
-        <div class="col-12 px-2">
-            <div class="  pt-md-1">
-                {% if property.portions.count > 0 %}
-                    <div class="p fw-bold">Portions: {{ property.portions.count }}</div>
-                    <div class="d-flex flex-wrap">
-                        <div class="col-6 col-md-3  p-1 text-end">
-                            <img class="img-fluid img-thumbnail rounded border-0 property-img-wrapper"
-                                 src="{{ MEDIA_URL }}{{ property.photo_main }}"
-                                 style="height:150px"
-                                 role="img"
-                                 aria-label="Placeholder: Thumbnail"
-                                 preserveAspectRatio="xMidYMid slice"
-                                 focusable="false">
-                        </div>
-                        {% for portion in property.portions.all %}
-                            <div class="col-6 col-md-3  p-1">
-                                <div class="card  p-2">
-                                    <p class="card-title">Unit No: {{ portion.unit_no }}</p>
-                                    <p class="card-title">Floor: {{ portion.floor_no }}</p>
-                                    <p class="card-title">
-                                        <i class="fa-solid fa-bed"></i>
-                                        : {{ portion.portion_type }}
-                                    </p>
-                                </div>
-                                {% if portion.portions_status.first.status == 'BOOKED' %}
-                                    <span class="d-block bg-danger py-1 fw-bold bg-gradient text-white text-center">Booked</span>
-                                {% elif portion.portions_status.first.status == 'VACANT' %}
-                                    <span class="d-block bg-danger py-1 fw-bold bg-gradient text-white text-center">VACANT</span>
-                                    {% if portion.portions_status.first.vacant_date %}
-                                        <span class="d-block text-center">From: {{ portion.portions_status.first.vacant_date }}</span>
-                                    {% endif %}
-                                {% elif portion.portions_status.first.status == 'VACANT_SOON' %}
-                                    <span class="d-block bg-warning py-1 fw-bold bg-gradient text-dark text-center">Soon</span>
-                                    {% if portion.portions_status.first.vacant_date %}
-                                        <span class="d-block text-center">From: {{ portion.portions_status.first.vacant_date }}</span>
-                                    {% endif %}
-                                {% elif portion.portions_status.first.status == 'OCCUPIED' %}
-                                    <span class="d-block  bg-success py-1 fw-bold bg-gradient text-white text-center">Occupied</span>
-                                {% else %}
-                                    <span class="d-block bg-danger py-1 fw-bold bg-gradient text-white text-center">Not Set</span>
-                                {% endif %}
-                            </div>
-                        {% endfor %}
-                    </div>
-                {% else %}
-                    <a class="sidebar-link btn "
-                       hx-get="{% url 'clients:portions_add'  property_id=property.id %}"
-                       name="portions_add"
-                       hx-trigger="click"
-                       hx-target="#dashboard-right-side"
-                       hx-swap="innerHTML">
-                        <i class="fa-solid fa-add my-2 pt-1 pe-2"></i>
-                        <span class="pt-1">Add Portion</span></a>
-                {% endif %}
+<div class="col-12 col-md-6 col-lg-4 p-2">
+  <div class="card h-100 shadow-sm rounded-4 overflow-hidden border-0 property-card">
+    <!-- Property Image Section -->
+    <div class="position-relative property-image-section">
+      <img class="property-image"
+           src="{{ MEDIA_URL }}{{ property.photo_main }}"
+           alt="{{ property.name }}" />
+
+      <!-- Image Count Badge -->
+      <div class="position-absolute top-0 end-0 m-3">
+        <span class="badge bg-dark bg-opacity-75 px-3 py-2 rounded-3 property-image-count">
+          <i class="fas fa-camera me-1"></i> {{ property.portions.count }}
+        </span>
+      </div>
+
+      <!-- Agent/Owner Info -->
+      {% if property.user %}
+      <div class="position-absolute bottom-0 start-0 end-0 m-3 agent-info-overlay">
+        <div class="bg-white rounded-3 p-3 shadow-sm d-flex align-items-center gap-2">
+          {% if property.user.profile.photo %}
+          <img src="{{ MEDIA_URL }}{{ property.user.profile.photo }}"
+               class="rounded-circle agent-photo"
+               alt="{{ property.user.get_full_name }}" />
+          {% else %}
+          <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center text-white fw-bold agent-initials">
+            {{ property.user.first_name|slice:":1" }}{{ property.user.last_name|slice:":1" }}
+          </div>
+          {% endif %}
+          <div class="flex-grow-1">
+            <div class="fw-semibold d-flex align-items-center gap-1 agent-name">
+              {{ property.user.get_full_name }}
+              <i class="fas fa-check-circle text-primary agent-verified-icon"></i>
             </div>
+            {% if property.user.profile.phone %}
+            <div class="text-muted d-flex align-items-center gap-1 agent-phone">
+              <i class="fas fa-phone agent-phone-icon"></i>
+              {{ property.user.profile.phone }}
+            </div>
+            {% endif %}
+          </div>
         </div>
+      </div>
+      {% endif %}
     </div>
+
+    <!-- Property Details -->
+    <div class="card-body">
+      <!-- Action Buttons -->
+      <div class="d-flex gap-2 mb-3">
+        <a href="{% url 'clients:portions_a_building' property_id=property.id %}"
+           class="btn btn-sm btn-outline-secondary rounded-2 d-flex align-items-center justify-content-center property-action-btn">
+          <i class="fas fa-map-marker-alt"></i>
+        </a>
+        <button class="btn btn-sm btn-outline-secondary rounded-2 d-flex align-items-center justify-content-center property-action-btn"
+                onclick="this.classList.toggle('text-danger'); this.classList.toggle('border-danger');">
+          <i class="far fa-heart"></i>
+        </button>
+      </div>
+
+      <!-- Property Title -->
+      <h5 class="fw-bold mb-2 property-title">{{ property.title }}</h5>
+
+      <!-- Property Specs -->
+      <div class="d-flex gap-3 mb-2 text-muted property-specs">
+        <span>
+          <i class="fas fa-building me-1"></i> {{ property.portion_count }} Units
+        </span>
+        <span>
+          <i class="fas fa-door-open me-1"></i> {{ property.portions.count }}
+        </span>
+      </div>
+
+      <!-- Property Address -->
+      <div class="text-muted mb-2 property-address">
+        <i class="fas fa-location-dot me-1"></i>
+        Zone {{ property.zone_no }}, St. {{ property.street_no }}, Building {{ property.property_no }}
+      </div>
+
+      <div class="text-muted mb-3 property-landmark">
+        {{ property.landmark }}
+      </div>
+
+      <!-- Property Code Info -->
+      <div class="d-flex flex-wrap gap-2 mb-3">
+        <span class="badge bg-primary-subtle text-primary px-2 py-1">{{ property.client_code }}</span>
+        <span class="badge bg-secondary-subtle text-secondary px-2 py-1">{{ property.property_code }}</span>
+      </div>
+
+      <!-- Listed By -->
+      <div class="text-muted small">
+        Listed by YellowKey Real Estate
+      </div>
+    </div>
+
+    <!-- View Details Button -->
+    <div class="card-footer bg-white border-0 pt-0">
+      <a href="{% url 'clients:portions_a_building' property_id=property.id %}"
+         class="btn btn-primary w-100 rounded-2">
+        <i class="fas fa-eye me-2"></i>View All Portions
+      </a>
+    </div>
+  </div>
 </div>

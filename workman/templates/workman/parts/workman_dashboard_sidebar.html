@@ -1,7 +1,10 @@
 {% load static %}
 {% block extra_css %}
+<!-- Workman-specific CSS styles are in static/workman/css/workman_dashboard.css -->
 {% endblock extra_css %}
-<div class="min-vh-100 d-none d-md-flex flex-column flex-shrink-0 p-2 bg-light col-md-2 the-sidebar"
+
+<!-- Desktop Sidebar -->
+<div class="d-none d-md-flex flex-column flex-shrink-0 p-2 bg-light col-md-2 the-sidebar sticky-sidebar"
      id="sidebar">
   <div class="text-center fw-bold sidebar-item py-2">
     <a class="sidebar-link " href="#">WORKMAN Dashboard</a>
@@ -150,5 +153,60 @@
         </a>
       </li>
     </ul>
+  </div>
+</div>
+
+<!-- Mobile Sidebar Overlay -->
+<div class="mobile-sidebar-overlay d-md-none" id="mobileSidebarOverlay"></div>
+
+<!-- Mobile Sidebar -->
+<div class="mobile-sidebar d-md-none" id="mobileSidebar">
+  <div class="mobile-sidebar-header">
+    <h5 class="mb-0 fw-bold">WORKMAN Dashboard</h5>
+    <button class="mobile-close-btn" id="mobileCloseSidebar">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  <div class="p-3">
+    <div class="sidebar-collapse">
+      <ul class="sidebar-nav p-1 flex-column">
+        <li class="sidebar-head mb-2">
+          <a class="sidebar-link" href="#" onclick="closeMobileSidebar()">
+            <div class="d-flex btn-sidebar-blank sidebar-link justify-content-start">
+              <i class="fa-solid fa-tasks m-2 pe-2 pb-1"></i><span class="pt-1">My Tasks</span>
+            </div>
+          </a>
+        </li>
+        <li class="sidebar-head mb-2">
+          <a class="sidebar-link" href="#" onclick="closeMobileSidebar()">
+            <div class="d-flex btn-sidebar-blank sidebar-link justify-content-start">
+              <i class="fa-solid fa-tools m-2 pe-2 pb-1"></i><span class="pt-1">My Services</span>
+            </div>
+          </a>
+        </li>
+        <li class="sidebar-head mb-2">
+          <a class="sidebar-link" href="#" onclick="closeMobileSidebar()">
+            <div class="d-flex btn-sidebar-blank sidebar-link justify-content-start">
+              <i class="fa-solid fa-star m-2 pe-2 pb-1"></i><span class="pt-1">Reviews</span>
+            </div>
+          </a>
+        </li>
+        <hr />
+        <li class="sidebar-head mb-2">
+          <a class="sidebar-link" href="{% url 'help:workman_help' %}" onclick="closeMobileSidebar()">
+            <div class="d-flex btn-sidebar-blank sidebar-link justify-content-start">
+              <i class="fa-solid fa-question-circle m-2 pe-2 pb-1"></i><span class="pt-1">Help</span>
+            </div>
+          </a>
+        </li>
+        <li class="sidebar-head mb-2">
+          <a class="sidebar-link" href="{% url 'accounts:profile' %}" onclick="closeMobileSidebar()">
+            <div class="d-flex btn-sidebar-blank sidebar-link justify-content-start">
+              <i class="fa-solid fa-user m-2 pe-2 pb-1"></i><span class="pt-1">Profile</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

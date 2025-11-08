@@ -1,0 +1,46 @@
+
+
+# 1. Python/Virtual Environment Exclusions
+# The virtual environment is large and not needed for AI context.
+# Common environment names are 'env', 'venv', or '.venv'
+venv/
+env/
+.venv/
+
+# Compiled Python files and cache directories
+*.pyc
+__pycache__/
+
+# Dependencies (if using a local Python package repository)
+.eggs/
+.mypy_cache/
+.pytest_cache/
+
+# 2. Django-Specific Artifacts
+# User-uploaded files (media) and static file collection output (static root)
+# These folders can become very large and do not contain source code.
+media/
+staticfiles/
+
+
+
+# Log files created during runtime
+*.log
+logs/
+
+# 3. Security and Configuration Exclusions
+# Environment variables, which contain sensitive keys and database credentials.
+# Note: For security, sensitive settings should use environment variables
+# or a separate file that is NOT committed to Git.
+.env
+.env.*
+secrets.json
+local_settings.py
+
+# 4. IDE and Editor Settings
+# Files containing local settings specific to your environment.
+# Exclude the entire VS Code settings folder.
+.vscode/
+
+# If using PyCharm/IntelliJ:
+.idea/

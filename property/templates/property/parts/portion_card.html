@@ -1,85 +1,92 @@
 <div class="col-md-6 col-lg-4 mb-3">
-  <div class="property-wrapper pe-2">
-    <div class="property-card">
-      <div class="property-img">
-        <img src="{{ MEDIA_URL }}{{ portion.property_data.photo_main }}"
-             alt="house" />
-        <div class="heart">
-          <i class="fa-solid fa-heart fa-2xl" style="color: #FFD43B;"></i>
+  <div class="card h-100 shadow-sm border-light rounded-3 overflow-hidden">
+    <div class="position-relative">
+      <img src="{{ MEDIA_URL }}{{ portion.photo_main.url|default:portion.property_data.photo_main.url }}"
+           class="card-img-top portion-card-image"
+           alt="{{ portion.portion_type }} in {{ portion.property_data.landmark }}" />
+      <div class="position-absolute top-0 end-0 p-2">
+        <i class="fa-solid fa-heart fa-xl text-white"></i>
+      </div>
+      <div class="position-absolute top-0 start-0 p-2">
+        {% with status=portion.portions_status.first.status %}
+          {% if status == 'VACANT' %}
+            <span class="badge bg-success">Vacant</span>
+          {% elif status == 'BOOKED' %}
+            <span class="badge bg-danger">Booked</span>
+          {% elif status == 'VACANT_SOON' %}
+            <span class="badge bg-warning text-dark">Vacant Soon</span>
+          {% elif status == 'OCCUPIED' %}
+            <span class="badge bg-secondary">Occupied</span>
+          {% else %}
+            <span class="badge bg-dark">Not Set</span>
+          {% endif %}
+        {% endwith %}
+      </div>
+      <div class="position-absolute bottom-0 start-0 p-2 w-100">
+        <div class="d-flex justify-content-between align-items-center">
+          <h5 class="card-title fw-bold mb-0 text-white">{{ portion.portion_type }} - Unit {{ portion.unit_no }}</h5>
+          <h5 class="card-title fw-bold text-white bg-warning px-2 py-1 rounded-pill">QAR {{ portion.price }}</h5>
         </div>
       </div>
-      <div class="property-info section-container px-3 m-0 pb-0">
-        <h4 class="title">{{ portion.portion_type }}-{{ portion.unit_no }} • {{ portion.sqft }} sqf</h4>
-        <h3 class="price">QAR {{ portion.price }}</h3>
-        <p class="address">{{ portion.property_data.landmark }}</p>
-      </div>
-      <div class="aminities section-container px-3 pt-0">
-        <div class="room ">
-          <i class="fa-solid fa-bed p-2"></i>
-          <span class="room_count p-2">{{ portion.bedrooms }}</span>
-          <i class="fa-solid fa-bath p-2"></i>
-          <span class="room_count p-2">{{ portion.bathrooms }}</span>
-          <i class="fa-solid fa-couch  p-2"></i>
-          <span class="room_count p-2">{{ portion.furnished_type }}</span>
+    </div>
+    <div class="card-body d-flex flex-column">
+      <p class="text-muted small mb-2"><i class="fa-solid fa-location-dot me-1"></i>{{ portion.property_data.landmark }}</p>
+
+      <div class="d-flex justify-content-between text-center my-2 border-top border-bottom py-2">
+        <div class="flex-fill">
+          <i class="fa-solid fa-bed text-secondary"></i>
+          <span class="d-block small">{{ portion.bedrooms }} Beds</span>
         </div>
-        <div class="room ">
-          <i class="fa-solid fa-layer-group p-2"></i>
-          <span class="room_count p-2">{{ portion.floor_no }}</span> Floor
+        <div class="flex-fill">
+          <i class="fa-solid fa-bath text-secondary"></i>
+          <span class="d-block small">{{ portion.bathrooms }} Baths</span>
         </div>
-      </div>
-      <div class="contact section-container py-0">
-        <img src="{{ MEDIA_URL }}{{ portion.user.profile_picture.profile_picture }}"
-             alt="portrait" />
-        <div class="contact_info py-2">
-          <p class="contact_name">{{ portion.user.profile }}</p>
-          <p class="property_code">555</p>
+        <div class="flex-fill">
+          <i class="fa-solid fa-couch text-secondary"></i>
+          <span class="d-block small">{{ portion.furnished_type|default:"N/A" }}</span>
+        </div>
+        <div class="flex-fill">
+          <i class="fa-solid fa-ruler-combined text-secondary"></i>
+          <span class="d-block small">{{ portion.sqft|default:"N/A" }} sqft</span>
         </div>
       </div>
-      <div class="schedule section-container border-bottom">
-        {% if portion.portions_status.first.status == null %}
-          <span> NA</></span>
+
+      <div class="d-flex align-items-center mt-auto pt-2">
+        {% if portion.user.profile_picture.profile_picture %}
+          <img src="{{ MEDIA_URL }}{{ portion.user.profile_picture.profile_picture.url }}"
+               alt="{{ portion.user.profile }}"
+               class="rounded-circle portion-agent-photo" />
         {% else %}
-          {{ portion.portions_status.first.status }}
+          <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center portion-agent-avatar">
+            <i class="fa-solid fa-user text-white"></i>
+          </div>
         {% endif %}
+        <div class="ms-2">
+          <p class="fw-bold mb-0 small">{{ portion.user.profile }}</p>
+          <p class="text-muted small mb-0">Property Code: {{ portion.property_data.property_code }}</p>
+        </div>
       </div>
-      <!-- @todo schedule showing -->
+    </div>
+    <div class="card-footer bg-light p-0">
       {% if portion.user != request.user %}
-        <div class="d-flex">
-          <a class="schedule section-container border-end text-decoration-none "
+        <div class="d-grid portion-grid-footer">
+          <a class="btn btn-outline-dark rounded-0 border-0 border-end"
              href="https://wa.me/97433430001?text=required%20the%20details%20about%20%0A{{ portion.property_data.property_code }}:property,%0A{{ portion.portion_code }}:portion%0A%0ABy%20{{ portion.user.profile }}"
-             target="_blank"><i class="fa-brands fa-whatsapp"></i>Share to Whatsapp</a>
-          <div class="schedule section-container">Schedule Showing</div>
+             target="_blank"><i class="fa-brands fa-whatsapp me-1"></i>Whatsapp</a>
+          <a href="#" class="btn btn-warning rounded-0 text-dark fw-bold">Schedule Showing</a>
         </div>
       {% else %}
-        <div class="d-flex">
-          <a class="schedule section-container border-end text-decoration-none "
-             href="{% url 'client:portion_single_update' %}">Edit Portion</a>
-          <a class="schedule section-container  text-decoration-none "
+        <div class="d-grid portion-grid-footer">
+          <a class="btn btn-outline-dark rounded-0 border-0 border-end"
+             href="#">
+            <i class="fa-solid fa-pen-to-square me-1"></i>Edit Portion
+          </a>
+          <a class="btn btn-outline-dark rounded-0 border-0"
              data-bs-toggle="modal"
              data-bs-target="#StatusUpdateModal"
-             href="{% url 'property:vacant_status_update'   portion_id=portion.id %}">Edit Status</a>
-          <!-- Modal -->
-          <div class="modal fade"
-               id="StatusUpdateModal"
-               tabindex="-1"
-               role="dialog"
-               aria-labelledby="StatusUpdateModalLabel"
-               aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="StatusUpdateModalLabel">Choose Vacant Status</h5>
-                  <button type="button"
-                          class="close"
-                          data-bs-dismiss="modal"
-                          aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">{% include "property/parts/choose_vacant_status.html" %}</div>
-              </div>
-            </div>
-          </div>
+             href="{% url 'property:vacant_status_update' portion_id=portion.id %}">
+            <i class="fa-solid fa-edit me-1"></i>Edit Status
+          </a>
         </div>
       {% endif %}
     </div>

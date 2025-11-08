@@ -107,7 +107,411 @@
   .schedule:hover {
     background-color: #e4ac14;
   }
-  
-  
+
+/* Portion Card Styles */
+.portion-card-image {
+    height: 200px;
+    object-fit: cover;
+}
+
+.portion-agent-photo {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+.portion-agent-avatar {
+    width: 40px;
+    height: 40px;
+}
+
+.portion-grid-footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 /* property main card css */
-  
+
+/* ===== INQUIRE FORM STYLES ===== */
+
+:root {
+    --primary-color: #ebcb1b;
+    --primary-dark: #e4ac14;
+    --text-dark: #232c3d;
+    --text-light: #727982;
+    --border-color: #f2f4f7;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 13px 27px -5px rgba(50, 50, 93, 0.25), 0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.03);
+    --transition: all 0.3s ease;
+}
+
+/* Form Wrapper */
+.inquire-form-wrapper {
+    background: linear-gradient(135deg, #f8f9fa 0%, #f2f4f7 100%);
+    min-height: 100vh;
+    padding: 40px 0;
+}
+
+/* Form Header */
+.inquire-form-header {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: slideDown 0.6s ease-out;
+}
+
+.inquire-form-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.inquire-form-title i {
+    font-size: 2.4rem;
+    color: var(--primary-color);
+}
+
+.inquire-form-subtitle {
+    font-size: 1rem;
+    color: var(--text-light);
+    margin: 0;
+    font-weight: 400;
+}
+
+/* Form Card Container */
+.inquire-form-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 30px;
+    animation: slideUp 0.6s ease-out;
+}
+
+/* Crispy Form Wrapper */
+.crispy-form-wrapper {
+    margin-bottom: 30px;
+}
+
+.crispy-form-wrapper .alert {
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin-bottom: 24px;
+    border: none;
+}
+
+.crispy-form-wrapper .alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.crispy-form-wrapper .alert-danger strong {
+    font-weight: 700;
+}
+
+.crispy-form-wrapper .alert p {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.crispy-form-wrapper .alert p:last-child {
+    margin-bottom: 0;
+}
+
+/* Form Field Styling */
+.crispy-form-wrapper .form-group {
+    margin-bottom: 24px;
+    display: block;
+}
+
+.crispy-form-wrapper label,
+.crispy-form-wrapper .form-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    display: block;
+    transition: var(--transition);
+}
+
+.crispy-form-wrapper .text-danger {
+    color: #dc3545;
+    margin-left: 2px;
+}
+
+.crispy-form-wrapper .form-control,
+.crispy-form-wrapper textarea,
+.crispy-form-wrapper select {
+    border: 2px solid #e8ecf1;
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: var(--transition);
+    background-color: #fafbfc;
+    color: var(--text-dark);
+}
+
+.crispy-form-wrapper .form-control:focus,
+.crispy-form-wrapper textarea:focus,
+.crispy-form-wrapper select:focus {
+    border-color: var(--primary-color);
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(235, 203, 27, 0.1);
+    outline: none;
+}
+
+.crispy-form-wrapper textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: inherit;
+}
+
+.crispy-form-wrapper input[type="date"],
+.crispy-form-wrapper input[type="time"],
+.crispy-form-wrapper input[type="email"],
+.crispy-form-wrapper input[type="tel"],
+.crispy-form-wrapper input[type="number"] {
+    width: 100%;
+}
+
+/* Hidden Fields */
+.crispy-form-wrapper input[type="hidden"] {
+    display: none;
+}
+
+/* Form Field Help Text */
+.crispy-form-wrapper .form-text,
+.crispy-form-wrapper .helptext,
+.crispy-form-wrapper small.form-text {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-top: 6px;
+    display: block;
+}
+
+/* Form Field Errors */
+.crispy-form-wrapper .invalid-feedback,
+.crispy-form-wrapper .form-error {
+    display: block;
+    color: #dc3545;
+    font-size: 0.85rem;
+    margin-top: 6px;
+    font-weight: 500;
+}
+
+.crispy-form-wrapper .form-control.is-invalid,
+.crispy-form-wrapper .form-control:invalid {
+    border-color: #dc3545;
+}
+
+.crispy-form-wrapper .form-control.is-invalid:focus {
+    box-shadow: 0 0 0 4px rgba(220, 53, 69, 0.1);
+}
+
+/* Fieldset Styling */
+.crispy-form-wrapper fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.crispy-form-wrapper fieldset > legend {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border-color);
+    width: 100%;
+}
+
+/* Radio and Checkbox Styling */
+.crispy-form-wrapper .form-check {
+    margin-bottom: 16px;
+}
+
+.crispy-form-wrapper .form-check-input {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #e8ecf1;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 3px;
+}
+
+.crispy-form-wrapper .form-check-input:hover {
+    border-color: var(--primary-color);
+}
+
+.crispy-form-wrapper .form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.crispy-form-wrapper .form-check-label {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    cursor: pointer;
+    margin-left: 8px;
+    font-weight: 400;
+}
+
+/* Submit Button */
+.inquire-form-actions {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.btn-inquire-submit {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: #000000;
+    border: none;
+    padding: 14px 48px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: var(--shadow-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-inquire-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(235, 203, 27, 0.3);
+}
+
+.btn-inquire-submit:active {
+    transform: translateY(0);
+}
+
+.btn-inquire-submit i {
+    font-size: 1.2rem;
+}
+
+/* Form Footer */
+.inquire-form-footer {
+    text-align: center;
+}
+
+.btn-inquire-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 10px 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    transition: var(--transition);
+    background-color: transparent;
+}
+
+.btn-inquire-back:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background-color: rgba(235, 203, 27, 0.05);
+}
+
+/* Animations */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .inquire-form-card {
+        padding: 30px 20px;
+    }
+
+    .inquire-form-title {
+        font-size: 1.8rem;
+    }
+
+    .inquire-form-title i {
+        font-size: 2rem;
+    }
+
+    .inquire-form-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .crispy-form-wrapper .form-group {
+        margin-bottom: 20px;
+    }
+
+    .btn-inquire-submit {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 24px;
+    }
+
+    .btn-inquire-back {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .inquire-form-wrapper {
+        padding: 20px 0;
+    }
+
+    .inquire-form-card {
+        padding: 20px 16px;
+        margin-bottom: 20px;
+    }
+
+    .inquire-form-header {
+        margin-bottom: 30px;
+    }
+
+    .inquire-form-title {
+        font-size: 1.5rem;
+    }
+
+    .crispy-form-wrapper label {
+        font-size: 0.9rem;
+    }
+
+    .crispy-form-wrapper .form-control,
+    .crispy-form-wrapper textarea,
+    .crispy-form-wrapper select {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+}
+
+/* ===== END INQUIRE FORM STYLES ===== */

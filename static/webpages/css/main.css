@@ -1,38 +1,63 @@
-<style> 
-    @media (max-width: 576px) { /* Targets screens smaller than 576px (Bootstrap's 'sm' breakpoint) */
-.responsive-btn {
-    padding: .25rem .5rem; /* Smaller padding */
-    font-size: x-small;        ; /* Smaller font size */ 
-    border: none; /* No border */
-    text-decoration: none; /* Remove underline */
-    cursor: pointer; /* Pointer cursor on hover */
-    margin-right: .5rem; /* Smaller margin between buttons */
-    margin-bottom: .5rem; /* Smaller margin between buttons */
-    }
-p {
-    font-size: small
+<style>
 
-    } 
+
+@media (max-width: 576px) {
+    /* Targets screens smaller than 576px (Bootstrap's 'sm' breakpoint) */
+    .responsive-btn {
+        padding: .25rem .5rem;
+        /* Smaller padding */
+        font-size: x-small;
+        ;
+        /* Smaller font size */
+        border: none;
+        /* No border */
+        text-decoration: none;
+        /* Remove underline */
+        cursor: pointer;
+        /* Pointer cursor on hover */
+        margin-right: .5rem;
+        /* Smaller margin between buttons */
+        margin-bottom: .5rem;
+        /* Smaller margin between buttons */
+    }
+
+    p {
+        font-size: small
+    }
 
 }
-.btn:hover  {
-    background-color: #ffcc24; /* Darker blue background on hover */
-    color: rgb(0, 0, 0); /* White text color on */
-     
-    }
+
+.btn:hover {
+    background-color: #ffcc24;
+    /* Darker blue background on hover */
+    color: rgb(0, 0, 0);
+    /* White text color on */
+
+}
+
 .property-img-wrapper {
-    width: 150px; /* Full-width */
-    height: 150px; /* Maintain aspect ratio */
-    margin-bottom: 1rem; /* Add some margin below the image */
-    border-radius: 10px; /* Rounded corners */
-    overflow: hidden; /* Hide overflowing content */
-    transition: transform 0.3s ease; /* Smooth transition effect for scaling */
-    object-fit: cover ; /* Maintain aspect ratio */ 
-    }
-    .property-img-wrapper:hover {
-    transform: scale(1.1); /* Scale the image slightly on hover */  
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-    }
+    width: 150px;
+    /* Full-width */
+    height: 150px;
+    /* Maintain aspect ratio */
+    margin-bottom: 1rem;
+    /* Add some margin below the image */
+    border-radius: 10px;
+    /* Rounded corners */
+    overflow: hidden;
+    /* Hide overflowing content */
+    transition: transform 0.3s ease;
+    /* Smooth transition effect for scaling */
+    object-fit: cover;
+    /* Maintain aspect ratio */
+}
+
+.property-img-wrapper:hover {
+    transform: scale(1.1);
+    /* Scale the image slightly on hover */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Add a subtle shadow */
+}
 
 
 

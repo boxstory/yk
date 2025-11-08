@@ -1,7 +1,10 @@
 {% load static %}
 {% block extra_css %}
+<!-- Client-specific CSS styles are in static/clients/css/clients_dashboard.css -->
 {% endblock extra_css %}
-<div class="min-vh-100 d-none d-md-flex flex-column flex-shrink-0 p-2 bg-light col-md-2 the-sidebar"
+
+<!-- Desktop Sidebar -->
+<div class="d-none d-md-flex flex-column flex-shrink-0 p-2 bg-light col-md-2 the-sidebar sticky-sidebar"
      id="sidebar">
   <div class="text-center fw-bold sidebar-item p-2 px-4">
     <a class="sidebar-link " href="#">PROPERTY Dashboard</a>
@@ -189,5 +192,214 @@
         </a>
       </li>
     </ul>
+  </div>
+</div>
+
+<!-- Mobile Sidebar Overlay -->
+<div class="mobile-sidebar-overlay d-md-none" id="mobileSidebarOverlay"></div>
+
+<!-- Mobile Sidebar -->
+<div class="mobile-sidebar d-md-none" id="mobileSidebar">
+  <div class="mobile-sidebar-header">
+    <h5 class="mb-0 fw-bold">PROPERTY Dashboard</h5>
+    <button class="mobile-close-btn" id="mobileCloseSidebar">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+
+  <div class="p-3">
+    <div class="sidebar-collapse">
+      <ul class="sidebar-nav p-1 flex-column">
+        <li class="sidebar-head">
+          <div class="sidebar-item py-3 btn-sidebar-blank collapsed d-flex align-items-center"
+               data-bs-toggle="collapse"
+               data-bs-target="#mobile-submenu-001">
+            <i class="fa-solid fa-home ms-2 pe-2"></i>Properties<i class="flex-fill fa-solid fa-caret-down ps-2"></i>
+          </div>
+          <div class="multi-level collapse bg-white rounded-3"
+               role="list"
+               id="mobile-submenu-001"
+               aria-expanded="false">
+            <ul class="flex-column p-0 ms-2 text-black">
+              <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start mx-auto"
+                 hx-get="{% url 'clients:property_own_list' %}"
+                 name="property_all_list"
+                 hx-trigger="click"
+                 hx-target="#dashboard-right-side"
+                 hx-swap="innerHTML"
+                 onclick="closeMobileSidebar()">
+                <i class="fa-solid fa-bars my-2 pt-1 pe-2"></i>
+                <span class="pt-2">Own Properties</span></a>
+              <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start mx-auto"
+                 hx-get="{% url 'clients:portions_all_list' %}"
+                 name="portions_all_list"
+                 hx-trigger="click"
+                 hx-target="#dashboard-right-side"
+                 hx-swap="innerHTML"
+                 onclick="closeMobileSidebar()">
+                <i class="fa-solid fa-bars my-2 pt-1 pe-2"></i>
+                <span class="pt-2">All Portions</span></a>
+              <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
+                 hx-get="{% url 'clients:portions_all_list' %}"
+                 name="portions_all_list"
+                 hx-trigger="click"
+                 hx-target="#dashboard-right-side"
+                 hx-swap="innerHTML"
+                 onclick="closeMobileSidebar()">
+                <i class="fa-solid fa-spinner my-2 pt-1 pe-2"></i>
+                <span class="pt-2">Vacant soon</span>
+              </a>
+              <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
+                 hx-get="{% url 'clients:portions_all_list' %}"
+                 name="portions_all_list"
+                 hx-trigger="click"
+                 hx-target="#dashboard-right-side"
+                 hx-swap="innerHTML"
+                 onclick="closeMobileSidebar()">
+                <i class="fa-solid fa-bars my-2 pt-1 pe-2"></i>
+                <span class="pt-2">Vacants</span>
+              </a>
+              <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
+                 hx-get="{% url 'clients:portions_all_list' %}"
+                 name="portions_all_list"
+                 hx-trigger="click"
+                 hx-target="#dashboard-right-side"
+                 hx-swap="innerHTML"
+                 onclick="closeMobileSidebar()">
+                <i class="fa-solid fa-bars my-2 pt-1 pe-2"></i>
+                <span class="pt-2">Occupied</span>
+              </a>
+              <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
+                 hx-get="{% url 'clients:portions_all_list' %}"
+                 name="portions_all_list"
+                 hx-trigger="click"
+                 hx-target="#dashboard-right-side"
+                 hx-swap="innerHTML"
+                 onclick="closeMobileSidebar()">
+                <i class="fa-solid fa-xmark my-2 pt-1 pe-2"></i>
+                <span class="pt-2">Unlisted</span>
+              </a>
+              <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
+                 hx-get="{% url 'clients:portions_all_list' %}"
+                 name="portions_all_list"
+                 hx-trigger="click"
+                 hx-target="#dashboard-right-side"
+                 hx-swap="innerHTML"
+                 onclick="closeMobileSidebar()">
+                <i class="fa-solid fa-add my-2 pt-1 pe-2"></i>
+                <span class="pt-2">Add Property</span>
+              </a>
+            </ul>
+          </div>
+        </li>
+        <hr class="m-2" />
+        <li class="sidebar-head">
+          <div class="sidebar-item btn-sidebar-blank collapsed d-flex justify-content-start align-items-center py-3"
+               data-bs-toggle="collapse"
+               data-bs-target="#mobile-submenu-002">
+            <i class="fa-solid fa-box-open px-2"></i>Operations<i class="flex-fill fa-solid fa-caret-down ps-2"></i>
+          </div>
+          <div class="multi-level collapse bg-white rounded-3"
+               role="list"
+               id="mobile-submenu-002"
+               aria-expanded="false">
+            <ul class="flex-column p-0 ms-2 text-black">
+              <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
+                 hx-get="{% url 'clients:portions_all_list' %}"
+                 name="portions_all_list"
+                 hx-trigger="click"
+                 hx-target="#dashboard-right-side"
+                 hx-swap="innerHTML"
+                 onclick="closeMobileSidebar()">
+                <i class="fa-solid fa-spinner my-2 pt-1 pe-2"></i>
+                <span class="pt-2">Visit Requests</span>
+              </a>
+              <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
+                 hx-get="{% url 'clients:portions_all_list' %}"
+                 name="portions_all_list"
+                 hx-trigger="click"
+                 hx-target="#dashboard-right-side"
+                 hx-swap="innerHTML"
+                 onclick="closeMobileSidebar()">
+                <i class="fa-solid fa-spinner my-2 pt-1 pe-2"></i>
+                <span class="pt-2">job Requests</span>
+              </a>
+              <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
+                 hx-get="{% url 'clients:portions_all_list' %}"
+                 name="portions_all_list"
+                 hx-trigger="click"
+                 hx-target="#dashboard-right-side"
+                 hx-swap="innerHTML"
+                 onclick="closeMobileSidebar()">
+                <i class="fa-solid fa-check my-2 pt-1 pe-2"></i>
+                <span class="pt-2">Tenanat Docs</span>
+              </a>
+              <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
+                 hx-get="{% url 'clients:portions_all_list' %}"
+                 name="portions_all_list"
+                 hx-trigger="click"
+                 hx-target="#dashboard-right-side"
+                 hx-swap="innerHTML"
+                 onclick="closeMobileSidebar()">
+                <i class="fa-solid fa-bars my-2 pt-1 pe-2"></i>
+                <span class="pt-2">Rent Reports</span>
+              </a>
+              <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
+                 hx-get="{% url 'clients:portions_all_list' %}"
+                 name="portions_all_list"
+                 hx-trigger="click"
+                 hx-target="#dashboard-right-side"
+                 hx-swap="innerHTML"
+                 onclick="closeMobileSidebar()">
+                <i class="fa-solid fa-bars my-2 pt-1 pe-2"></i>
+                <span class="pt-2">Portion Status</span>
+              </a>
+            </ul>
+          </div>
+        </li>
+        <hr class="m-2" />
+        <li class="sidebar-head mb-2">
+          <a class="sidebar-link" href="#" onclick="closeMobileSidebar()">
+            <div class="d-flex btn-sidebar-blank sidebar-link justify-content-start">
+              <i class="fa-solid fa-chart-bar m-2 pe-2 pb-1"></i>
+              <span class="pt-1">Reports</span>
+            </div>
+          </a>
+        </li>
+        <li class="sidebar-head mb-2">
+          <a class="sidebar-link" href="#" onclick="closeMobileSidebar()">
+            <div class="d-flex btn-sidebar-blank sidebar-link justify-content-start">
+              <i class="fa-solid fa-address-book m-2 pe-2 pb-1"></i>
+              <span class="pt-1">Contacts</span>
+            </div>
+          </a>
+        </li>
+        <li class="sidebar-head mb-2">
+          <a class="sidebar-link" href="#" onclick="closeMobileSidebar()">
+            <div class="d-flex btn-sidebar-blank sidebar-link justify-content-start">
+              <i class="fa-solid fa-store m-2 pe-2 pb-1"></i>
+              <span class="pt-1">Services</span>
+            </div>
+          </a>
+        </li>
+        <hr />
+        <li class="sidebar-head mb-2">
+          <a class="sidebar-link" href="{% url 'help:client_help' %}" onclick="closeMobileSidebar()">
+            <div class="d-flex btn-sidebar-blank sidebar-link justify-content-start">
+              <i class="fa-solid fa-question-circle m-2 pe-2 pb-1"></i>
+              <span class="pt-1">Help</span>
+            </div>
+          </a>
+        </li>
+        <li class="sidebar-head mb-2">
+          <a class="sidebar-link" href="{% url 'accounts:profile' %}" onclick="closeMobileSidebar()">
+            <div class="d-flex btn-sidebar-blank sidebar-link justify-content-start">
+              <i class="fa-solid fa-store m-2 pe-2 pb-1"></i>
+              <span class="pt-1">Profile</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

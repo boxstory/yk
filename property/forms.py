@@ -11,7 +11,11 @@ class PropertyForm(forms.ModelForm):
 class PortionsForm(forms.ModelForm):
     class Meta:
         model = Portions
-        exclude = ['user', 'property_data', 'date_created', 'date_updated', 'portion_code']
+        fields = ['property_data', 'portion_type', 'furnished_type', 'furnished_extra_info', 'unit_no', 'floor_no', 'description', 'price', 'bedrooms', 'bathrooms', 'sqft', 'photo_main', 'photo_1', 'photo_2', 'photo_3']
+        exclude = ['user', 'date_created', 'date_updated', 'portion_code']
+        widgets = {
+            'property_data': forms.HiddenInput(),
+        }
 
 class Singelform(forms.ModelForm):
     class Meta:

@@ -22,6 +22,17 @@
     </head>
     <body class="min-vh-100">
         {% include "includes/navbar.html" %}
+
+        <!-- Mobile Sidebar Toggle Button Bar -->
+        <div class="mobile-sidebar-toggle-bar d-md-none" id="mobileSidebarToggleBar">
+            <button class="mobile-sidebar-toggle-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+                <span class="scroll-arrow">
+                    <i class="fas fa-chevron-down"></i>
+                </span>
+            </button>
+        </div>
+
         <main class="col-12 min-vh-100">
             <section class="py-1 bg-warning">
                 <div class="container">
@@ -46,6 +57,95 @@
         </main>
         {% include "includes/footer.html" %}
         {% include "includes/scripts.html" %}
+
+        <script>
+            // Mobile Sidebar Toggle with Sticky Behavior
+            document.addEventListener('DOMContentLoaded', function() {
+                const toggleBar = document.getElementById('mobileSidebarToggleBar');
+                const toggleBtn = document.getElementById('mobileMenuBtn');
+                const sidebar = document.getElementById('mobileSidebar');
+                const overlay = document.getElementById('mobileSidebarOverlay');
+                const closeBtn = document.getElementById('mobileCloseSidebar');
+
+                if (!toggleBar || !toggleBtn) return;
+
+                // Check if mobile view
+                function isMobileView() {
+                    return window.innerWidth < 768;
+                }
+
+                // Handle scroll to make bar sticky
+                let ticking = false;
+                function handleScroll() {
+                    const scrollTop = window.scrollY;
+                    const barOffsetTop = toggleBar.offsetTop;
+
+                    if (scrollTop > barOffsetTop) {
+                        toggleBar.classList.add('sticky');
+                    } else {
+                        toggleBar.classList.remove('sticky');
+                    }
+                    ticking = false;
+                }
+
+                window.addEventListener('scroll', function() {
+                    if (!ticking && isMobileView()) {
+                        window.requestAnimationFrame(handleScroll);
+                        ticking = true;
+                    }
+                });
+
+                // Handle menu button click - Open sidebar with animation
+                toggleBtn.addEventListener('click', function() {
+                    if (isMobileView() && sidebar && overlay) {
+                        document.body.style.overflow = 'hidden';
+                        overlay.classList.add('show');
+                        sidebar.classList.add('show');
+                    }
+                });
+
+                // Handle close button click
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', function() {
+                        if (sidebar && overlay) {
+                            document.body.style.overflow = '';
+                            overlay.classList.remove('show');
+                            sidebar.classList.remove('show');
+                        }
+                    });
+                }
+
+                // Handle overlay click to close
+                if (overlay) {
+                    overlay.addEventListener('click', function() {
+                        if (sidebar && overlay) {
+                            document.body.style.overflow = '';
+                            overlay.classList.remove('show');
+                            sidebar.classList.remove('show');
+                        }
+                    });
+                }
+
+                // Handle ESC key to close
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && sidebar && overlay) {
+                        document.body.style.overflow = '';
+                        overlay.classList.remove('show');
+                        sidebar.classList.remove('show');
+                    }
+                });
+
+                // Handle window resize to close sidebar on desktop
+                window.addEventListener('resize', function() {
+                    if (!isMobileView() && sidebar && overlay) {
+                        document.body.style.overflow = '';
+                        overlay.classList.remove('show');
+                        sidebar.classList.remove('show');
+                    }
+                });
+            });
+        </script>
+
         {% block extra_js %}
             <!-- extra js -->
         {% endblock extra_js %}

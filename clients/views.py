@@ -193,7 +193,7 @@ def portions_own_list(request):
 @login_required(login_url='account_login')
 def portions_a_building(request, property_id):
     
-    property = get_object_or_404(property_models.Property_data, property_id=property_id)
+    property = get_object_or_404(property_models.Property_data, id=property_id)
     
     profile = request.user.profile
     portions = property_models.Portions.objects.filter(user=request.user, property_data_id=property_id)
@@ -212,7 +212,7 @@ def portions_add(request, property_id):
     if property_id == None:
         print('property_id is none')
         return redirect('property:dashboard')
-    building = get_object_or_404(property_models.Property_data, property_id=property_id)
+    building = get_object_or_404(property_models.Property_data, id=property_id)
     if building.user != request.user:
         messages.error(request, 'You are not authorized to access this portion.', extra_tags='danger')
         return redirect('property:dashboard')
@@ -224,15 +224,15 @@ def portions_add(request, property_id):
             form = form.save(commit=False)
             print('form valid')
             form.property_data_id = property_id
-            form.user_id = pk
+            form.user = request.user
 
             form.save()
 
-            return redirect('property:portions_of_property',   property_id)
+            return redirect('property:portions_of_property', pk=request.user.id, property_id=property_id)
     context = {'form': form}
 
 
-    return render(request, 'property/portion_add.html', context)
+    return render(request, 'clients/pages/portions_add.html', context)
 
 
 # @todo portions listing

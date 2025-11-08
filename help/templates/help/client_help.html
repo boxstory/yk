@@ -1,483 +1,442 @@
 {% extends 'base_dashboard.html' %}
 {% load static %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'help/css/help_dashboard.css' %}?v=2.0" type="text/css" />
+{% endblock extra_css %}
+
 {% block content %}
-    <div class="container mt-4">
-        <div class="row">
-            <div class="col-12">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="{% url 'clients:dashboard' %}">Dashboard</a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">Help</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="card shadow-sm">
-                    <div class="card-header text-white"
-                         style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)">
-                        <h2 class="mb-0">
-                            <i class="fas fa-home"></i> Property Owner Help Guide
-                        </h2>
-                    </div>
-                    <div class="card-body">
-                        <p class="lead">
-                            Welcome to the Property Owner help guide. This page will walk you through the complete workflow for managing your properties on Yellowkey.
-                        </p>
-                        <div class="alert mt-4"
-                             style="background-color: #fef3c7;
-                                    border-left: 4px solid #fbbf24;
-                                    color: #92400e">
-                            <strong><i class="fas fa-info-circle"></i> Quick Overview:</strong> As a Property Owner, you can register your profile, list properties for rent or sale, view property status, manage inquiries, and communicate with potential tenants or buyers.
-                        </div>
-                        <!-- Workflow Chart -->
-                        <div class="card mt-4" style="border: 2px solid #3b82f6;">
-                            <div class="card-header text-white"
-                                 style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)">
-                                <h3 class="mb-0">
-                                    <i class="fas fa-project-diagram"></i> Property Owner Workflow
-                                </h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="workflow-chart">
-                                    <div class="workflow-step">
-                                        <span class="badge step-number" style="background-color: #3b82f6;">1</span>
-                                        <h5>Register and Create Profile</h5>
-                                        <p>
-                                            Create your account, complete your profile with contact details, and verify your identity to start listing properties.
-                                        </p>
-                                    </div>
-                                    <div class="workflow-arrow text-center">
-                                        <i class="fas fa-arrow-down fa-2x" style="color: #3b82f6;"></i>
-                                    </div>
-                                    <div class="workflow-step">
-                                        <span class="badge step-number" style="background-color: #3b82f6;">2</span>
-                                        <h5>List a Property</h5>
-                                        <p>
-                                            Add your property with complete details, photos, pricing, and choose whether to list yourself or assign an agent.
-                                        </p>
-                                    </div>
-                                    <div class="workflow-arrow text-center">
-                                        <i class="fas fa-arrow-down fa-2x" style="color: #3b82f6;"></i>
-                                    </div>
-                                    <div class="workflow-step">
-                                        <span class="badge step-number" style="background-color: #3b82f6;">3</span>
-                                        <h5>View Property Status</h5>
-                                        <p>Monitor your property's visibility, views, inquiries, and current status (Available, Rented, Under Maintenance).</p>
-                                    </div>
-                                    <div class="workflow-arrow text-center">
-                                        <i class="fas fa-arrow-down fa-2x" style="color: #3b82f6;"></i>
-                                    </div>
-                                    <div class="workflow-step">
-                                        <span class="badge step-number" style="background-color: #3b82f6;">4</span>
-                                        <h5>Manage Inquiries</h5>
-                                        <p>Review inquiries from interested tenants or buyers. Respond to questions and schedule property viewings.</p>
-                                    </div>
-                                    <div class="workflow-arrow text-center">
-                                        <i class="fas fa-arrow-down fa-2x" style="color: #3b82f6;"></i>
-                                    </div>
-                                    <div class="workflow-step">
-                                        <span class="badge step-number"
-                                              style="background-color: #fbbf24;
-                                                     color: #1f2937">5</span>
-                                        <h5>Communicate with Agents</h5>
-                                        <p>
-                                            If you've assigned an agent, stay in touch to track progress, approve viewings, and finalize rental/sale agreements.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Detailed Instructions -->
-                        <div class="card mt-4">
-                            <div class="card-header bg-light">
-                                <h3 class="mb-0">
-                                    <i class="fas fa-book"></i> Detailed Instructions
-                                </h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="accordion" id="helpAccordion">
-                                    <!-- Step 1 -->
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingOne">
-                                            <button class="accordion-button"
-                                                    type="button"
-                                                    data-bs-toggle="collapse"
-                                                    data-bs-target="#collapseOne"
-                                                    aria-expanded="true"
-                                                    aria-controls="collapseOne">
-                                                Step 1: Register and Create Profile
-                                            </button>
-                                        </h2>
-                                        <div id="collapseOne"
-                                             class="accordion-collapse collapse show"
-                                             aria-labelledby="headingOne"
-                                             data-bs-parent="#helpAccordion">
-                                            <div class="accordion-body">
-                                                <ul>
-                                                    <li>Click "Sign Up" or "Register" on the homepage</li>
-                                                    <li>Choose "Property Owner" account type</li>
-                                                    <li>
-                                                        Fill in registration details:
-                                                        <ul>
-                                                            <li>Full name</li>
-                                                            <li>Email address</li>
-                                                            <li>Phone number</li>
-                                                            <li>Password (secure)</li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>Verify your email address</li>
-                                                    <li>
-                                                        Complete your profile:
-                                                        <ul>
-                                                            <li>Upload ID/QID (for verification)</li>
-                                                            <li>Add alternative contact numbers</li>
-                                                            <li>Set communication preferences</li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>Accept terms and conditions</li>
-                                                    <li>Click "Complete Registration"</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Step 2 -->
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingTwo">
-                                            <button class="accordion-button collapsed"
-                                                    type="button"
-                                                    data-bs-toggle="collapse"
-                                                    data-bs-target="#collapseTwo"
-                                                    aria-expanded="false"
-                                                    aria-controls="collapseTwo">Step 2: List a Property</button>
-                                        </h2>
-                                        <div id="collapseTwo"
-                                             class="accordion-collapse collapse"
-                                             aria-labelledby="headingTwo"
-                                             data-bs-parent="#helpAccordion">
-                                            <div class="accordion-body">
-                                                <ul>
-                                                    <li>Log in to your dashboard</li>
-                                                    <li>Click "Add New Property" or "List Property"</li>
-                                                    <li>
-                                                        Choose listing type:
-                                                        <ul>
-                                                            <li>
-                                                                <strong>Direct Listing:</strong> You manage inquiries yourself
-                                                            </li>
-                                                            <li>
-                                                                <strong>Agent Listing:</strong> Assign a Yellowkey agent to handle it
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        Fill in property details:
-                                                        <ul>
-                                                            <li>Property type (Villa, Apartment, Office, etc.)</li>
-                                                            <li>Location (Zone, Street name, Building)</li>
-                                                            <li>Size (square meters)</li>
-                                                            <li>Bedrooms, bathrooms, parking</li>
-                                                            <li>Amenities (gym, pool, security, etc.)</li>
-                                                            <li>Rental/Sale price</li>
-                                                            <li>Availability date</li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>Upload photos (minimum 5, maximum 20)</li>
-                                                    <li>Write property description</li>
-                                                    <li>Set viewing preferences</li>
-                                                    <li>Review and publish listing</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Step 3 -->
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingThree">
-                                            <button class="accordion-button collapsed"
-                                                    type="button"
-                                                    data-bs-toggle="collapse"
-                                                    data-bs-target="#collapseThree"
-                                                    aria-expanded="false"
-                                                    aria-controls="collapseThree">Step 3: View Property Status</button>
-                                        </h2>
-                                        <div id="collapseThree"
-                                             class="accordion-collapse collapse"
-                                             aria-labelledby="headingThree"
-                                             data-bs-parent="#helpAccordion">
-                                            <div class="accordion-body">
-                                                <ul>
-                                                    <li>Navigate to "My Properties" in your dashboard</li>
-                                                    <li>View all your listed properties</li>
-                                                    <li>
-                                                        Check property metrics:
-                                                        <ul>
-                                                            <li>Total views</li>
-                                                            <li>Number of inquiries</li>
-                                                            <li>Days on market</li>
-                                                            <li>Current status</li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        Property statuses explained:
-                                                        <ul>
-                                                            <li>
-                                                                <strong>Active:</strong> Visible to potential tenants/buyers
-                                                            </li>
-                                                            <li>
-                                                                <strong>Under Negotiation:</strong> In discussion with a client
-                                                            </li>
-                                                            <li>
-                                                                <strong>Rented/Sold:</strong> Deal completed
-                                                            </li>
-                                                            <li>
-                                                                <strong>Under Maintenance:</strong> Temporarily unavailable
-                                                            </li>
-                                                            <li>
-                                                                <strong>Inactive:</strong> Hidden from search results
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>Update property status as needed</li>
-                                                    <li>Edit property details anytime</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Step 4 -->
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingFour">
-                                            <button class="accordion-button collapsed"
-                                                    type="button"
-                                                    data-bs-toggle="collapse"
-                                                    data-bs-target="#collapseFour"
-                                                    aria-expanded="false"
-                                                    aria-controls="collapseFour">Step 4: Manage Inquiries</button>
-                                        </h2>
-                                        <div id="collapseFour"
-                                             class="accordion-collapse collapse"
-                                             aria-labelledby="headingFour"
-                                             data-bs-parent="#helpAccordion">
-                                            <div class="accordion-body">
-                                                <ul>
-                                                    <li>Access "Inquiries" section from dashboard</li>
-                                                    <li>View inquiries organized by property</li>
-                                                    <li>
-                                                        Each inquiry shows:
-                                                        <ul>
-                                                            <li>Client name and contact details</li>
-                                                            <li>Inquiry date</li>
-                                                            <li>Client's message/questions</li>
-                                                            <li>Viewing preferences</li>
-                                                            <li>Budget range</li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        Respond to inquiries:
-                                                        <ul>
-                                                            <li>Answer questions professionally</li>
-                                                            <li>Schedule viewings</li>
-                                                            <li>Negotiate terms if needed</li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        Mark inquiries as:
-                                                        <ul>
-                                                            <li>Active (in discussion)</li>
-                                                            <li>Viewing scheduled</li>
-                                                            <li>Converted (successful rental/sale)</li>
-                                                            <li>Closed (no longer interested)</li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Step 5 -->
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingFive">
-                                            <button class="accordion-button collapsed"
-                                                    type="button"
-                                                    data-bs-toggle="collapse"
-                                                    data-bs-target="#collapseFive"
-                                                    aria-expanded="false"
-                                                    aria-controls="collapseFive">
-                                                Step 5: Communicate with Agents
-                                            </button>
-                                        </h2>
-                                        <div id="collapseFive"
-                                             class="accordion-collapse collapse"
-                                             aria-labelledby="headingFive"
-                                             data-bs-parent="#helpAccordion">
-                                            <div class="accordion-body">
-                                                <ul>
-                                                    <li>
-                                                        If you assigned an agent to your property:
-                                                        <ul>
-                                                            <li>View agent profile and contact details</li>
-                                                            <li>Access direct messaging with your agent</li>
-                                                            <li>Receive updates on viewings and inquiries</li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        Communication best practices:
-                                                        <ul>
-                                                            <li>Respond to agent messages promptly</li>
-                                                            <li>Approve or decline viewing requests quickly</li>
-                                                            <li>Discuss pricing and terms openly</li>
-                                                            <li>Review agent performance regularly</li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        Monitor agent activity:
-                                                        <ul>
-                                                            <li>Number of viewings scheduled</li>
-                                                            <li>Inquiries handled</li>
-                                                            <li>Marketing efforts</li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>Approve final rental/sale agreements</li>
-                                                    <li>Coordinate handover with agent</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Additional Features -->
-                        <div class="card mt-4" style="border: 2px solid #3b82f6;">
-                            <div class="card-header text-white"
-                                 style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)">
-                                <h3 class="mb-0">
-                                    <i class="fas fa-star"></i> Additional Features
-                                </h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h5>
-                                            <i class="fas fa-wrench"></i> Maintenance Requests
-                                        </h5>
-                                        <p>Request maintenance services for your properties. Track service provider assignments and work completion.</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h5>
-                                            <i class="fas fa-file-contract"></i> Tenant Management
-                                        </h5>
-                                        <p>Manage current tenants, track lease agreements, and handle renewal notifications.</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h5>
-                                            <i class="fas fa-dollar-sign"></i> Payment Tracking
-                                        </h5>
-                                        <p>Monitor rental payments, set up payment schedules, and receive payment notifications.</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h5>
-                                            <i class="fas fa-chart-line"></i> Analytics
-                                        </h5>
-                                        <p>View property performance analytics, market comparisons, and occupancy rates.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Tips and Best Practices -->
-                        <div class="card mt-4" style="border: 2px solid #fbbf24;">
-                            <div class="card-header text-white"
-                                 style="background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%)">
-                                <h3 class="mb-0">
-                                    <i class="fas fa-lightbulb"></i> Tips and Best Practices
-                                </h3>
-                            </div>
-                            <div class="card-body">
-                                <ul>
-                                    <li>
-                                        <strong>Complete Profile:</strong> Fill all profile details to build trust with potential tenants
-                                    </li>
-                                    <li>
-                                        <strong>Quality Photos:</strong> Upload clear, well-lit photos showing all rooms and amenities
-                                    </li>
-                                    <li>
-                                        <strong>Accurate Information:</strong> Provide correct property details to avoid wasting time
-                                    </li>
-                                    <li>
-                                        <strong>Competitive Pricing:</strong> Research market rates for similar properties in your area
-                                    </li>
-                                    <li>
-                                        <strong>Quick Responses:</strong> Respond to inquiries within 24 hours to secure quality tenants
-                                    </li>
-                                    <li>
-                                        <strong>Regular Updates:</strong> Keep property information current (availability, pricing, photos)
-                                    </li>
-                                    <li>
-                                        <strong>Professional Descriptions:</strong> Write clear, honest property descriptions
-                                    </li>
-                                    <li>
-                                        <strong>Flexible Viewing:</strong> Offer multiple viewing time slots to accommodate clients
-                                    </li>
-                                    <li>
-                                        <strong>Verify Tenants:</strong> Request proper identification and references
-                                    </li>
-                                    <li>
-                                        <strong>Use Agents Wisely:</strong> Consider agent services for premium properties or if you're busy
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- Need More Help -->
-                        <div class="alert mt-4"
-                             style="background-color: #dbeafe;
-                                    border-left: 4px solid #3b82f6;
-                                    color: #1e3a8a">
-                            <h4>
-                                <i class="fas fa-question-circle"></i> Need More Help?
-                            </h4>
-                            <p>If you have questions or need assistance, please contact us:</p>
-                            <ul class="mb-0">
-                                <li>
-                                    Email: <a href="mailto:admin@yellowkey.qa">owners@yellowkey.qa</a>
-                                </li>
-                                <li>
-                                    Phone: <a href="tel:+97477123456">+974 3343 0001</a>
-                                </li>
-                                <li>WhatsApp: Join our Property Owner support group from your dashboard</li>
-                                <li>Business Hours: Saturday - Thursday, 9:00 AM - 6:00 PM</li>
-                                <li>Live Chat: Available during business hours in your dashboard</li>
-                            </ul>
-                        </div>
-                        <div class="text-center mt-4">
-                            <a href="{% url 'clients:dashboard' %}"
-                               class="btn btn-lg text-white"
-                               style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)">
-                                <i class="fas fa-arrow-left"></i> Back to Dashboard
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-12">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="{% url 'clients:dashboard' %}">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Help</li>
+          </ol>
+        </nav>
+      </div>
     </div>
-    <style>
-.workflow-step {
-    padding: 20px;
-    margin: 10px 0;
-    border-left: 4px solid #3b82f6;
-    background-color: #f8f9fa;
-    border-radius: 5px;
-}
-.workflow-step h5 {
-    color: #1e3a8a;
-    margin-top: 10px;
-}
-.step-number {
-    font-size: 1.2em;
-    padding: 8px 12px;
-}
-.workflow-arrow {
-    margin: 10px 0;
-}
-    </style>
+
+    <div class="help-hero">
+      <h1><i class="fas fa-home"></i> Property Owner Help Guide</h1>
+      <p class="lead mb-0">
+        Welcome to your complete workflow guide for managing your properties on Yellowkey.
+      </p>
+    </div>
+
+    <div class="info-box">
+      <h5><i class="fas fa-info-circle"></i> Quick Overview</h5>
+      <p class="mb-0">
+        As a Property Owner, you can register your profile, list properties for rent or sale, view property status, manage inquiries, and communicate with potential tenants or buyers.
+      </p>
+    </div>
+
+    <div class="workflow-card">
+      <div class="workflow-header">
+        <i class="fas fa-project-diagram"></i>
+        <span>Property Owner Workflow</span>
+      </div>
+      <div class="workflow-body">
+        <div class="step-item">
+          <span class="step-number">1</span>
+          <div class="step-content">
+            <div class="step-title">Register and Create Profile</div>
+            <div class="step-description">
+              Create your account, complete your profile with contact details, and verify your identity to start listing properties.
+            </div>
+          </div>
+        </div>
+        <div class="step-item">
+          <span class="step-number">2</span>
+          <div class="step-content">
+            <div class="step-title">List a Property</div>
+            <div class="step-description">
+              Add your property with complete details, photos, pricing, and choose whether to list yourself or assign an agent.
+            </div>
+          </div>
+        </div>
+        <div class="step-item">
+          <span class="step-number">3</span>
+          <div class="step-content">
+            <div class="step-title">View Property Status</div>
+            <div class="step-description">
+              Monitor your property's visibility, views, inquiries, and current status (Available, Rented, Under Maintenance).
+            </div>
+          </div>
+        </div>
+        <div class="step-item">
+          <span class="step-number">4</span>
+          <div class="step-content">
+            <div class="step-title">Manage Inquiries</div>
+            <div class="step-description">
+              Review inquiries from interested tenants or buyers. Respond to questions and schedule property viewings.
+            </div>
+          </div>
+        </div>
+        <div class="step-item">
+          <span class="step-number">5</span>
+          <div class="step-content">
+            <div class="step-title">Communicate with Agents</div>
+            <div class="step-description">
+              If you've assigned an agent, stay in touch to track progress, approve viewings, and finalize rental/sale agreements.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">
+      <i class="fas fa-book"></i> Detailed Instructions
+    </h2>
+
+    <div class="feature-card">
+      <div class="accordion" id="helpAccordion">
+        <!-- Step 1 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne"
+                    aria-expanded="true"
+                    aria-controls="collapseOne">
+              Step 1: Register and Create Profile
+            </button>
+          </h2>
+          <div id="collapseOne"
+               class="accordion-collapse collapse show"
+               aria-labelledby="headingOne"
+               data-bs-parent="#helpAccordion">
+            <div class="accordion-body">
+              <ul>
+                <li>Click "Sign Up" or "Register" on the homepage</li>
+                <li>Choose "Property Owner" account type</li>
+                <li>
+                  Fill in registration details:
+                  <ul>
+                    <li>Full name</li>
+                    <li>Email address</li>
+                    <li>Phone number</li>
+                    <li>Password (secure)</li>
+                  </ul>
+                </li>
+                <li>Verify your email address</li>
+                <li>
+                  Complete your profile:
+                  <ul>
+                    <li>Upload ID/QID (for verification)</li>
+                    <li>Add alternative contact numbers</li>
+                    <li>Set communication preferences</li>
+                  </ul>
+                </li>
+                <li>Accept terms and conditions</li>
+                <li>Click "Complete Registration"</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Step 2 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo"
+                    aria-expanded="false"
+                    aria-controls="collapseTwo">Step 2: List a Property</button>
+          </h2>
+          <div id="collapseTwo"
+               class="accordion-collapse collapse"
+               aria-labelledby="headingTwo"
+               data-bs-parent="#helpAccordion">
+            <div class="accordion-body">
+              <ul>
+                <li>Log in to your dashboard</li>
+                <li>Click "Add New Property" or "List Property"</li>
+                <li>
+                  Choose listing type:
+                  <ul>
+                    <li>
+                      <strong>Direct Listing:</strong> You manage inquiries yourself
+                    </li>
+                    <li>
+                      <strong>Agent Listing:</strong> Assign a Yellowkey agent to handle it
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  Fill in property details:
+                  <ul>
+                    <li>Property type (Villa, Apartment, Office, etc.)</li>
+                    <li>Location (Zone, Street name, Building)</li>
+                    <li>Size (square meters)</li>
+                    <li>Bedrooms, bathrooms, parking</li>
+                    <li>Amenities (gym, pool, security, etc.)</li>
+                    <li>Rental/Sale price</li>
+                    <li>Availability date</li>
+                  </ul>
+                </li>
+                <li>Upload photos (minimum 5, maximum 20)</li>
+                <li>Write property description</li>
+                <li>Set viewing preferences</li>
+                <li>Review and publish listing</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Step 3 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree"
+                    aria-expanded="false"
+                    aria-controls="collapseThree">Step 3: View Property Status</button>
+          </h2>
+          <div id="collapseThree"
+               class="accordion-collapse collapse"
+               aria-labelledby="headingThree"
+               data-bs-parent="#helpAccordion">
+            <div class="accordion-body">
+              <ul>
+                <li>Navigate to "My Properties" in your dashboard</li>
+                <li>View all your listed properties</li>
+                <li>
+                  Check property metrics:
+                  <ul>
+                    <li>Total views</li>
+                    <li>Number of inquiries</li>
+                    <li>Days on market</li>
+                    <li>Current status</li>
+                  </ul>
+                </li>
+                <li>
+                  Property statuses explained:
+                  <ul>
+                    <li>
+                      <strong>Active:</strong> Visible to potential tenants/buyers
+                    </li>
+                    <li>
+                      <strong>Under Negotiation:</strong> In discussion with a client
+                    </li>
+                    <li>
+                      <strong>Rented/Sold:</strong> Deal completed
+                    </li>
+                    <li>
+                      <strong>Under Maintenance:</strong> Temporarily unavailable
+                    </li>
+                    <li>
+                      <strong>Inactive:</strong> Hidden from search results
+                    </li>
+                  </ul>
+                </li>
+                <li>Update property status as needed</li>
+                <li>Edit property details anytime</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Step 4 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingFour">
+            <button class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseFour"
+                    aria-expanded="false"
+                    aria-controls="collapseFour">Step 4: Manage Inquiries</button>
+          </h2>
+          <div id="collapseFour"
+               class="accordion-collapse collapse"
+               aria-labelledby="headingFour"
+               data-bs-parent="#helpAccordion">
+            <div class="accordion-body">
+              <ul>
+                <li>Access "Inquiries" section from dashboard</li>
+                <li>View inquiries organized by property</li>
+                <li>
+                  Each inquiry shows:
+                  <ul>
+                    <li>Client name and contact details</li>
+                    <li>Inquiry date</li>
+                    <li>Client's message/questions</li>
+                    <li>Viewing preferences</li>
+                    <li>Budget range</li>
+                  </ul>
+                </li>
+                <li>
+                  Respond to inquiries:
+                  <ul>
+                    <li>Answer questions professionally</li>
+                    <li>Schedule viewings</li>
+                    <li>Negotiate terms if needed</li>
+                  </ul>
+                </li>
+                <li>
+                  Mark inquiries as:
+                  <ul>
+                    <li>Active (in discussion)</li>
+                    <li>Viewing scheduled</li>
+                    <li>Converted (successful rental/sale)</li>
+                    <li>Closed (no longer interested)</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Step 5 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingFive">
+            <button class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseFive"
+                    aria-expanded="false"
+                    aria-controls="collapseFive">
+              Step 5: Communicate with Agents
+            </button>
+          </h2>
+          <div id="collapseFive"
+               class="accordion-collapse collapse"
+               aria-labelledby="headingFive"
+               data-bs-parent="#helpAccordion">
+            <div class="accordion-body">
+              <ul>
+                <li>
+                  If you assigned an agent to your property:
+                  <ul>
+                    <li>View agent profile and contact details</li>
+                    <li>Access direct messaging with your agent</li>
+                    <li>Receive updates on viewings and inquiries</li>
+                  </ul>
+                </li>
+                <li>
+                  Communication best practices:
+                  <ul>
+                    <li>Respond to agent messages promptly</li>
+                    <li>Approve or decline viewing requests quickly</li>
+                    <li>Discuss pricing and terms openly</li>
+                    <li>Review agent performance regularly</li>
+                  </ul>
+                </li>
+                <li>
+                  Monitor agent activity:
+                  <ul>
+                    <li>Number of viewings scheduled</li>
+                    <li>Inquiries handled</li>
+                    <li>Marketing efforts</li>
+                  </ul>
+                </li>
+                <li>Approve final rental/sale agreements</li>
+                <li>Coordinate handover with agent</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">
+      <i class="fas fa-star"></i> Additional Features
+    </h2>
+
+    <div class="feature-card">
+      <div class="feature-card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="feature-item">
+              <h5><i class="fas fa-wrench"></i> Maintenance Requests</h5>
+              <p>Request maintenance services for your properties. Track service provider assignments and work completion.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="feature-item">
+              <h5><i class="fas fa-file-contract"></i> Tenant Management</h5>
+              <p>Manage current tenants, track lease agreements, and handle renewal notifications.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="feature-item">
+              <h5><i class="fas fa-dollar-sign"></i> Payment Tracking</h5>
+              <p>Monitor rental payments, set up payment schedules, and receive payment notifications.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="feature-item">
+              <h5><i class="fas fa-chart-line"></i> Analytics</h5>
+              <p>View property performance analytics, market comparisons, and occupancy rates.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">
+      <i class="fas fa-lightbulb"></i> Tips & Best Practices
+    </h2>
+
+    <div class="feature-card">
+      <div class="feature-card-body">
+        <ul class="feature-list">
+          <li>
+            <strong>Complete Profile:</strong> Fill all profile details to build trust with potential tenants.
+          </li>
+          <li>
+            <strong>Quality Photos:</strong> Upload clear, well-lit photos showing all rooms and amenities.
+          </li>
+          <li>
+            <strong>Accurate Information:</strong> Provide correct property details to avoid wasting time.
+          </li>
+          <li>
+            <strong>Competitive Pricing:</strong> Research market rates for similar properties in your area.
+          </li>
+          <li>
+            <strong>Quick Responses:</strong> Respond to inquiries within 24 hours to secure quality tenants.
+          </li>
+          <li>
+            <strong>Regular Updates:</strong> Keep property information current (availability, pricing, photos).
+          </li>
+          <li>
+            <strong>Professional Descriptions:</strong> Write clear, honest property descriptions.
+          </li>
+          <li>
+            <strong>Flexible Viewing:</strong> Offer multiple viewing time slots to accommodate clients.
+          </li>
+          <li>
+            <strong>Verify Tenants:</strong> Request proper identification and references.
+          </li>
+          <li>
+            <strong>Use Agents Wisely:</strong> Consider agent services for premium properties or if you're busy.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="contact-box">
+      <h4><i class="fas fa-question-circle"></i> Need More Help?</h4>
+      <p>If you have questions or need assistance, please contact us:</p>
+      <ul class="mb-0">
+        <li>
+          Email: <a href="mailto:admin@yellowkey.qa">owners@yellowkey.qa</a>
+        </li>
+        <li>
+          Phone: <a href="tel:+97477123456">+974 3343 0001</a>
+        </li>
+        <li>WhatsApp: Join our Property Owner support group from your dashboard</li>
+        <li>Business Hours: Saturday - Thursday, 9:00 AM - 6:00 PM</li>
+        <li>Live Chat: Available during business hours in your dashboard</li>
+      </ul>
+    </div>
+
+    <div class="text-center mt-4 mb-5">
+      <a href="{% url 'clients:dashboard' %}" class="btn btn-help-primary">
+        <i class="fas fa-arrow-left"></i> Back to Dashboard
+      </a>
+    </div>
+  </div>
 {% endblock %}
