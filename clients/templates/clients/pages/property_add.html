@@ -1,23 +1,175 @@
-{% load crispy_forms_tags %}
-{% load static %}
-{% block head_title %}Update{% endblock %}
-<!-- content -->
-<div class="container">
-    <div class="row justify-content-center  py-3">
-        <div class="col-md-8 text-center py-4">
-            <h3 class="fw-bold text-uppercase bg-white">update property</h3>
-        </div>
-        <form action="" method="POST" enctype="multipart/form-data">
+<!-- Property Add Form -->
+<div class="modern-form-card">
+    <div class="form-section">
+        <h3 class="section-title">Building Information</h3>
+
+        <form method="post" enctype="multipart/form-data" class="modern-form">
             {% csrf_token %}
-            <div class="col-md-12">
-                {{ form | crispy }}
-                <div class="d-grid gap-2 col-6 mx-auto mb-3 mt-5">
-                    <button class="btn btn-dark" type="submit">ADD PROPERTY</button>
+
+            <!-- Error Messages -->
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger mb-3">
+                    {% for error in form.non_field_errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
                 </div>
-            </form>
-            <div class="d-grid gap-2 col-6 mx-auto">
-                <a href="#" class="btn btn-dark" type="submit">UPDATE PROPERTY</a>
+            {% endif %}
+
+            <div class="form-row">
+                <!-- Name Field -->
+                {% with field=form.name %}
+                <div class="form-group modern-field">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    <div class="input-wrapper">
+                        <i class="bi bi-building"></i>
+                        <input type="text" id="{{ field.id_for_label }}" name="{{ field.name }}" class="modern-input" placeholder="Property name" value="{{ field.value|default:'' }}">
+                    </div>
+                    {% if field.errors %}<span class="error-text">{{ field.errors.0 }}</span>{% endif %}
+                </div>
+                {% endwith %}
+
+                <!-- Address Field -->
+                {% with field=form.address %}
+                <div class="form-group modern-field">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    <div class="input-wrapper">
+                        <i class="bi bi-geo-alt"></i>
+                        <input type="text" id="{{ field.id_for_label }}" name="{{ field.name }}" class="modern-input" placeholder="Property address" value="{{ field.value|default:'' }}">
+                    </div>
+                    {% if field.errors %}<span class="error-text">{{ field.errors.0 }}</span>{% endif %}
+                </div>
+                {% endwith %}
             </div>
-        </div>
+
+            <div class="form-row single">
+                <!-- Description Field -->
+                {% with field=form.description %}
+                <div class="form-group modern-field">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    <div class="textarea-wrapper">
+                        <i class="bi bi-file-text"></i>
+                        <textarea id="{{ field.id_for_label }}" name="{{ field.name }}" class="modern-textarea" placeholder="Property description" rows="4">{{ field.value|default:'' }}</textarea>
+                    </div>
+                    {% if field.errors %}<span class="error-text">{{ field.errors.0 }}</span>{% endif %}
+                </div>
+                {% endwith %}
+            </div>
+
+            <div class="form-row">
+                <!-- Property Type Field -->
+                {% with field=form.property_type %}
+                <div class="form-group modern-field">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    <div class="select-wrapper">
+                        <select id="{{ field.id_for_label }}" name="{{ field.name }}" class="modern-select">
+                            <option value="">Select property type</option>
+                            {% for value, label in field.field.choices %}
+                                {% if value %}
+                                    <option value="{{ value }}" {% if field.value == value %}selected{% endif %}>{{ label }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                        <i class="bi bi-chevron-down"></i>
+                    </div>
+                    {% if field.errors %}<span class="error-text">{{ field.errors.0 }}</span>{% endif %}
+                </div>
+                {% endwith %}
+
+                <!-- Bedrooms Field -->
+                {% with field=form.bedrooms %}
+                <div class="form-group modern-field">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    <div class="input-wrapper">
+                        <i class="bi bi-door-closed"></i>
+                        <input type="number" id="{{ field.id_for_label }}" name="{{ field.name }}" class="modern-input" placeholder="Number of bedrooms" value="{{ field.value|default:'' }}">
+                    </div>
+                    {% if field.errors %}<span class="error-text">{{ field.errors.0 }}</span>{% endif %}
+                </div>
+                {% endwith %}
+            </div>
+
+            <div class="form-row">
+                <!-- Bathrooms Field -->
+                {% with field=form.bathrooms %}
+                <div class="form-group modern-field">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    <div class="input-wrapper">
+                        <i class="bi bi-water"></i>
+                        <input type="number" id="{{ field.id_for_label }}" name="{{ field.name }}" class="modern-input" placeholder="Number of bathrooms" value="{{ field.value|default:'' }}">
+                    </div>
+                    {% if field.errors %}<span class="error-text">{{ field.errors.0 }}</span>{% endif %}
+                </div>
+                {% endwith %}
+
+                <!-- SQFT Field -->
+                {% with field=form.sqft %}
+                <div class="form-group modern-field">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    <div class="input-wrapper">
+                        <i class="bi bi-rulers"></i>
+                        <input type="number" id="{{ field.id_for_label }}" name="{{ field.name }}" class="modern-input" placeholder="Square feet" value="{{ field.value|default:'' }}">
+                    </div>
+                    {% if field.errors %}<span class="error-text">{{ field.errors.0 }}</span>{% endif %}
+                </div>
+                {% endwith %}
+            </div>
+
+            <div class="form-row">
+                <!-- Photo Main Field -->
+                {% with field=form.photo_main %}
+                <div class="form-group modern-field">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    <div class="input-wrapper">
+                        <i class="bi bi-image"></i>
+                        <input type="file" id="{{ field.id_for_label }}" name="{{ field.name }}" class="modern-input" accept="image/*">
+                    </div>
+                    {% if field.errors %}<span class="error-text">{{ field.errors.0 }}</span>{% endif %}
+                </div>
+                {% endwith %}
+
+                <!-- Photo 1 Field -->
+                {% with field=form.photo_1 %}
+                <div class="form-group modern-field">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    <div class="input-wrapper">
+                        <i class="bi bi-image"></i>
+                        <input type="file" id="{{ field.id_for_label }}" name="{{ field.name }}" class="modern-input" accept="image/*">
+                    </div>
+                    {% if field.errors %}<span class="error-text">{{ field.errors.0 }}</span>{% endif %}
+                </div>
+                {% endwith %}
+            </div>
+
+            <div class="form-row">
+                <!-- Photo 2 Field -->
+                {% with field=form.photo_2 %}
+                <div class="form-group modern-field">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    <div class="input-wrapper">
+                        <i class="bi bi-image"></i>
+                        <input type="file" id="{{ field.id_for_label }}" name="{{ field.name }}" class="modern-input" accept="image/*">
+                    </div>
+                    {% if field.errors %}<span class="error-text">{{ field.errors.0 }}</span>{% endif %}
+                </div>
+                {% endwith %}
+
+                <!-- Photo 3 Field -->
+                {% with field=form.photo_3 %}
+                <div class="form-group modern-field">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    <div class="input-wrapper">
+                        <i class="bi bi-image"></i>
+                        <input type="file" id="{{ field.id_for_label }}" name="{{ field.name }}" class="modern-input" accept="image/*">
+                    </div>
+                    {% if field.errors %}<span class="error-text">{{ field.errors.0 }}</span>{% endif %}
+                </div>
+                {% endwith %}
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary btn-lg mt-4 w-100">
+                <i class="bi bi-check-circle me-2"></i>Add Property
+            </button>
+        </form>
     </div>
 </div>
