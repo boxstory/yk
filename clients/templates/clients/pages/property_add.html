@@ -8,18 +8,22 @@
 
             <!-- Error Messages -->
             {% if form.non_field_errors %}
-                <div class="alert alert-danger mb-3">
+                <div class="alert-error">
                     {% for error in form.non_field_errors %}
                         <p>{{ error }}</p>
                     {% endfor %}
                 </div>
             {% endif %}
 
+            <!-- Name and Address Fields -->
             <div class="form-row">
                 <!-- Name Field -->
                 {% with field=form.name %}
                 <div class="form-group modern-field">
-                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                        {% if field.field.required %}<span class="required">*</span>{% endif %}
+                    </label>
                     <div class="input-wrapper">
                         <i class="bi bi-building"></i>
                         <input type="text" id="{{ field.id_for_label }}" name="{{ field.name }}" class="modern-input" placeholder="Property name" value="{{ field.value|default:'' }}">
@@ -31,7 +35,10 @@
                 <!-- Address Field -->
                 {% with field=form.address %}
                 <div class="form-group modern-field">
-                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                        {% if field.field.required %}<span class="required">*</span>{% endif %}
+                    </label>
                     <div class="input-wrapper">
                         <i class="bi bi-geo-alt"></i>
                         <input type="text" id="{{ field.id_for_label }}" name="{{ field.name }}" class="modern-input" placeholder="Property address" value="{{ field.value|default:'' }}">
@@ -41,25 +48,30 @@
                 {% endwith %}
             </div>
 
-            <div class="form-row single">
-                <!-- Description Field -->
-                {% with field=form.description %}
-                <div class="form-group modern-field">
-                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                    <div class="textarea-wrapper">
-                        <i class="bi bi-file-text"></i>
-                        <textarea id="{{ field.id_for_label }}" name="{{ field.name }}" class="modern-textarea" placeholder="Property description" rows="4">{{ field.value|default:'' }}</textarea>
-                    </div>
-                    {% if field.errors %}<span class="error-text">{{ field.errors.0 }}</span>{% endif %}
+            <!-- Description Field -->
+            {% with field=form.description %}
+            <div class="form-group modern-field full-width">
+                <label for="{{ field.id_for_label }}">
+                    {{ field.label }}
+                    {% if field.field.required %}<span class="required">*</span>{% endif %}
+                </label>
+                <div class="textarea-wrapper">
+                    <i class="bi bi-file-text"></i>
+                    <textarea id="{{ field.id_for_label }}" name="{{ field.name }}" class="modern-textarea" placeholder="Property description" rows="4">{{ field.value|default:'' }}</textarea>
                 </div>
-                {% endwith %}
+                {% if field.errors %}<span class="error-text">{{ field.errors.0 }}</span>{% endif %}
             </div>
+            {% endwith %}
 
+            <!-- Property Type and Bedrooms Fields -->
             <div class="form-row">
                 <!-- Property Type Field -->
                 {% with field=form.property_type %}
                 <div class="form-group modern-field">
-                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                        {% if field.field.required %}<span class="required">*</span>{% endif %}
+                    </label>
                     <div class="select-wrapper">
                         <select id="{{ field.id_for_label }}" name="{{ field.name }}" class="modern-select">
                             <option value="">Select property type</option>
@@ -78,7 +90,10 @@
                 <!-- Bedrooms Field -->
                 {% with field=form.bedrooms %}
                 <div class="form-group modern-field">
-                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                        {% if field.field.required %}<span class="required">*</span>{% endif %}
+                    </label>
                     <div class="input-wrapper">
                         <i class="bi bi-door-closed"></i>
                         <input type="number" id="{{ field.id_for_label }}" name="{{ field.name }}" class="modern-input" placeholder="Number of bedrooms" value="{{ field.value|default:'' }}">
@@ -88,11 +103,15 @@
                 {% endwith %}
             </div>
 
+            <!-- Bathrooms and SQFT Fields -->
             <div class="form-row">
                 <!-- Bathrooms Field -->
                 {% with field=form.bathrooms %}
                 <div class="form-group modern-field">
-                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                        {% if field.field.required %}<span class="required">*</span>{% endif %}
+                    </label>
                     <div class="input-wrapper">
                         <i class="bi bi-water"></i>
                         <input type="number" id="{{ field.id_for_label }}" name="{{ field.name }}" class="modern-input" placeholder="Number of bathrooms" value="{{ field.value|default:'' }}">
@@ -104,7 +123,10 @@
                 <!-- SQFT Field -->
                 {% with field=form.sqft %}
                 <div class="form-group modern-field">
-                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                        {% if field.field.required %}<span class="required">*</span>{% endif %}
+                    </label>
                     <div class="input-wrapper">
                         <i class="bi bi-rulers"></i>
                         <input type="number" id="{{ field.id_for_label }}" name="{{ field.name }}" class="modern-input" placeholder="Square feet" value="{{ field.value|default:'' }}">
@@ -114,11 +136,15 @@
                 {% endwith %}
             </div>
 
+            <!-- Photo Main and Photo 1 Fields -->
             <div class="form-row">
                 <!-- Photo Main Field -->
                 {% with field=form.photo_main %}
                 <div class="form-group modern-field">
-                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                        {% if field.field.required %}<span class="required">*</span>{% endif %}
+                    </label>
                     <div class="input-wrapper">
                         <i class="bi bi-image"></i>
                         <input type="file" id="{{ field.id_for_label }}" name="{{ field.name }}" class="modern-input" accept="image/*">
@@ -130,7 +156,10 @@
                 <!-- Photo 1 Field -->
                 {% with field=form.photo_1 %}
                 <div class="form-group modern-field">
-                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                        {% if field.field.required %}<span class="required">*</span>{% endif %}
+                    </label>
                     <div class="input-wrapper">
                         <i class="bi bi-image"></i>
                         <input type="file" id="{{ field.id_for_label }}" name="{{ field.name }}" class="modern-input" accept="image/*">
@@ -140,11 +169,15 @@
                 {% endwith %}
             </div>
 
+            <!-- Photo 2 and Photo 3 Fields -->
             <div class="form-row">
                 <!-- Photo 2 Field -->
                 {% with field=form.photo_2 %}
                 <div class="form-group modern-field">
-                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                        {% if field.field.required %}<span class="required">*</span>{% endif %}
+                    </label>
                     <div class="input-wrapper">
                         <i class="bi bi-image"></i>
                         <input type="file" id="{{ field.id_for_label }}" name="{{ field.name }}" class="modern-input" accept="image/*">
@@ -156,7 +189,10 @@
                 <!-- Photo 3 Field -->
                 {% with field=form.photo_3 %}
                 <div class="form-group modern-field">
-                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                        {% if field.field.required %}<span class="required">*</span>{% endif %}
+                    </label>
                     <div class="input-wrapper">
                         <i class="bi bi-image"></i>
                         <input type="file" id="{{ field.id_for_label }}" name="{{ field.name }}" class="modern-input" accept="image/*">
@@ -167,8 +203,9 @@
             </div>
 
             <!-- Submit Button -->
-            <button type="submit" class="btn btn-primary btn-lg mt-4 w-100">
-                <i class="bi bi-check-circle me-2"></i>Add Property
+            <button type="submit" class="modern-submit-btn">
+                <span>Add Property</span>
+                <i class="bi bi-check-circle"></i>
             </button>
         </form>
     </div>
