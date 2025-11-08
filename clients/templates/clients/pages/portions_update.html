@@ -8,7 +8,7 @@
 
             <!-- Error Messages -->
             {% if form.non_field_errors %}
-                <div class="alert alert-danger mb-3">
+                <div class="alert-error">
                     {% for error in form.non_field_errors %}
                         <p>{{ error }}</p>
                     {% endfor %}
@@ -219,8 +219,9 @@
             </div>
 
             <!-- Submit Button -->
-            <button type="submit" class="btn btn-primary btn-lg mt-4 w-100">
-                <i class="bi bi-check-circle me-2"></i>Update Portion
+            <button type="submit" class="modern-submit-btn">
+                <span>Update Portion</span>
+                <i class="bi bi-check-circle"></i>
             </button>
         </form>
     </div>
