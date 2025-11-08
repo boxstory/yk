@@ -191,27 +191,3 @@
     margin-right: 0.25rem;
 }
 
-/* Mobile Menu Button */
-.mobile-menu-btn {
-    top: 80px;
-    right: 20px;
-    width: 56px;
-    height: 56px;
-    z-index: 1040;
-}
-
-/* Dashboard Header Mobile */
-.dashboard-title-mobile {
-    font-size: 1.5rem;
-}
-
-/* Stats Icon Mobile */
-.stats-icon-mobile {
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
-}
-
-.stats-value-mobile {
-    font-size: 1.5rem;
-}
