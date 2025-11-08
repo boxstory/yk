@@ -34,4 +34,8 @@ urlpatterns = [
      path('whatsapp_group/', webpages_views.whatsapp_group,
           name='whatsapp_group'),
 
+     # API endpoints ----------------------------------------------------------------
+     path('api/docs/', webpages_views.api_documentation, name='api_documentation'),
+     path('api/health/', webpages_views.api_health, name='api_health'),
+
 ]
