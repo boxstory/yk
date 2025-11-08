@@ -1,171 +1,298 @@
 {% extends "base_dashboard.html" %}
 {% load static %}
-<!-- tags -->
 {% load crispy_forms_tags %}
- 
-<!-- title -->
+
 {% block title %}
     WORKMAN DASHBOARD
 {% endblock title %}
-<!-- extra css -->
+
 {% block extra_css %}
-<link rel="stylesheet"
-          href="{% static 'clients/css/clients_dashboard.css' %}"
-          type="text/css" />
+<link rel="stylesheet" href="{% static 'workman/css/workman_dashboard.css' %}?v=2.0" type="text/css" />
 {% endblock extra_css %}
-<!-- title -->
 
-<!-- Main BUSINESS DASHBOARD content area -->
-<!-- left side content here  -->
- {% block sidebar %}
-    <!-- sidebar -->
+{% block sidebar %}
     {% include "workman/parts/workman_dashboard_sidebar.html" %}
-  {% endblock sidebar %}
+{% endblock sidebar %}
+
 {% block content %}
-    <!-- right side content here -->
-    <div class="flex-fill pb-2">
-        <section class="m-0 p-0">
-            <div class="p-3 p-md-3 text-dark d-none d-md-block">
-                <div class="text-center">
-                    <h3 class="fw-bolder text-uppercase">{{ profile.business_business_name }} WORKMAN - Dashboard</h3>
+<div class="flex-fill pb-2">
+    <section class="m-0 p-0">
+        <!-- Dashboard Header -->
+        <div class="p-3 p-md-4">
+            <div class="dashboard-header">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h2 class="mb-2"><i class="fas fa-tools"></i> Service Provider Dashboard</h2>
+                        <p class="mb-0 opacity-75">Welcome back! Here's your work overview</p>
+                    </div>
+                    <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                        <button class="btn btn-light btn-lg">
+                            <i class="fas fa-plus"></i> New Service
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            
-            <div class="p-3 p-md-3" id="dasboard_div">
-                <div class="container mb-4">
-                    <h4>Services Listing</h4>
-                    <div class="row">
-                        
-                        
-                         
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>A/C Reparing</p>
-                                </div>
+            <!-- Statistics Cards -->
+            <div class="row g-4 mb-4">
+                <div class="col-md-3 col-sm-6">
+                    <div class="card stats-card">
+                        <div class="card-body">
+                            <div class="stats-icon icon-dark">
+                                <i class="fas fa-tasks"></i>
                             </div>
+                            <h3 class="mb-1">24</h3>
+                            <p class="text-muted mb-0">Active Tasks</p>
                         </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Plumbling Services</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Carpentering services</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-end ">
-                        <button class="btn btn-dark">See More</button>
                     </div>
                 </div>
-                <div class="container mb-4">
-                    <h4>Jobs Listing Newly Added</h4>
-                    <div class="row">
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Task 1</p>
-                                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card stats-card">
+                        <div class="card-body">
+                            <div class="stats-icon icon-yellow">
+                                <i class="fas fa-clock"></i>
                             </div>
+                            <h3 class="mb-1">8</h3>
+                            <p class="text-muted mb-0">Pending</p>
                         </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Task 2</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Task 3</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Task 4</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Task 5</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Task 6</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-end ">
-                        <button class="btn btn-dark">See More</button>
                     </div>
                 </div>
-                <div class="container mb-4">
-                    <h4>Jobs inquiries list</h4>
-                    <div class="row">
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Task 1</p>
-                                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card stats-card">
+                        <div class="card-body">
+                            <div class="stats-icon icon-grey">
+                                <i class="fas fa-check-circle"></i>
                             </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Task 2</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Task 3</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Task 4</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Task 5</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Task 6</p>
-                                </div>
-                            </div>
+                            <h3 class="mb-1">156</h3>
+                            <p class="text-muted mb-0">Completed</p>
                         </div>
                     </div>
-                    <div class="text-end ">
-                        <button class="btn btn-dark">See More</button>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card stats-card">
+                        <div class="card-body">
+                            <div class="stats-icon icon-gold">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h3 class="mb-1">4.8</h3>
+                            <p class="text-muted mb-0">Rating</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
+
+            <!-- Services Listing -->
+            <div class="mb-5">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4 class="section-title mb-0">My Services</h4>
+                    <button class="btn btn-gradient-dark">
+                        <i class="fas fa-plus"></i> Add Service
+                    </button>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="service-card card">
+                            <div class="card-body">
+                                <div class="service-icon">
+                                    <i class="fas fa-wind"></i>
+                                </div>
+                                <h5 class="mb-2">A/C Repairing</h5>
+                                <p class="text-muted small mb-3">Professional air conditioning repair and maintenance services</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="badge badge-new">Active</span>
+                                    <button class="btn btn-sm btn-outline-primary">View Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="service-card card">
+                            <div class="card-body">
+                                <div class="service-icon">
+                                    <i class="fas fa-faucet"></i>
+                                </div>
+                                <h5 class="mb-2">Plumbing Services</h5>
+                                <p class="text-muted small mb-3">Expert plumbing repairs, installations, and emergency services</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="badge badge-new">Active</span>
+                                    <button class="btn btn-sm btn-outline-primary">View Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="service-card card">
+                            <div class="card-body">
+                                <div class="service-icon">
+                                    <i class="fas fa-hammer"></i>
+                                </div>
+                                <h5 class="mb-2">Carpentry Services</h5>
+                                <p class="text-muted small mb-3">Custom woodwork, furniture repair, and installation services</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="badge badge-new">Active</span>
+                                    <button class="btn btn-sm btn-outline-primary">View Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Jobs -->
+            <div class="mb-5">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4 class="section-title mb-0">Recent Jobs</h4>
+                    <button class="btn btn-gradient-yellow">
+                        <i class="fas fa-eye"></i> View All
+                    </button>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="card task-card new">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h6 class="mb-0">AC Unit Not Cooling - Al Sadd</h6>
+                                    <span class="badge badge-new">New</span>
+                                </div>
+                                <p class="text-muted small mb-2">Villa 24, Street 12, Zone 35</p>
+                                <div class="task-meta mb-3">
+                                    <span><i class="fas fa-calendar"></i> Today, 2:30 PM</span>
+                                    <span class="ms-3"><i class="fas fa-user"></i> Ahmed Mohammed</span>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-sm btn-gradient-dark flex-fill">Accept</button>
+                                    <button class="btn btn-sm btn-outline-secondary">Reject</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card task-card urgent">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h6 class="mb-0">Water Leak Emergency - The Pearl</h6>
+                                    <span class="badge badge-urgent">Urgent</span>
+                                </div>
+                                <p class="text-muted small mb-2">Apartment 15B, Tower 3, Porto Arabia</p>
+                                <div class="task-meta mb-3">
+                                    <span><i class="fas fa-calendar"></i> Today, 11:00 AM</span>
+                                    <span class="ms-3"><i class="fas fa-user"></i> Sarah Ali</span>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-sm btn-gradient-dark flex-fill">Accept</button>
+                                    <button class="btn btn-sm btn-outline-secondary">Reject</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card task-card new">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h6 class="mb-0">Kitchen Cabinet Installation - Lusail</h6>
+                                    <span class="badge badge-in-progress">In Progress</span>
+                                </div>
+                                <p class="text-muted small mb-2">Villa 8, Marina District</p>
+                                <div class="task-meta mb-3">
+                                    <span><i class="fas fa-calendar"></i> Tomorrow, 9:00 AM</span>
+                                    <span class="ms-3"><i class="fas fa-user"></i> Mohammed Ali</span>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-sm btn-gradient-yellow flex-fill">Update Status</button>
+                                    <button class="btn btn-sm btn-outline-secondary">Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card task-card completed">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h6 class="mb-0">Bathroom Fixtures Repair - West Bay</h6>
+                                    <span class="badge bg-success text-white">Completed</span>
+                                </div>
+                                <p class="text-muted small mb-2">Office 204, Business Tower</p>
+                                <div class="task-meta mb-3">
+                                    <span><i class="fas fa-calendar"></i> Yesterday, 3:00 PM</span>
+                                    <span class="ms-3"><i class="fas fa-user"></i> Fatima Hassan</span>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-sm btn-outline-success flex-fill">
+                                        <i class="fas fa-check"></i> Mark Complete
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Job Inquiries -->
+            <div class="mb-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4 class="section-title mb-0">Job Inquiries</h4>
+                    <button class="btn btn-gradient-dark">
+                        <i class="fas fa-envelope"></i> View All Inquiries
+                    </button>
+                </div>
+                <div class="row g-3">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card task-card new h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-start mb-2">
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-1">AC Maintenance Request</h6>
+                                        <p class="text-muted small mb-0">Al Waab Area</p>
+                                    </div>
+                                    <span class="badge badge-new">New</span>
+                                </div>
+                                <p class="small text-muted mb-2">
+                                    <i class="fas fa-user"></i> Abdullah Khan
+                                </p>
+                                <p class="small mb-3">"Looking for regular AC maintenance for my villa..."</p>
+                                <button class="btn btn-sm btn-outline-primary w-100">Respond</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card task-card new h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-start mb-2">
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-1">Plumbing Quote Needed</h6>
+                                        <p class="text-muted small mb-0">Old Airport Area</p>
+                                    </div>
+                                    <span class="badge badge-new">New</span>
+                                </div>
+                                <p class="small text-muted mb-2">
+                                    <i class="fas fa-user"></i> Nasser Al-Thani
+                                </p>
+                                <p class="small mb-3">"Need quote for bathroom renovation work..."</p>
+                                <button class="btn btn-sm btn-outline-primary w-100">Respond</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card task-card new h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-start mb-2">
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-1">Custom Furniture Work</h6>
+                                        <p class="text-muted small mb-0">Al Rayyan</p>
+                                    </div>
+                                    <span class="badge badge-in-progress">Follow-up</span>
+                                </div>
+                                <p class="small text-muted mb-2">
+                                    <i class="fas fa-user"></i> Laila Ahmed
+                                </p>
+                                <p class="small mb-3">"Interested in custom built-in wardrobes..."</p>
+                                <button class="btn btn-sm btn-outline-primary w-100">Respond</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
 {% endblock content %}

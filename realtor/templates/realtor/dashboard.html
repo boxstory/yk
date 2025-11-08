@@ -1,192 +1,315 @@
 {% extends "base_dashboard.html" %}
 {% load static %}
-<!-- tags -->
 {% load crispy_forms_tags %}
- 
-<!-- title -->
+
 {% block title %}
-    REALATOR DASHBOARD
+    REALTOR DASHBOARD
 {% endblock title %}
-<!-- extra css -->
+
 {% block extra_css %}
-<link rel="stylesheet"
-          href="{% static 'realtor/css/realtor_dashboard.css' %}"
-          type="text/css" />
-<link rel="stylesheet"
-          href="{% static 'realtor/css/realtor.css' %}"
-          type="text/css" />
+<link rel="stylesheet" href="{% static 'realtor/css/realtor_dashboard.css' %}?v=2.0" type="text/css" />
 {% endblock extra_css %}
-<!-- title -->
 
-<!-- Main BUSINESS DASHBOARD content area -->
-<!-- left side content here  -->
- {% block sidebar %}
-    <!-- sidebar -->
+{% block sidebar %}
     {% include "realtor/parts/realtor_dashboard_sidebar.html" %}
-  {% endblock sidebar %}
+{% endblock sidebar %}
+
 {% block content %}
-    <!-- right side content here -->
-    <div class="col flex-fill pb-2">
-        <section class="m-0 p-0">
-            <div class="p-3 p-md-3 text-dark d-none d-md-block">
-                <div class="text-center">
-                    <h3 class="fw-bolder text-uppercase">{{ profile.business_business_name }} REALATOR - Dashboard</h3>
+<div class="flex-fill pb-2">
+    <section class="m-0 p-0">
+        <!-- Dashboard Header -->
+        <div class="p-3 p-md-4">
+            <div class="dashboard-header">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h2 class="mb-2"><i class="fas fa-user-tie"></i> Agent Dashboard</h2>
+                        <p class="mb-0 opacity-75">Welcome back! Here's your property portfolio overview</p>
+                    </div>
+                    <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                        <button class="btn btn-light btn-lg">
+                            <i class="fas fa-plus"></i> Add Property
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            
-            <div class="p-3 p-md-3" id="dasboard_div">
-                <div class="container mb-4">
-                    <h4>Inquiries Listing</h4>
-                    <div class="row">
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Inquiries newly added list </p>
-                                </div>
+            <!-- Statistics Cards -->
+            <div class="row g-4 mb-4">
+                <div class="col-md-3 col-sm-6">
+                    <div class="card stats-card">
+                        <div class="card-body">
+                            <div class="stats-icon icon-dark">
+                                <i class="fas fa-home"></i>
                             </div>
+                            <h3 class="mb-1">42</h3>
+                            <p class="text-muted mb-0">Total Listings</p>
                         </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Inquiries newly added list </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Inquiries newly added list </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Inquiries newly added list </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Inquiries newly added list </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Inquiries newly added list </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-end mt-3">
-                        <button class="btn btn-dark">See More</button>
                     </div>
                 </div>
-                <div class="container mb-4">
-                    <h4>Property Vacant Newly Added</h4>
-                    <div class="row">
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Property vacant newly added list content</p>
-                                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card stats-card">
+                        <div class="card-body">
+                            <div class="stats-icon icon-yellow">
+                                <i class="fas fa-key"></i>
                             </div>
+                            <h3 class="mb-1">18</h3>
+                            <p class="text-muted mb-0">Vacant Properties</p>
                         </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Property vacant newly added list content</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Property vacant newly added list content</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Property vacant newly added list content</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Property vacant newly added list content</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Property vacant newly added list content</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-end mt-3">
-                        <button class="btn btn-dark">See More</button>
                     </div>
                 </div>
-                <div class="container mb-4">
-                    <h4>Property Vacant Soon</h4>
-                    <div class="row">
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Property vacant soon content</p>
-                                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card stats-card">
+                        <div class="card-body">
+                            <div class="stats-icon icon-grey">
+                                <i class="fas fa-envelope"></i>
                             </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Property vacant soon content</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Property vacant soon content</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Property vacant soon content</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Property vacant soon content</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>Property vacant soon content</p>
-                                </div>
-                            </div>
+                            <h3 class="mb-1">27</h3>
+                            <p class="text-muted mb-0">New Inquiries</p>
                         </div>
                     </div>
-                    <div class="text-end mt-3">
-                        <button class="btn btn-dark">See More</button>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card stats-card">
+                        <div class="card-body">
+                            <div class="stats-icon icon-gold">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h3 class="mb-1">12</h3>
+                            <p class="text-muted mb-0">Deals Closed</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
+
+            <!-- Inquiries Listing -->
+            <div class="mb-5">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4 class="section-title mb-0">Recent Inquiries</h4>
+                    <button class="btn btn-gradient-dark">
+                        <i class="fas fa-envelope"></i> View All Inquiries
+                    </button>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="card inquiry-card new">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h6 class="mb-0">2 Bedroom Apartment - Al Sadd</h6>
+                                    <span class="badge badge-new">New</span>
+                                </div>
+                                <p class="text-muted small mb-2">Al Sadd District, Building 24</p>
+                                <div class="property-meta mb-3">
+                                    <span><i class="fas fa-calendar"></i> Today, 10:30 AM</span>
+                                    <span class="ms-3"><i class="fas fa-user"></i> Mohammed Ali</span>
+                                </div>
+                                <p class="small mb-3">"Looking for family apartment with parking..."</p>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-sm btn-gradient-dark flex-fill">Respond</button>
+                                    <button class="btn btn-sm btn-outline-secondary">View Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card inquiry-card urgent">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h6 class="mb-0">Villa for Rent - The Pearl</h6>
+                                    <span class="badge badge-urgent">Urgent</span>
+                                </div>
+                                <p class="text-muted small mb-2">Porto Arabia, Villa 15</p>
+                                <div class="property-meta mb-3">
+                                    <span><i class="fas fa-calendar"></i> Today, 9:00 AM</span>
+                                    <span class="ms-3"><i class="fas fa-user"></i> Sarah Hassan</span>
+                                </div>
+                                <p class="small mb-3">"Need to view villa this weekend..."</p>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-sm btn-gradient-dark flex-fill">Respond</button>
+                                    <button class="btn btn-sm btn-outline-secondary">View Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card inquiry-card new">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h6 class="mb-0">Office Space - West Bay</h6>
+                                    <span class="badge badge-active">Follow-up</span>
+                                </div>
+                                <p class="text-muted small mb-2">West Bay Business Tower</p>
+                                <div class="property-meta mb-3">
+                                    <span><i class="fas fa-calendar"></i> Yesterday, 3:45 PM</span>
+                                    <span class="ms-3"><i class="fas fa-user"></i> Abdullah Khan</span>
+                                </div>
+                                <p class="small mb-3">"Interested in commercial space for startup..."</p>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-sm btn-gradient-yellow flex-fill">Follow Up</button>
+                                    <button class="btn btn-sm btn-outline-secondary">View Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card inquiry-card responded">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h6 class="mb-0">Studio Apartment - Lusail</h6>
+                                    <span class="badge badge-active">Viewing Scheduled</span>
+                                </div>
+                                <p class="text-muted small mb-2">Lusail Marina District</p>
+                                <div class="property-meta mb-3">
+                                    <span><i class="fas fa-calendar"></i> Yesterday, 1:20 PM</span>
+                                    <span class="ms-3"><i class="fas fa-user"></i> Fatima Ahmed</span>
+                                </div>
+                                <p class="small mb-3">"Viewing scheduled for tomorrow at 2 PM"</p>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-sm btn-outline-success flex-fill">
+                                        <i class="fas fa-check"></i> Confirmed
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-secondary">Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-end mt-3">
+                    <button class="btn btn-gradient-dark">See More Inquiries</button>
+                </div>
+            </div>
+
+            <!-- Property Vacant Newly Added -->
+            <div class="mb-5">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4 class="section-title mb-0">Vacant Properties - New</h4>
+                    <button class="btn btn-gradient-yellow">
+                        <i class="fas fa-eye"></i> View All Properties
+                    </button>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="property-card card">
+                            <div class="card-body">
+                                <div class="property-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <h5 class="mb-2">2BR Apartment</h5>
+                                <p class="text-muted small mb-1"><i class="fas fa-map-marker-alt"></i> Al Sadd, Zone 35</p>
+                                <p class="text-muted small mb-3">100 sqm | 2 Bath | Parking</p>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="badge badge-vacant">Vacant</span>
+                                    <span class="fw-bold text-dark">QAR 7,000/mo</span>
+                                </div>
+                                <button class="btn btn-sm btn-outline-primary w-100">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="property-card card">
+                            <div class="card-body">
+                                <div class="property-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <h5 class="mb-2">4BR Villa</h5>
+                                <p class="text-muted small mb-1"><i class="fas fa-map-marker-alt"></i> The Pearl, Porto Arabia</p>
+                                <p class="text-muted small mb-3">350 sqm | 4 Bath | 2 Parking</p>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="badge badge-vacant">Vacant</span>
+                                    <span class="fw-bold text-dark">QAR 25,000/mo</span>
+                                </div>
+                                <button class="btn btn-sm btn-outline-primary w-100">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="property-card card">
+                            <div class="card-body">
+                                <div class="property-icon">
+                                    <i class="fas fa-door-open"></i>
+                                </div>
+                                <h5 class="mb-2">Studio Apartment</h5>
+                                <p class="text-muted small mb-1"><i class="fas fa-map-marker-alt"></i> Lusail, Marina District</p>
+                                <p class="text-muted small mb-3">45 sqm | 1 Bath | Parking</p>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="badge badge-vacant">Vacant</span>
+                                    <span class="fw-bold text-dark">QAR 4,500/mo</span>
+                                </div>
+                                <button class="btn btn-sm btn-outline-primary w-100">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-end mt-3">
+                    <button class="btn btn-gradient-dark">See More Properties</button>
+                </div>
+            </div>
+
+            <!-- Property Vacant Soon -->
+            <div class="mb-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4 class="section-title mb-0">Properties Vacant Soon</h4>
+                    <button class="btn btn-gradient-dark">
+                        <i class="fas fa-calendar-alt"></i> View Calendar
+                    </button>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="property-card card">
+                            <div class="card-body">
+                                <div class="property-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <h5 class="mb-2">3BR Apartment</h5>
+                                <p class="text-muted small mb-1"><i class="fas fa-map-marker-alt"></i> West Bay, Tower 12</p>
+                                <p class="text-muted small mb-3">150 sqm | 3 Bath | 1 Parking</p>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="badge badge-rented">Available in 15 days</span>
+                                    <span class="fw-bold text-dark">QAR 10,000/mo</span>
+                                </div>
+                                <button class="btn btn-sm btn-outline-primary w-100">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="property-card card">
+                            <div class="card-body">
+                                <div class="property-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <h5 class="mb-2">5BR Villa</h5>
+                                <p class="text-muted small mb-1"><i class="fas fa-map-marker-alt"></i> Al Waab, Compound</p>
+                                <p class="text-muted small mb-3">400 sqm | 5 Bath | 3 Parking</p>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="badge badge-rented">Available in 30 days</span>
+                                    <span class="fw-bold text-dark">QAR 18,000/mo</span>
+                                </div>
+                                <button class="btn btn-sm btn-outline-primary w-100">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="property-card card">
+                            <div class="card-body">
+                                <div class="property-icon">
+                                    <i class="fas fa-briefcase"></i>
+                                </div>
+                                <h5 class="mb-2">Office Space</h5>
+                                <p class="text-muted small mb-1"><i class="fas fa-map-marker-alt"></i> West Bay, Business Tower</p>
+                                <p class="text-muted small mb-3">200 sqm | Modern Fit-out</p>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="badge badge-rented">Available in 20 days</span>
+                                    <span class="fw-bold text-dark">QAR 15,000/mo</span>
+                                </div>
+                                <button class="btn btn-sm btn-outline-primary w-100">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-end mt-3">
+                    <button class="btn btn-gradient-dark">See More Properties</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
 {% endblock content %}

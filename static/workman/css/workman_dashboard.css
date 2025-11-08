@@ -1,4 +1,4 @@
-/* Realtor Dashboard CSS - Black, Yellow, Grey Theme */
+/* Workman Dashboard CSS - Black, Yellow, Grey Theme */
 
 .dashboard-header {
     background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
@@ -62,7 +62,7 @@
     display: inline-block;
 }
 
-.property-card {
+.service-card {
     border: none;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
@@ -71,16 +71,16 @@
     overflow: hidden;
 }
 
-.property-card:hover {
+.service-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
-.property-card .card-body {
+.service-card .card-body {
     padding: 1.5rem;
 }
 
-.property-icon {
+.service-icon {
     width: 50px;
     height: 50px;
     border-radius: 10px;
@@ -93,7 +93,7 @@
     color: #fbbf24;
 }
 
-.inquiry-card {
+.task-card {
     border-left: 4px solid #1f2937;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
@@ -101,20 +101,20 @@
     background: white;
 }
 
-.inquiry-card:hover {
+.task-card:hover {
     transform: translateX(5px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
 }
 
-.inquiry-card.new {
+.task-card.new {
     border-left-color: #1f2937;
 }
 
-.inquiry-card.urgent {
+.task-card.urgent {
     border-left-color: #fbbf24;
 }
 
-.inquiry-card.responded {
+.task-card.completed {
     border-left-color: #6b7280;
 }
 
@@ -135,19 +135,9 @@
     color: #92400e;
 }
 
-.badge-active {
+.badge-in-progress {
     background: #e5e7eb;
     color: #374151;
-}
-
-.badge-vacant {
-    background: #fef3c7;
-    color: #92400e;
-}
-
-.badge-rented {
-    background: #d1d5db;
-    color: #1f2937;
 }
 
 .btn-gradient-dark {
@@ -182,11 +172,33 @@
     color: #1f2937;
 }
 
-.property-meta {
+.quick-actions {
+    background: #f3f4f6;
+    border-radius: 10px;
+    padding: 1.5rem;
+}
+
+.quick-action-btn {
+    width: 100%;
+    padding: 1rem;
+    border: 2px dashed #d1d5db;
+    background: white;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.quick-action-btn:hover {
+    border-color: #fbbf24;
+    background: #fef3c7;
+    transform: translateY(-2px);
+}
+
+.task-meta {
     font-size: 0.875rem;
     color: #6b7280;
 }
 
-.property-meta i {
+.task-meta i {
     margin-right: 0.25rem;
 }
