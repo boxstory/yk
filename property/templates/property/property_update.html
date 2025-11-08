@@ -1,38 +1,104 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% load static %}
-{% block head_title %}Update{% endblock %}
-{% block extra_css %}
-    <!-- extra css -->
-{% endblock extra_css %}
+{% block head_title %}Update Property{% endblock %}
+{% block extra_css %}{% endblock extra_css %}
+
 {% block content %}
-    <!-- content -->
+<!-- content -->
+<div class="modern-form-wrapper">
     <div class="container">
-        <div class="row justify-content-center  py-3">
-            <div class="col-md-8 text-center py-4">
-                <h3 class="fw-bold text-uppercase bg-white">update property</h3>
-            </div>
-            <form action="" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="col-md-12">
-                    {{ form | crispy }}
-                    <div class="d-grid gap-2 col-6 mx-auto mb-3 mt-5">
-                        <a href="{% url 'property:property_create' pk=user.id %}"
-                           class="btn btn-dark">
-                            <button class="btn btn-dark" type="submit">UPDATE PROPERTY</button>
-                        </a>
+        <div class="row justify-content-center">
+            <div class="col-xl-8 col-lg-10">
+                <!-- Header Section -->
+                <div class="modern-form-header">
+                    <div class="header-icon">
+                        <i class="bi bi-pencil-square"></i>
                     </div>
-                </form>
-                <div class="d-grid gap-2 col-6 mx-auto">
-                    <a href="{% url 'property:property_create' pk=user.id %}"
-                       class="btn btn-dark">
-                        <button class="btn btn-dark" type="submit">ADD PROPERTY</button>
+                    <h1 class="modern-form-title">Update Property</h1>
+                    <p class="modern-form-subtitle">Modify your property details and information</p>
+                </div>
+
+                <!-- Form Container -->
+                <div class="modern-form-card">
+                    <form action="" method="POST" enctype="multipart/form-data" class="modern-form">
+                        {% csrf_token %}
+
+                        <!-- Error Messages -->
+                        {% if form.non_field_errors %}
+                            <div class="alert-error">
+                                {% for error in form.non_field_errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        <!-- Property Information Section -->
+                        <div class="form-section">
+                            <h3 class="section-title">Building Information</h3>
+
+                            {% for field in form %}
+                                {% if field.name != 'property_data' %}
+                                    <div class="form-group modern-field full-width">
+                                        <label for="{{ field.id_for_label }}">
+                                            {{ field.label }}
+                                            {% if field.field.required %}<span class="required">*</span>{% endif %}
+                                        </label>
+                                        {% if field.field.widget.input_type == 'textarea' %}
+                                            <div class="textarea-wrapper">
+                                                <i class="bi bi-file-text"></i>
+                                                {{ field }}
+                                            </div>
+                                        {% elif field.field.widget.input_type == 'select' %}
+                                            <div class="select-wrapper">
+                                                {{ field }}
+                                                <i class="bi bi-chevron-down"></i>
+                                            </div>
+                                        {% elif field.field.widget.input_type == 'hidden' %}
+                                            {{ field }}
+                                        {% elif field.name == 'photo_main' %}
+                                            <div class="input-wrapper">
+                                                <i class="bi bi-image"></i>
+                                                {{ field }}
+                                            </div>
+                                        {% else %}
+                                            <div class="input-wrapper">
+                                                <i class="bi bi-pencil-square"></i>
+                                                {{ field }}
+                                            </div>
+                                        {% endif %}
+                                        {% if field.errors %}<span class="error-text">{{ field.errors.0 }}</span>{% endif %}
+                                        {% if field.help_text %}<small class="text-muted">{{ field.help_text|safe }}</small>{% endif %}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+
+                        <!-- Submit Buttons -->
+                        <div style="display: grid; gap: 12px; margin-top: 30px;">
+                            <button type="submit" class="modern-submit-btn">
+                                <span>Update Property</span>
+                                <i class="bi bi-check-circle"></i>
+                            </button>
+                            <a href="{% url 'property:property_create' pk=user.id %}" class="modern-submit-btn secondary">
+                                <span>Add New Property</span>
+                                <i class="bi bi-plus-circle"></i>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Back Link -->
+                <div class="modern-form-footer">
+                    <a href="{% url 'property:property_own' user.id %}" class="modern-back-link">
+                        <i class="bi bi-arrow-left"></i>
+                        <span>Back to Properties</span>
                     </a>
                 </div>
             </div>
         </div>
     </div>
+</div>
 {% endblock content %}
-<!-- extra js -->
-{% block extra_js %}
-{% endblock extra_js %}
+
+{% block extra_js %}{% endblock extra_js %}

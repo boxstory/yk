@@ -6,6 +6,19 @@ class PropertyForm(forms.ModelForm):
     class Meta:
         model = Property_data
         exclude = ['user', 'date_created', 'date_updated', 'property_code']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'modern-input', 'placeholder': 'Property name'}),
+            'address': forms.TextInput(attrs={'class': 'modern-input', 'placeholder': 'Property address'}),
+            'description': forms.Textarea(attrs={'class': 'modern-textarea', 'placeholder': 'Property description', 'rows': 4}),
+            'property_type': forms.Select(attrs={'class': 'modern-select'}),
+            'bedrooms': forms.NumberInput(attrs={'class': 'modern-input', 'placeholder': 'Number of bedrooms'}),
+            'bathrooms': forms.NumberInput(attrs={'class': 'modern-input', 'placeholder': 'Number of bathrooms'}),
+            'sqft': forms.NumberInput(attrs={'class': 'modern-input', 'placeholder': 'Square feet'}),
+            'photo_main': forms.FileInput(attrs={'class': 'modern-input', 'accept': 'image/*'}),
+            'photo_1': forms.FileInput(attrs={'class': 'modern-input', 'accept': 'image/*'}),
+            'photo_2': forms.FileInput(attrs={'class': 'modern-input', 'accept': 'image/*'}),
+            'photo_3': forms.FileInput(attrs={'class': 'modern-input', 'accept': 'image/*'}),
+        }
 
 
 class PortionsForm(forms.ModelForm):
@@ -15,6 +28,20 @@ class PortionsForm(forms.ModelForm):
         exclude = ['user', 'date_created', 'date_updated', 'portion_code']
         widgets = {
             'property_data': forms.HiddenInput(),
+            'portion_type': forms.Select(attrs={'class': 'modern-select'}),
+            'furnished_type': forms.Select(attrs={'class': 'modern-select'}),
+            'furnished_extra_info': forms.TextInput(attrs={'class': 'modern-input', 'placeholder': 'Furnished extra info'}),
+            'unit_no': forms.TextInput(attrs={'class': 'modern-input', 'placeholder': 'Unit number'}),
+            'floor_no': forms.NumberInput(attrs={'class': 'modern-input', 'placeholder': 'Floor number'}),
+            'description': forms.Textarea(attrs={'class': 'modern-textarea', 'placeholder': 'Portion description', 'rows': 4}),
+            'price': forms.NumberInput(attrs={'class': 'modern-input', 'placeholder': 'Price'}),
+            'bedrooms': forms.NumberInput(attrs={'class': 'modern-input', 'placeholder': 'Number of bedrooms'}),
+            'bathrooms': forms.NumberInput(attrs={'class': 'modern-input', 'placeholder': 'Number of bathrooms'}),
+            'sqft': forms.NumberInput(attrs={'class': 'modern-input', 'placeholder': 'Square feet'}),
+            'photo_main': forms.FileInput(attrs={'class': 'modern-input', 'accept': 'image/*'}),
+            'photo_1': forms.FileInput(attrs={'class': 'modern-input', 'accept': 'image/*'}),
+            'photo_2': forms.FileInput(attrs={'class': 'modern-input', 'accept': 'image/*'}),
+            'photo_3': forms.FileInput(attrs={'class': 'modern-input', 'accept': 'image/*'}),
         }
 
 class Singelform(forms.ModelForm):
@@ -62,9 +89,20 @@ class InquireForm(forms.ModelForm):
         model = Inquire
         exclude = ['date_created', 'date_updated']
         widgets = {
-            'date_from': DateInput(),
+            'name': forms.TextInput(attrs={'class': 'modern-input', 'placeholder': 'Your full name'}),
+            'mobile_no': forms.NumberInput(attrs={'class': 'modern-input', 'placeholder': 'Mobile number'}),
+            'whatsapp_no': forms.NumberInput(attrs={'class': 'modern-input', 'placeholder': 'WhatsApp (974...)'}),
+            'locations': forms.TextInput(attrs={'class': 'modern-input', 'placeholder': 'Preferred locations'}),
+            'furnished_type': forms.Select(attrs={'class': 'modern-select'}),
+            'property_type': forms.Select(attrs={'class': 'modern-select'}),
+            'price_from': forms.NumberInput(attrs={'class': 'modern-input', 'placeholder': 'Min price'}),
+            'price_to': forms.NumberInput(attrs={'class': 'modern-input', 'placeholder': 'Max price'}),
+            'date_from': forms.DateTimeInput(attrs={'class': 'modern-input', 'type': 'datetime-local'}),
+            'duration': forms.NumberInput(attrs={'class': 'modern-input', 'placeholder': 'Months'}),
+            'property_type_other': forms.TextInput(attrs={'class': 'modern-input', 'placeholder': 'Specify other type'}),
+            'notes': forms.Textarea(attrs={'class': 'modern-textarea', 'placeholder': 'Any additional requirements...', 'rows': 4}),
         }
-        labels = { 
+        labels = {
             'date_from': 'Date From',
             'duration': 'Duration In Months',
             'locations': 'List preffered Locations'

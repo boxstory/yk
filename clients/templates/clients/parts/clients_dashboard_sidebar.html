@@ -23,16 +23,16 @@
              id="submenu-001"
              aria-expanded="false">
           <ul class="flex-column p-0 ms-2 text-black">
-             
+
               <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start mx-auto"
                  hx-get="{% url 'clients:property_own_list' %}"
-                 name="property_all_list"
+                 name="property_own_list"
                  hx-trigger="click"
                  hx-target="#dashboard-right-side"
                  hx-swap="innerHTML">
                 <i class="fa-solid fa-bars my-2 pt-1 pe-2"></i>
                 <span class="pt-2">Own Properties</span></a>
-             
+
             <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start mx-auto"
                hx-get="{% url 'clients:portions_all_list' %}"
                name="portions_all_list"
@@ -42,50 +42,50 @@
               <i class="fa-solid fa-bars my-2 pt-1 pe-2"></i>
               <span class="pt-2">All Portions</span></a>
             <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
-                 hx-get="{% url 'clients:portions_all_list' %}"
-                 name="portions_all_list"
+                 hx-get="{% url 'clients:portions_vacant_soon' %}"
+                 name="portions_vacant_soon"
                  hx-trigger="click"
                  hx-target="#dashboard-right-side"
                  hx-swap="innerHTML">
                 <i class="fa-solid fa-spinner my-2 pt-1 pe-2"></i>
-                <span class="pt-2">Vacant soon</span> 
+                <span class="pt-2">Vacant soon</span>
             </a>
             <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
-                 hx-get="{% url 'clients:portions_all_list' %}"
-                 name="portions_all_list"
+                 hx-get="{% url 'clients:portions_vacants' %}"
+                 name="portions_vacants"
                  hx-trigger="click"
                  hx-target="#dashboard-right-side"
                  hx-swap="innerHTML">
                 <i class="fa-solid fa-bars my-2 pt-1 pe-2"></i>
-                <span class="pt-2">Vacants</span> 
+                <span class="pt-2">Vacants</span>
             </a>
             <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
-                 hx-get="{% url 'clients:portions_all_list' %}"
-                 name="portions_all_list"
+                 hx-get="{% url 'clients:portions_occupied' %}"
+                 name="portions_occupied"
                  hx-trigger="click"
                  hx-target="#dashboard-right-side"
                  hx-swap="innerHTML">
                 <i class="fa-solid fa-bars my-2 pt-1 pe-2"></i>
-                <span class="pt-2">Occupied</span> 
+                <span class="pt-2">Occupied</span>
             </a>
             <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
-                 hx-get="{% url 'clients:portions_all_list' %}"
-                 name="portions_all_list"
+                 hx-get="{% url 'clients:portions_unlisted' %}"
+                 name="portions_unlisted"
                  hx-trigger="click"
                  hx-target="#dashboard-right-side"
                  hx-swap="innerHTML">
                 <i class="fa-solid fa-xmark my-2 pt-1 pe-2"></i>
-                <span class="pt-2">Unlisted</span> 
+                <span class="pt-2">Unlisted</span>
             </a>
             <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
-                 hx-get="{% url 'clients:portions_all_list' %}"
-                 name="portions_all_list"
+                 hx-get="{% url 'clients:property_create' %}"
+                 name="property_create"
                  hx-trigger="click"
                  hx-target="#dashboard-right-side"
                  hx-swap="innerHTML">
-                <i class="fa-solid fa-add my-2 pt-1 pe-2"></i>
-                <span class="pt-2">Add Property</span> 
-            </a> 
+                <i class="fa-solid fa-plus my-2 pt-1 pe-2"></i>
+                <span class="pt-2">Add Property</span>
+            </a>
           </ul>
         </div>
       </li>
@@ -223,7 +223,7 @@
             <ul class="flex-column p-0 ms-2 text-black">
               <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start mx-auto"
                  hx-get="{% url 'clients:property_own_list' %}"
-                 name="property_all_list"
+                 name="property_own_list"
                  hx-trigger="click"
                  hx-target="#dashboard-right-side"
                  hx-swap="innerHTML"
@@ -240,8 +240,8 @@
                 <i class="fa-solid fa-bars my-2 pt-1 pe-2"></i>
                 <span class="pt-2">All Portions</span></a>
               <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
-                 hx-get="{% url 'clients:portions_all_list' %}"
-                 name="portions_all_list"
+                 hx-get="{% url 'clients:portions_vacant_soon' %}"
+                 name="portions_vacant_soon"
                  hx-trigger="click"
                  hx-target="#dashboard-right-side"
                  hx-swap="innerHTML"
@@ -250,8 +250,8 @@
                 <span class="pt-2">Vacant soon</span>
               </a>
               <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
-                 hx-get="{% url 'clients:portions_all_list' %}"
-                 name="portions_all_list"
+                 hx-get="{% url 'clients:portions_vacants' %}"
+                 name="portions_vacants"
                  hx-trigger="click"
                  hx-target="#dashboard-right-side"
                  hx-swap="innerHTML"
@@ -260,8 +260,8 @@
                 <span class="pt-2">Vacants</span>
               </a>
               <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
-                 hx-get="{% url 'clients:portions_all_list' %}"
-                 name="portions_all_list"
+                 hx-get="{% url 'clients:portions_occupied' %}"
+                 name="portions_occupied"
                  hx-trigger="click"
                  hx-target="#dashboard-right-side"
                  hx-swap="innerHTML"
@@ -270,8 +270,8 @@
                 <span class="pt-2">Occupied</span>
               </a>
               <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
-                 hx-get="{% url 'clients:portions_all_list' %}"
-                 name="portions_all_list"
+                 hx-get="{% url 'clients:portions_unlisted' %}"
+                 name="portions_unlisted"
                  hx-trigger="click"
                  hx-target="#dashboard-right-side"
                  hx-swap="innerHTML"
@@ -280,13 +280,13 @@
                 <span class="pt-2">Unlisted</span>
               </a>
               <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
-                 hx-get="{% url 'clients:portions_all_list' %}"
-                 name="portions_all_list"
+                 hx-get="{% url 'clients:property_create' %}"
+                 name="property_create"
                  hx-trigger="click"
                  hx-target="#dashboard-right-side"
                  hx-swap="innerHTML"
                  onclick="closeMobileSidebar()">
-                <i class="fa-solid fa-add my-2 pt-1 pe-2"></i>
+                <i class="fa-solid fa-plus my-2 pt-1 pe-2"></i>
                 <span class="pt-2">Add Property</span>
               </a>
             </ul>

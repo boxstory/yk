@@ -255,3 +255,109 @@ def portions_update(request, pk, property_id, portion_id):
 
     }
     return render(request, 'property/portion_add.html', context)
+
+
+# Portion Status Views **********************************************************************
+
+@login_required(login_url='account_login')
+def portions_vacant_soon(request):
+    """Display portions that will be vacant soon (status pending or expiring within 30 days)"""
+    try:
+        profile = request.user.profile
+    except ObjectDoesNotExist:
+        return redirect('accounts:profile')
+    if request.user.profile.is_business == False:
+        messages.error(request, 'You are not authorized to access Property Dashboard.', extra_tags='danger')
+        return redirect('accounts:profile')
+
+    profile = request.user.profile
+    # Get portions with vacant_soon status
+    portions = property_models.Portions.objects.filter(
+        user=request.user,
+        portions_status__status='vacant_soon'
+    ).distinct()
+
+    data = {
+        'profile': profile,
+        'portions': portions,
+        'filter_type': 'Vacant Soon',
+    }
+    return render(request, "clients/pages/portions_all_list.html", data)
+
+
+@login_required(login_url='account_login')
+def portions_vacants(request):
+    """Display vacant portions (status vacant)"""
+    try:
+        profile = request.user.profile
+    except ObjectDoesNotExist:
+        return redirect('accounts:profile')
+    if request.user.profile.is_business == False:
+        messages.error(request, 'You are not authorized to access Property Dashboard.', extra_tags='danger')
+        return redirect('accounts:profile')
+
+    profile = request.user.profile
+    # Get vacant portions
+    portions = property_models.Portions.objects.filter(
+        user=request.user,
+        portions_status__status='vacant'
+    ).distinct()
+
+    data = {
+        'profile': profile,
+        'portions': portions,
+        'filter_type': 'Vacant',
+    }
+    return render(request, "clients/pages/portions_all_list.html", data)
+
+
+@login_required(login_url='account_login')
+def portions_occupied(request):
+    """Display occupied portions (status occupied)"""
+    try:
+        profile = request.user.profile
+    except ObjectDoesNotExist:
+        return redirect('accounts:profile')
+    if request.user.profile.is_business == False:
+        messages.error(request, 'You are not authorized to access Property Dashboard.', extra_tags='danger')
+        return redirect('accounts:profile')
+
+    profile = request.user.profile
+    # Get occupied portions
+    portions = property_models.Portions.objects.filter(
+        user=request.user,
+        portions_status__status='occupied'
+    ).distinct()
+
+    data = {
+        'profile': profile,
+        'portions': portions,
+        'filter_type': 'Occupied',
+    }
+    return render(request, "clients/pages/portions_all_list.html", data)
+
+
+@login_required(login_url='account_login')
+def portions_unlisted(request):
+    """Display unlisted portions (not listed for rent/sale)"""
+    try:
+        profile = request.user.profile
+    except ObjectDoesNotExist:
+        return redirect('accounts:profile')
+    if request.user.profile.is_business == False:
+        messages.error(request, 'You are not authorized to access Property Dashboard.', extra_tags='danger')
+        return redirect('accounts:profile')
+
+    profile = request.user.profile
+    # Get unlisted portions (those without any status)
+    portions = property_models.Portions.objects.filter(
+        user=request.user,
+        portions_status__isnull=True
+    )
+
+    data = {
+        'profile': profile,
+        'portions': portions,
+        'filter_type': 'Unlisted',
+    }
+    return render(request, "clients/pages/portions_all_list.html", data)

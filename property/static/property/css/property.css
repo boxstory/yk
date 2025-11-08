@@ -132,281 +132,423 @@
 
 /* property main card css */
 
-/* ===== INQUIRE FORM STYLES ===== */
+/* ===== MODERN INQUIRE FORM STYLES ===== */
 
 :root {
     --primary-color: #ebcb1b;
     --primary-dark: #e4ac14;
     --text-dark: #232c3d;
     --text-light: #727982;
-    --border-color: #f2f4f7;
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 13px 27px -5px rgba(50, 50, 93, 0.25), 0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.03);
-    --transition: all 0.3s ease;
+    --border-color: #e8ecf1;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
+    --transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
-/* Form Wrapper */
-.inquire-form-wrapper {
-    background: linear-gradient(135deg, #f8f9fa 0%, #f2f4f7 100%);
+/* Modern Form Wrapper */
+.modern-inquire-wrapper {
+    background: linear-gradient(135deg, #f5f7fa 0%, #f0f2f5 50%, #ebe9e4 100%);
     min-height: 100vh;
-    padding: 40px 0;
+    padding: 60px 20px;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Form Header */
-.inquire-form-header {
+/* Floating Shapes Animation */
+.floating-shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+.floating-shape.shape-1 {
+    width: 300px;
+    height: 300px;
+    background: var(--primary-color);
+    top: -100px;
+    left: -100px;
+    animation: float 6s ease-in-out infinite;
+}
+
+.floating-shape.shape-2 {
+    width: 200px;
+    height: 200px;
+    background: var(--primary-dark);
+    bottom: 50px;
+    right: -80px;
+    animation: float 8s ease-in-out infinite reverse;
+}
+
+.floating-shape.shape-3 {
+    width: 250px;
+    height: 250px;
+    background: var(--text-dark);
+    top: 50%;
+    right: 5%;
+    animation: float 10s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(30px); }
+}
+
+/* Modern Form Header */
+.modern-form-header {
     text-align: center;
-    margin-bottom: 40px;
-    animation: slideDown 0.6s ease-out;
+    margin-bottom: 50px;
+    animation: fadeInDown 0.8s ease-out;
+    position: relative;
+    z-index: 1;
 }
 
-.inquire-form-title {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 12px;
-    display: flex;
+.header-icon {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    border-radius: 20px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-lg);
+    animation: scaleIn 0.6s ease-out;
 }
 
-.inquire-form-title i {
-    font-size: 2.4rem;
-    color: var(--primary-color);
+.header-icon i {
+    font-size: 40px;
+    color: #ffffff;
 }
 
-.inquire-form-subtitle {
-    font-size: 1rem;
+.modern-form-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.modern-form-subtitle {
+    font-size: 1.1rem;
     color: var(--text-light);
     margin: 0;
     font-weight: 400;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
-/* Form Card Container */
-.inquire-form-card {
+/* Modern Form Card */
+.modern-form-card {
     background: #ffffff;
-    border-radius: 16px;
-    padding: 40px;
-    box-shadow: var(--shadow-md);
+    border-radius: 24px;
+    padding: 50px;
+    box-shadow: var(--shadow-lg);
     margin-bottom: 30px;
-    animation: slideUp 0.6s ease-out;
+    animation: fadeInUp 0.8s ease-out;
+    position: relative;
+    z-index: 2;
+    backdrop-filter: blur(10px);
 }
 
-/* Crispy Form Wrapper */
-.crispy-form-wrapper {
-    margin-bottom: 30px;
+/* Modern Form Styling */
+.modern-inquire-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
 }
 
-.crispy-form-wrapper .alert {
-    padding: 12px 16px;
-    border-radius: 10px;
-    margin-bottom: 24px;
-    border: none;
+/* Form Sections */
+.form-section {
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border-color);
 }
 
-.crispy-form-wrapper .alert-danger {
-    background-color: #f8d7da;
-    color: #721c24;
+.form-section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 40px;
 }
 
-.crispy-form-wrapper .alert-danger strong {
+.section-title {
+    font-size: 1.3rem;
     font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.crispy-form-wrapper .alert p {
-    margin-bottom: 8px;
-    font-size: 0.9rem;
+.section-title::before {
+    content: '';
+    width: 4px;
+    height: 24px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    border-radius: 2px;
 }
 
-.crispy-form-wrapper .alert p:last-child {
-    margin-bottom: 0;
-}
-
-/* Form Field Styling */
-.crispy-form-wrapper .form-group {
+/* Form Row Grid */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
     margin-bottom: 24px;
-    display: block;
 }
 
-.crispy-form-wrapper label,
-.crispy-form-wrapper .form-label {
+/* Form Group */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
     font-size: 0.95rem;
     font-weight: 600;
     color: var(--text-dark);
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     display: block;
+}
+
+/* Modern Input Fields */
+.modern-field {
+    position: relative;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper i {
+    position: absolute;
+    left: 16px;
+    color: var(--text-light);
+    font-size: 18px;
+    pointer-events: none;
     transition: var(--transition);
 }
 
-.crispy-form-wrapper .text-danger {
-    color: #dc3545;
-    margin-left: 2px;
-}
-
-.crispy-form-wrapper .form-control,
-.crispy-form-wrapper textarea,
-.crispy-form-wrapper select {
-    border: 2px solid #e8ecf1;
-    border-radius: 10px;
-    padding: 12px 16px;
+.modern-input {
+    width: 100%;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 14px 14px 14px 48px;
     font-size: 0.95rem;
     font-family: inherit;
-    transition: var(--transition);
     background-color: #fafbfc;
     color: var(--text-dark);
-}
-
-.crispy-form-wrapper .form-control:focus,
-.crispy-form-wrapper textarea:focus,
-.crispy-form-wrapper select:focus {
-    border-color: var(--primary-color);
-    background-color: #ffffff;
-    box-shadow: 0 0 0 4px rgba(235, 203, 27, 0.1);
+    transition: var(--transition);
     outline: none;
 }
 
-.crispy-form-wrapper textarea {
-    resize: vertical;
-    min-height: 120px;
-    font-family: inherit;
+.modern-input::placeholder {
+    color: #a8b3bf;
 }
 
-.crispy-form-wrapper input[type="date"],
-.crispy-form-wrapper input[type="time"],
-.crispy-form-wrapper input[type="email"],
-.crispy-form-wrapper input[type="tel"],
-.crispy-form-wrapper input[type="number"] {
-    width: 100%;
+.modern-input:focus {
+    border-color: var(--primary-color);
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(235, 203, 27, 0.15), inset 0 0 0 0.5px var(--border-color);
 }
 
-/* Hidden Fields */
-.crispy-form-wrapper input[type="hidden"] {
-    display: none;
+.modern-input:focus + i {
+    color: var(--primary-color);
+    transform: scale(1.1);
 }
 
-/* Form Field Help Text */
-.crispy-form-wrapper .form-text,
-.crispy-form-wrapper .helptext,
-.crispy-form-wrapper small.form-text {
-    font-size: 0.85rem;
+/* Select Styling */
+.select-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.select-wrapper i {
+    position: absolute;
+    right: 16px;
     color: var(--text-light);
-    margin-top: 6px;
-    display: block;
+    font-size: 16px;
+    pointer-events: none;
+    transition: var(--transition);
 }
 
-/* Form Field Errors */
-.crispy-form-wrapper .invalid-feedback,
-.crispy-form-wrapper .form-error {
-    display: block;
+.modern-select {
+    width: 100%;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 14px 48px 14px 16px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    background-color: #fafbfc;
+    color: var(--text-dark);
+    cursor: pointer;
+    appearance: none;
+    transition: var(--transition);
+    outline: none;
+}
+
+.modern-select:focus {
+    border-color: var(--primary-color);
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(235, 203, 27, 0.15);
+}
+
+.modern-select:focus ~ i {
+    color: var(--primary-color);
+    transform: rotate(180deg);
+}
+
+/* Textarea Styling */
+.textarea-wrapper {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+}
+
+.textarea-wrapper i {
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    color: var(--text-light);
+    font-size: 18px;
+    pointer-events: none;
+    transition: var(--transition);
+}
+
+.modern-textarea {
+    width: 100%;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 14px 14px 14px 48px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    background-color: #fafbfc;
+    color: var(--text-dark);
+    transition: var(--transition);
+    outline: none;
+    resize: vertical;
+    min-height: 140px;
+    max-height: 300px;
+}
+
+.modern-textarea::placeholder {
+    color: #a8b3bf;
+}
+
+.modern-textarea:focus {
+    border-color: var(--primary-color);
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(235, 203, 27, 0.15);
+}
+
+.modern-textarea:focus ~ i {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+/* Price Range */
+.price-range {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: center;
+}
+
+.range-separator {
+    text-align: center;
+    color: var(--text-light);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Error Messages */
+.error-text {
     color: #dc3545;
     font-size: 0.85rem;
-    margin-top: 6px;
+    font-weight: 500;
+    margin-top: 8px;
+    display: block;
+}
+
+.alert-error {
+    background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+    border-left: 4px solid #dc3545;
+    color: #721c24;
+    padding: 16px 20px;
+    border-radius: 12px;
+    margin-bottom: 28px;
     font-weight: 500;
 }
 
-.crispy-form-wrapper .form-control.is-invalid,
-.crispy-form-wrapper .form-control:invalid {
-    border-color: #dc3545;
-}
-
-.crispy-form-wrapper .form-control.is-invalid:focus {
-    box-shadow: 0 0 0 4px rgba(220, 53, 69, 0.1);
-}
-
-/* Fieldset Styling */
-.crispy-form-wrapper fieldset {
-    border: none;
-    padding: 0;
+.alert-error p {
     margin: 0;
-}
-
-.crispy-form-wrapper fieldset > legend {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 16px;
-    padding-bottom: 12px;
-    border-bottom: 2px solid var(--border-color);
-    width: 100%;
-}
-
-/* Radio and Checkbox Styling */
-.crispy-form-wrapper .form-check {
-    margin-bottom: 16px;
-}
-
-.crispy-form-wrapper .form-check-input {
-    width: 20px;
-    height: 20px;
-    border: 2px solid #e8ecf1;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: var(--transition);
-    margin-top: 3px;
-}
-
-.crispy-form-wrapper .form-check-input:hover {
-    border-color: var(--primary-color);
-}
-
-.crispy-form-wrapper .form-check-input:checked {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-}
-
-.crispy-form-wrapper .form-check-label {
-    font-size: 0.95rem;
-    color: var(--text-dark);
-    cursor: pointer;
-    margin-left: 8px;
-    font-weight: 400;
+    line-height: 1.5;
 }
 
 /* Submit Button */
-.inquire-form-actions {
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-}
-
-.btn-inquire-submit {
+.modern-submit-btn {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
     color: #000000;
     border: none;
-    padding: 14px 48px;
+    padding: 16px 40px;
     font-size: 1rem;
     font-weight: 700;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
     transition: var(--transition);
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
-    box-shadow: var(--shadow-sm);
+    gap: 12px;
+    box-shadow: var(--shadow-md);
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    margin-top: 10px;
+    width: 100%;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
 }
 
-.btn-inquire-submit:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(235, 203, 27, 0.3);
+.modern-submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: var(--transition);
 }
 
-.btn-inquire-submit:active {
-    transform: translateY(0);
+.modern-submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(235, 203, 27, 0.3);
 }
 
-.btn-inquire-submit i {
-    font-size: 1.2rem;
+.modern-submit-btn:hover::before {
+    left: 100%;
+}
+
+.modern-submit-btn:active {
+    transform: translateY(-1px);
+}
+
+/* Full Width Field */
+.full-width {
+    grid-column: 1 / -1;
 }
 
 /* Form Footer */
-.inquire-form-footer {
+.modern-form-footer {
     text-align: center;
+    position: relative;
+    z-index: 2;
 }
 
-.btn-inquire-back {
+.modern-back-link {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -414,21 +556,22 @@
     text-decoration: none;
     font-weight: 600;
     font-size: 0.95rem;
-    padding: 10px 20px;
+    padding: 12px 24px;
     border: 2px solid var(--border-color);
-    border-radius: 10px;
+    border-radius: 12px;
     transition: var(--transition);
     background-color: transparent;
 }
 
-.btn-inquire-back:hover {
+.modern-back-link:hover {
     border-color: var(--primary-color);
     color: var(--primary-color);
-    background-color: rgba(235, 203, 27, 0.05);
+    background-color: rgba(235, 203, 27, 0.1);
+    transform: translateX(-5px);
 }
 
 /* Animations */
-@keyframes slideDown {
+@keyframes fadeInDown {
     from {
         opacity: 0;
         transform: translateY(-30px);
@@ -439,7 +582,7 @@
     }
 }
 
-@keyframes slideUp {
+@keyframes fadeInUp {
     from {
         opacity: 0;
         transform: translateY(30px);
@@ -450,68 +593,134 @@
     }
 }
 
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 /* Responsive Design */
+@media (max-width: 1024px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .price-range {
+        grid-template-columns: 1fr auto 1fr;
+    }
+}
+
 @media (max-width: 768px) {
-    .inquire-form-card {
+    .modern-inquire-wrapper {
+        padding: 40px 16px;
+    }
+
+    .modern-form-card {
         padding: 30px 20px;
+        border-radius: 20px;
     }
 
-    .inquire-form-title {
-        font-size: 1.8rem;
+    .modern-form-header {
+        margin-bottom: 40px;
     }
 
-    .inquire-form-title i {
+    .modern-form-title {
         font-size: 2rem;
     }
 
-    .inquire-form-subtitle {
-        font-size: 0.9rem;
+    .form-section {
+        margin-bottom: 30px;
+        padding-bottom: 30px;
     }
 
-    .crispy-form-wrapper .form-group {
+    .section-title {
+        font-size: 1.2rem;
         margin-bottom: 20px;
     }
 
-    .btn-inquire-submit {
-        width: 100%;
-        justify-content: center;
-        padding: 12px 24px;
+    .form-row {
+        gap: 16px;
+        margin-bottom: 16px;
     }
 
-    .btn-inquire-back {
-        width: 100%;
-        justify-content: center;
+    .header-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .header-icon i {
+        font-size: 32px;
     }
 }
 
 @media (max-width: 576px) {
-    .inquire-form-wrapper {
-        padding: 20px 0;
+    .modern-inquire-wrapper {
+        padding: 30px 12px;
+        min-height: auto;
     }
 
-    .inquire-form-card {
+    .modern-form-card {
         padding: 20px 16px;
         margin-bottom: 20px;
     }
 
-    .inquire-form-header {
-        margin-bottom: 30px;
-    }
-
-    .inquire-form-title {
+    .modern-form-title {
         font-size: 1.5rem;
     }
 
-    .crispy-form-wrapper label {
+    .modern-form-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .section-title {
+        font-size: 1.1rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .input-wrapper i,
+    .textarea-wrapper i {
+        font-size: 16px;
+    }
+
+    .modern-input,
+    .modern-select,
+    .modern-textarea {
+        font-size: 0.9rem;
+        padding-left: 40px;
+    }
+
+    .select-wrapper i {
+        right: 12px;
+    }
+
+    .price-range {
+        grid-template-columns: 1fr auto 1fr;
+        gap: 8px;
+        font-size: 0.85rem;
+    }
+
+    .modern-submit-btn {
+        padding: 14px 24px;
         font-size: 0.9rem;
     }
 
-    .crispy-form-wrapper .form-control,
-    .crispy-form-wrapper textarea,
-    .crispy-form-wrapper select {
-        padding: 10px 12px;
-        font-size: 0.9rem;
+    .header-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .header-icon i {
+        font-size: 28px;
     }
 }
 
-/* ===== END INQUIRE FORM STYLES ===== */
+/* ===== END MODERN INQUIRE FORM STYLES ===== */

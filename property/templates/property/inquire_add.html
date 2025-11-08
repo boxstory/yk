@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% load static %}
-{% load form_tags %}
 {% block head_title %}Inquires {% endblock %}
 
 
@@ -10,108 +9,227 @@
 <link type="text/css" rel="stylesheet" href="{% static '/webpages/css/main.css' %}">
 <link type="text/css" rel="stylesheet" href="{% static '/property/css/property.css' %}">
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-    integrity="sha384-tKLJeE1ALTUwtXlaGjJYM3sejfssWdAaWR2s97axw4xkiAdMzQjtOjgcyw0Y50KU" crossorigin="anonymous">
 {% endblock extra_css %}
 {% block content %}
 <!-- content -->
 
-<div class="inquire-form-wrapper">
-    <div class="container py-5">
+<div class="modern-inquire-wrapper">
+    <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-7 col-md-10">
+            <div class="col-xl-8 col-lg-10">
+            
                 <!-- Header Section -->
-                <div class="inquire-form-header">
-                    <h2 class="inquire-form-title">
-                        <i class="bi bi-envelope-check"></i>
-                        Add Inquiry Details
-                    </h2>
-                    <p class="inquire-form-subtitle">Please fill in your details below and we'll get back to you shortly</p>
+                <div class="modern-form-header">
+                  
+                    <h1 class="modern-form-title">Property Inquiry</h1>
+                    <p class="modern-form-subtitle">Tell us about your ideal property and we'll help you find it</p>
                 </div>
 
                 <!-- Form Container -->
-                <div class="inquire-form-card">
-                    <form method="post" enctype="multipart/form-data" class="inquire-form">
+                <div class="modern-form-card">
+                    <form method="post" enctype="multipart/form-data" class="modern-inquire-form">
                         {% csrf_token %}
 
-                        <!-- Render Crispy Form -->
-                        <div class="crispy-form-wrapper">
-                            {% if form.non_field_errors %}
-                                <div class="alert alert-danger" role="alert">
-                                    <strong>Error!</strong>
-                                    {% for error in form.non_field_errors %}
-                                        <p>{{ error }}</p>
-                                    {% endfor %}
+                        <!-- Error Messages -->
+                        {% if form.non_field_errors %}
+                            <div class="alert-error">
+                                {% for error in form.non_field_errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        <!-- Contact Information Section -->
+                        <div class="form-section">
+                            <h3 class="section-title">Contact Information</h3>
+
+                            <div class="form-row">
+                                <!-- Name Field -->
+                                {% with field=form.name %}
+                                <div class="form-group modern-field">
+                                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                    <div class="input-wrapper">
+                                        <i class="bi bi-person"></i>
+                                        <input type="text" id="{{ field.id_for_label }}" name="{{ field.name }}" placeholder="Your full name" value="{{ field.value|default:'' }}" class="modern-input">
+                                    </div>
+                                    {% if field.errors %}<span class="error-text">{{ field.errors.0 }}</span>{% endif %}
                                 </div>
-                            {% endif %}
+                                {% endwith %}
 
-                            {% for field in form %}
-                                <div class="form-group">
-                                    {% if field.field.widget.input_type == 'hidden' %}
-                                        {{ field }}
-                                    {% else %}
-                                        <label for="{{ field.id_for_label }}" class="form-label">
-                                            {{ field.label }}
-                                            {% if field.field.required %}
-                                                <span class="text-danger">*</span>
-                                            {% endif %}
-                                        </label>
-
-                                        {% if field.field.widget.input_type == 'textarea' %}
-                                            {{ field|add_class:"form-control" }}
-                                        {% elif field.field.widget.input_type == 'select' %}
-                                            {{ field|add_class:"form-select form-control" }}
-                                        {% elif field.field.widget.input_type == 'checkbox' %}
-                                            <div class="form-check">
-                                                {{ field|add_class:"form-check-input" }}
-                                                <label class="form-check-label" for="{{ field.id_for_label }}">
-                                                    {{ field.label }}
-                                                </label>
-                                            </div>
-                                        {% elif field.field.widget.input_type == 'radio' %}
-                                            <div class="form-check">
-                                                {{ field|add_class:"form-check-input" }}
-                                                <label class="form-check-label" for="{{ field.id_for_label }}">
-                                                    {{ field.label }}
-                                                </label>
-                                            </div>
-                                        {% else %}
-                                            {{ field|add_class:"form-control" }}
-                                        {% endif %}
-
-                                        {% if field.help_text %}
-                                            <small class="form-text text-muted d-block mt-2">
-                                                {{ field.help_text|safe }}
-                                            </small>
-                                        {% endif %}
-
-                                        {% if field.errors %}
-                                            <div class="invalid-feedback d-block">
-                                                {% for error in field.errors %}
-                                                    {{ error }}
-                                                {% endfor %}
-                                            </div>
-                                        {% endif %}
-                                    {% endif %}
+                                <!-- Mobile Number Field -->
+                                {% with field=form.mobile_no %}
+                                <div class="form-group modern-field">
+                                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                    <div class="input-wrapper">
+                                        <i class="bi bi-telephone"></i>
+                                        <input type="number" id="{{ field.id_for_label }}" name="{{ field.name }}" placeholder="Mobile number" value="{{ field.value|default:'' }}" class="modern-input">
+                                    </div>
+                                    {% if field.errors %}<span class="error-text">{{ field.errors.0 }}</span>{% endif %}
                                 </div>
-                            {% endfor %}
+                                {% endwith %}
+                            </div>
+
+                            <div class="form-row">
+                                <!-- WhatsApp Field -->
+                                {% with field=form.whatsapp_no %}
+                                <div class="form-group modern-field">
+                                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                    <div class="input-wrapper">
+                                        <i class="bi bi-whatsapp"></i>
+                                        <input type="number" id="{{ field.id_for_label }}" name="{{ field.name }}" placeholder="WhatsApp (974...)" value="{{ field.value|default:'' }}" class="modern-input">
+                                    </div>
+                                    {% if field.errors %}<span class="error-text">{{ field.errors.0 }}</span>{% endif %}
+                                </div>
+                                {% endwith %}
+
+                                <!-- Locations Field -->
+                                {% with field=form.locations %}
+                                <div class="form-group modern-field">
+                                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                    <div class="input-wrapper">
+                                        <i class="bi bi-geo-alt"></i>
+                                        <input type="text" id="{{ field.id_for_label }}" name="{{ field.name }}" placeholder="Preferred locations" value="{{ field.value|default:'' }}" class="modern-input">
+                                    </div>
+                                    {% if field.errors %}<span class="error-text">{{ field.errors.0 }}</span>{% endif %}
+                                </div>
+                                {% endwith %}
+                            </div>
+                        </div>
+
+                        <!-- Property Preferences Section -->
+                        <div class="form-section">
+                            <h3 class="section-title">Property Preferences</h3>
+
+                            <div class="form-row">
+                                <!-- Furnished Type -->
+                                {% with field=form.furnished_type %}
+                                <div class="form-group modern-field">
+                                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                    <div class="select-wrapper">
+                                        <select id="{{ field.id_for_label }}" name="{{ field.name }}" class="modern-select">
+                                            <option value="">Select type</option>
+                                            {% for option_value, option_label in field.field.choices %}
+                                                <option value="{{ option_value }}" {% if field.value == option_value %}selected{% endif %}>{{ option_label }}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <i class="bi bi-chevron-down"></i>
+                                    </div>
+                                    {% if field.errors %}<span class="error-text">{{ field.errors.0 }}</span>{% endif %}
+                                </div>
+                                {% endwith %}
+
+                                <!-- Property Type -->
+                                {% with field=form.property_type %}
+                                <div class="form-group modern-field">
+                                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                    <div class="select-wrapper">
+                                        <select id="{{ field.id_for_label }}" name="{{ field.name }}" class="modern-select">
+                                            <option value="">Select property</option>
+                                            {% for option_value, option_label in field.field.choices %}
+                                                <option value="{{ option_value }}" {% if field.value == option_value %}selected{% endif %}>{{ option_label }}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <i class="bi bi-chevron-down"></i>
+                                    </div>
+                                    {% if field.errors %}<span class="error-text">{{ field.errors.0 }}</span>{% endif %}
+                                </div>
+                                {% endwith %}
+                            </div>
+
+                            <div class="form-row">
+                                <!-- Price Range -->
+                                <div class="form-group modern-field full-width">
+                                    <label>Price Range</label>
+                                    <div class="price-range">
+                                        {% with field=form.price_from %}
+                                        <div class="input-wrapper">
+                                            <i class="bi bi-currency-dollar"></i>
+                                            <input type="number" id="{{ field.id_for_label }}" name="{{ field.name }}" placeholder="Min price" value="{{ field.value|default:'' }}" class="modern-input">
+                                        </div>
+                                        {% endwith %}
+                                        <span class="range-separator">to</span>
+                                        {% with field=form.price_to %}
+                                        <div class="input-wrapper">
+                                            <i class="bi bi-currency-dollar"></i>
+                                            <input type="number" id="{{ field.id_for_label }}" name="{{ field.name }}" placeholder="Max price" value="{{ field.value|default:'' }}" class="modern-input">
+                                        </div>
+                                        {% endwith %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Availability Section -->
+                        <div class="form-section">
+                            <h3 class="section-title">Availability & Duration</h3>
+
+                            <div class="form-row">
+                                <!-- Date From -->
+                                {% with field=form.date_from %}
+                                <div class="form-group modern-field">
+                                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                    <div class="input-wrapper">
+                                        <i class="bi bi-calendar-event"></i>
+                                        <input type="datetime-local" id="{{ field.id_for_label }}" name="{{ field.name }}" value="{{ field.value|default:'' }}" class="modern-input">
+                                    </div>
+                                    {% if field.errors %}<span class="error-text">{{ field.errors.0 }}</span>{% endif %}
+                                </div>
+                                {% endwith %}
+
+                                <!-- Duration -->
+                                {% with field=form.duration %}
+                                <div class="form-group modern-field">
+                                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                    <div class="input-wrapper">
+                                        <i class="bi bi-clock-history"></i>
+                                        <input type="number" id="{{ field.id_for_label }}" name="{{ field.name }}" placeholder="Months" value="{{ field.value|default:'' }}" class="modern-input">
+                                    </div>
+                                    {% if field.errors %}<span class="error-text">{{ field.errors.0 }}</span>{% endif %}
+                                </div>
+                                {% endwith %}
+                            </div>
+                        </div>
+
+                        <!-- Additional Notes Section -->
+                        <div class="form-section">
+                            <!-- Property Type Other -->
+                            {% with field=form.property_type_other %}
+                            <div class="form-group modern-field">
+                                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                <div class="input-wrapper">
+                                    <i class="bi bi-pencil-square"></i>
+                                    <input type="text" id="{{ field.id_for_label }}" name="{{ field.name }}" placeholder="Specify other type" value="{{ field.value|default:'' }}" class="modern-input">
+                                </div>
+                                {% if field.errors %}<span class="error-text">{{ field.errors.0 }}</span>{% endif %}
+                            </div>
+                            {% endwith %}
+
+                            <!-- Notes -->
+                            {% with field=form.notes %}
+                            <div class="form-group modern-field">
+                                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                <div class="textarea-wrapper">
+                                    <i class="bi bi-chat-dots"></i>
+                                    <textarea id="{{ field.id_for_label }}" name="{{ field.name }}" placeholder="Any additional requirements..." class="modern-textarea">{{ field.value|default:'' }}</textarea>
+                                </div>
+                                {% if field.errors %}<span class="error-text">{{ field.errors.0 }}</span>{% endif %}
+                            </div>
+                            {% endwith %}
                         </div>
 
                         <!-- Submit Button -->
-                        <div class="inquire-form-actions">
-                            <button type="submit" class="btn-inquire-submit">
-                                <i class="bi bi-check-circle"></i>
-                                SUBMIT INQUIRY
-                            </button>
-                        </div>
+                        <button type="submit" class="modern-submit-btn">
+                            <span class="btn-text">Send Inquiry</span>
+                            <i class="bi bi-arrow-right"></i>
+                        </button>
                     </form>
                 </div>
 
                 <!-- Back Link -->
-                <div class="inquire-form-footer">
-                    <a href="{% url 'property:inquire_lists' %}" class="btn-inquire-back">
+                <div class="modern-form-footer">
+                    <a href="{% url 'property:inquire_lists' %}" class="modern-back-link">
                         <i class="bi bi-arrow-left"></i>
-                        View Inquiries List
+                        <span>Back to Inquiries</span>
                     </a>
                 </div>
             </div>
