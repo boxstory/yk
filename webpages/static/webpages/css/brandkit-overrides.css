@@ -1,0 +1,835 @@
+/* ============================================================================
+   BRANDKIT OVERRIDES - Bootstrap Override Rules
+   ============================================================================
+
+   Yellow Key Real Estate Management Platform
+   Version: 1.0
+   Last Updated: 2025-11-15
+
+   This file contains overrides for Bootstrap 5 to ensure brandkit styles
+   always take precedence. Load this AFTER Bootstrap CSS.
+
+   Load Order: brandkit.css → Bootstrap → brandkit-overrides.css
+   ============================================================================ */
+
+/* ============================================================================
+   BOOTSTRAP COLOR OVERRIDES
+   ============================================================================ */
+
+/* Override Bootstrap's primary color with yellow */
+.btn-primary,
+.badge-primary,
+.bg-primary,
+.text-primary,
+.alert-primary,
+.border-primary {
+  --bs-primary: #F3C130 !important;
+  --bs-primary-rgb: 243, 193, 48 !important;
+}
+
+/* ============================================================================
+   PRIMARY BUTTON STYLES - Yellow
+   ============================================================================ */
+.btn-primary {
+  position: relative !important;
+  background: var(--gradient-primary) !important;
+  border: 2px solid var(--brand-yellow-dark) !important;
+  color: var(--text-on-primary) !important;
+  box-shadow: var(--shadow-yellow) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+  padding: 0.75rem 2rem !important;
+  border-radius: var(--border-radius-md) !important;
+  transition: all var(--transition-base) !important;
+  overflow: hidden !important;
+}
+
+.btn-primary::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent) !important;
+  transition: left 0.5s ease !important;
+}
+
+.btn-primary:hover::before {
+  left: 100% !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: var(--brand-yellow-dark) !important;
+  border-color: var(--brand-primary-700) !important;
+  color: var(--text-on-primary) !important;
+  box-shadow: var(--shadow-xl), 0 0 20px rgba(243, 193, 48, 0.4) !important;
+  transform: translateY(-3px) scale(1.02) !important;
+}
+
+.btn-primary:active {
+  background: var(--brand-primary-700) !important;
+  border-color: var(--brand-primary-800) !important;
+  transform: translateY(-1px) scale(1) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+/* ============================================================================
+   SECONDARY BUTTON STYLES - Red
+   ============================================================================ */
+.btn-secondary,
+.badge-secondary,
+.bg-secondary,
+.text-secondary,
+.alert-secondary {
+  --bs-secondary: #FF5851 !important;
+  --bs-secondary-rgb: 255, 88, 81 !important;
+}
+
+.btn-secondary {
+  position: relative !important;
+  background: var(--gradient-secondary) !important;
+  border: 2px solid var(--brand-secondary-600) !important;
+  color: var(--text-on-secondary) !important;
+  box-shadow: var(--shadow-red) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+  padding: 0.75rem 2rem !important;
+  border-radius: var(--border-radius-md) !important;
+  transition: all var(--transition-base) !important;
+  overflow: hidden !important;
+}
+
+.btn-secondary::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent) !important;
+  transition: left 0.5s ease !important;
+}
+
+.btn-secondary:hover::before {
+  left: 100% !important;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background: var(--brand-secondary-700) !important;
+  border-color: var(--brand-secondary-800) !important;
+  color: var(--text-on-secondary) !important;
+  box-shadow: var(--shadow-xl), 0 0 20px rgba(255, 88, 81, 0.4) !important;
+  transform: translateY(-3px) scale(1.02) !important;
+}
+
+.btn-secondary:active {
+  background: var(--brand-secondary-800) !important;
+  transform: translateY(-1px) scale(1) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+/* Override Bootstrap success, warning, danger, info colors */
+.btn-success,
+.bg-success,
+.text-success,
+.alert-success,
+.badge-success {
+  --bs-success: #28a745 !important;
+  --bs-success-rgb: 40, 167, 69 !important;
+}
+
+.btn-warning,
+.bg-warning,
+.text-warning,
+.alert-warning,
+.badge-warning {
+  --bs-warning: #ffc107 !important;
+  --bs-warning-rgb: 255, 193, 7 !important;
+}
+
+.btn-danger,
+.bg-danger,
+.text-danger,
+.alert-danger,
+.badge-danger {
+  --bs-danger: #dc3545 !important;
+  --bs-danger-rgb: 220, 53, 69 !important;
+}
+
+.btn-info,
+.bg-info,
+.text-info,
+.alert-info,
+.badge-info {
+  --bs-info: #17a2b8 !important;
+  --bs-info-rgb: 23, 162, 184 !important;
+}
+
+/* ============================================================================
+   TYPOGRAPHY OVERRIDES
+   ============================================================================ */
+
+/* Force Poppins font family across all Bootstrap elements */
+body,
+.btn,
+.form-control,
+.form-select,
+.form-label,
+.input-group-text,
+.nav-link,
+.navbar-brand,
+.dropdown-item,
+.card,
+.modal-content,
+.alert,
+.badge {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+}
+
+/* Override Bootstrap heading styles - Luxury Typography */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 700 !important;
+  color: var(--text-primary) !important;
+  letter-spacing: -0.5px !important;
+}
+
+h1, .h1 {
+  background: var(--gradient-accent) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* ============================================================================
+   FORM OVERRIDES
+   ============================================================================ */
+
+/* Override Bootstrap form controls */
+.form-control,
+.form-select {
+  border-color: var(--border-light) !important;
+  border-radius: var(--border-radius-md) !important;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--brand-yellow) !important;
+  box-shadow: 0 0 0 0.25rem rgba(243, 193, 48, 0.25), var(--shadow-sm) !important;
+  background: var(--brand-primary-50) !important;
+}
+
+.form-label {
+  color: var(--brand-blue) !important;
+  font-weight: 500 !important;
+  margin-bottom: var(--space-2) !important;
+}
+
+.form-check-input:checked {
+  background-color: var(--brand-primary) !important;
+  border-color: var(--brand-primary) !important;
+}
+
+/* ============================================================================
+   BUTTON OVERRIDES
+   ============================================================================ */
+
+/* Ensure all buttons use our border radius */
+.btn {
+  border-radius: var(--border-radius-md) !important;
+  font-weight: 500 !important;
+  padding: var(--space-2) var(--space-4) !important;
+  transition: all var(--transition-base) !important;
+}
+
+.btn-sm {
+  padding: var(--space-1) var(--space-3) !important;
+  font-size: var(--font-size-sm) !important;
+}
+
+.btn-lg {
+  padding: var(--space-3) var(--space-6) !important;
+  font-size: var(--font-size-lg) !important;
+}
+
+/* ============================================================================
+   LUXURY CARD STYLES - Modern Glassmorphism
+   ============================================================================ */
+
+.card {
+  position: relative !important;
+  border: 2px solid var(--border-light) !important;
+  border-radius: var(--border-radius-xl) !important;
+  box-shadow: var(--shadow-card) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%) !important;
+  transition: all var(--transition-slow) !important;
+  overflow: hidden !important;
+}
+
+.card::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 4px !important;
+  background: var(--gradient-accent) !important;
+  opacity: 0 !important;
+  transition: opacity var(--transition-base) !important;
+}
+
+.card:hover::before {
+  opacity: 1 !important;
+}
+
+.card-header {
+  background: linear-gradient(135deg, var(--brand-primary-100) 0%, var(--brand-primary-200) 50%, var(--brand-secondary-50) 100%) !important;
+  border-bottom: 2px solid var(--border-primary) !important;
+  font-weight: 700 !important;
+  color: var(--brand-yellow-dark) !important;
+  padding: var(--space-5) var(--space-6) !important;
+  letter-spacing: 0.5px !important;
+}
+
+.card-body {
+  padding: var(--space-6) !important;
+  background: transparent !important;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-card-hover), var(--shadow-yellow) !important;
+  transform: translateY(-6px) scale(1.01) !important;
+  border-color: var(--border-primary) !important;
+}
+
+/* Card Variants */
+.card-yellow,
+.card-gold {
+  border-color: var(--brand-primary-400) !important;
+  background: linear-gradient(135deg, var(--brand-primary-50) 0%, #ffffff 100%) !important;
+}
+
+.card-yellow:hover,
+.card-gold:hover {
+  box-shadow: var(--shadow-xl), var(--shadow-yellow) !important;
+  border-color: var(--brand-yellow) !important;
+}
+
+.card-red,
+.card-crimson {
+  border-color: var(--brand-secondary-300) !important;
+  background: linear-gradient(135deg, var(--brand-secondary-50) 0%, #ffffff 100%) !important;
+}
+
+.card-red:hover,
+.card-crimson:hover {
+  box-shadow: var(--shadow-xl), var(--shadow-red) !important;
+  border-color: var(--brand-red) !important;
+}
+
+/* Glassmorphism Card */
+.card-glass {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 8px 32px rgba(44, 44, 44, 0.1) !important;
+}
+
+.card-glass:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 12px 48px rgba(44, 44, 44, 0.15) !important;
+}
+
+/* ============================================================================
+   ALERT OVERRIDES
+   ============================================================================ */
+
+.alert {
+  border-radius: var(--border-radius-lg) !important;
+  border-left-width: 4px !important;
+  font-family: 'Poppins', sans-serif !important;
+  padding: var(--space-4) !important;
+  border: none !important;
+}
+
+.alert-success {
+  background-color: var(--color-success-light) !important;
+  border-left-color: var(--brand-accent-success) !important;
+  color: var(--brand-accent-success-dark) !important;
+}
+
+.alert-warning {
+  background-color: var(--color-warning-light) !important;
+  border-left-color: var(--brand-accent-warning) !important;
+  color: var(--brand-accent-warning-dark) !important;
+}
+
+.alert-danger,
+.alert-error {
+  background-color: var(--color-error-light) !important;
+  border-left-color: var(--brand-accent-error) !important;
+  color: var(--brand-accent-error-dark) !important;
+}
+
+.alert-info {
+  background-color: var(--color-info-light) !important;
+  border-left-color: var(--brand-accent-info) !important;
+  color: var(--brand-accent-info-dark) !important;
+}
+
+/* ============================================================================
+   MODAL OVERRIDES
+   ============================================================================ */
+
+.modal-content {
+  border-radius: var(--border-radius-lg) !important;
+  border: none !important;
+  box-shadow: var(--shadow-2xl) !important;
+}
+
+.modal-header {
+  background-color: var(--bg-light) !important;
+  border-bottom: 2px solid var(--brand-yellow) !important;
+  padding: var(--space-4) !important;
+}
+
+.modal-title {
+  color: var(--brand-blue) !important;
+  font-weight: 600 !important;
+}
+
+.modal-footer {
+  border-top: 1px solid var(--border-light) !important;
+  padding: var(--space-4) !important;
+}
+
+/* ============================================================================
+   NAVBAR OVERRIDES
+   ============================================================================ */
+
+.navbar {
+  box-shadow: var(--shadow-sm) !important;
+  padding: var(--space-3) var(--space-4) !important;
+}
+
+.navbar-brand {
+  font-weight: 600 !important;
+  color: var(--brand-blue) !important;
+  font-size: var(--font-size-xl) !important;
+}
+
+.nav-link {
+  color: var(--brand-blue) !important;
+  font-weight: 500 !important;
+  transition: color var(--transition-base) !important;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--brand-yellow) !important;
+}
+
+.nav-link.active {
+  color: var(--brand-yellow) !important;
+  font-weight: 600 !important;
+}
+
+/* ============================================================================
+   PAGINATION OVERRIDES
+   ============================================================================ */
+
+.pagination .page-link {
+  color: var(--brand-blue) !important;
+  border-color: var(--border-light) !important;
+  border-radius: var(--border-radius-sm) !important;
+  margin: 0 var(--space-1) !important;
+}
+
+.pagination .page-link:hover {
+  background-color: var(--brand-primary-100) !important;
+  border-color: var(--brand-yellow) !important;
+  color: var(--brand-blue) !important;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: var(--brand-yellow) !important;
+  border-color: var(--brand-yellow) !important;
+  color: var(--brand-white) !important;
+}
+
+/* ============================================================================
+   DROPDOWN OVERRIDES
+   ============================================================================ */
+
+.dropdown-menu {
+  border: 1px solid var(--border-light) !important;
+  border-radius: var(--border-radius-md) !important;
+  box-shadow: var(--shadow-lg) !important;
+  padding: var(--space-2) !important;
+}
+
+.dropdown-item {
+  border-radius: var(--border-radius-sm) !important;
+  padding: var(--space-2) var(--space-3) !important;
+  transition: all var(--transition-base) !important;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: var(--brand-primary-100) !important;
+  color: var(--brand-blue) !important;
+}
+
+.dropdown-item.active {
+  background-color: var(--brand-yellow) !important;
+  color: var(--brand-white) !important;
+}
+
+/* ============================================================================
+   TABLE OVERRIDES
+   ============================================================================ */
+
+.table {
+  border-color: var(--border-light) !important;
+}
+
+.table thead th {
+  background-color: var(--bg-light) !important;
+  color: var(--brand-blue) !important;
+  font-weight: 600 !important;
+  border-bottom: 2px solid var(--brand-yellow) !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(248, 249, 250, 0.5) !important;
+}
+
+.table-hover tbody tr:hover {
+  background-color: var(--brand-primary-100) !important;
+}
+
+/* ============================================================================
+   BADGE OVERRIDES
+   ============================================================================ */
+
+.badge {
+  border-radius: var(--border-radius-sm) !important;
+  padding: var(--space-1) var(--space-2) !important;
+  font-weight: 500 !important;
+  font-size: var(--font-size-xs) !important;
+}
+
+/* ============================================================================
+   BREADCRUMB OVERRIDES
+   ============================================================================ */
+
+.breadcrumb {
+  background-color: transparent !important;
+  padding: var(--space-3) 0 !important;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  color: var(--brand-grey-300) !important;
+}
+
+.breadcrumb-item.active {
+  color: var(--brand-yellow) !important;
+  font-weight: 500 !important;
+}
+
+/* ============================================================================
+   PROGRESS BAR OVERRIDES
+   ============================================================================ */
+
+.progress {
+  height: 8px !important;
+  border-radius: var(--border-radius-sm) !important;
+  background-color: var(--bg-light) !important;
+}
+
+.progress-bar {
+  background-color: var(--brand-primary) !important;
+  border-radius: var(--border-radius-sm) !important;
+}
+
+/* ============================================================================
+   TOOLTIP & POPOVER OVERRIDES
+   ============================================================================ */
+
+.tooltip-inner {
+  background-color: var(--brand-blue) !important;
+  border-radius: var(--border-radius-sm) !important;
+  padding: var(--space-2) var(--space-3) !important;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+.popover {
+  border: 1px solid var(--border-light) !important;
+  border-radius: var(--border-radius-md) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+.popover-header {
+  background-color: var(--brand-primary-100) !important;
+  border-bottom: 1px solid var(--brand-yellow) !important;
+  color: var(--brand-blue) !important;
+  font-weight: 600 !important;
+}
+
+/* ============================================================================
+   LINK OVERRIDES
+   ============================================================================ */
+
+a {
+  color: var(--brand-yellow) !important;
+  text-decoration: none !important;
+  transition: color var(--transition-base) !important;
+}
+
+a:hover,
+a:focus {
+  color: var(--brand-yellow-dark) !important;
+  text-decoration: underline !important;
+}
+
+/* Exclude navbar and button links from default link styling */
+.navbar a,
+.btn,
+.nav-link,
+.dropdown-item {
+  text-decoration: none !important;
+}
+
+.navbar a:hover,
+.btn:hover,
+.nav-link:hover,
+.dropdown-item:hover {
+  text-decoration: none !important;
+}
+
+/* ============================================================================
+   RESPONSIVE OVERRIDES
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .btn {
+    padding: var(--space-2) var(--space-3) !important;
+    font-size: var(--font-size-sm) !important;
+  }
+
+  .modal-dialog {
+    margin: var(--space-2) !important;
+  }
+
+  .card {
+    margin-bottom: var(--space-3) !important;
+  }
+}
+
+/* ============================================================================
+   ACCESSIBILITY OVERRIDES
+   ============================================================================ */
+
+/* Ensure focus states are visible */
+.btn:focus,
+.form-control:focus,
+.form-select:focus,
+.nav-link:focus {
+  outline: 2px solid var(--brand-yellow) !important;
+  outline-offset: 2px !important;
+}
+
+/* Skip to content link */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--brand-yellow);
+  color: var(--brand-white);
+  padding: var(--space-2) var(--space-4);
+  text-decoration: none;
+  border-radius: var(--border-radius-sm);
+  z-index: 9999;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* ============================================================================
+   GLOBAL LIGHT THEME OVERRIDES
+   ============================================================================ */
+
+/* Body and page background - light and clean */
+body {
+  background: var(--bg-page) !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-primary) !important;
+  line-height: var(--line-height-normal) !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Main content container - white background */
+.container,
+.container-fluid {
+  background: transparent !important;
+}
+
+/* Section backgrounds - subtle light gray */
+section {
+  background: var(--bg-white) !important;
+  padding: var(--space-8) 0 !important;
+}
+
+section:nth-child(even) {
+  background: var(--bg-light) !important;
+}
+
+/* Header - clean white with subtle shadow */
+header,
+.header {
+  background: var(--bg-white) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+/* Footer - subtle gray background */
+footer,
+.footer {
+  background: var(--bg-light) !important;
+  border-top: 1px solid var(--border-light) !important;
+  padding: var(--space-8) 0 !important;
+}
+
+/* List groups - light theme */
+.list-group-item {
+  background: var(--bg-white) !important;
+  border-color: var(--border-light) !important;
+  color: var(--text-primary) !important;
+}
+
+.list-group-item:hover {
+  background: var(--brand-primary-100) !important;
+}
+
+.list-group-item.active {
+  background: var(--gradient-primary-light) !important;
+  border-color: var(--brand-yellow) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Subtle hover effects on interactive elements */
+.clickable,
+.btn,
+.card,
+a[href],
+button {
+  transition: all var(--transition-base) !important;
+}
+
+/* Clean focus rings for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--brand-yellow) !important;
+  outline-offset: 2px !important;
+  border-radius: var(--border-radius-sm) !important;
+}
+
+/* ============================================================================
+   UTILITY CLASSES - Common Styles
+   ============================================================================ */
+
+/* Icon Sizes */
+.icon-xs { font-size: 24px !important; }
+.icon-sm { font-size: 32px !important; }
+.icon-md { font-size: 48px !important; }
+.icon-lg { font-size: 64px !important; }
+.icon-xl { font-size: 96px !important; }
+
+/* Image Heights */
+.img-height-xs { height: 8rem !important; }
+.img-height-sm { height: 10rem !important; }
+.img-height-md { height: 15rem !important; }
+.img-height-lg { height: 20rem !important; }
+.img-height-xl { height: 30rem !important; }
+
+/* Image Object Fit */
+.object-fit-cover { object-fit: cover !important; }
+.object-fit-contain { object-fit: contain !important; }
+.object-fit-fill { object-fit: fill !important; }
+
+/* Social Icon Sizes */
+.social-icon-sm { width: 32px !important; height: 32px !important; }
+.social-icon-md { width: 40px !important; height: 40px !important; }
+.social-icon-lg { width: 48px !important; height: 48px !important; }
+.social-icon-xl { width: 72px !important; height: 72px !important; }
+
+/* Service Icon Sizes */
+.service-icon {
+  width: 72px !important;
+  height: 72px !important;
+  object-fit: contain !important;
+}
+
+/* Text Sizes */
+.text-xs { font-size: 0.75rem !important; } /* 12px */
+.text-sm { font-size: 0.875rem !important; } /* 14px - small */
+.text-base { font-size: 1rem !important; } /* 16px */
+.text-lg { font-size: 1.125rem !important; } /* 18px */
+.text-xl { font-size: 1.25rem !important; } /* 20px */
+
+/* Line Heights */
+.line-height-1 { line-height: 1 !important; }
+.line-height-1-5 { line-height: 1.5 !important; }
+.line-height-2 { line-height: 2 !important; }
+
+/* Max Heights */
+.max-h-128 { max-height: 128px !important; }
+.max-h-256 { max-height: 256px !important; }
+.max-h-384 { max-height: 384px !important; }
+.max-h-512 { max-height: 512px !important; }
+
+/* Display Grid */
+.grid-gap-1 { display: grid !important; gap: 0.25rem !important; }
+.grid-gap-2 { display: grid !important; gap: 0.5rem !important; }
+.grid-gap-3 { display: grid !important; gap: 0.75rem !important; }
+.grid-gap-4 { display: grid !important; gap: 1rem !important; }
+
+/* Margin Top Utilities (extending Bootstrap) */
+.mt-30px { margin-top: 30px !important; }
+
+/* Padding Left Utilities */
+.pl-1-25em { padding-left: 1.25em !important; }
+
+/* Margin Bottom Utilities */
+.mb-0 { margin-bottom: 0 !important; }
+.mb-0-63em { margin-bottom: 0.63em !important; }
+.mb-1-25em { margin-bottom: 1.25em !important; }
+
+/* ============================================================================
+   PRINT OVERRIDES
+   ============================================================================ */
+
+@media print {
+  .btn,
+  .navbar,
+  .footer,
+  .sidebar {
+    display: none !important;
+  }
+
+  body {
+    font-size: 12pt !important;
+    color: #000 !important;
+    background: #fff !important;
+  }
+}
+
+/* ============================================================================
+   END OF BRANDKIT OVERRIDES - LIGHT THEME
+   ============================================================================ */
