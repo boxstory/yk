@@ -54,10 +54,23 @@
 <meta name="geo.position" content="25.276987;51.520008" />
 <meta name="ICBM" content="25.276987, 51.520008" />
 <link rel="shortcut icon" href="#">
+<!-- ============================================================================
+     CORE STYLESHEETS - Load Order is Critical!
+     ============================================================================ -->
+<!-- 1. BRANDKIT.CSS - Must be loaded FIRST (Design tokens and CSS variables) -->
+<link type="text/css"
+      rel="stylesheet"
+      href="{% static 'assets/css/brandkit.css' %}">
+<!-- 2. Bootstrap 5 - Base framework (depends on brandkit variables) -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous">
+<!-- 2b. BRANDKIT OVERRIDES - Force brandkit styles over Bootstrap (CRITICAL!) -->
+<link type="text/css"
+      rel="stylesheet"
+      href="{% static 'assets/css/brandkit-overrides.css' %}">
+<!-- 3. Font Awesome 6.6.0 - Icon library -->
 <link href="{% static 'fontawesomefree/css/fontawesome.css' %}"
       rel="stylesheet"
       type="text/css">
@@ -67,19 +80,26 @@
 <link href="{% static 'fontawesomefree/css/solid.css' %}"
       rel="stylesheet"
       type="text/css">
+<!-- 4. Google Fonts - Poppins font family -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&display=swap"
       rel="stylesheet">
+<!-- 5. Bootstrap Icons (optional additional icons) -->
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+      integrity="sha384-tKLJeE1ALTUwtXlaGjJYM3sejfssWdAaWR2s97axw4xkiAdMzQjtOjgcyw0Y50KU"
+      crossorigin="anonymous">
+<!-- 6. Application-specific CSS -->
 <link type="text/css"
       rel="stylesheet"
       href="{% static '/webpages/css/main.css' %}">
 <link type="text/css"
       rel="stylesheet"
       href="{% static '/webpages/css/modern-forms.css' %}">
-
-<link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-      integrity="sha384-tKLJeE1ALTUwtXlaGjJYM3sejfssWdAaWR2s97axw4xkiAdMzQjtOjgcyw0Y50KU"
-      crossorigin="anonymous">
+<!-- 7. BRANDKIT OVERRIDES FINAL - Override ALL CSS (MUST BE LAST!) -->
+<link type="text/css"
+      rel="stylesheet"
+      href="{% static 'assets/css/brandkit-overrides.css' %}">
+<!-- 8. Favicon -->
 <link rel="icon"
       type="image/png"
       href="{% static 'webpages/img/icons/yellowkey_favicon.png' %}">
