@@ -75,12 +75,12 @@
                         </div>
 
                         <!-- Submit Buttons -->
-                        <div style="display: grid; gap: 12px; margin-top: 30px;">
+                        <div class="grid-gap-3 mt-30px">
                             <button type="submit" class="modern-submit-btn">
                                 <span>Update Property</span>
                                 <i class="bi bi-check-circle"></i>
                             </button>
-                            <a href="{% url 'property:property_create' pk=user.id %}" class="modern-submit-btn secondary">
+                            <a href="{% url 'clients:property_create' %}" class="modern-submit-btn secondary">
                                 <span>Add New Property</span>
                                 <i class="bi bi-plus-circle"></i>
                             </a>

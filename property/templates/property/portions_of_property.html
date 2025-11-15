@@ -54,7 +54,7 @@
     </div>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end pt-4 m-3">
         {% if user_id == pk %}
-            <a href="{% url 'client:dashboard' %}"
+            <a href="{% url 'clients:dashboard' %}"
                class="btn btn-dark  px-5 px-md-5 order-md-2">Add Portions</a>
         {% endif %}
         <a href="{% url 'property:property_own' user.id %}"

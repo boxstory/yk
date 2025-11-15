@@ -106,6 +106,15 @@ class Portions(models.Model):
     def __str__(self):
         return f'Unit No: {self.unit_no}, Code: {self.portion_code}'
 
+    def get_absolute_url(self):
+        """Return the URL for this portion's detail page"""
+        from django.urls import reverse
+        return reverse('property:portion_single_details', kwargs={
+            'pk': self.user.id,
+            'property_id': self.property_data.id,
+            'portion_id': self.id
+        })
+
     meta = {
         'indexes': ['-date_created', '-date_updated'],
         'ordering': ['-date_created', '-date_updated']

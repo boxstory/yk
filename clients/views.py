@@ -237,9 +237,8 @@ def portions_add(request, property_id):
 
 # @todo portions listing
 @login_required(login_url='account_login')
-def portions_update(request, pk, property_id, portion_id):
-    all_portions = get_object_or_404(
-        property_models.Portions, id=portion_id, property_data_id=property_id)
+def portions_update(request, portions_id):
+    all_portions = get_object_or_404(property_models.Portions, id=portions_id)
     print(all_portions)
     form = property_forms.PortionsForm(instance=all_portions)
     if request.method == 'POST':
@@ -249,12 +248,12 @@ def portions_update(request, pk, property_id, portion_id):
             form = form.save(commit=False)
             form.user = request.user
             form.save()
-            return redirect('property:portions_of_property', pk, property_id)
+            return redirect('property:portions_of_property', request.user.id, all_portions.property_data.id)
     context = {
         'form': form,
-
+        'portion': all_portions,
     }
-    return render(request, 'property/portion_add.html', context)
+    return render(request, 'clients/pages/portions_update.html', context)
 
 
 # Portion Status Views **********************************************************************

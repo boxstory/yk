@@ -1,0 +1,170 @@
+================================================================================
+YELLOW KEY AMRC - URL TEST REPORT
+================================================================================
+
+
+SUCCESS (32):
+--------------------------------------------------------------------------------
+URL: /
+Name: home
+Status: 200
+
+URL: /about/
+Name: about
+Status: 200
+
+URL: /contact/
+Name: contact
+Status: 200
+
+URL: /services/
+Name: services
+Status: 200
+
+URL: /property_services/
+Name: property_services
+Status: 200
+
+URL: /workman_services/
+Name: workman_services
+Status: 200
+
+URL: /realtor_services/
+Name: realtor_services
+Status: 200
+
+URL: /careers/
+Name: careers_list
+Status: 200
+
+URL: /accounts/login/
+Name: account_login
+Status: 200
+
+URL: /accounts/signup/
+Name: account_signup
+Status: 200
+
+URL: /robots.txt
+Name: robots
+Status: 200
+
+URL: /sitemap.xml
+Name: sitemap
+Status: 200
+
+URL: /api/health/
+Name: api_health
+Status: 200
+
+URL: /profile/update/
+Name: profile_update
+Status: 200
+
+URL: /property/
+Name: property_all
+Status: 200
+
+URL: /property/6/
+Name: property_own
+Status: 200
+
+URL: /clients/dashboard/property/add/
+Name: property_create
+Status: 200
+
+URL: /clients/dashboard/2/portions/
+Name: portions_a_building
+Status: 200
+
+URL: /realtor/
+Name: realtor_dashboard
+Status: 200
+
+URL: /realtor/vacant-portions/
+Name: realtor_vacant_portions
+Status: 200
+
+URL: /realtor/vacants/
+Name: realtor_vacants
+Status: 200
+
+URL: /realtor/inquiries/
+Name: realtor_inquiries
+Status: 200
+
+URL: /realtor/contacts/
+Name: realtor_contacts
+Status: 200
+
+URL: /help/
+Name: help
+Status: 200
+
+URL: /help/client/
+Name: client_help
+Status: 200
+
+URL: /help/realtor/
+Name: realtor_help
+Status: 200
+
+URL: /help/workman/
+Name: workman_help
+Status: 200
+
+URL: /property/6/2/all/
+Name: portions_of_property
+Status: 200
+
+URL: /property/6/2/8/details/
+Name: portion_single_details
+Status: 200
+
+URL: /clients/dashboard/property/update/2/
+Name: property_update
+Status: 200
+
+URL: /clients/dashboard/2/portions/add/
+Name: portions_add
+Status: 200
+
+URL: /clients/dashboard/portions/8/update/
+Name: portions_update
+Status: 200
+
+
+REDIRECT (8):
+--------------------------------------------------------------------------------
+URL: /profile/
+Name: profile
+Status: 302
+
+URL: /property/inquire/lists/
+Name: inquire_lists
+Status: 302
+
+URL: /clients/dashboard/
+Name: clients_dashboard
+Status: 302
+
+URL: /clients/dashboard/property/all/
+Name: property_all_list
+Status: 302
+
+URL: /clients/dashboard/property/own/
+Name: property_own_list
+Status: 302
+
+URL: /clients/dashboard/portions/
+Name: portions_all_list
+Status: 302
+
+URL: /workman/
+Name: workman_dashboard
+Status: 302
+
+URL: /dashboard/
+Name: choose_dashboard
+Status: 302
+
