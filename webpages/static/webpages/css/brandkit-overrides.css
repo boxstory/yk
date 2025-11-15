@@ -131,6 +131,36 @@
   box-shadow: var(--shadow-md) !important;
 }
 
+/* ============================================================================
+   LIGHT BUTTON STYLES - Blue on Grey
+   ============================================================================ */
+.btn-light {
+  background-color: var(--brand-grey-200) !important;
+  border: 2px solid var(--brand-grey-200) !important;
+  color: var(--brand-blue) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+  padding: 0.75rem 2rem !important;
+  border-radius: var(--border-radius-md) !important;
+  transition: all var(--transition-base) !important;
+}
+
+.btn-light:hover,
+.btn-light:focus {
+  background-color: var(--brand-grey-300) !important;
+  border-color: var(--brand-grey-300) !important;
+  color: var(--brand-blue) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.btn-light:active {
+  background-color: var(--brand-grey-300) !important;
+  border-color: var(--brand-grey-300) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
 /* Override Bootstrap success, warning, danger, info colors */
 .btn-success,
 .bg-success,
@@ -428,6 +458,7 @@ h1, .h1 {
   color: var(--brand-blue) !important;
   font-weight: 500 !important;
   transition: color var(--transition-base) !important;
+  margin-right: 1rem !important;
 }
 
 .nav-link:hover,
