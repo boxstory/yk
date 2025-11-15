@@ -1,0 +1,117 @@
+{% load static %}
+<!-- Reports Dashboard Page -->
+<div class="container py-4">
+    <!-- Page Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h3 class="mb-1"><i class="fas fa-chart-bar"></i> Reports Dashboard</h3>
+            <p class="text-muted mb-0">Analytics and insights for your properties</p>
+        </div>
+        <button class="btn btn-primary"
+                hx-get="{% url 'clients:dashboard' %}"
+                hx-trigger="click"
+                hx-target="#dashboard-right-side"
+                hx-swap="innerHTML">
+            <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </button>
+    </div>
+
+    <!-- Report Cards -->
+    <div class="row g-4">
+        <!-- Financial Reports Card -->
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card h-100 action-card">
+                <div class="card-body text-center">
+                    <div class="action-icon mx-auto mb-3">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h5 class="card-title">Financial Reports</h5>
+                    <p class="text-muted small">View income, expenses, and profit reports</p>
+                    <button class="btn btn-outline-primary btn-sm mt-2">
+                        <i class="fas fa-eye"></i> View Report
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Occupancy Reports Card -->
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card h-100 action-card">
+                <div class="card-body text-center">
+                    <div class="action-icon mx-auto mb-3">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h5 class="card-title">Occupancy Reports</h5>
+                    <p class="text-muted small">Track vacancy and occupancy rates</p>
+                    <button class="btn btn-outline-primary btn-sm mt-2">
+                        <i class="fas fa-eye"></i> View Report
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Maintenance Reports Card -->
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card h-100 action-card">
+                <div class="card-body text-center">
+                    <div class="action-icon mx-auto mb-3">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h5 class="card-title">Maintenance Reports</h5>
+                    <p class="text-muted small">Review maintenance and repair history</p>
+                    <button class="btn btn-outline-primary btn-sm mt-2">
+                        <i class="fas fa-eye"></i> View Report
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Property Performance Card -->
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card h-100 action-card">
+                <div class="card-body text-center">
+                    <div class="action-icon mx-auto mb-3">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h5 class="card-title">Property Performance</h5>
+                    <p class="text-muted small">Analyze property performance metrics</p>
+                    <button class="btn btn-outline-primary btn-sm mt-2">
+                        <i class="fas fa-eye"></i> View Report
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tenant Reports Card -->
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card h-100 action-card">
+                <div class="card-body text-center">
+                    <div class="action-icon mx-auto mb-3">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h5 class="card-title">Tenant Reports</h5>
+                    <p class="text-muted small">View tenant history and statistics</p>
+                    <button class="btn btn-outline-primary btn-sm mt-2">
+                        <i class="fas fa-eye"></i> View Report
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom Reports Card -->
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card h-100 action-card">
+                <div class="card-body text-center">
+                    <div class="action-icon mx-auto mb-3">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h5 class="card-title">Custom Reports</h5>
+                    <p class="text-muted small">Create custom reports for your needs</p>
+                    <button class="btn btn-outline-primary btn-sm mt-2">
+                        <i class="fas fa-plus"></i> Create Report
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

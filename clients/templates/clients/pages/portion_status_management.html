@@ -1,0 +1,81 @@
+{% load static %}
+<!-- Portion Status Management Page -->
+<div class="container py-4">
+    <!-- Page Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h3 class="mb-1"><i class="fas fa-toggle-on"></i> Portion Status Management</h3>
+            <p class="text-muted mb-0">Update and manage the status of all your property portions</p>
+        </div>
+        <button class="btn btn-primary"
+                hx-get="{% url 'clients:dashboard' %}"
+                hx-trigger="click"
+                hx-target="#dashboard-right-side"
+                hx-swap="innerHTML">
+            <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </button>
+    </div>
+
+    {% if portions %}
+        <!-- Portions Grid -->
+        <div class="row g-3">
+            {% for portion in portions %}
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <h5 class="card-title mb-0">
+                                    <i class="fas fa-door-closed"></i> Unit {{ portion.unit_no }}
+                                </h5>
+                                {% if portion.portions_status.first %}
+                                    {% if portion.portions_status.first.status == 'VACANT' %}
+                                        <span class="badge bg-danger">Vacant</span>
+                                    {% elif portion.portions_status.first.status == 'OCCUPIED' %}
+                                        <span class="badge bg-success">Occupied</span>
+                                    {% elif portion.portions_status.first.status == 'VACANT_SOON' %}
+                                        <span class="badge bg-warning text-dark">Vacant Soon</span>
+                                    {% else %}
+                                        <span class="badge bg-secondary">{{ portion.portions_status.first.status }}</span>
+                                    {% endif %}
+                                {% else %}
+                                    <span class="badge bg-secondary">Not Set</span>
+                                {% endif %}
+                            </div>
+                            <div class="mb-2">
+                                <i class="fas fa-building text-muted"></i>
+                                <strong>Property:</strong> {{ portion.property_data.title }}
+                            </div>
+                            <div class="mb-2">
+                                <i class="fas fa-layer-group text-muted"></i>
+                                <strong>Floor:</strong> {{ portion.floor_no }}
+                            </div>
+                            <div class="mb-2">
+                                <i class="fas fa-home text-muted"></i>
+                                <strong>Type:</strong> {{ portion.portion_type }}
+                            </div>
+                            <div class="mb-3">
+                                <i class="fas fa-dollar-sign text-muted"></i>
+                                <strong>Price:</strong> ${{ portion.price }}
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-edit"></i> Update Status
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary">
+                                    <i class="fas fa-eye"></i> View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <!-- Empty State -->
+        <div class="text-center py-5">
+            <i class="fas fa-toggle-on text-muted mb-3" style="font-size: 4rem;"></i>
+            <h4 class="text-muted">No Portions Available</h4>
+            <p class="text-muted">Add portions to your properties to manage their status.</p>
+        </div>
+    {% endif %}
+</div>

@@ -24,10 +24,10 @@ li {
 }
 
 .btn-primary-fill {
-  background-color: #03bfcb;
-  border: 0.06em solid #03bfcb;
-  border-radius: 0.19em;
-  color: #231e39;
+  background-color: var(--brand-yellow);
+  border: 0.06em solid var(--brand-yellow);
+  border-radius: var(--border-radius-md);
+  color: var(--brand-blue);
   font-family: Poppins-Medium;
   font-weight: 500;
   padding: 0.6em 0.6em;
@@ -35,87 +35,73 @@ li {
 }
 
 .btn-primary-fill:hover {
-  background: #6cecf5;
-  color: #231e39;
+  background: var(--brand-yellow-dark);
+  color: var(--brand-blue);
   transition: background 0.3s;
 }
 
 .btn-primary-blank {
-  color: #231e39;
-  border: 1px solid #03bfcb;
-  border-radius: 0.19em;
+  color: var(--brand-blue);
+  border: 1px solid var(--brand-yellow);
+  border-radius: var(--border-radius-md);
   font-family: Poppins-Medium;
   font-weight: 500;
   width: 9em;
   padding: 0.6em 0.6em;
-  background-color: #231e39;
-  color: #02899c;
+  background-color: var(--brand-blue);
+  color: var(--brand-yellow);
 }
 
 .btn-primary-blank:hover {
-  background: #312b49;
+  background: var(--brand-black);
   transition: background 0.3s;
 }
 
 .follow {
   margin: 1.5em auto 0 auto;
-  background-color: #2589cc;
+  background-color: var(--brand-blue);
   width: 150px;
-  color: white;
+  color: var(--brand-white);
   text-align: center;
   padding: 0.5em;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-  border-radius: 5px;
-  -webkit-transition-property: all;
-  -moz-transition-property: all;
-  -o-transition-property: all;
-  transition-property: all;
-  -webkit-transition-duration: 0.3s;
-  -moz-transition-duration: 0.3s;
-  -o-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-timing-function: ease;
-  -moz-transition-timing-function: ease;
-  -o-transition-timing-function: ease;
-  transition-timing-function: ease;
+  border-radius: var(--border-radius-md);
+  transition: all var(--transition-base);
 }
 
 .follow:hover {
-  background-color: #167abd;
+  background-color: var(--brand-yellow);
+  color: var(--brand-blue);
   cursor: pointer;
 }
 
-/* Dashboard Styles - Black, Yellow, Grey Theme */
+/* Dashboard Styles - Using Brandkit Variables */
 
 .dashboard-header {
-    background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
-    color: white;
+    background: var(--gradient-primary);
+    color: var(--brand-white);
     padding: 2rem;
-    border-radius: 10px;
+    border-radius: var(--border-radius-lg);
     margin-bottom: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-md);
 }
 
 .stats-card {
     border: none;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-card);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 100%;
 }
 
 .stats-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-card-hover);
 }
 
 .stats-icon {
     width: 60px;
     height: 60px;
-    border-radius: 12px;
+    border-radius: var(--border-radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -124,31 +110,31 @@ li {
 }
 
 .icon-dark {
-    background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
-    color: white;
+    background: var(--gradient-primary);
+    color: var(--brand-white);
 }
 
 .icon-yellow {
-    background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
-    color: #1f2937;
+    background: var(--gradient-primary);
+    color: var(--brand-blue);
 }
 
 .icon-grey {
-    background: linear-gradient(135deg, #6b7280 0%, #9ca3af 100%);
-    color: white;
+    background: var(--gradient-accent);
+    color: var(--brand-white);
 }
 
 .icon-gold {
-    background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
-    color: white;
+    background: var(--gradient-secondary);
+    color: var(--brand-white);
 }
 
 .section-title {
-    color: #1f2937;
+    color: var(--brand-blue);
     font-weight: 600;
     margin-bottom: 1.5rem;
     padding-bottom: 0.5rem;
-    border-bottom: 3px solid #fbbf24;
+    border-bottom: 3px solid var(--brand-yellow);
     display: inline-block;
 }
 
@@ -159,8 +145,6 @@ li {
     flex-wrap: wrap;
     justify-content: space-between;
 }
-
-
 @media (max-width: 768px) {
     #quick-action-list > div  {
         width: 48%; /* Approximately 50% considering some margin/padding */
@@ -172,148 +156,148 @@ li {
 .action-card {
     width: 100%;
     padding: 2rem 1rem;
-    border: 2px solid #e5e7eb;
-    background: white;
-    border-radius: 10px;
-    transition: all 0.3s ease;
+    border: 2px solid var(--brand-grey-200);
+    background: var(--brand-white);
+    border-radius: var(--border-radius-lg);
+    transition: all var(--transition-base);
     cursor: pointer;
     text-align: center;
 }
 
 .action-card:hover {
-    border-color: #fbbf24;
-    background: #fef3c7;
+    border-color: var(--brand-yellow);
+    background: var(--brand-primary-50);
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-yellow);
 }
 
 .action-icon {
     width: 50px;
     height: 50px;
-    border-radius: 10px;
+    border-radius: var(--border-radius-lg);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
-    background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
-    color: #fbbf24;
+    background: var(--gradient-primary);
+    color: var(--brand-blue);
 }
 
 .property-status-card {
     border: none;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-card);
+    transition: all var(--transition-base);
 }
 
 .property-status-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--shadow-card-hover);
 }
 
 .property-status-card.vacant {
-    border-left: 4px solid #fbbf24;
+    border-left: 4px solid var(--brand-yellow);
 }
 
 .property-status-card.occupied {
-    border-left: 4px solid #1f2937;
+    border-left: 4px solid var(--brand-blue);
 }
 
 .property-status-card.soon {
-    border-left: 4px solid #f59e0b;
+    border-left: 4px solid var(--brand-yellow-dark);
 }
 
 .property-status-card.maintenance {
-    border-left: 4px solid #6b7280;
+    border-left: 4px solid var(--brand-grey-300);
 }
 
 .badge-vacant {
-    background: #fef3c7;
-    color: #92400e;
+    background: var(--brand-primary-100);
+    color: var(--brand-yellow-dark);
     padding: 0.5rem 1rem;
-    border-radius: 20px;
+    border-radius: var(--border-radius-full);
     font-weight: 500;
     font-size: 0.875rem;
 }
 
 .badge-occupied {
-    background: #f3f4f6;
-    color: #1f2937;
+    background: var(--brand-grey-100);
+    color: var(--brand-blue);
     padding: 0.5rem 1rem;
-    border-radius: 20px;
+    border-radius: var(--border-radius-full);
     font-weight: 500;
     font-size: 0.875rem;
 }
 
 .badge-soon {
-    background: #fef3c7;
-    color: #d97706;
+    background: var(--brand-primary-100);
+    color: var(--brand-yellow-dark);
     padding: 0.5rem 1rem;
-    border-radius: 20px;
+    border-radius: var(--border-radius-full);
     font-weight: 500;
     font-size: 0.875rem;
 }
 
 .badge-maintenance {
-    background: #e5e7eb;
-    color: #374151;
+    background: var(--brand-grey-200);
+    color: var(--brand-blue);
     padding: 0.5rem 1rem;
-    border-radius: 20px;
+    border-radius: var(--border-radius-full);
     font-weight: 500;
     font-size: 0.875rem;
 }
 
 .btn-gradient-dark {
-    background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+    background: var(--gradient-primary);
     border: none;
-    color: white;
+    color: var(--brand-white);
     padding: 0.5rem 1.5rem;
-    border-radius: 8px;
+    border-radius: var(--border-radius-md);
     font-weight: 500;
-    transition: all 0.3s ease;
+    transition: all var(--transition-base);
 }
 
 .btn-gradient-dark:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(31, 41, 55, 0.4);
-    color: white;
+    box-shadow: var(--shadow-yellow);
+    color: var(--brand-white);
 }
 
 .btn-gradient-yellow {
-    background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+    background: var(--gradient-primary);
     border: none;
-    color: #1f2937;
+    color: var(--brand-blue);
     padding: 0.5rem 1.5rem;
-    border-radius: 8px;
+    border-radius: var(--border-radius-md);
     font-weight: 600;
-    transition: all 0.3s ease;
+    transition: all var(--transition-base);
 }
 
 .btn-gradient-yellow:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
-    color: #1f2937;
+    box-shadow: var(--shadow-yellow);
+    color: var(--brand-blue);
 }
 
 .activity-card {
     border: none;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-card);
+    transition: all var(--transition-base);
 }
 
 .activity-card:hover {
     transform: translateX(5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--shadow-card-hover);
 }
 
 .activity-icon {
     width: 40px;
     height: 40px;
-    border-radius: 8px;
+    border-radius: var(--border-radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1rem;
-    color: white;
+    color: var(--brand-white);
 }

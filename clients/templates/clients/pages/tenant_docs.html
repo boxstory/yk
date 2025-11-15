@@ -1,0 +1,72 @@
+{% load static %}
+<!-- Tenant Documents Page -->
+<div class="container py-4">
+    <!-- Page Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h3 class="mb-1"><i class="fas fa-file-alt"></i> Tenant Documents</h3>
+            <p class="text-muted mb-0">Manage lease agreements, contracts, and tenant documents</p>
+        </div>
+        <button class="btn btn-primary"
+                hx-get="{% url 'clients:dashboard' %}"
+                hx-trigger="click"
+                hx-target="#dashboard-right-side"
+                hx-swap="innerHTML">
+            <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </button>
+    </div>
+
+    {% if tenant_docs %}
+        <!-- Documents Grid -->
+        <div class="row g-3">
+            {% for doc in tenant_docs %}
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <h5 class="card-title mb-0">
+                                    <i class="fas fa-file-contract"></i> {{ doc.title }}
+                                </h5>
+                                <span class="badge bg-success">Active</span>
+                            </div>
+                            <div class="mb-2">
+                                <i class="fas fa-user text-muted"></i>
+                                <strong>Tenant:</strong> {{ doc.tenant }}
+                            </div>
+                            <div class="mb-2">
+                                <i class="fas fa-building text-muted"></i>
+                                <strong>Property:</strong> {{ doc.property }}
+                            </div>
+                            <div class="mb-2">
+                                <i class="fas fa-door-open text-muted"></i>
+                                <strong>Unit:</strong> {{ doc.unit }}
+                            </div>
+                            <div class="mb-3">
+                                <i class="fas fa-calendar text-muted"></i>
+                                <strong>Date:</strong> {{ doc.date }}
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <!-- Empty State -->
+        <div class="text-center py-5">
+            <i class="fas fa-file-alt text-muted mb-3" style="font-size: 4rem;"></i>
+            <h4 class="text-muted">No Tenant Documents</h4>
+            <p class="text-muted">You don't have any tenant documents stored yet.</p>
+            <button class="btn btn-primary mt-3">
+                <i class="fas fa-plus"></i> Upload Document
+            </button>
+        </div>
+    {% endif %}
+</div>

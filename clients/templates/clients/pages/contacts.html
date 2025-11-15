@@ -1,0 +1,127 @@
+{% load static %}
+<!-- Contacts Page -->
+<div class="container py-4">
+    <!-- Page Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h3 class="mb-1"><i class="fas fa-address-book"></i> Contacts</h3>
+            <p class="text-muted mb-0">Manage tenants, contractors, and service providers</p>
+        </div>
+        <div>
+            <button class="btn btn-success me-2">
+                <i class="fas fa-plus"></i> Add Contact
+            </button>
+            <button class="btn btn-primary"
+                    hx-get="{% url 'clients:dashboard' %}"
+                    hx-trigger="click"
+                    hx-target="#dashboard-right-side"
+                    hx-swap="innerHTML">
+                <i class="fas fa-arrow-left"></i> Back
+            </button>
+        </div>
+    </div>
+
+    <!-- Filter Tabs -->
+    <ul class="nav nav-tabs mb-4" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#all-contacts">
+                <i class="fas fa-users"></i> All Contacts
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tenants">
+                <i class="fas fa-user"></i> Tenants
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#contractors">
+                <i class="fas fa-hard-hat"></i> Contractors
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#service-providers">
+                <i class="fas fa-briefcase"></i> Service Providers
+            </button>
+        </li>
+    </ul>
+
+    <!-- Tab Content -->
+    <div class="tab-content">
+        <!-- All Contacts Tab -->
+        <div class="tab-pane fade show active" id="all-contacts" role="tabpanel">
+            {% if contacts %}
+                <div class="row g-3">
+                    {% for contact in contacts %}
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                            <i class="fas fa-user fa-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h5 class="card-title mb-0">{{ contact.name }}</h5>
+                                            <small class="text-muted">{{ contact.type }}</small>
+                                        </div>
+                                    </div>
+                                    <div class="mb-2">
+                                        <i class="fas fa-phone text-muted"></i>
+                                        <span>{{ contact.phone }}</span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <i class="fas fa-envelope text-muted"></i>
+                                        <span>{{ contact.email }}</span>
+                                    </div>
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-eye"></i> View Profile
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-secondary">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="text-center py-5">
+                    <i class="fas fa-address-book text-muted mb-3" style="font-size: 4rem;"></i>
+                    <h4 class="text-muted">No Contacts</h4>
+                    <p class="text-muted">Start adding contacts to manage your network.</p>
+                    <button class="btn btn-primary mt-3">
+                        <i class="fas fa-plus"></i> Add First Contact
+                    </button>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Tenants Tab -->
+        <div class="tab-pane fade" id="tenants" role="tabpanel">
+            <div class="text-center py-5">
+                <i class="fas fa-user text-muted mb-3" style="font-size: 4rem;"></i>
+                <h4 class="text-muted">No Tenants</h4>
+                <p class="text-muted">Tenant contacts will appear here.</p>
+            </div>
+        </div>
+
+        <!-- Contractors Tab -->
+        <div class="tab-pane fade" id="contractors" role="tabpanel">
+            <div class="text-center py-5">
+                <i class="fas fa-hard-hat text-muted mb-3" style="font-size: 4rem;"></i>
+                <h4 class="text-muted">No Contractors</h4>
+                <p class="text-muted">Contractor contacts will appear here.</p>
+            </div>
+        </div>
+
+        <!-- Service Providers Tab -->
+        <div class="tab-pane fade" id="service-providers" role="tabpanel">
+            <div class="text-center py-5">
+                <i class="fas fa-briefcase text-muted mb-3" style="font-size: 4rem;"></i>
+                <h4 class="text-muted">No Service Providers</h4>
+                <p class="text-muted">Service provider contacts will appear here.</p>
+            </div>
+        </div>
+    </div>
+</div>

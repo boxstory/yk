@@ -360,3 +360,176 @@ def portions_unlisted(request):
         'filter_type': 'Unlisted',
     }
     return render(request, "clients/pages/portions_all_list.html", data)
+
+
+# Operations Views **********************************************************************
+
+@login_required(login_url='account_login')
+def visit_requests(request):
+    """Display visit requests for properties"""
+    try:
+        profile = request.user.profile
+    except ObjectDoesNotExist:
+        return redirect('accounts:profile')
+    if request.user.profile.is_business == False:
+        messages.error(request, 'You are not authorized to access Property Dashboard.', extra_tags='danger')
+        return redirect('accounts:profile')
+
+    profile = request.user.profile
+    # TODO: Implement actual visit requests model
+    visit_requests_list = []
+
+    data = {
+        'profile': profile,
+        'visit_requests': visit_requests_list,
+    }
+    return render(request, "clients/pages/visit_requests.html", data)
+
+
+@login_required(login_url='account_login')
+def job_requests(request):
+    """Display job/maintenance requests"""
+    try:
+        profile = request.user.profile
+    except ObjectDoesNotExist:
+        return redirect('accounts:profile')
+    if request.user.profile.is_business == False:
+        messages.error(request, 'You are not authorized to access Property Dashboard.', extra_tags='danger')
+        return redirect('accounts:profile')
+
+    profile = request.user.profile
+    # TODO: Implement actual job requests model
+    job_requests_list = []
+
+    data = {
+        'profile': profile,
+        'job_requests': job_requests_list,
+    }
+    return render(request, "clients/pages/job_requests.html", data)
+
+
+@login_required(login_url='account_login')
+def tenant_docs(request):
+    """Display tenant documents"""
+    try:
+        profile = request.user.profile
+    except ObjectDoesNotExist:
+        return redirect('accounts:profile')
+    if request.user.profile.is_business == False:
+        messages.error(request, 'You are not authorized to access Property Dashboard.', extra_tags='danger')
+        return redirect('accounts:profile')
+
+    profile = request.user.profile
+    # TODO: Implement actual tenant documents model
+    tenant_docs_list = []
+
+    data = {
+        'profile': profile,
+        'tenant_docs': tenant_docs_list,
+    }
+    return render(request, "clients/pages/tenant_docs.html", data)
+
+
+@login_required(login_url='account_login')
+def rent_reports(request):
+    """Display rent reports and payment history"""
+    try:
+        profile = request.user.profile
+    except ObjectDoesNotExist:
+        return redirect('accounts:profile')
+    if request.user.profile.is_business == False:
+        messages.error(request, 'You are not authorized to access Property Dashboard.', extra_tags='danger')
+        return redirect('accounts:profile')
+
+    profile = request.user.profile
+    # TODO: Implement actual rent reports logic
+    rent_reports_list = []
+
+    data = {
+        'profile': profile,
+        'rent_reports': rent_reports_list,
+    }
+    return render(request, "clients/pages/rent_reports.html", data)
+
+
+@login_required(login_url='account_login')
+def portion_status_management(request):
+    """Manage portion statuses"""
+    try:
+        profile = request.user.profile
+    except ObjectDoesNotExist:
+        return redirect('accounts:profile')
+    if request.user.profile.is_business == False:
+        messages.error(request, 'You are not authorized to access Property Dashboard.', extra_tags='danger')
+        return redirect('accounts:profile')
+
+    profile = request.user.profile
+    portions = property_models.Portions.objects.filter(user=request.user)
+
+    data = {
+        'profile': profile,
+        'portions': portions,
+    }
+    return render(request, "clients/pages/portion_status_management.html", data)
+
+
+# General Pages **********************************************************************
+
+@login_required(login_url='account_login')
+def reports(request):
+    """Display reports dashboard"""
+    try:
+        profile = request.user.profile
+    except ObjectDoesNotExist:
+        return redirect('accounts:profile')
+    if request.user.profile.is_business == False:
+        messages.error(request, 'You are not authorized to access Property Dashboard.', extra_tags='danger')
+        return redirect('accounts:profile')
+
+    profile = request.user.profile
+
+    data = {
+        'profile': profile,
+    }
+    return render(request, "clients/pages/reports.html", data)
+
+
+@login_required(login_url='account_login')
+def contacts(request):
+    """Display contacts page"""
+    try:
+        profile = request.user.profile
+    except ObjectDoesNotExist:
+        return redirect('accounts:profile')
+    if request.user.profile.is_business == False:
+        messages.error(request, 'You are not authorized to access Property Dashboard.', extra_tags='danger')
+        return redirect('accounts:profile')
+
+    profile = request.user.profile
+    # TODO: Implement actual contacts model
+    contacts_list = []
+
+    data = {
+        'profile': profile,
+        'contacts': contacts_list,
+    }
+    return render(request, "clients/pages/contacts.html", data)
+
+
+@login_required(login_url='account_login')
+def services(request):
+    """Display services page"""
+    try:
+        profile = request.user.profile
+    except ObjectDoesNotExist:
+        return redirect('accounts:profile')
+    if request.user.profile.is_business == False:
+        messages.error(request, 'You are not authorized to access Property Dashboard.', extra_tags='danger')
+        return redirect('accounts:profile')
+
+    profile = request.user.profile
+
+    data = {
+        'profile': profile,
+    }
+    return render(request, "clients/pages/services.html", data)

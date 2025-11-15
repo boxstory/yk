@@ -618,15 +618,16 @@ h1, .h1 {
    ============================================================================ */
 
 a {
-  color: var(--brand-yellow) !important;
+  color: var(--brand-blue) !important;
   text-decoration: none !important;
   transition: color var(--transition-base) !important;
 }
 
 a:hover,
 a:focus {
-  color: var(--brand-yellow-dark) !important;
-  text-decoration: underline !important;
+  color: var(--brand-white) !important;
+
+   
 }
 
 /* Exclude navbar and button links from default link styling */

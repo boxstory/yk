@@ -1,3 +1,28 @@
-<div class="container">
-    <h1 class="p-4">Pending Requests</h1>
+{% load static %}
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div><h3 class="mb-1"><i class="fas fa-hourglass-half"></i> Pending Requests</h3><p class="text-muted mb-0">Awaiting your response or action</p></div>
+        <button class="btn btn-primary" hx-get="{% url 'realtor:dashboard' %}" hx-trigger="click" hx-target="#dashboard-right-side" hx-swap="innerHTML"><i class="fas fa-arrow-left"></i> Back</button>
+    </div>
+    <div class="row g-3">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div>
+                            <h5 class="card-title mb-1"><i class="fas fa-user"></i> Emma Davis</h5>
+                            <small class="text-muted">Pending for 2 days</small>
+                        </div>
+                        <span class="badge bg-warning text-dark">Pending</span>
+                    </div>
+                    <p class="mb-2"><strong>Request Type:</strong> Property Viewing</p>
+                    <p class="mb-3"><i class="fas fa-building text-muted"></i> <strong>Property:</strong> Sky Heights Unit 401</p>
+                    <div class="d-grid gap-2 d-md-flex">
+                        <button class="btn btn-sm btn-outline-success"><i class="fas fa-check"></i> Approve</button>
+                        <button class="btn btn-sm btn-outline-danger"><i class="fas fa-times"></i> Decline</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

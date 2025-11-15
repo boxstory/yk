@@ -1,3 +1,26 @@
-<div class="container">
-    <h1 class="p-4">Booked Properties</h1>
+{% load static %}
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div><h3 class="mb-1"><i class="fas fa-check-circle"></i> Booked Properties</h3><p class="text-muted mb-0">Properties with confirmed bookings</p></div>
+        <button class="btn btn-primary" hx-get="{% url 'realtor:dashboard' %}" hx-trigger="click" hx-target="#dashboard-right-side" hx-swap="innerHTML"><i class="fas fa-arrow-left"></i> Back</button>
+    </div>
+    <div class="row g-3">
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <h5 class="card-title mb-0"><i class="fas fa-building"></i> Sky Heights Unit 302</h5>
+                        <span class="badge bg-info">Booked</span>
+                    </div>
+                    <div class="mb-2"><i class="fas fa-user text-muted"></i> <strong>Client:</strong> John Doe</div>
+                    <div class="mb-2"><i class="fas fa-calendar text-muted"></i> <strong>Move-in:</strong> Dec 1, 2024</div>
+                    <div class="mb-3"><i class="fas fa-dollar-sign text-muted"></i> <strong>Price:</strong> $1,600/month</div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i> View Details</button>
+                        <button class="btn btn-sm btn-outline-success"><i class="fas fa-file-contract"></i> Generate Contract</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

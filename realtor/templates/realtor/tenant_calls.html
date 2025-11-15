@@ -1,3 +1,27 @@
-<div class="container">
-    <h1 class="p-4">Tenant Calls</h1>
+{% load static %}
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div><h3 class="mb-1"><i class="fas fa-phone"></i> Tenant Calls</h3><p class="text-muted mb-0">Call logs and contact history</p></div>
+        <button class="btn btn-primary" hx-get="{% url 'realtor:dashboard' %}" hx-trigger="click" hx-target="#dashboard-right-side" hx-swap="innerHTML"><i class="fas fa-arrow-left"></i> Back</button>
+    </div>
+    <div class="row g-3">
+        <div class="col-12 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div>
+                            <h5 class="card-title mb-1"><i class="fas fa-user"></i> Mike Johnson</h5>
+                            <small class="text-muted">Today at 10:30 AM</small>
+                        </div>
+                        <span class="badge bg-success">Completed</span>
+                    </div>
+                    <p class="mb-2"><i class="fas fa-phone text-muted"></i> <strong>Phone:</strong> (555) 123-4567</p>
+                    <p class="mb-3"><strong>Purpose:</strong> Inquiry about Oak Tower Unit 205</p>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-sm btn-outline-primary"><i class="fas fa-phone"></i> Call Back</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

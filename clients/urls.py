@@ -22,4 +22,16 @@ urlpatterns = [
     path('dashboard/<int:property_id>/portions/add/', clients_views.portions_add, name='portions_add' ),
     path('dashboard/portions/<int:portions_id>/update/', clients_views.portions_update, name='portions_update' ),
 
+    # Operations
+    path('dashboard/visit-requests/', clients_views.visit_requests, name='visit_requests'),
+    path('dashboard/job-requests/', clients_views.job_requests, name='job_requests'),
+    path('dashboard/tenant-docs/', clients_views.tenant_docs, name='tenant_docs'),
+    path('dashboard/rent-reports/', clients_views.rent_reports, name='rent_reports'),
+    path('dashboard/portion-status/', clients_views.portion_status_management, name='portion_status_management'),
+
+    # General Pages
+    path('dashboard/reports/', clients_views.reports, name='reports'),
+    path('dashboard/contacts/', clients_views.contacts, name='contacts'),
+    path('dashboard/services/', clients_views.services, name='services'),
+
 ]

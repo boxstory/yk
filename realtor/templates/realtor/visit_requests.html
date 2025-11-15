@@ -1,3 +1,26 @@
-<div class="container">
-    <h1 class="p-4">Visit Requests</h1>
+{% load static %}
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div><h3 class="mb-1"><i class="fas fa-calendar-check"></i> Visit Requests</h3><p class="text-muted mb-0">Property viewing appointments</p></div>
+        <button class="btn btn-primary" hx-get="{% url 'realtor:dashboard' %}" hx-trigger="click" hx-target="#dashboard-right-side" hx-swap="innerHTML"><i class="fas fa-arrow-left"></i> Back</button>
+    </div>
+    <div class="row g-3">
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <h5 class="card-title mb-0"><i class="fas fa-user"></i> Sarah Williams</h5>
+                        <span class="badge bg-warning text-dark">Pending</span>
+                    </div>
+                    <div class="mb-2"><i class="fas fa-building text-muted"></i> <strong>Property:</strong> Maple View Unit 105</div>
+                    <div class="mb-2"><i class="fas fa-calendar text-muted"></i> <strong>Date:</strong> Dec 10, 2024</div>
+                    <div class="mb-3"><i class="fas fa-clock text-muted"></i> <strong>Time:</strong> 2:00 PM</div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-sm btn-outline-success"><i class="fas fa-check"></i> Approve</button>
+                        <button class="btn btn-sm btn-outline-danger"><i class="fas fa-times"></i> Decline</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

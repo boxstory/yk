@@ -1,3 +1,39 @@
-<div class="container">
-    <h1 class="p-4">Services List</h1>
+{% load static %}
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div><h3 class="mb-1"><i class="fas fa-store"></i> Services List</h3><p class="text-muted mb-0">Professional services and vendors</p></div>
+        <button class="btn btn-primary" hx-get="{% url 'realtor:dashboard' %}" hx-trigger="click" hx-target="#dashboard-right-side" hx-swap="innerHTML"><i class="fas fa-arrow-left"></i> Back</button>
+    </div>
+    <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card h-100 action-card">
+                <div class="card-body text-center">
+                    <div class="action-icon mx-auto mb-3"><i class="fas fa-camera"></i></div>
+                    <h5 class="card-title">Photography</h5>
+                    <p class="text-muted small">Professional property photography</p>
+                    <button class="btn btn-outline-primary btn-sm mt-2"><i class="fas fa-phone"></i> Contact</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card h-100 action-card">
+                <div class="card-body text-center">
+                    <div class="action-icon mx-auto mb-3"><i class="fas fa-gavel"></i></div>
+                    <h5 class="card-title">Legal Services</h5>
+                    <p class="text-muted small">Real estate legal consultation</p>
+                    <button class="btn btn-outline-primary btn-sm mt-2"><i class="fas fa-phone"></i> Contact</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card h-100 action-card">
+                <div class="card-body text-center">
+                    <div class="action-icon mx-auto mb-3"><i class="fas fa-home"></i></div>
+                    <h5 class="card-title">Property Inspection</h5>
+                    <p class="text-muted small">Thorough property inspections</p>
+                    <button class="btn btn-outline-primary btn-sm mt-2"><i class="fas fa-phone"></i> Contact</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

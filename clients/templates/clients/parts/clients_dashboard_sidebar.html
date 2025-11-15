@@ -100,58 +100,62 @@
              role="list"
              id="submenu-002"
              aria-expanded="false">
-          <ul class="flex-column p-0 ms-2 text-black"> 
+          <ul class="flex-column p-0 ms-2 text-black">
             <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
-                 hx-get="{% url 'clients:portions_all_list' %}"
-                 name="portions_all_list"
+                 hx-get="{% url 'clients:visit_requests' %}"
+                 name="visit_requests"
                  hx-trigger="click"
                  hx-target="#dashboard-right-side"
                  hx-swap="innerHTML">
-                <i class="fa-solid fa-spinner my-2 pt-1 pe-2"></i>
-                <span class="pt-2">Visit Requests</span> 
-            </a> 
+                <i class="fa-solid fa-calendar-check my-2 pt-1 pe-2"></i>
+                <span class="pt-2">Visit Requests</span>
+            </a>
             <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
-                 hx-get="{% url 'clients:portions_all_list' %}"
-                 name="portions_all_list"
+                 hx-get="{% url 'clients:job_requests' %}"
+                 name="job_requests"
                  hx-trigger="click"
                  hx-target="#dashboard-right-side"
                  hx-swap="innerHTML">
-                <i class="fa-solid fa-spinner my-2 pt-1 pe-2"></i>
-                <span class="pt-2">job Requests</span> 
-            </a> 
+                <i class="fa-solid fa-tools my-2 pt-1 pe-2"></i>
+                <span class="pt-2">Job Requests</span>
+            </a>
             <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
-                 hx-get="{% url 'clients:portions_all_list' %}"
-                 name="portions_all_list"
+                 hx-get="{% url 'clients:tenant_docs' %}"
+                 name="tenant_docs"
                  hx-trigger="click"
                  hx-target="#dashboard-right-side"
                  hx-swap="innerHTML">
-                <i class="fa-solid fa-check my-2 pt-1 pe-2"></i>
-                <span class="pt-2">Tenanat Docs</span> 
-            </a> 
+                <i class="fa-solid fa-file-alt my-2 pt-1 pe-2"></i>
+                <span class="pt-2">Tenant Docs</span>
+            </a>
             <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
-                 hx-get="{% url 'clients:portions_all_list' %}"
-                 name="portions_all_list"
+                 hx-get="{% url 'clients:rent_reports' %}"
+                 name="rent_reports"
                  hx-trigger="click"
                  hx-target="#dashboard-right-side"
                  hx-swap="innerHTML">
-                <i class="fa-solid fa-bars my-2 pt-1 pe-2"></i>
-                <span class="pt-2">Rent Reports</span> 
-            </a> 
+                <i class="fa-solid fa-chart-line my-2 pt-1 pe-2"></i>
+                <span class="pt-2">Rent Reports</span>
+            </a>
             <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
-                 hx-get="{% url 'clients:portions_all_list' %}"
-                 name="portions_all_list"
+                 hx-get="{% url 'clients:portion_status_management' %}"
+                 name="portion_status_management"
                  hx-trigger="click"
                  hx-target="#dashboard-right-side"
                  hx-swap="innerHTML">
-                <i class="fa-solid fa-bars my-2 pt-1 pe-2"></i>
-                <span class="pt-2">Portion Status</span> 
-            </a> 
+                <i class="fa-solid fa-toggle-on my-2 pt-1 pe-2"></i>
+                <span class="pt-2">Portion Status</span>
+            </a>
           </ul>
         </div>
       </li>
       <hr class="m-2" />
       <li class="sidebar-head mb-2">
-        <a class="sidebar-link" href="#">
+        <a class="sidebar-link"
+           hx-get="{% url 'clients:reports' %}"
+           hx-trigger="click"
+           hx-target="#dashboard-right-side"
+           hx-swap="innerHTML">
           <div class="d-flex btn-sidebar-blank sidebar-link justify-content-start">
             <i class="fa-solid fa-chart-bar m-2 pe-2 pb-1"></i>
             <span class="pt-1">Reports</span>
@@ -159,7 +163,11 @@
         </a>
       </li>
       <li class="sidebar-head mb-2">
-        <a class="sidebar-link" href="#">
+        <a class="sidebar-link"
+           hx-get="{% url 'clients:contacts' %}"
+           hx-trigger="click"
+           hx-target="#dashboard-right-side"
+           hx-swap="innerHTML">
           <div class="d-flex btn-sidebar-blank sidebar-link justify-content-start">
             <i class="fa-solid fa-address-book m-2 pe-2 pb-1"></i>
             <span class="pt-1">Contacts</span>
@@ -167,7 +175,11 @@
         </a>
       </li>
       <li class="sidebar-head mb-2">
-        <a class="sidebar-link" href="#">
+        <a class="sidebar-link"
+           hx-get="{% url 'clients:services' %}"
+           hx-trigger="click"
+           hx-target="#dashboard-right-side"
+           hx-swap="innerHTML">
           <div class="d-flex btn-sidebar-blank sidebar-link justify-content-start">
             <i class="fa-solid fa-store m-2 pe-2 pb-1"></i>
             <span class="pt-1">Services</span>
@@ -305,53 +317,53 @@
                aria-expanded="false">
             <ul class="flex-column p-0 ms-2 text-black">
               <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
-                 hx-get="{% url 'clients:portions_all_list' %}"
-                 name="portions_all_list"
+                 hx-get="{% url 'clients:visit_requests' %}"
+                 name="visit_requests"
                  hx-trigger="click"
                  hx-target="#dashboard-right-side"
                  hx-swap="innerHTML"
                  onclick="closeMobileSidebar()">
-                <i class="fa-solid fa-spinner my-2 pt-1 pe-2"></i>
+                <i class="fa-solid fa-calendar-check my-2 pt-1 pe-2"></i>
                 <span class="pt-2">Visit Requests</span>
               </a>
               <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
-                 hx-get="{% url 'clients:portions_all_list' %}"
-                 name="portions_all_list"
+                 hx-get="{% url 'clients:job_requests' %}"
+                 name="job_requests"
                  hx-trigger="click"
                  hx-target="#dashboard-right-side"
                  hx-swap="innerHTML"
                  onclick="closeMobileSidebar()">
-                <i class="fa-solid fa-spinner my-2 pt-1 pe-2"></i>
-                <span class="pt-2">job Requests</span>
+                <i class="fa-solid fa-tools my-2 pt-1 pe-2"></i>
+                <span class="pt-2">Job Requests</span>
               </a>
               <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
-                 hx-get="{% url 'clients:portions_all_list' %}"
-                 name="portions_all_list"
+                 hx-get="{% url 'clients:tenant_docs' %}"
+                 name="tenant_docs"
                  hx-trigger="click"
                  hx-target="#dashboard-right-side"
                  hx-swap="innerHTML"
                  onclick="closeMobileSidebar()">
-                <i class="fa-solid fa-check my-2 pt-1 pe-2"></i>
-                <span class="pt-2">Tenanat Docs</span>
+                <i class="fa-solid fa-file-alt my-2 pt-1 pe-2"></i>
+                <span class="pt-2">Tenant Docs</span>
               </a>
               <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
-                 hx-get="{% url 'clients:portions_all_list' %}"
-                 name="portions_all_list"
+                 hx-get="{% url 'clients:rent_reports' %}"
+                 name="rent_reports"
                  hx-trigger="click"
                  hx-target="#dashboard-right-side"
                  hx-swap="innerHTML"
                  onclick="closeMobileSidebar()">
-                <i class="fa-solid fa-bars my-2 pt-1 pe-2"></i>
+                <i class="fa-solid fa-chart-line my-2 pt-1 pe-2"></i>
                 <span class="pt-2">Rent Reports</span>
               </a>
               <a class="sidebar-item d-flex btn-sidebar-blank justify-content-start sidebar-link py-2"
-                 hx-get="{% url 'clients:portions_all_list' %}"
-                 name="portions_all_list"
+                 hx-get="{% url 'clients:portion_status_management' %}"
+                 name="portion_status_management"
                  hx-trigger="click"
                  hx-target="#dashboard-right-side"
                  hx-swap="innerHTML"
                  onclick="closeMobileSidebar()">
-                <i class="fa-solid fa-bars my-2 pt-1 pe-2"></i>
+                <i class="fa-solid fa-toggle-on my-2 pt-1 pe-2"></i>
                 <span class="pt-2">Portion Status</span>
               </a>
             </ul>
@@ -359,7 +371,12 @@
         </li>
         <hr class="m-2" />
         <li class="sidebar-head mb-2">
-          <a class="sidebar-link" href="#" onclick="closeMobileSidebar()">
+          <a class="sidebar-link"
+             hx-get="{% url 'clients:reports' %}"
+             hx-trigger="click"
+             hx-target="#dashboard-right-side"
+             hx-swap="innerHTML"
+             onclick="closeMobileSidebar()">
             <div class="d-flex btn-sidebar-blank sidebar-link justify-content-start">
               <i class="fa-solid fa-chart-bar m-2 pe-2 pb-1"></i>
               <span class="pt-1">Reports</span>
@@ -367,7 +384,12 @@
           </a>
         </li>
         <li class="sidebar-head mb-2">
-          <a class="sidebar-link" href="#" onclick="closeMobileSidebar()">
+          <a class="sidebar-link"
+             hx-get="{% url 'clients:contacts' %}"
+             hx-trigger="click"
+             hx-target="#dashboard-right-side"
+             hx-swap="innerHTML"
+             onclick="closeMobileSidebar()">
             <div class="d-flex btn-sidebar-blank sidebar-link justify-content-start">
               <i class="fa-solid fa-address-book m-2 pe-2 pb-1"></i>
               <span class="pt-1">Contacts</span>
@@ -375,7 +397,12 @@
           </a>
         </li>
         <li class="sidebar-head mb-2">
-          <a class="sidebar-link" href="#" onclick="closeMobileSidebar()">
+          <a class="sidebar-link"
+             hx-get="{% url 'clients:services' %}"
+             hx-trigger="click"
+             hx-target="#dashboard-right-side"
+             hx-swap="innerHTML"
+             onclick="closeMobileSidebar()">
             <div class="d-flex btn-sidebar-blank sidebar-link justify-content-start">
               <i class="fa-solid fa-store m-2 pe-2 pb-1"></i>
               <span class="pt-1">Services</span>

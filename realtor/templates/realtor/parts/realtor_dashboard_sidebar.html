@@ -216,18 +216,102 @@
             <ul class="flex-column p-0 ms-2 text-black">
               <li class="sidebar-item d-flex btn-sidebar-blank justify-content-start">
                 <a class="sidebar-link" hx-get="{% url 'realtor:realtor_near_properties' %}" hx-target="#dashboard-right-side" hx-swap="innerHTML" onclick="closeMobileSidebar()">
-                  <i class="fa-solid fa-bars my-2 pt-1 pe-2"></i><span class="pt-1">Near Properties</span>
+                  <i class="fa-solid fa-map-marker-alt my-2 pt-1 pe-2"></i><span class="pt-1">Near Properties</span>
                 </a>
               </li>
               <li class="sidebar-item d-flex btn-sidebar-blank justify-content-start">
                 <a class="sidebar-link" hx-get="{% url 'realtor:realtor_vacant_portions' %}" hx-target="#dashboard-right-side" hx-swap="innerHTML" onclick="closeMobileSidebar()">
-                  <i class="fa-solid fa-bars my-2 pt-1 pe-2"></i><span class="pt-1">Vacant Portions</span>
+                  <i class="fa-solid fa-door-open my-2 pt-1 pe-2"></i><span class="pt-1">Vacant Portions</span>
+                </a>
+              </li>
+              <li class="sidebar-item d-flex btn-sidebar-blank justify-content-start">
+                <a class="sidebar-link" hx-get="{% url 'realtor:realtor_vacant_soon' %}" hx-target="#dashboard-right-side" hx-swap="innerHTML" onclick="closeMobileSidebar()">
+                  <i class="fa-solid fa-clock my-2 pt-1 pe-2"></i><span class="pt-1">Vacant Soon</span>
+                </a>
+              </li>
+              <li class="sidebar-item d-flex btn-sidebar-blank justify-content-start">
+                <a class="sidebar-link" hx-get="{% url 'realtor:realtor_vacants' %}" hx-target="#dashboard-right-side" hx-swap="innerHTML" onclick="closeMobileSidebar()">
+                  <i class="fa-solid fa-door-open my-2 pt-1 pe-2"></i><span class="pt-1">Vacants</span>
+                </a>
+              </li>
+              <li class="sidebar-item d-flex btn-sidebar-blank justify-content-start">
+                <a class="sidebar-link" hx-get="{% url 'realtor:realtor_booked_properties' %}" hx-target="#dashboard-right-side" hx-swap="innerHTML" onclick="closeMobileSidebar()">
+                  <i class="fa-solid fa-check my-2 pt-1 pe-2"></i><span class="pt-1">Booked</span>
                 </a>
               </li>
             </ul>
           </div>
         </li>
         <hr class="m-2" />
+        <li class="sidebar-head">
+          <div class="sidebar-item py-3 btn-sidebar-blank collapsed d-flex align-items-center"
+               data-bs-toggle="collapse"
+               data-bs-target="#mobile-submenu-002">
+            <i class="fa-solid fa-box-open ms-2 pe-2"></i>Workspaces<i class="flex-fill fa-solid fa-caret-down ps-2"></i>
+          </div>
+          <div class="multi-level collapse bg-white rounded-3" id="mobile-submenu-002">
+            <ul class="flex-column p-0 ms-2 text-black">
+              <li class="sidebar-item d-flex btn-sidebar-blank justify-content-start">
+                <a class="sidebar-link" hx-get="{% url 'realtor:realtor_inquiries' %}" hx-target="#dashboard-right-side" hx-swap="innerHTML" onclick="closeMobileSidebar()">
+                  <i class="fa-solid fa-question-circle my-2 pt-1 pe-2"></i><span class="pt-1">Inquiries</span>
+                </a>
+              </li>
+              <li class="sidebar-item d-flex btn-sidebar-blank justify-content-start">
+                <a class="sidebar-link" hx-get="{% url 'realtor:realtor_tenant_calls' %}" hx-target="#dashboard-right-side" hx-swap="innerHTML" onclick="closeMobileSidebar()">
+                  <i class="fa-solid fa-phone my-2 pt-1 pe-2"></i><span class="pt-1">Tenant Calls</span>
+                </a>
+              </li>
+              <li class="sidebar-item d-flex btn-sidebar-blank justify-content-start">
+                <a class="sidebar-link" hx-get="{% url 'realtor:realtor_visit_requests' %}" hx-target="#dashboard-right-side" hx-swap="innerHTML" onclick="closeMobileSidebar()">
+                  <i class="fa-solid fa-calendar-check my-2 pt-1 pe-2"></i><span class="pt-1">Visit Requests</span>
+                </a>
+              </li>
+              <li class="sidebar-item d-flex btn-sidebar-blank justify-content-start">
+                <a class="sidebar-link" hx-get="{% url 'realtor:realtor_followups' %}" hx-target="#dashboard-right-side" hx-swap="innerHTML" onclick="closeMobileSidebar()">
+                  <i class="fa-solid fa-redo my-2 pt-1 pe-2"></i><span class="pt-1">Followups</span>
+                </a>
+              </li>
+              <li class="sidebar-item d-flex btn-sidebar-blank justify-content-start">
+                <a class="sidebar-link" hx-get="{% url 'realtor:realtor_tenant_docs' %}" hx-target="#dashboard-right-side" hx-swap="innerHTML" onclick="closeMobileSidebar()">
+                  <i class="fa-solid fa-file-alt my-2 pt-1 pe-2"></i><span class="pt-1">Tenant Docs</span>
+                </a>
+              </li>
+              <li class="sidebar-item d-flex btn-sidebar-blank justify-content-start">
+                <a class="sidebar-link" hx-get="{% url 'realtor:realtor_deals_reports' %}" hx-target="#dashboard-right-side" hx-swap="innerHTML" onclick="closeMobileSidebar()">
+                  <i class="fa-solid fa-chart-pie my-2 pt-1 pe-2"></i><span class="pt-1">Deals Reports</span>
+                </a>
+              </li>
+              <li class="sidebar-item d-flex btn-sidebar-blank justify-content-start">
+                <a class="sidebar-link" hx-get="{% url 'realtor:realtor_pending_requests' %}" hx-target="#dashboard-right-side" hx-swap="innerHTML" onclick="closeMobileSidebar()">
+                  <i class="fa-solid fa-hourglass-half my-2 pt-1 pe-2"></i><span class="pt-1">Pending Requests</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <hr class="m-2" />
+        <li class="sidebar-head mb-2">
+          <a class="sidebar-link" hx-get="{% url 'realtor:realtor_reports' %}" hx-target="#dashboard-right-side" hx-swap="innerHTML" onclick="closeMobileSidebar()">
+            <div class="d-flex btn-sidebar-blank sidebar-link justify-content-start">
+              <i class="fa-solid fa-chart-bar m-2 pe-2 pb-1"></i><span class="pt-1">Reports</span>
+            </div>
+          </a>
+        </li>
+        <li class="sidebar-head mb-2">
+          <a class="sidebar-link" hx-get="{% url 'realtor:realtor_contacts' %}" hx-target="#dashboard-right-side" hx-swap="innerHTML" onclick="closeMobileSidebar()">
+            <div class="d-flex btn-sidebar-blank sidebar-link justify-content-start">
+              <i class="fa-solid fa-address-book m-2 pe-2 pb-1"></i><span class="pt-1">Contacts</span>
+            </div>
+          </a>
+        </li>
+        <li class="sidebar-head mb-2">
+          <a class="sidebar-link" hx-get="{% url 'realtor:realtor_services_list' %}" hx-target="#dashboard-right-side" hx-swap="innerHTML" onclick="closeMobileSidebar()">
+            <div class="d-flex btn-sidebar-blank sidebar-link justify-content-start">
+              <i class="fa-solid fa-store m-2 pe-2 pb-1"></i><span class="pt-1">Services List</span>
+            </div>
+          </a>
+        </li>
+        <hr />
         <li class="sidebar-head mb-2">
           <a class="sidebar-link" href="{% url 'help:realtor_help' %}" onclick="closeMobileSidebar()">
             <div class="d-flex btn-sidebar-blank sidebar-link justify-content-start">
