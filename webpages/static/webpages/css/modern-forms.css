@@ -1,21 +1,10 @@
 /* ===== SHARED MODERN FORMS STYLES ===== */
 /* This file contains reusable modern form styling for all forms in the application */
-
-:root {
-    --primary-color: #ebcb1b;
-    --primary-dark: #e4ac14;
-    --text-dark: #232c3d;
-    --text-light: #727982;
-    --border-color: #e8ecf1;
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.12);
-    --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
-    --transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
-}
+/* Uses brandkit.css variables for consistent theming */
 
 /* ===== MODERN FORM WRAPPER ===== */
 .modern-form-wrapper {
-    background: linear-gradient(135deg, #f5f7fa 0%, #f0f2f5 50%, #ebe9e4 100%);
+    background: linear-gradient(135deg, var(--brand-grey-100) 0%, var(--brand-grey-200) 50%, var(--brand-primary-100) 100%);
     min-height: 100vh;
     padding: 60px 20px;
     position: relative;
@@ -33,7 +22,7 @@
 .floating-shape.shape-1 {
     width: 300px;
     height: 300px;
-    background: var(--primary-color);
+    background: var(--brand-yellow);
     top: -100px;
     left: -100px;
     animation: float 6s ease-in-out infinite;
@@ -42,7 +31,7 @@
 .floating-shape.shape-2 {
     width: 200px;
     height: 200px;
-    background: var(--primary-dark);
+    background: var(--brand-yellow-dark);
     bottom: 50px;
     right: -80px;
     animation: float 8s ease-in-out infinite reverse;
@@ -51,7 +40,7 @@
 .floating-shape.shape-3 {
     width: 250px;
     height: 250px;
-    background: var(--text-dark);
+    background: var(--brand-blue);
     top: 50%;
     right: 5%;
     animation: float 10s ease-in-out infinite;
@@ -77,8 +66,8 @@
     justify-content: center;
     width: 80px;
     height: 80px;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-    border-radius: 20px;
+    background: var(--gradient-primary);
+    border-radius: var(--border-radius-xl);
     margin-bottom: 24px;
     box-shadow: var(--shadow-lg);
     animation: scaleIn 0.6s ease-out;
@@ -86,20 +75,20 @@
 
 .header-icon i {
     font-size: 40px;
-    color: #ffffff;
+    color: var(--brand-white);
 }
 
 .modern-form-title {
     font-size: 2.5rem;
     font-weight: 800;
-    color: var(--text-dark);
+    color: var(--brand-blue);
     margin-bottom: 12px;
     letter-spacing: -0.5px;
 }
 
 .modern-form-subtitle {
     font-size: 1.1rem;
-    color: var(--text-light);
+    color: var(--text-secondary);
     margin: 0;
     font-weight: 400;
     max-width: 500px;
@@ -108,8 +97,8 @@
 
 /* ===== MODERN FORM CARD ===== */
 .modern-form-card {
-    background: #ffffff;
-    border-radius: 24px;
+    background: var(--brand-white);
+    border-radius: var(--border-radius-2xl);
     padding: 50px;
     box-shadow: var(--shadow-lg);
     margin-bottom: 30px;
@@ -130,7 +119,7 @@
 .form-section {
     margin-bottom: 40px;
     padding-bottom: 40px;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-light);
 }
 
 .form-section:last-of-type {
@@ -141,7 +130,7 @@
 .section-title {
     font-size: 1.3rem;
     font-weight: 700;
-    color: var(--text-dark);
+    color: var(--brand-blue);
     margin-bottom: 28px;
     display: flex;
     align-items: center;
@@ -152,8 +141,8 @@
     content: '';
     width: 4px;
     height: 24px;
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-    border-radius: 2px;
+    background: var(--gradient-primary);
+    border-radius: var(--border-radius-sm);
 }
 
 /* ===== FORM ROW GRID ===== */
@@ -181,13 +170,13 @@
 .form-group label {
     font-size: 0.95rem;
     font-weight: 600;
-    color: var(--text-dark);
+    color: var(--brand-blue);
     margin-bottom: 12px;
     display: block;
 }
 
 .form-group label .required {
-    color: #dc3545;
+    color: var(--brand-red);
     margin-left: 2px;
 }
 
@@ -205,37 +194,37 @@
 .input-wrapper i {
     position: absolute;
     left: 16px;
-    color: var(--text-light);
+    color: var(--text-secondary);
     font-size: 18px;
     pointer-events: none;
-    transition: var(--transition);
+    transition: var(--transition-base);
 }
 
 .modern-input {
     width: 100%;
-    border: 2px solid var(--border-color);
-    border-radius: 12px;
+    border: 2px solid var(--border-light);
+    border-radius: var(--border-radius-md);
     padding: 14px 14px 14px 48px;
     font-size: 0.95rem;
     font-family: inherit;
-    background-color: #fafbfc;
-    color: var(--text-dark);
-    transition: var(--transition);
+    background-color: var(--background-muted);
+    color: var(--brand-blue);
+    transition: var(--transition-base);
     outline: none;
 }
 
 .modern-input::placeholder {
-    color: #a8b3bf;
+    color: var(--text-muted);
 }
 
 .modern-input:focus {
-    border-color: var(--primary-color);
-    background-color: #ffffff;
-    box-shadow: 0 0 0 4px rgba(235, 203, 27, 0.15), inset 0 0 0 0.5px var(--border-color);
+    border-color: var(--brand-yellow);
+    background-color: var(--brand-white);
+    box-shadow: 0 0 0 4px rgba(243, 193, 48, 0.15), inset 0 0 0 0.5px var(--border-light);
 }
 
 .modern-input:focus ~ i {
-    color: var(--primary-color);
+    color: var(--brand-blue);
     transform: scale(1.1);
 }
 
@@ -249,35 +238,35 @@
 .select-wrapper i {
     position: absolute;
     right: 16px;
-    color: var(--text-light);
+    color: var(--text-secondary);
     font-size: 16px;
     pointer-events: none;
-    transition: var(--transition);
+    transition: var(--transition-base);
 }
 
 .modern-select {
     width: 100%;
-    border: 2px solid var(--border-color);
-    border-radius: 12px;
+    border: 2px solid var(--border-light);
+    border-radius: var(--border-radius-md);
     padding: 14px 48px 14px 16px;
     font-size: 0.95rem;
     font-family: inherit;
-    background-color: #fafbfc;
-    color: var(--text-dark);
+    background-color: var(--background-muted);
+    color: var(--brand-blue);
     cursor: pointer;
     appearance: none;
-    transition: var(--transition);
+    transition: var(--transition-base);
     outline: none;
 }
 
 .modern-select:focus {
-    border-color: var(--primary-color);
-    background-color: #ffffff;
-    box-shadow: 0 0 0 4px rgba(235, 203, 27, 0.15);
+    border-color: var(--brand-yellow);
+    background-color: var(--brand-white);
+    box-shadow: 0 0 0 4px rgba(243, 193, 48, 0.15);
 }
 
 .modern-select:focus ~ i {
-    color: var(--primary-color);
+    color: var(--brand-blue);
     transform: rotate(180deg);
 }
 
@@ -292,22 +281,22 @@
     position: absolute;
     left: 16px;
     top: 16px;
-    color: var(--text-light);
+    color: var(--text-secondary);
     font-size: 18px;
     pointer-events: none;
-    transition: var(--transition);
+    transition: var(--transition-base);
 }
 
 .modern-textarea {
     width: 100%;
-    border: 2px solid var(--border-color);
-    border-radius: 12px;
+    border: 2px solid var(--border-light);
+    border-radius: var(--border-radius-md);
     padding: 14px 14px 14px 48px;
     font-size: 0.95rem;
     font-family: inherit;
-    background-color: #fafbfc;
-    color: var(--text-dark);
-    transition: var(--transition);
+    background-color: var(--background-muted);
+    color: var(--brand-blue);
+    transition: var(--transition-base);
     outline: none;
     resize: vertical;
     min-height: 140px;
@@ -315,17 +304,17 @@
 }
 
 .modern-textarea::placeholder {
-    color: #a8b3bf;
+    color: var(--text-muted);
 }
 
 .modern-textarea:focus {
-    border-color: var(--primary-color);
-    background-color: #ffffff;
-    box-shadow: 0 0 0 4px rgba(235, 203, 27, 0.15);
+    border-color: var(--brand-yellow);
+    background-color: var(--brand-white);
+    box-shadow: 0 0 0 4px rgba(243, 193, 48, 0.15);
 }
 
 .modern-textarea:focus ~ i {
-    color: var(--primary-color);
+    color: var(--brand-blue);
     transform: scale(1.1);
 }
 
@@ -339,14 +328,14 @@
 
 .range-separator {
     text-align: center;
-    color: var(--text-light);
+    color: var(--text-secondary);
     font-weight: 600;
     font-size: 0.9rem;
 }
 
 /* ===== ERROR MESSAGES ===== */
 .error-text {
-    color: #dc3545;
+    color: var(--brand-red);
     font-size: 0.85rem;
     font-weight: 500;
     margin-top: 8px;
@@ -354,11 +343,11 @@
 }
 
 .alert-error {
-    background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
-    border-left: 4px solid #dc3545;
-    color: #721c24;
+    background: linear-gradient(135deg, var(--brand-secondary-50) 0%, var(--brand-secondary-100) 100%);
+    border-left: 4px solid var(--brand-red);
+    color: var(--brand-secondary-800);
     padding: 16px 20px;
-    border-radius: 12px;
+    border-radius: var(--border-radius-md);
     margin-bottom: 28px;
     font-weight: 500;
 }
@@ -370,15 +359,15 @@
 
 /* ===== SUBMIT BUTTON ===== */
 .modern-submit-btn {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-    color: #000000;
+    background: var(--gradient-primary);
+    color: var(--brand-blue);
     border: none;
     padding: 16px 40px;
     font-size: 1rem;
     font-weight: 700;
-    border-radius: 12px;
+    border-radius: var(--border-radius-md);
     cursor: pointer;
-    transition: var(--transition);
+    transition: var(--transition-base);
     display: inline-flex;
     align-items: center;
     gap: 12px;
@@ -400,12 +389,12 @@
     width: 100%;
     height: 100%;
     background: rgba(255, 255, 255, 0.2);
-    transition: var(--transition);
+    transition: var(--transition-base);
 }
 
 .modern-submit-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(235, 203, 27, 0.3);
+    box-shadow: var(--shadow-yellow);
 }
 
 .modern-submit-btn:hover::before {
@@ -419,14 +408,14 @@
 /* Secondary Submit Button */
 .modern-submit-btn.secondary {
     background: transparent;
-    color: var(--text-dark);
-    border: 2px solid var(--border-color);
+    color: var(--brand-blue);
+    border: 2px solid var(--border-light);
 }
 
 .modern-submit-btn.secondary:hover {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-    background-color: rgba(235, 203, 27, 0.1);
+    border-color: var(--brand-yellow);
+    color: var(--brand-blue);
+    background-color: var(--brand-primary-50);
 }
 
 /* ===== FORM FOOTER ===== */
@@ -440,21 +429,21 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: var(--text-dark);
+    color: var(--brand-blue);
     text-decoration: none;
     font-weight: 600;
     font-size: 0.95rem;
     padding: 12px 24px;
-    border: 2px solid var(--border-color);
-    border-radius: 12px;
-    transition: var(--transition);
+    border: 2px solid var(--border-light);
+    border-radius: var(--border-radius-md);
+    transition: var(--transition-base);
     background-color: transparent;
 }
 
 .modern-back-link:hover {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-    background-color: rgba(235, 203, 27, 0.1);
+    border-color: var(--brand-yellow);
+    color: var(--brand-blue);
+    background-color: var(--brand-primary-50);
     transform: translateX(-5px);
 }
 
