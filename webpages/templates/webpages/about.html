@@ -1,77 +1,468 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
-{% block head_title %}About{% endblock %}
+{% block head_title %}About Us - Yellowkey Holdings{% endblock %}
 {% block extra_css %}
-    <!-- extra css -->
-    <link type="text/css"
-          rel="stylesheet"
-          href="{% static '/webpages/css/main.css' %}">
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-          integrity="sha384-tKLJeE1ALTUwtXlaGjJYM3sejfssWdAaWR2s97axw4xkiAdMzQjtOjgcyw0Y50KU"
-          crossorigin="anonymous">
+<link type="text/css" rel="stylesheet" href="{% static '/webpages/css/main.css' %}">
+<style>
+.hero-section {
+    background: var(--gradient-accent);
+    padding: 4rem 0;
+    color: white;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.hero-section h1 {
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: white !important;
+    color: white !important;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.hero-section p {
+    font-size: 1.25rem;
+    opacity: 0.95;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.section-title {
+    color: var(--brand-blue);
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: var(--gradient-accent);
+    border-radius: 2px;
+}
+
+.feature-card {
+    background: white;
+    border-radius: var(--border-radius-xl);
+    padding: 2rem;
+    box-shadow: var(--shadow-card);
+    transition: all var(--transition-base);
+    height: 100%;
+    border: 2px solid transparent;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-card-hover), var(--shadow-yellow);
+    border-color: var(--brand-yellow);
+}
+
+.feature-icon {
+    width: 70px;
+    height: 70px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: white;
+    font-size: 2rem;
+}
+
+.feature-card h3 {
+    color: var(--brand-blue);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 3rem;
+    margin-bottom: 2rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    background: var(--gradient-secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.timeline-item::after {
+    content: '\2713';
+    position: absolute;
+    left: 13px;
+    top: 8px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.timeline-item h4 {
+    color: var(--brand-blue);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-item p {
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.7;
+}
+
+.stats-card {
+    background: var(--gradient-accent);
+    color: white;
+    padding: 2.5rem 2rem;
+    border-radius: var(--border-radius-xl);
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+}
+
+.stats-number {
+    font-size: 3rem;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.stats-label {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.contact-card {
+    background: white;
+    border-radius: var(--border-radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    border: none;
+}
+
+.contact-card .card-header {
+    background: var(--gradient-primary);
+    color: white;
+    padding: 2rem;
+    border: none;
+}
+
+.contact-card .card-header h3 {
+    color: white !important;
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+.contact-card .card-body {
+    padding: 2.5rem;
+}
+
+.contact-card .form-label {
+    color: var(--brand-blue) !important;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.contact-card .form-control {
+    border: 2px solid var(--border-light);
+    border-radius: var(--border-radius-md);
+    padding: 0.75rem 1rem;
+    transition: all var(--transition-base);
+}
+
+.contact-card .form-control:focus {
+    border-color: var(--brand-yellow);
+    box-shadow: 0 0 0 0.25rem rgba(243, 193, 48, 0.15);
+}
+
+.btn-submit {
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    padding: 0.875rem 3rem;
+    border-radius: var(--border-radius-md);
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl), var(--shadow-yellow);
+}
+
+.mission-box {
+    background: linear-gradient(135deg, #FFFAE0 0%, #FFF5F5 100%);
+    border-left: 5px solid var(--brand-yellow);
+    padding: 2rem;
+    border-radius: var(--border-radius-lg);
+    margin-bottom: 3rem;
+}
+
+.mission-box p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.mission-box strong {
+    color: var(--brand-blue);
+    font-weight: 700;
+}
+</style>
 {% endblock extra_css %}
+
 {% block content %}
-    <!-- content -->
+<!-- Hero Section -->
+<div class="hero-section">
     <div class="container">
-        <div class="block text-block">
-            <p class="thm-txt h4 text-center fw-bolder py-3">Mission Statement</p>
-            <p class="thm-txt">
-                ​<span class="token token-empty">Yellowkey Holdings</span> manages your Real Estate Properties
-                24-7! Our Mission: Maximizing Client income by applying exceptional Real Estate Property Management skills,
-                while ensuring Tenant satisfaction by adopting first rate property maintenance!
-            </p>
-            <p class="thm-txt mb-0 mb-0-63em line-height-2">The Headache:</p>
-            <p class="thm-txt line-height-2">All Real Estate Investors have 4 major concerns:</p>
-            <p class="thm-txt line-height-2 pl-1-25em">• Maximizing Earnings while Minimizing Expenses</p>
-            <p class="thm-txt line-height-2 pl-1-25em">
-                • Timely and Proper Rental Collections and Payables Disbursement
-            </p>
-            <p class="thm-txt line-height-2 pl-1-25em">• Up to Date Reporting and Complete Accountability</p>
-            <p class="thm-txt mb-1-25em line-height-2 pl-1-25em">• Regular and Complete Real Estate Maintenance</p>
-            <p class="thm-txt mb-0-63em line-height-1-5">The Answer:</p>
-            <p class="thm-txt">
-                Take the headaches of property management away by hiring us- the experts, then sit back and enjoy
-                your well deserved profits!
-            </p>
-            <p class="thm-txt mb-1-25em line-height-1-5">
-                Our website will provide your vacant property with continuous
-                quality exposure. By using innovative marketing and advertising techniques we will fill out vacant spaces with
-                qualified tenants fast. We take great care throughout the tenant qualification and selection process.
-            </p>
-            <p class="thm-txt">We will be honored to manage your real estate properties for you.</p>
+        <h1>About Yellowkey Holdings</h1>
+        <p>Qatar's Premier Real Estate Management Platform - Maximizing Client Income, Ensuring Tenant Satisfaction</p>
+    </div>
+</div>
+
+<!-- Mission Statement -->
+<div class="container mb-5">
+    <div class="mission-box">
+        <p>
+            <strong>Yellowkey Holdings</strong> manages your Real Estate Properties 24/7!
+            Our Mission: Maximizing Client income by applying exceptional Real Estate Property Management skills,
+            while ensuring Tenant satisfaction by adopting first-rate property maintenance!
+        </p>
+    </div>
+</div>
+
+<!-- Features Grid -->
+<div class="container mb-5">
+    <h2 class="section-title text-center mb-5">Why Choose Yellowkey?</h2>
+    <div class="row g-4 mb-5">
+        <div class="col-md-6 col-lg-3">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Maximize Earnings</h3>
+                <p>Optimize your rental income while minimizing operational expenses through expert management.</p>
+            </div>
         </div>
-        <div class="row justify-content-center py-md-5">
-            <div class="col-md-10">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Contact Us</h3>
+        <div class="col-md-6 col-lg-3">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <h3>Timely Collections</h3>
+                <p>Efficient rental collection and payables disbursement with complete transparency.</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-file-invoice"></i>
+                </div>
+                <h3>Full Accountability</h3>
+                <p>Up-to-date reporting with complete accountability for every transaction.</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h3>Complete Maintenance</h3>
+                <p>Regular and comprehensive property maintenance to protect your investment.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- The Challenge Section -->
+<div class="container mb-5">
+    <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <h2 class="section-title">The Real Estate Challenge</h2>
+            <p class="lead mb-4">All Real Estate Investors face these major concerns:</p>
+
+            <div class="timeline-item">
+                <h4>Financial Optimization</h4>
+                <p>Maximizing earnings while minimizing expenses requires expertise and constant attention.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>Payment Management</h4>
+                <p>Timely and proper rental collections and payables disbursement need professional handling.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>Transparency & Reporting</h4>
+                <p>Up-to-date reporting and complete accountability are essential for peace of mind.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>Property Maintenance</h4>
+                <p>Regular and complete real estate maintenance protects your investment value.</p>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="row g-4">
+                <div class="col-6">
+                    <div class="stats-card">
+                        <span class="stats-number">24/7</span>
+                        <span class="stats-label">Property Management</span>
                     </div>
-                    {% if messages %}
-                        {% for message in messages %}
-                            <div class="alert alert-success d-flex align-items-center" role="alert">
-                                <div>
-                                    <i class="fa-solid fa-clipboard-check pe-3"></i><strong>{{ message }}</strong>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    {% endif %}
-                    <div class="card-body">
-                        <form action="" method="post">
-                            {% csrf_token %}
-                            {{ form | crispy }}
-                            <input type="submit" value="Submit">
-                        </form>
+                </div>
+                <div class="col-6">
+                    <div class="stats-card">
+                        <span class="stats-number">100%</span>
+                        <span class="stats-label">Transparency</span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="stats-card">
+                        <span class="stats-number">Fast</span>
+                        <span class="stats-label">Tenant Placement</span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="stats-card">
+                        <span class="stats-number">Expert</span>
+                        <span class="stats-label">Team Support</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container">
-        {% if submitted %}<p class="success">Your message was submitted successfully. Thank you.</p>{% endif %}
+</div>
+
+<!-- Our Solution Section -->
+<div class="container mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card" style="border: none; background: linear-gradient(135deg, #F4F4F4 0%, white 100%); padding: 2rem; border-radius: var(--border-radius-xl);">
+                <h2 class="section-title text-center">Our Solution</h2>
+                <p class="lead text-center mb-4" style="color: var(--brand-blue); font-weight: 600;">
+                    Take the headaches of property management away by hiring us—the experts. Sit back and enjoy your well-deserved profits!
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary);">
+                    Our website provides your vacant property with continuous quality exposure. By using innovative marketing and
+                    advertising techniques, we fill vacant spaces with qualified tenants fast. We take great care throughout the
+                    tenant qualification and selection process, ensuring only the best matches for your property.
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 0;">
+                    <strong style="color: var(--brand-yellow-dark);">We would be honored to manage your real estate properties for you.</strong>
+                </p>
+            </div>
+        </div>
     </div>
+</div>
+
+<!-- Contact Form Section -->
+<div class="container mb-5 pb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="contact-card card">
+                <div class="card-header">
+                    <h3><i class="fas fa-envelope me-2"></i>Get In Touch With Us</h3>
+                </div>
+
+                {% if messages %}
+                    <div class="px-4 pt-4">
+                        {% for message in messages %}
+                            <div class="alert alert-success d-flex align-items-center shadow-sm" role="alert" style="border-left: 5px solid var(--brand-accent-success); border-radius: var(--border-radius-md);">
+                                <div>
+                                    <i class="fa-solid fa-circle-check pe-3 fs-4"></i>
+                                    <strong>{{ message }}</strong>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <div class="card-body">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{ form | crispy }}
+                        <button type="submit" class="btn btn-submit mt-3">
+                            <i class="fas fa-paper-plane me-2"></i>Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if submitted %}
+    <div class="container mb-5">
+        <div class="alert alert-success text-center shadow-lg" style="border-radius: var(--border-radius-lg); border: none; background: var(--brand-accent-success-light); color: var(--brand-accent-success-dark); font-size: 1.1rem; padding: 1.5rem;">
+            <i class="fas fa-check-circle fs-3 me-2"></i>
+            <strong>Your message was submitted successfully. Thank you!</strong>
+        </div>
+    </div>
+{% endif %}
+
 {% endblock content %}
-<!-- extra js -->
+
 {% block extra_js %}
+<script>
+// Smooth scroll for any internal links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+
+// Add animation on scroll
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.feature-card, .timeline-item, .stats-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+});
+</script>
 {% endblock extra_js %}
